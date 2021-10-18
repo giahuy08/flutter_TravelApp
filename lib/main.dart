@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_travelapp/routs.dart';
+import 'package:flutter_travelapp/routes.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
 import 'package:flutter_travelapp/theme.dart';
 
