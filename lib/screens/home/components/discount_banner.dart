@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 import 'section_title.dart';

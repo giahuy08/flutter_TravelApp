@@ -1,15 +1,10 @@
 import "package:flutter/material.dart";
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/home/components/special_offers.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
-import 'icon_btn_with_counter.dart';
 import 'popular_product.dart';
-import 'search_field.dart';
-import 'section_title.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

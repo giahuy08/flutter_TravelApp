@@ -39,9 +39,9 @@ List<Product> demoProducts = [
       "assets/images/ps4_console_white_4.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     name: "Du Lịch Nha Trang, Đà Lạt",
@@ -58,9 +58,9 @@ List<Product> demoProducts = [
       "assets/images/Image Popular Product 2.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     name: "Du lịch Vũng Tàu, Mũi Né",
@@ -76,9 +76,9 @@ List<Product> demoProducts = [
       "assets/images/glap.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     name: "Du lịch Vịnh Hạ Long",
@@ -96,8 +96,8 @@ List<Product> demoProducts = [
     ],
     colors: [
       const Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     name: "Du lịch Phố Cổ Hội An",
@@ -111,3 +111,5 @@ List<Product> demoProducts = [
 
 const String detail =
     "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";
+
+

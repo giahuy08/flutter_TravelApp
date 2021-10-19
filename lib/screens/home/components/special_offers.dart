@@ -102,7 +102,7 @@ class SpecialOfferCard extends StatelessWidget {
                   ),
                   child: Text.rich(
                     TextSpan(
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       children: [
                         TextSpan(
                           text: "$category\n",
