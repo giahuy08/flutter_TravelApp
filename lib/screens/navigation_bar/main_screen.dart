@@ -6,6 +6,7 @@ import 'package:flutter_travelapp/screens/navigation_bar/account.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/cart.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/feed.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/message.dart';
+import 'package:flutter_travelapp/size_config.dart';
 
 import 'navbar_key.dart';
 
@@ -30,6 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
+        height: getProportionateScreenHeight(62),
         backgroundColor: Colors.white,
         color: kPrimaryColor,
         buttonBackgroundColor: kPrimaryColor,
@@ -39,22 +41,27 @@ class _MainScreenState extends State<MainScreen> {
           Icon(
             Icons.home,
             size: 30,
+            color: Colors.white,
           ),
           Icon(
             Icons.rss_feed,
             size: 30,
+            color: Colors.white,
           ),
           Icon(
             Icons.message,
             size: 30,
+            color: Colors.white,
           ),
           Icon(
             Icons.shopping_cart,
             size: 30,
+            color: Colors.white,
           ),
           Icon(
             Icons.person,
             size: 30,
+            color: Colors.white,
           ),
         ],
         onTap: (index) {
