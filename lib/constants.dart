@@ -13,6 +13,8 @@ const kTextColor = Color(0xFF757575);
 
 const kAnimationDuration = Duration(milliseconds: 200);
 
+const kDefaultPadding = 18.0;
+
 // Heading
 
 final headingStyle = TextStyle(
@@ -37,8 +39,7 @@ final otpInputDecoration = InputDecoration(
         EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
     enabledBorder: outlineInputBorder(),
     focusedBorder: outlineInputBorder(),
-    border: outlineInputBorder()
-    );
+    border: outlineInputBorder());
 
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(

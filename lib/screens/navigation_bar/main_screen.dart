@@ -6,6 +6,8 @@ import 'package:flutter_travelapp/screens/navigation_bar/account.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/cart.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/feed.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/message.dart';
+import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
+import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 import 'navbar_key.dart';
@@ -22,10 +24,10 @@ class _MainScreenState extends State<MainScreen> {
   int selectedIndex = 0;
   final screen = [
     const HomeScreen(),
-    const FeedScreen(),
+    const ReviewScreen(),
     const MessageScreen(),
     const CartScreen(),
-    const AccountScreen()
+    const ProfileScreen()
   ];
   @override
   Widget build(BuildContext context) {
