@@ -27,7 +27,7 @@ class Body extends StatelessWidget {
             child: DefaultButton(
                 text: "Go to home",
                 press: () =>
-                    Navigator.pushNamed(context, ReviewScreen.routeName))),
+                    Navigator.pushNamed(context, MainScreen.routeName))),
         const Spacer(),
       ],
     );
