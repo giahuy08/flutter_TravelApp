@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
-import 'package:flutter_travelapp/screens/navigation_bar/account.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/cart.dart';
-import 'package:flutter_travelapp/screens/navigation_bar/feed.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/message.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
-
 import 'navbar_key.dart';
 
 class MainScreen extends StatefulWidget {
@@ -33,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
-        height: getProportionateScreenHeight(62),
+        height: getProportionateScreenHeight(58),
         backgroundColor: Colors.transparent,
         color: kPrimaryColor,
         buttonBackgroundColor: kPrimaryColor,

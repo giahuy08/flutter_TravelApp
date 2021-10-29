@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
+import 'package:flutter_travelapp/screens/home/home_screen.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
 import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
