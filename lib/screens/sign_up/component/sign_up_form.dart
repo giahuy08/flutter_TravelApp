@@ -3,7 +3,11 @@ import 'package:flutter_travelapp/components/custom_surfix_icon.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/otp/otp_screen.dart';
+import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/src/snackbar/snack.dart';
 
 import '../../../size_config.dart';
 
@@ -22,8 +26,43 @@ class _SignFormState extends State<SignUpForm> {
   late String confirmPassword;
   late String phone;
   late String address;
+  late String name;
 
   final List<String> errors = [];
+
+  void register(String email, String password, String phone, String name,
+      String address) {
+    AuthenRepository()
+        .register(email, password, phone, name, address)
+        .then((value) {
+      print(value);
+      if (value != null) {
+        if (value == 'Email already exists') {
+          addError(error: kEmailExistError);
+        } else {
+          removeError(error: kEmailExistError);
+          Get.snackbar(
+            'Login',
+            'Đăng ký thành công',
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.green,
+            backgroundColor: kPrimaryColor,
+            duration: const Duration(
+              milliseconds: 800,
+            ),
+          );
+          Future.delayed(const Duration(milliseconds: 800), () {
+            // Here you can write your code
+
+            setState(() {
+              Navigator.pushNamed(context, SignInScreen.routeName);
+            });
+          });
+        }
+      }
+    });
+  }
+
   void addError({String? error}) {
     if (!errors.contains(error)) {
       setState(() {
@@ -49,6 +88,8 @@ class _SignFormState extends State<SignUpForm> {
             SizedBox(height: getProportionateScreenHeight(20)),
             buildEmailFormField(),
             SizedBox(height: getProportionateScreenHeight(20)),
+            buildNameFormField(),
+            SizedBox(height: getProportionateScreenHeight(20)),
             buildPasswordFormField(),
             SizedBox(height: getProportionateScreenHeight(20)),
             buildConfirmPasswordFormField(),
@@ -61,9 +102,13 @@ class _SignFormState extends State<SignUpForm> {
             DefaultButton(
                 text: "Đăng ký",
                 press: () {
+                  // print(email);
                   // Navigator.pushNamed(context, OtpScreen.routeName);
                   if (_formKey.currentState!.validate()) {
-                    Navigator.pushNamed(context, OtpScreen.routeName);
+                    _formKey.currentState!.save();
+                    // Navigator.pushNamed(context, OtpScreen.routeName);
+                    // register(email, password, phone, name, address);
+                    register(email, password, phone, name, address);
                   }
                 })
           ],
@@ -148,7 +193,7 @@ class _SignFormState extends State<SignUpForm> {
           if (value.isNotEmpty) {
             removeError(error: kPhoneNumberNullError);
           }
-
+          phone = value;
           return;
         },
         validator: (value) {
@@ -165,6 +210,31 @@ class _SignFormState extends State<SignUpForm> {
         ));
   }
 
+  TextFormField buildNameFormField() {
+    return TextFormField(
+        keyboardType: TextInputType.text,
+        onSaved: (newValue) => name = newValue!,
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: kNamelNullError);
+          }
+          name = value;
+          return;
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            addError(error: kNamelNullError);
+            return "";
+          }
+          return null;
+        },
+        decoration: const InputDecoration(
+          labelText: "Tên",
+          hintText: "Nhập tên người dùng",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ));
+  }
+
   TextFormField buildAddressFormField() {
     return TextFormField(
         keyboardType: TextInputType.text,
@@ -173,7 +243,7 @@ class _SignFormState extends State<SignUpForm> {
           if (value.isNotEmpty) {
             removeError(error: kAddressNullError);
           }
-
+          address = value;
           return;
         },
         validator: (value) {
@@ -200,7 +270,7 @@ class _SignFormState extends State<SignUpForm> {
           } else if (emailValidatorRegExp.hasMatch(value)) {
             removeError(error: kInvalidEmailError);
           }
-          password = value;
+          email = value;
           return;
         },
         validator: (value) {

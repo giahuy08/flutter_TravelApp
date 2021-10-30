@@ -5,8 +5,11 @@ import 'package:flutter_travelapp/components/custom_surfix_icon.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/models/user.dart';
+import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_travelapp/screens/login_success/login_success_screen.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../../../size_config.dart';
@@ -25,23 +28,50 @@ class _SignFormState extends State<SignForm> {
   bool remember = false;
   final List<String> errors = [];
   void signIn(String email, String pass) async {
-    SharedPreferences sharedReferences = await SharedPreferences.getInstance();
-    Map data = {'email': email, 'password': pass};
-    dynamic jsonResponse;
+    // SharedPreferences sharedReferences = await SharedPreferences.getInstance();
+    // Map data = {'email': email, 'password': pass};
+    // dynamic jsonResponse;
 
-    var response = await http
-        .post(Uri.parse("http://192.168.1.12:3000/user/login"), body: data);
-    if (response.statusCode == 200) {
-      jsonResponse = json.decode(response.body);
-    }
+    // var response = await http
+    //     .post(Uri.parse("http://192.168.1.12:3000/user/login"), body: data);
+    // if (response.statusCode == 200) {
+    //   jsonResponse = json.decode(response.body);
+    // }
 
-    if (jsonResponse != null) {
-      sharedReferences.setString("token", jsonResponse['data']['token']);
-      Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-    } else {
-      // ignore: avoid_print
-      print(response.body);
-    }
+    // if (jsonResponse != null) {
+    //   sharedReferences.setString("token", jsonResponse['data']['token']);
+    //   Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+    // } else {
+    //   // ignore: avoid_print
+    //   print(response.body);
+    // }
+
+    AuthenRepository().login(email, pass).then((value) {
+      if (value != null) {
+        removeError(error: kLoginFail);
+        Get.snackbar(
+          'Login',
+          'Đăng nhập thành công',
+          snackPosition: SnackPosition.TOP,
+          colorText: Colors.white,
+          backgroundColor: kPrimaryColor,
+          duration: const Duration(
+            milliseconds: 800,
+          ),
+        );
+        Future.delayed(const Duration(milliseconds: 800), () {
+        // Here you can write your code
+
+          setState(() {
+            Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+          });
+        });
+
+        print(User.fromLogin(value));
+      } else {
+        addError(error: kLoginFail);
+      }
+    });
   }
 
   void addError({String? error}) {
