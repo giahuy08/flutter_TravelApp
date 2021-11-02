@@ -16,7 +16,11 @@ class PopularProducts extends StatefulWidget {
 }
 
 class _PopularProductsState extends State<PopularProducts> {
-  String title = '';
+  List<dynamic> _listTour = [];
+
+  initialController() {
+    _listTour = [];
+  }
 
   @override
   void initState() {
@@ -30,11 +34,9 @@ class _PopularProductsState extends State<PopularProducts> {
   }
 
   void getListTour() async {
-    List<TourModel> tours = await TourRepository().getListTour();
-    tours.forEach((element) {
-      setState(() {
-        title = element.name;
-      });
+    List<TourModel> tours = await TourRepository().getListTour(1, 5);
+    setState(() {
+      _listTour.addAll(tours);
     });
   }
 
@@ -45,7 +47,7 @@ class _PopularProductsState extends State<PopularProducts> {
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(title: title, press: () {}),
+          child: SectionTitle(title: "Phổ biến nhất", press: () {}),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(
@@ -53,15 +55,15 @@ class _PopularProductsState extends State<PopularProducts> {
           child: Row(
             children: [
               ...List.generate(
-                demoProducts.length,
+                _listTour.length,
                 (index) {
-                  if (demoProducts[index].isPopular) {
+                  if (_listTour[index] != null) {
                     return ProductCard(
-                      product: demoProducts[index],
+                      product: _listTour[index],
                       press: () => Navigator.pushNamed(
                           context, DetailScreen.routeName,
                           arguments: ProductDetailsArguments(
-                              product: demoProducts[index])),
+                              product: _listTour[index])),
                     );
                   }
                   return const SizedBox

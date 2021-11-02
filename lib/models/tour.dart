@@ -1,78 +1,88 @@
 import 'dart:convert';
 
-import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 
 class TourModel {
-  final String idEnterprise;
-  final List<String> idVehicle;
-  final String detail;
-  final String payment;
-  final List<String> imagesTour;
+  String idEnterprise;
+  List<String> idVehicles;
+  String detail;
+  double? payment;
+  List<String> imagesTour;
+  double? star;
+  int category;
   final String id;
-  final String name;
-  final String place;
-  final DateTime createdAt;
+  String name;
+  String place;
   TourModel({
     required this.idEnterprise,
-    required this.idVehicle,
+    required this.idVehicles,
     required this.detail,
     required this.payment,
     required this.imagesTour,
+    required this.star,
+    required this.category,
     required this.id,
     required this.name,
     required this.place,
-    required this.createdAt,
   });
 
   TourModel copyWith({
     String? idEnterprise,
-    List<String>? idVehicle,
+    List<String>? idVehicles,
     String? detail,
-    String? payment,
+    double? payment,
     List<String>? imagesTour,
+    double? star,
+    int? category,
     String? id,
     String? name,
     String? place,
-    DateTime? createdAt,
   }) {
     return TourModel(
       idEnterprise: idEnterprise ?? this.idEnterprise,
-      idVehicle: idVehicle ?? this.idVehicle,
+      idVehicles: idVehicles ?? this.idVehicles,
       detail: detail ?? this.detail,
       payment: payment ?? this.payment,
       imagesTour: imagesTour ?? this.imagesTour,
+      star: star ?? this.star,
+      category: category ?? this.category,
       id: id ?? this.id,
       name: name ?? this.name,
       place: place ?? this.place,
-      createdAt: createdAt ?? this.createdAt,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
       'idEnterprise': idEnterprise,
-      'idVehicle': idVehicle,
+      'idVehicles': idVehicles,
       'detail': detail,
       'payment': payment,
       'imagesTour': imagesTour,
+      'star': star,
+      'category': category,
       'id': id,
       'name': name,
       'place': place,
-      'createdAt': createdAt.millisecondsSinceEpoch,
     };
   }
 
   factory TourModel.fromMap(Map<String, dynamic> map) {
     return TourModel(
       idEnterprise: map['idEnterprise'],
-      idVehicle: List<String>.from(map['idVehicle']),
+      idVehicles: (map['idVehicles'] as List<dynamic>)
+          .map((e) => e.toString())
+          .toList(),
       detail: map['detail'],
-      payment: map['payment'],
-      imagesTour: List<String>.from(map['imagesTour']),
-      id: map['_id'],
+      payment: double.tryParse((map['payment'] ?? 0).toString()),
+      imagesTour: (map['imagesTour'] as List<dynamic>)
+          .map((e) => e.toString())
+          .toList(),
+      star: double.tryParse((map['star'] ?? 0).toString()),
+      category: map['category'],
+      id: map['id'],
       name: map['name'],
       place: map['place'],
-      createdAt: DateTime.parse(map['createdAt']),
     );
   }
 
@@ -83,36 +93,37 @@ class TourModel {
 
   @override
   String toString() {
-    return 'TourModel(idEnterprise: $idEnterprise, idVehicle: $idVehicle, detail: $detail, payment: $payment, imagesTour: $imagesTour, id: $id, name: $name, place: $place, createdAt: $createdAt)';
+    return 'TourModel(idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, id: $id, name: $name, place: $place)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    final listEquals = const DeepCollectionEquality().equals;
 
     return other is TourModel &&
         other.idEnterprise == idEnterprise &&
-        listEquals(other.idVehicle, idVehicle) &&
+        listEquals(other.idVehicles, idVehicles) &&
         other.detail == detail &&
         other.payment == payment &&
         listEquals(other.imagesTour, imagesTour) &&
+        other.star == star &&
+        other.category == category &&
         other.id == id &&
         other.name == name &&
-        other.place == place &&
-        other.createdAt == createdAt;
+        other.place == place;
   }
 
   @override
   int get hashCode {
     return idEnterprise.hashCode ^
-        idVehicle.hashCode ^
+        idVehicles.hashCode ^
         detail.hashCode ^
         payment.hashCode ^
         imagesTour.hashCode ^
+        star.hashCode ^
+        category.hashCode ^
         id.hashCode ^
         name.hashCode ^
-        place.hashCode ^
-        createdAt.hashCode;
+        place.hashCode;
   }
 }

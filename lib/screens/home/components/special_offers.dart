@@ -1,12 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/models/tour.dart';
+import 'package:flutter_travelapp/repository/tour_repository.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
 
-class SpecialOffers extends StatelessWidget {
+class SpecialOffers extends StatefulWidget {
   const SpecialOffers({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<SpecialOffers> createState() => _SpecialOffersState();
+}
+
+class _SpecialOffersState extends State<SpecialOffers> {
+  List<dynamic> _listOthers = [];
+  List<dynamic> _listSea = [];
+  List<dynamic> _listHighLand = [];
+
+  initialController() {
+    _listOthers = [];
+    _listSea = [];
+    _listHighLand = [];
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getListTour();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void getListTour() async {
+    List<TourModel> listOthers =
+        await TourRepository().findAllTourByCategory(0);
+    List<TourModel> listSea = await TourRepository().findAllTourByCategory(1);
+    List<TourModel> listHighLand =
+        await TourRepository().findAllTourByCategory(2);
+    setState(() {
+      _listOthers.addAll(listOthers);
+      _listSea.addAll(listSea);
+      _listHighLand.addAll(listHighLand);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +69,19 @@ class SpecialOffers extends StatelessWidget {
               SpecialOfferCard(
                 image: "assets/images/biendep.jpg",
                 category: "Biển Đảo",
-                numOfBrands: 18,
+                numOfTours: _listSea.length,
                 press: () {},
               ),
               SpecialOfferCard(
                 image: "assets/images/vungcao.jpg",
                 category: "Vùng Cao",
-                numOfBrands: 16,
+                numOfTours: _listHighLand.length,
                 press: () {},
               ),
               SpecialOfferCard(
                 image: "assets/images/dulichkhac.jpg",
                 category: "Khác",
-                numOfBrands: 32,
+                numOfTours: _listOthers.length,
                 press: () {},
               ),
               SizedBox(width: getProportionateScreenWidth(20)),
@@ -52,25 +93,30 @@ class SpecialOffers extends StatelessWidget {
   }
 }
 
-class SpecialOfferCard extends StatelessWidget {
+class SpecialOfferCard extends StatefulWidget {
   const SpecialOfferCard({
     Key? key,
     required this.category,
     required this.image,
-    required this.numOfBrands,
+    required this.numOfTours,
     required this.press,
   }) : super(key: key);
 
   final String category, image;
-  final int numOfBrands;
+  final int numOfTours;
   final GestureTapCallback press;
 
+  @override
+  State<SpecialOfferCard> createState() => _SpecialOfferCardState();
+}
+
+class _SpecialOfferCardState extends State<SpecialOfferCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       child: GestureDetector(
-        onTap: press,
+        onTap: widget.press,
         child: SizedBox(
           width: getProportionateScreenWidth(242),
           height: getProportionateScreenWidth(100),
@@ -79,7 +125,7 @@ class SpecialOfferCard extends StatelessWidget {
             child: Stack(
               children: [
                 Image.asset(
-                  image,
+                  widget.image,
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.fill,
                 ),
@@ -105,13 +151,13 @@ class SpecialOfferCard extends StatelessWidget {
                       style: const TextStyle(color: Colors.white),
                       children: [
                         TextSpan(
-                          text: "$category\n",
+                          text: "${widget.category}\n",
                           style: TextStyle(
                             fontSize: getProportionateScreenWidth(18),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextSpan(text: "$numOfBrands Brands")
+                        TextSpan(text: "${widget.numOfTours} Tours")
                       ],
                     ),
                   ),
