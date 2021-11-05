@@ -8,4 +8,6 @@ class ApiGateway {
   //Authen
   static const login = 'user/login';
   static const register = 'user/register';
+  //User
+  static const findUserByToken = 'user/findUserByToken';
 }
