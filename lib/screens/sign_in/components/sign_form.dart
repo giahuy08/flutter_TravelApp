@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/custom_surfix_icon.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
@@ -8,10 +6,9 @@ import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/user.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
+import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import 'package:flutter_travelapp/screens/login_success/login_success_screen.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 import '../../../size_config.dart';
 
 class SignForm extends StatefulWidget {
@@ -60,7 +57,7 @@ class _SignFormState extends State<SignForm> {
           ),
         );
         Future.delayed(const Duration(milliseconds: 800), () {
-        // Here you can write your code
+          // Here you can write your code
 
           setState(() {
             Navigator.pushNamed(context, LoginSuccessScreen.routeName);

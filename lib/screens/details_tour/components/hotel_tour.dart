@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_travelapp/components/product_card.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
-import 'package:flutter_travelapp/models/product.dart';
+
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
+import 'package:flutter_travelapp/screens/details_tour/components/hotel_card.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
-import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import '../../../size_config.dart';
-import 'section_title.dart';
 
-class PopularProducts extends StatefulWidget {
-  const PopularProducts({Key? key}) : super(key: key);
+class HotelTour extends StatefulWidget {
+  const HotelTour({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _PopularProductsState();
+  State<StatefulWidget> createState() => _HotelTourState();
 }
 
-class _PopularProductsState extends State<PopularProducts> {
+class _HotelTourState extends State<HotelTour> {
   List<dynamic> _listTour = [];
 
   initialController() {
@@ -46,16 +43,7 @@ class _PopularProductsState extends State<PopularProducts> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(
-              title: "Phổ biến nhất",
-              press: () {
-                Navigator.pushNamed(context, ListToursScreen.routeName);
-              }),
-        ),
-        SizedBox(height: getProportionateScreenWidth(20)),
+        SizedBox(height: getProportionateScreenWidth(10)),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -64,7 +52,7 @@ class _PopularProductsState extends State<PopularProducts> {
                 _listTour.length,
                 (index) {
                   if (_listTour[index] != null) {
-                    return ProductCard(
+                    return HotelCard(
                       product: _listTour[index],
                       press: () => Navigator.pushNamed(
                           context, DetailScreen.routeName,
@@ -85,8 +73,3 @@ class _PopularProductsState extends State<PopularProducts> {
   }
 }
 
-// class ProductDetailsArguments {
-//   final TourModel tour;
-
-//   ProductDetailsArguments({required this.tour});
-// }

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelapp/components/rounded_icon_btn.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  final double rating;
+  final double? rating;
   const CustomAppBar({Key? key, required this.rating}) : super(key: key);
 
   // custom heigth cho appbar
