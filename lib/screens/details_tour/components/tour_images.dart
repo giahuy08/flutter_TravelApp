@@ -1,39 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_travelapp/models/product.dart';
+import 'package:flutter_travelapp/models/tour.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-
-class ProductImages extends StatefulWidget {
-  const ProductImages({
+class TourImages extends StatefulWidget {
+  const TourImages({
     Key? key,
-    required this.product,
+    required this.tour,
   }) : super(key: key);
 
-  final Product product;
+  final TourModel tour;
 
   @override
-  State<ProductImages> createState() => _ProductImagesState();
+  State<TourImages> createState() => _TourImagesState();
 }
 
-class _ProductImagesState extends State<ProductImages> {
+class _TourImagesState extends State<TourImages> {
   int selectedImage = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          width: getProportionateScreenWidth(238),
+          width: getProportionateScreenWidth(350),
           child: AspectRatio(
             aspectRatio: 1,
-            child: Image.asset(widget.product.imagesTour[selectedImage]),
+            child: Image.network(widget.tour.imagesTour[selectedImage]),
           ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...List.generate(widget.product.imagesTour.length,
+            ...List.generate(widget.tour.imagesTour.length,
                 (index) => buildSmallPreview(index))
           ],
         )
@@ -60,7 +59,7 @@ class _ProductImagesState extends State<ProductImages> {
                 color: selectedImage == index
                     ? kPrimaryColor
                     : Colors.transparent)),
-        child: Image.asset(widget.product.imagesTour[index]),
+        child: Image.network(widget.tour.imagesTour[index]),
       ),
     );
   }

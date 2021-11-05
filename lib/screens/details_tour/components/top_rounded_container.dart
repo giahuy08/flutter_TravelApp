@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
-
-
 class TopRoundedContainer extends StatelessWidget {
   const TopRoundedContainer({
     Key? key,
@@ -19,7 +17,7 @@ class TopRoundedContainer extends StatelessWidget {
       margin: EdgeInsets.only(top: getProportionateScreenHeight(20)),
       padding: EdgeInsets.only(top: getProportionateScreenHeight(20)),
       width: double.infinity,
-      height: 300,
+      height: 350,
       decoration: BoxDecoration(
           color: color,
           borderRadius: const BorderRadius.only(

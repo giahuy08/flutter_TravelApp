@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
-import 'package:flutter_travelapp/models/product.dart';
-import 'package:flutter_travelapp/screens/details_tour/components/product_images.dart';
+import 'package:flutter_travelapp/models/tour.dart';
+import 'package:flutter_travelapp/screens/details_tour/components/hotel_tour.dart';
+import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class ProductDescription extends StatelessWidget {
-  const ProductDescription({
+class TourDescription extends StatelessWidget {
+  const TourDescription({
     Key? key,
-    required this.product,
+    required this.tour,
     required this.pressOnSeeMore,
   }) : super(key: key);
 
-  final Product product;
+  final TourModel tour;
   final GestureTapCallback pressOnSeeMore;
 
   @override
@@ -23,7 +24,7 @@ class ProductDescription extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProductImages(product: product),
+          TourImages(tour: tour),
           TopRoundedContainer(
             color: Colors.white,
             child: Column(
@@ -32,7 +33,7 @@ class ProductDescription extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: getProportionateScreenWidth(20)),
                     child: Text(
-                      product.name,
+                      tour.name,
                       style: Theme.of(context).textTheme.headline6,
                     )),
                 const SizedBox(height: 5),
@@ -42,15 +43,17 @@ class ProductDescription extends StatelessWidget {
                     padding: const EdgeInsets.all(15),
                     width: 64,
                     decoration: BoxDecoration(
-                        color: product.isFavourite
-                            ? const Color(0xFFFFE6E6)
-                            : const Color(0xFFF5F6F9),
+                        // color: tour.isFavourite
+                        //     ? const Color(0xFFFFE6E6)
+                        //     : const Color(0xFFF5F6F9),
+                        color: const Color(0xFFF5F6F9),
                         borderRadius: BorderRadius.circular(50)),
                     child: SvgPicture.asset(
                       "assets/icons/Heart Icon_2.svg",
-                      color: product.isFavourite
-                          ? const Color(0xFFFF4848)
-                          : const Color(0xFFDBDEE4),
+                      // color: tour.isFavourite
+                      //     ? const Color(0xFFFF4848)
+                      //     : const Color(0xFFDBDEE4),
+                      color: const Color(0xFFDBDEE4),
                     ),
                   ),
                 ),
@@ -59,45 +62,54 @@ class ProductDescription extends StatelessWidget {
                       left: getProportionateScreenWidth(20),
                       right: getProportionateScreenWidth(64)),
                   child: Text(
-                    product.detail,
+                    tour.detail,
                     maxLines: 3,
                   ),
                 ),
+                SizedBox(height: getProportionateScreenWidth(20)),
+
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(20),
-                      vertical: 10),
-                  child: GestureDetector(
-                    onTap: pressOnSeeMore,
-                    child: Row(
-                      children: const [
-                        Text(
-                          "Xem chi tiết",
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 12,
-                          color: kPrimaryColor,
-                        )
-                      ],
-                    ),
-                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: DefaultButton(text: "Xem chi tiết", press: () {}),
                 ),
+                // Padding(
+                //   padding: EdgeInsets.symmetric(
+                //       horizontal: getProportionateScreenWidth(20),
+                //       vertical: 10),
+                //   child: GestureDetector(
+                //     onTap: pressOnSeeMore,
+                //     child: Row(
+                //       children: const [
+                //         Text(
+                //           "Xem chi tiết",
+                //           style: TextStyle(
+                //               color: kPrimaryColor,
+                //               fontWeight: FontWeight.w600),
+                //         ),
+                //         SizedBox(
+                //           width: 5,
+                //         ),
+                //         Icon(
+                //           Icons.arrow_forward_ios,
+                //           size: 12,
+                //           color: kPrimaryColor,
+                //         )
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
+          HotelTour(),
           TopRoundedContainer(
-            color: const Color(0xFFF5F6F9),
+            color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(9.0),
               child: Column(
                 children: [
+                  Text('Cổng thanh toán'),
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
@@ -137,19 +149,37 @@ class ProductDescription extends StatelessWidget {
                             .copyWith(color: Colors.black),
                       ),
                     ),
-                  )
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(tour.payment.toString(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20)),
+                            const Text(
+                              'VND',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                        Container(
+                            height: 55,
+                            width: 170,
+                            child: DefaultButton(
+                              text: 'Đặt ngay',
+                              press: () {},
+                            ))
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: SizeConfig.screenWidth * 0.15,
-                right: SizeConfig.screenWidth * 0.15,
-                top: getProportionateScreenWidth(15),
-                bottom: getProportionateScreenWidth(40)),
-            child: DefaultButton(text: "Checkout", press: () {}),
-          )
         ],
       ),
     );

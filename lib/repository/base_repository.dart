@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 // const root_url = "freshfoodbe.tk";
-// const root_url = "192.168.1.12:3000";
-const root_url = "192.168.1.190:3000";
+const root_url = "192.168.1.12:3000";
+// const root_url = "192.168.1.190:3000";
 
 const socket_url = "45.212.16.10:3000";
 
