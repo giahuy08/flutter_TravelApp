@@ -1,7 +1,9 @@
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
+import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import 'package:flutter_travelapp/screens/login_success/login_success_screen.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
 import 'package:flutter_travelapp/screens/otp/otp_screen.dart';
@@ -23,5 +25,6 @@ final Map<String, WidgetBuilder> routes = {
   ProfileScreen.routeName: (context) => const ProfileScreen(),
   ReviewScreen.routeName: (context) => const ReviewScreen(),
   MainScreen.routeName: (context) => const MainScreen(),
-  DetailScreen.routeName:(context)=> const DetailScreen()
+  DetailScreen.routeName:(context)=> const DetailScreen(),
+  ListToursScreen.routeName:(context) =>const ListToursScreen()
 };
