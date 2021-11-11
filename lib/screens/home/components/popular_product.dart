@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/components/listtours_argument.dart';
 
 import 'package:flutter_travelapp/components/product_card.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
@@ -50,10 +51,10 @@ class _PopularProductsState extends State<PopularProducts> {
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: SectionTitle(
-              title: "Phổ biến nhất",
-              press: () {
-                Navigator.pushNamed(context, ListToursScreen.routeName);
-              }),
+            title: "Phổ biến nhất",
+            press: () => Navigator.pushNamed(context, ListToursScreen.routeName,
+                arguments: ListToursArguments(tours: _listTour)),
+          ),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(

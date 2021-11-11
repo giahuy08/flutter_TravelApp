@@ -73,36 +73,10 @@ class TourDescription extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   child: DefaultButton(text: "Xem chi tiết", press: () {}),
                 ),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(
-                //       horizontal: getProportionateScreenWidth(20),
-                //       vertical: 10),
-                //   child: GestureDetector(
-                //     onTap: pressOnSeeMore,
-                //     child: Row(
-                //       children: const [
-                //         Text(
-                //           "Xem chi tiết",
-                //           style: TextStyle(
-                //               color: kPrimaryColor,
-                //               fontWeight: FontWeight.w600),
-                //         ),
-                //         SizedBox(
-                //           width: 5,
-                //         ),
-                //         Icon(
-                //           Icons.arrow_forward_ios,
-                //           size: 12,
-                //           color: kPrimaryColor,
-                //         )
-                //       ],
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),
-          HotelTour(),
+          const HotelTour(),
           TopRoundedContainer(
             color: Colors.white,
             child: Padding(

@@ -40,11 +40,15 @@ class TourRepository {
   }
 
   Future<List<TourModel>> findTourByName(name) async {
-    Response response = await HandleApis().get(ApiGateway.findTourByName);
-    // print(response.statusCode);
-    // print(response.body.toString());
+    Response response =
+        await HandleApis().get(ApiGateway.findTourByName, 'name=$name');
+
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
+
+      if (jsonDecode(response.body)['message'] == 'Dont find tour') {
+        return [];
+      }
 
       if (jsonResponse.isEmpty) {
         return [];

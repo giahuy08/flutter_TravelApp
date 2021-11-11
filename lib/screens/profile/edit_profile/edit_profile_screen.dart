@@ -36,18 +36,21 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePageState extends State<EditProfilePage> {
   //User? user;
   //User user = new User(id: '');
+  dynamic inforUser;
   String labelemail = "";
   String labelpassword = "";
   String labelphone = "";
   String labeladdress = "";
   String labelname = "";
-  String avatar = "";
+  String? avatar;
   //dynamic User = [];
 
   @override
   void initState() {
     super.initState();
-    getInforUser();
+    getInforUser().then((value) => print(avatar));
+    print('hello' + labelname);
+    // super.initState();
   }
 
   @override
@@ -55,8 +58,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
-  void getInforUser() async {
+  Future<void> getInforUser() async {
     dynamic inforUser = await UserRepository().getProfile();
+    print('hello' + inforUser['avatar']);
 
     User user;
     setState(() {
@@ -158,7 +162,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage(avatar),
+                              image: NetworkImage(avatar!, scale: 1.0),
                               //AssetImage("assets/images/Profile Image.png"),
                             )),
                       ),
