@@ -16,7 +16,7 @@ class TourDescription extends StatelessWidget {
     required this.pressOnSeeMore,
   }) : super(key: key);
 
-  final TourModel tour;
+  final dynamic tour;
   final GestureTapCallback pressOnSeeMore;
 
   @override

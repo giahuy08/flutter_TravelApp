@@ -33,7 +33,7 @@ class _HotelTourState extends State<HotelTour> {
   }
 
   void getListTour() async {
-    List<TourModel> tours = await TourRepository().getListTour(1, 5);
+    List<dynamic> tours = await TourRepository().getListTour(1, 5);
     setState(() {
       _listTour.addAll(tours);
     });
@@ -72,4 +72,3 @@ class _HotelTourState extends State<HotelTour> {
     );
   }
 }
-

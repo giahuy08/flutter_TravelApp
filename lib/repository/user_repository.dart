@@ -15,4 +15,21 @@ class UserRepository {
     }
     return null;
   }
+
+  Future<String?> changePassword(String oldPassword, String newPassword) async {
+    var body = {
+      "oldPassword": oldPassword,
+      "newPassword": newPassword,
+    };
+    var response = await HandleApis().post(ApiGateway.changePassword, body);
+    //print(response.statusCode);
+    //print(response.body.toString());
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['message'];
+    }
+    if (response.statusCode == 300) {
+      return jsonDecode(response.body)['message'];
+    }
+    return null;
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/social_card.dart';
 import 'package:flutter_travelapp/constants.dart';
-import 'package:flutter_travelapp/screens/sign_up/component/sign_up_form.dart';
+import 'package:flutter_travelapp/screens/sign_up/components/sign_up_form.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 class Body extends StatelessWidget {

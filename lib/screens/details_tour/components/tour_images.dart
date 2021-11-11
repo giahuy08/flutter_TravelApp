@@ -10,7 +10,7 @@ class TourImages extends StatefulWidget {
     required this.tour,
   }) : super(key: key);
 
-  final TourModel tour;
+  final dynamic tour;
 
   @override
   State<TourImages> createState() => _TourImagesState();

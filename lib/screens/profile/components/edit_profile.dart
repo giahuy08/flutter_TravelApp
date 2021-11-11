@@ -1,30 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
-import 'package:flutter_travelapp/models/user.dart';
 import 'package:flutter_travelapp/repository/user_repository.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
-
-class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({Key? key}) : super(key: key);
-
-  @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
-}
-
-class _EditProfileScreenState extends State<EditProfileScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Setting UI",
-      home: EditProfilePage(),
-    );
-  }
-}
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
@@ -41,13 +20,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String labelphone = "";
   String labeladdress = "";
   String labelname = "";
-  String avatar = "";
-  //dynamic User = [];
+  String avatar =
+      "https://firebasestorage.googleapis.com/v0/b/travel-app-34be2.appspot.com/o/unknown.jpg?alt=media&token=3dbbbcec-60e1-419b-89b8-cedb9d7f0514";
 
   @override
   void initState() {
     super.initState();
     getInforUser();
+    labelemail;
+    labelpassword;
+    labelphone;
+    labelname;
+    avatar;
   }
 
   @override
@@ -57,8 +41,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   void getInforUser() async {
     dynamic inforUser = await UserRepository().getProfile();
-
-    User user;
     setState(() {
       //ten = inforUser;
       //Map<String, dynamic> user = inforUser;
@@ -159,6 +141,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(avatar),
+
                               //AssetImage("assets/images/Profile Image.png"),
                             )),
                       ),

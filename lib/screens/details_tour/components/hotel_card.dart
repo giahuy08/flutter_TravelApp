@@ -15,7 +15,7 @@ class HotelCard extends StatelessWidget {
   }) : super(key: key);
 
   final double width, height, aspectRetio;
-  final TourModel product;
+  final dynamic product;
   final GestureTapCallback press;
 
   @override

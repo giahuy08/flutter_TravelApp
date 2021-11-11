@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_travelapp/screens/profile/edit_profile/edit_profile_screen.dart';
+import 'package:flutter_travelapp/screens/change_password/change_password_screen.dart';
+import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
+import 'package:flutter_travelapp/screens/profile/components/edit_profile.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          const ProfilePic(),
+          ProfilePic(),
           const SizedBox(height: 20),
           ProfileMenu(
-            text: "My Account",
+            text: "Tài khoản",
             icon: "assets/icons/User Icon.svg",
             press: () => {
               Navigator.of(context).push(MaterialPageRoute(
@@ -23,22 +30,35 @@ class Body extends StatelessWidget {
             },
           ),
           ProfileMenu(
-            text: "Notifications",
-            icon: "assets/icons/Bell.svg",
-            press: () {},
+            text: "Đổi mật khẩu",
+            icon: "assets/icons/change-password.svg",
+            press: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      const ChangePasswordScreen()))
+            },
           ),
           ProfileMenu(
-            text: "Settings",
+            text: "Tour đã đặt",
+            icon: "assets/icons/order-history.svg",
+            press: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      const ListBookedTourScreen()))
+            },
+          ),
+          ProfileMenu(
+            text: "Cài đặt",
             icon: "assets/icons/Settings.svg",
             press: () {},
           ),
           ProfileMenu(
-            text: "Help Center",
+            text: "Hỗ trợ khách hàng",
             icon: "assets/icons/Question mark.svg",
             press: () {},
           ),
           ProfileMenu(
-            text: "Log Out",
+            text: "Đăng xuất",
             icon: "assets/icons/Log out.svg",
             press: () {},
           ),

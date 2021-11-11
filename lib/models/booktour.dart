@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-class TourModel {
+class BookTourModel {
   String idEnterprise;
   List<String> idVehicles;
   String detail;
@@ -10,24 +10,30 @@ class TourModel {
   List<String> imagesTour;
   double? star;
   int category;
-  final String id;
+  final String idTour;
   String name;
   String place;
   String time;
-  TourModel(
+  final String idUser;
+  int status;
+  double? finalpayment;
+  BookTourModel(
       {required this.idEnterprise,
       required this.idVehicles,
       required this.detail,
-      required this.payment,
+      this.payment,
       required this.imagesTour,
-      required this.star,
+      this.star,
       required this.category,
-      required this.id,
+      required this.idTour,
       required this.name,
       required this.place,
-      required this.time});
+      required this.time,
+      required this.idUser,
+      required this.status,
+      this.finalpayment});
 
-  TourModel copyWith({
+  BookTourModel copyWith({
     String? idEnterprise,
     List<String>? idVehicles,
     String? detail,
@@ -35,12 +41,15 @@ class TourModel {
     List<String>? imagesTour,
     double? star,
     int? category,
-    String? id,
+    String? idTour,
     String? name,
     String? place,
     String? time,
+    String? idUser,
+    int? status,
+    double? finalpayment,
   }) {
-    return TourModel(
+    return BookTourModel(
       idEnterprise: idEnterprise ?? this.idEnterprise,
       idVehicles: idVehicles ?? this.idVehicles,
       detail: detail ?? this.detail,
@@ -48,10 +57,13 @@ class TourModel {
       imagesTour: imagesTour ?? this.imagesTour,
       star: star ?? this.star,
       category: category ?? this.category,
-      id: id ?? this.id,
+      idTour: idTour ?? this.idTour,
       name: name ?? this.name,
       place: place ?? this.place,
       time: time ?? this.time,
+      idUser: idUser ?? this.idUser,
+      status: status ?? this.status,
+      finalpayment: payment ?? this.finalpayment,
     );
   }
 
@@ -64,48 +76,50 @@ class TourModel {
       'imagesTour': imagesTour,
       'star': star,
       'category': category,
-      'id': id,
+      'idTour': idTour,
       'name': name,
       'place': place,
       'time': time,
+      'idUser': idUser,
+      'status': status,
+      'finalpayment': finalpayment,
     };
   }
 
-  factory TourModel.fromMap(Map<String, dynamic> map) {
-    return TourModel(
+  factory BookTourModel.fromMap(Map<String, dynamic> map) {
+    return BookTourModel(
       idEnterprise: map['idEnterprise'],
-      idVehicles: (map['idVehicles'] as List<dynamic>)
-          .map((e) => e.toString())
-          .toList(),
+      idVehicles: List<String>.from(map['idVehicles']),
       detail: map['detail'],
       payment: double.tryParse((map['payment'] ?? 0).toString()),
-      imagesTour: (map['imagesTour'] as List<dynamic>)
-          .map((e) => e.toString())
-          .toList(),
+      imagesTour: List<String>.from(map['imagesTour']),
       star: double.tryParse((map['star'] ?? 0).toString()),
       category: map['category'],
-      id: map['id'],
+      idTour: map['idTour'],
       name: map['name'],
       place: map['place'],
       time: map['time'],
+      idUser: map['idUser'],
+      status: map['status'],
+      finalpayment: double.tryParse((map['finalpayment'] ?? 0).toString()),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory TourModel.fromJson(String source) =>
-      TourModel.fromMap(json.decode(source));
+  factory BookTourModel.fromJson(String source) =>
+      BookTourModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'TourModel(idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, id: $id, name: $name, place: $place, time: $time)';
+    return 'BookTourModel(idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, idTour: $idTour, name: $name, place: $place, time: $time, idUser: $idUser, status: $status, finalpayment: $finalpayment)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is TourModel &&
+    return other is BookTourModel &&
         other.idEnterprise == idEnterprise &&
         listEquals(other.idVehicles, idVehicles) &&
         other.detail == detail &&
@@ -113,10 +127,13 @@ class TourModel {
         listEquals(other.imagesTour, imagesTour) &&
         other.star == star &&
         other.category == category &&
-        other.id == id &&
+        other.idTour == idTour &&
         other.name == name &&
         other.place == place &&
-        other.time == time;
+        other.time == time &&
+        other.idUser == idUser &&
+        other.status == status &&
+        other.finalpayment == finalpayment;
   }
 
   @override
@@ -128,9 +145,11 @@ class TourModel {
         imagesTour.hashCode ^
         star.hashCode ^
         category.hashCode ^
-        id.hashCode ^
+        idTour.hashCode ^
         name.hashCode ^
         place.hashCode ^
-        time.hashCode;
+        time.hashCode ^
+        idUser.hashCode ^
+        status.hashCode;
   }
 }

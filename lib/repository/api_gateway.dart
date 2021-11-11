@@ -10,4 +10,7 @@ class ApiGateway {
   static const register = 'user/register';
   //User
   static const findUserByToken = 'user/findUserByToken';
+  static const changePassword = 'user/changePassword';
+  //Book Tour
+  static const getUserBookTour = 'booktour/getUserBookTour';
 }
