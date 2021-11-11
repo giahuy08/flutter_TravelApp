@@ -5,6 +5,7 @@ class ApiGateway {
   static const findTourByName = 'tour/findTourByName';
   static const findTourByCategory = 'tour/findTourByCategory';
   static const findAllTourByCategory = 'tour/findAllTourByCategory';
+  
   //Authen
   static const login = 'user/login';
   static const register = 'user/register';
@@ -13,4 +14,6 @@ class ApiGateway {
   static const changePassword = 'user/changePassword';
   //Book Tour
   static const getUserBookTour = 'booktour/getUserBookTour';
+  // Discount
+  static const getAllDiscount = 'discount/getAllDiscount';
 }

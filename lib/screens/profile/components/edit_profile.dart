@@ -15,6 +15,7 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePageState extends State<EditProfilePage> {
   //User? user;
   //User user = new User(id: '');
+  dynamic inforUser;
   String labelemail = "";
   String labelpassword = "";
   String labelphone = "";
@@ -39,7 +40,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
-  void getInforUser() async {
+  Future<void> getInforUser() async {
     dynamic inforUser = await UserRepository().getProfile();
     setState(() {
       //ten = inforUser;

@@ -8,57 +8,29 @@ import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 
+import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class TourItem extends StatefulWidget {
-  const TourItem({Key? key}) : super(key: key);
-
-  @override
-  _TourItemState createState() => _TourItemState();
-}
-
-class _TourItemState extends State<TourItem> {
-  List<dynamic> _listTour = [];
-
-  get kPrimaryColor => null;
-
-  initialController() {
-    _listTour = [];
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getListTour();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  void getListTour() async {
-    List<TourModel> tours = await TourRepository().getListTour('1', '5');
-    setState(() {
-      _listTour.addAll(tours);
-    });
-  }
+class TourItem extends StatelessWidget {
+   final List<dynamic> listTour;
+  const TourItem({Key? key, required this.listTour}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+   
     return Column(
       children: [
         Expanded(
             child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
-                itemCount: _listTour.length,
+                itemCount: listTour.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     child: _buildItem(context, index),
                     onTap: () {
                       Navigator.pushNamed(context, DetailScreen.routeName,
                           arguments:
-                              ProductDetailsArguments(tour: _listTour[index]));
+                              ProductDetailsArguments(tour: listTour[index]));
                     },
                   );
                 })),
@@ -78,9 +50,9 @@ class _TourItemState extends State<TourItem> {
               child: Container(
                 width: MediaQuery.of(context).size.width * .5,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     image: DecorationImage(
-                      image: NetworkImage(_listTour[index].imagesTour[0]),
+                      image: NetworkImage(listTour[index].imagesTour[0]),
                       fit: BoxFit.cover,
                     ),
                     boxShadow: const [
@@ -151,7 +123,7 @@ class _TourItemState extends State<TourItem> {
                           size: 18,
                         ),
                         Text(
-                          _listTour[index].payment.toString(),
+                          listTour[index].payment.toString(),
                           style:
                               const TextStyle(fontSize: 16, color: Colors.red),
                         ),
@@ -163,7 +135,7 @@ class _TourItemState extends State<TourItem> {
                       ],
                     ),
                     Text(
-                      _listTour[index].name,
+                      listTour[index].name,
                       style: const TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold),
                       maxLines: 2,
@@ -181,7 +153,7 @@ class _TourItemState extends State<TourItem> {
                           onRated: (v) {},
                           isReadOnly: false,
                           spacing: 4,
-                          rating: _listTour[index].star,
+                          rating: listTour[index].star,
                         ),
                         const Text(
                           "300 reviews",
@@ -206,7 +178,7 @@ class _TourItemState extends State<TourItem> {
                                 color: Colors.white,
                               ),
                               Text(
-                                _listTour[index].place,
+                                listTour[index].place,
                                 style: const TextStyle(
                                     fontSize: 8, color: Colors.white),
                               ),
@@ -253,7 +225,7 @@ class _TourItemState extends State<TourItem> {
                       fontSize: 18,
                     ),
                     cursorColor: kPrimaryColor,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'London...',
                     ),
@@ -282,10 +254,10 @@ class _TourItemState extends State<TourItem> {
                   Radius.circular(32.0),
                 ),
                 onTap: () {
-                  FocusScope.of(context).requestFocus(FocusNode());
+             
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(16.0),
                   child: Icon(Icons.search, size: 20, color: kPrimaryColor),
                 ),
               ),

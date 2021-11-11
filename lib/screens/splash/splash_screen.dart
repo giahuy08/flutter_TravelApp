@@ -5,7 +5,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
-
 class SplashScreen extends StatefulWidget {
   static String routeName = "/splash";
   const SplashScreen({Key? key}) : super(key: key);
