@@ -1,12 +1,42 @@
 import "package:flutter/material.dart";
+
+import 'package:flutter_travelapp/models/discount.dart';
+import 'package:flutter_travelapp/repository/discount_repository.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 import 'section_title.dart';
 
-class DiscountBanner extends StatelessWidget {
+class DiscountBanner extends StatefulWidget {
   const DiscountBanner({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<DiscountBanner> createState() => _DiscountBannerState();
+}
+
+class _DiscountBannerState extends State<DiscountBanner> {
+  List<dynamic> _listDiscount = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getListTour();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  void getListTour() async {
+    List<dynamic> discounts = await DiscountRepository().getListDiscount();
+    setState(() {
+      _listDiscount.addAll(discounts);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +55,31 @@ class DiscountBanner extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              DiscountBannerCard(
-                title: 'Nha Trang, Đà Lạt',
-                discount: 'Giảm giá 25%',
-                press: () {},
+              ...List.generate(
+                _listDiscount.length,
+                (index) {
+                  if (_listDiscount[index] != null) {
+                    return DiscountBannerCard(
+                      title: _listDiscount[index]['code'],
+                      discount: _listDiscount[index]['discount'].toString(),
+                      tourName: _listDiscount[index]['nameTour'].toString(),
+                      press: () {},
+                    );
+                  }
+                  return const SizedBox
+                      .shrink(); // here by default width and height is 0
+                },
               ),
-              DiscountBannerCard(
-                title: 'Vũng Tàu, Mũi Né',
-                discount: 'Giảm giá 10%',
-                press: () {},
-              ),
+              // DiscountBannerCard(
+              //   title: 'Nha Trang, Đà Lạt',
+              //   discount: 'Giảm giá 25%',
+              //   press: () {},
+              // ),
+              // DiscountBannerCard(
+              //   title: 'Vũng Tàu, Mũi Né',
+              //   discount: 'Giảm giá 10%',
+              //   press: () {},
+              // ),
               SizedBox(width: getProportionateScreenWidth(20)),
             ],
           ),
@@ -49,12 +94,14 @@ class DiscountBannerCard extends StatelessWidget {
     Key? key,
     required this.title,
     required this.discount,
+    required this.tourName,
     required this.press,
   }) : super(key: key);
 
   final String title;
   //final String image;
   final String discount;
+  final String tourName;
   final GestureTapCallback press;
   @override
   Widget build(BuildContext context) {
@@ -64,7 +111,7 @@ class DiscountBannerCard extends StatelessWidget {
         onTap: press,
         child: SizedBox(
           width: getProportionateScreenWidth(242),
-          height: getProportionateScreenWidth(100),
+          height: getProportionateScreenWidth(90),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(
@@ -77,23 +124,41 @@ class DiscountBannerCard extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(15.0),
+                    horizontal: getProportionateScreenWidth(10.0),
                     vertical: getProportionateScreenWidth(10),
                   ),
-                  child: Text.rich(
-                    TextSpan(
-                      style: const TextStyle(color: Colors.white),
-                      children: [
-                        TextSpan(
-                          text: "$title\n",
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(18),
-                            fontWeight: FontWeight.bold,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        tourName,
+                        maxLines: 1,
+                        style: TextStyle(
+                            fontSize: getProportionateScreenWidth(14),
+                            color: Colors.white,
+                            overflow: TextOverflow.ellipsis),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(
+                              fontSize: getProportionateScreenWidth(12),
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        TextSpan(text: discount)
-                      ],
-                    ),
+                          Text(
+                            "-" + discount.toString() + '%',
+                            style: TextStyle(
+                              fontSize: getProportionateScreenWidth(12),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
