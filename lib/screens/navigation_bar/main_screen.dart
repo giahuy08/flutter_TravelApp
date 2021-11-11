@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
+import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/cart.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/message.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
-import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
+import 'feed.dart';
 import 'navbar_key.dart';
 
 class MainScreen extends StatefulWidget {
@@ -21,9 +22,9 @@ class _MainScreenState extends State<MainScreen> {
   int selectedIndex = 0;
   final screen = [
     const HomeScreen(),
-    const ReviewScreen(),
+    const FeedScreen(),
     const MessageScreen(),
-    const CartScreen(),
+    const ListBookedTourScreen(),
     const ProfileScreen()
   ];
   @override
@@ -53,7 +54,7 @@ class _MainScreenState extends State<MainScreen> {
             color: Colors.white,
           ),
           Icon(
-            Icons.shopping_cart,
+            Icons.history_edu,
             size: 30,
             color: Colors.white,
           ),

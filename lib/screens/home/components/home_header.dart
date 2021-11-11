@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 import 'icon_btn_with_counter.dart';
@@ -19,8 +20,12 @@ class HomeHeader extends StatelessWidget {
         children: [
           const SearchField(),
           IconBtnWithCounter(
-            svgSrc: 'assets/icons/Cart Icon.svg',
-            press: () {},
+            svgSrc: "assets/icons/order-history.svg",
+            press: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      const ListBookedTourScreen()))
+            },
           ),
           IconBtnWithCounter(
             svgSrc: 'assets/icons/Bell.svg',

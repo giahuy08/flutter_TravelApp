@@ -4,29 +4,36 @@ import 'package:flutter_travelapp/constants.dart';
 class TourStats extends StatelessWidget {
   const TourStats({
     Key? key,
+    required this.tour,
   }) : super(key: key);
+
+  final dynamic tour;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
+      children: [
         TourInfo(
           title: "Thời gian:",
-          value: "2 ngày",
+          value: tour.time,
         ),
         TourInfo(
-          title: "Giá:",
-          value: "1.500.000",
+          title: "Giá: (VNĐ)",
+          value: tour.payment.toString(),
         ),
         TourInfo(
-          title: "Khách sạn:",
-          value: "Hotel",
+          title: "Địa điểm:",
+          value: tour.place,
         ),
-        TourInfo(
-          title: "Nhà hàng:",
-          value: "A&B",
-        ),
+        // TourInfo(
+        //   title: "Khách sạn:",
+        //   value: "Hotel",
+        // ),
+        // TourInfo(
+        //   title: "Nhà hàng:",
+        //   value: "A&B",
+        // ),
       ],
     );
   }

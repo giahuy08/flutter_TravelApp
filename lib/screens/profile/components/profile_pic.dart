@@ -45,7 +45,7 @@ class _ProfilePicState extends State<ProfilePic> {
                   width: 160,
                   fit: BoxFit.cover,
                 )
-              : CircleAvatar(
+              : const CircleAvatar(
                   backgroundImage:
                       AssetImage("assets/images/Profile Image.png"),
                 ),

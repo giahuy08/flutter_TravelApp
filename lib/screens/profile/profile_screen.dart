@@ -13,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
         title: const Text("Hồ sơ cá nhân"),
         centerTitle: true,
       ),
-      body: Body(),
+      body: const Body(),
     );
   }
 }

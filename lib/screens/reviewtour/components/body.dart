@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/constants.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -9,12 +10,15 @@ import 'review_header.dart';
 import 'tour_stat.dart';
 
 class Body extends StatelessWidget {
+  final dynamic tour;
   const Body({
     Key? key,
+    required this.tour,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    int selectedImage = 0;
     return SingleChildScrollView(
       child: Stack(
         children: [
@@ -24,17 +28,18 @@ class Body extends StatelessWidget {
             padding: const EdgeInsets.all(kDefaultPadding * 2),
             child: Column(
               children: [
-                const CustomAppBar(),
+                CustomAppBar(rating: tour.star),
                 SizedBox(
                   height: 166,
                   width: 166,
                   child: Stack(
                     fit: StackFit.expand,
                     clipBehavior: Clip.none,
-                    children: const [
+                    children: [
                       CircleAvatar(
                         backgroundImage:
-                            AssetImage("assets/images/vungcao.jpg"),
+                            NetworkImage(tour.imagesTour[selectedImage]),
+                        //AssetImage("assets/images/vungcao.jpg"),
                       ),
                     ],
                   ),
@@ -46,9 +51,10 @@ class Body extends StatelessWidget {
                     fontSize: 14,
                   ),
                 ),
-                const Text(
-                  "Nha Trang, Đà Lạc",
-                  style: TextStyle(
+                Text(
+                  tour.name,
+                  //"Nha Trang, Đà Lạc",
+                  style: const TextStyle(
                       color: kTextColor,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
@@ -58,18 +64,24 @@ class Body extends StatelessWidget {
                   color: kTextColor,
                 ),
                 const SizedBox(height: kDefaultPadding),
-                const TourStats(),
+                TourStats(
+                  tour: tour,
+                ),
                 const SizedBox(height: kDefaultPadding),
                 const Divider(
                   color: kTextColor,
                 ),
                 const SizedBox(height: kDefaultPadding),
                 const Text(
-                  "Thiên,",
+                  "Cảm ơn bạn đã chọn chúng tôi",
                   style: TextStyle(
                     color: kTextColor,
                     fontSize: 14,
                   ),
+                ),
+                SvgPicture.asset(
+                  "assets/icons/Heart Icon_2.svg",
+                  color: Colors.red,
                 ),
                 const Text(
                   "Trải nghiệm của bạn thế nào?",
@@ -80,7 +92,7 @@ class Body extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: kDefaultPadding),
-               SmoothStarRating(
+                SmoothStarRating(
                   borderColor: kPrimaryColor,
                   color: kPrimaryColor,
                   allowHalfRating: false,

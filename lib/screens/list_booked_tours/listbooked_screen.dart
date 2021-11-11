@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/screens/list_booked_tours/components/body.dart';
 
 class ListBookedTourScreen extends StatelessWidget {
   static String routeName = "/listbookedtour";
-  const ListBookedTourScreen({ Key? key }) : super(key: key);
+  const ListBookedTourScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,7 @@ import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/booktour.dart';
 import 'package:flutter_travelapp/repository/booktour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
+import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -56,7 +57,7 @@ class _TourBookedItemState extends State<TourBookedItem> {
                   return GestureDetector(
                     child: _buildItem(context, index),
                     onTap: () {
-                      Navigator.pushNamed(context, DetailScreen.routeName,
+                      Navigator.pushNamed(context, ReviewScreen.routeName,
                           arguments: ProductDetailsArguments(
                               tour: _listBookTour[index]));
                     },
