@@ -12,6 +12,7 @@ class ApiGateway {
   //User
   static const findUserByToken = 'user/findUserByToken';
   static const changePassword = 'user/changePassword';
+  static const editProfile = 'user/editProfile';
   //Book Tour
   static const getUserBookTour = 'booktour/getUserBookTour';
   // Discount

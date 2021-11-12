@@ -4,6 +4,7 @@ import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/user.dart';
+import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
@@ -56,6 +57,7 @@ class _SignFormState extends State<SignForm> {
             milliseconds: 800,
           ),
         );
+        userProvider.setUser(User.fromLogin(value));
         Future.delayed(const Duration(milliseconds: 800), () {
           // Here you can write your code
 

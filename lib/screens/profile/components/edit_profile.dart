@@ -1,9 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/user_repository.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
@@ -13,8 +19,7 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  //User? user;
-  //User user = new User(id: '');
+  final _formKey = GlobalKey<FormState>();
   dynamic inforUser;
   String labelemail = "";
   String labelpassword = "";
@@ -23,6 +28,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String labelname = "";
   String avatar =
       "https://firebasestorage.googleapis.com/v0/b/travel-app-34be2.appspot.com/o/unknown.jpg?alt=media&token=3dbbbcec-60e1-419b-89b8-cedb9d7f0514";
+
+  File? image;
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() => this.image = imageTemporary);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
 
   @override
   void initState() {
@@ -62,6 +80,31 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String? name;
 
   final List<String> errors = [];
+  void editProfile(String name, String address, String phone, File? avatar) {
+    UserRepository().editProfile(name, address, phone, avatar).then((value) {
+      print(value);
+      if (value != null) {
+        removeError(error: kChangePasswordFail);
+        Get.snackbar(
+          'Cập nhật thông tin',
+          'Cập nhật thông tin thành công',
+          snackPosition: SnackPosition.TOP,
+          colorText: kPrimaryLightColor,
+          backgroundColor: kPrimaryColor,
+          duration: const Duration(
+            milliseconds: 800,
+          ),
+        );
+        Future.delayed(const Duration(milliseconds: 800), () {
+          // Here you can write your code
+
+          setState(() {
+            Navigator.pushNamed(context, ProfileScreen.routeName);
+          });
+        });
+      }
+    });
+  }
 
   void addError({String? error}) {
     if (!errors.contains(error)) {
@@ -98,10 +141,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               Icons.settings,
               color: kPrimaryColor,
             ),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const ProfileScreen()));
-            },
+            onPressed: () => Navigator.pop(context),
           ),
         ],
       ),
@@ -123,49 +163,58 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 Center(
                   child: Stack(
                     children: [
-                      Container(
-                        width: 130,
-                        height: 130,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 4,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor),
-                            boxShadow: [
-                              BoxShadow(
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
-                                  color: Colors.black.withOpacity(0.1),
-                                  offset: const Offset(0, 10))
-                            ],
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
+                      image != null
+                          ? Image.file(
+                              image!,
+                              height: 130,
+                              width: 130,
                               fit: BoxFit.cover,
-                              image: NetworkImage(avatar),
+                            )
+                          : Container(
+                              width: 130,
+                              height: 130,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 4,
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        spreadRadius: 2,
+                                        blurRadius: 10,
+                                        color: Colors.black.withOpacity(0.1),
+                                        offset: const Offset(0, 10))
+                                  ],
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(avatar),
 
-                              //AssetImage("assets/images/Profile Image.png"),
-                            )),
-                      ),
+                                    //AssetImage("assets/images/Profile Image.png"),
+                                  )),
+                            ),
                       Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                width: 4,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
+                        right: 0,
+                        bottom: 0,
+                        child: SizedBox(
+                          height: 46,
+                          width: 46,
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                side: const BorderSide(color: Colors.white),
                               ),
-                              color: kPrimaryColor,
+                              primary: Colors.white,
+                              backgroundColor: const Color(0xFFF5F6F9),
                             ),
-                            child: const Icon(
-                              Icons.edit,
-                              color: Colors.white,
-                            ),
-                          )),
+                            onPressed: () => pickImage(ImageSource.gallery),
+                            //onPressed: () {},
+                            child: SvgPicture.asset(
+                                "assets/icons/Camera Icon.svg"),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -233,7 +282,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
-                      onPressed: () {},
+                      onPressed: () => Navigator.pop(context),
                       child: const Text("Hủy",
                           style: TextStyle(
                               fontSize: 18,
@@ -241,7 +290,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               color: Colors.white)),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        editProfile(labelname, labeladdress, labelphone, image);
+                      },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.green,
                         padding: const EdgeInsets.symmetric(
