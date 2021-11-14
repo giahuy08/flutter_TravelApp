@@ -9,6 +9,9 @@ class ApiGateway {
   //Authen
   static const login = 'user/login';
   static const register = 'user/register';
+  static const forgotPassword = 'user/forgotPassword';
+  static const resetPassword = 'user/resetPassword';
+
   //User
   static const findUserByToken = 'user/findUserByToken';
   static const changePassword = 'user/changePassword';
