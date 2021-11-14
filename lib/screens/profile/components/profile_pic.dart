@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_travelapp/repository/user_repository.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilePic extends StatefulWidget {
@@ -15,20 +16,26 @@ class ProfilePic extends StatefulWidget {
 }
 
 class _ProfilePicState extends State<ProfilePic> {
-  File? image;
-  Future pickImage(ImageSource source) async {
-    try {
-      final image = await ImagePicker().pickImage(source: source);
-      if (image == null) return;
-
-      final imageTemporary = File(image.path);
-      setState(() => this.image = imageTemporary);
-    } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
-    }
+  String avatar =
+      "https://firebasestorage.googleapis.com/v0/b/travel-app-34be2.appspot.com/o/unknown.jpg?alt=media&token=3dbbbcec-60e1-419b-89b8-cedb9d7f0514";
+  @override
+  void initState() {
+    super.initState();
+    getInforUser();
   }
 
-  final ImagePicker _picker = ImagePicker();
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> getInforUser() async {
+    dynamic inforUser = await UserRepository().getProfile();
+    setState(() {
+      avatar = inforUser['avatar'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -38,38 +45,25 @@ class _ProfilePicState extends State<ProfilePic> {
         fit: StackFit.expand,
         clipBehavior: Clip.none,
         children: [
-          image != null
-              ? Image.file(
-                  image!,
-                  height: 160,
-                  width: 160,
+          Container(
+            width: 130,
+            height: 130,
+            decoration: BoxDecoration(
+                border: Border.all(
+                    width: 4, color: Theme.of(context).scaffoldBackgroundColor),
+                boxShadow: [
+                  BoxShadow(
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      color: Colors.black.withOpacity(0.1),
+                      offset: const Offset(0, 10))
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
                   fit: BoxFit.cover,
-                )
-              : const CircleAvatar(
-                  backgroundImage:
-                      AssetImage("assets/images/Profile Image.png"),
-                ),
-          Positioned(
-            right: -16,
-            bottom: 0,
-            child: SizedBox(
-              height: 46,
-              width: 46,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    side: const BorderSide(color: Colors.white),
-                  ),
-                  primary: Colors.white,
-                  backgroundColor: const Color(0xFFF5F6F9),
-                ),
-                onPressed: () => pickImage(ImageSource.gallery),
-                //onPressed: () {},
-                child: SvgPicture.asset("assets/icons/Camera Icon.svg"),
-              ),
-            ),
-          )
+                  image: NetworkImage(avatar),
+                )),
+          ),
         ],
       ),
     );

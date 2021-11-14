@@ -23,11 +23,12 @@ class HandleApis {
 
   get(String name, [String? params]) async {
     Map<String, String> paramsObject = {};
-    if (params != null)
+    if (params != null) {
       params.split('&').forEach((element) {
         paramsObject[element.split('=')[0].toString()] =
             element.split('=')[1].toString();
       });
+    }
     // stderr.write("GET: " + root_url +'/'+ name + '\n' + paramsObject.toString());
     http.Response response = await http.get(
       params == null
@@ -66,11 +67,12 @@ class HandleApis {
 
   delete(String name, [String? params]) async {
     Map<String, String> paramsObject = {};
-    if (params != null)
+    if (params != null) {
       params.split('&').forEach((element) {
         paramsObject[element.split('=')[0].toString()] =
             element.split('=')[1].toString();
       });
+    }
     // stderr.write("GET: " + root_url +'/'+ name + '\n' + paramsObject.toString());
     http.Response response = await http.delete(
       params == null

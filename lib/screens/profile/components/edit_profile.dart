@@ -46,11 +46,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
   void initState() {
     super.initState();
     getInforUser();
-    labelemail;
-    labelpassword;
-    labelphone;
-    labelname;
-    avatar;
+    // editProfile(labelname, labeladdress, labelphone, image);
+    // labelemail;
+    // labelpassword;
+    // labelphone;
+    // labelname;
+    // avatar;
   }
 
   @override
@@ -73,18 +74,29 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   bool showPassword = false;
-  String? email;
-  String? password;
-  String? phone;
-  String? address;
-  String? name;
+  // late String email;
+  // late String password;
+  // late String phone;
+  // late String address;
+  // late String name;
 
   final List<String> errors = [];
-  void editProfile(String name, String address, String phone, File? avatar) {
-    UserRepository().editProfile(name, address, phone, avatar).then((value) {
-      print(value);
+  void editProfile(String name, String address, String phone, File? image) {
+    setState(() {
+      name;
+      address;
+      phone;
+      image;
+    });
+    // print(name);
+    // print(address);
+    print("Hello" + phone);
+    if (image != null) {
+      UserRepository().updateAvatar(image);
+    }
+    UserRepository().editProfile(name, address, phone).then((value) {
       if (value != null) {
-        removeError(error: kChangePasswordFail);
+        removeError(error: kEditProfileFail);
         Get.snackbar(
           'Cập nhật thông tin',
           'Cập nhật thông tin thành công',
@@ -164,11 +176,26 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: Stack(
                     children: [
                       image != null
-                          ? Image.file(
-                              image!,
-                              height: 130,
+                          ? Container(
                               width: 130,
-                              fit: BoxFit.cover,
+                              height: 130,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 4,
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        spreadRadius: 2,
+                                        blurRadius: 10,
+                                        color: Colors.black.withOpacity(0.1),
+                                        offset: const Offset(0, 10))
+                                  ],
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: FileImage(image!)
+                                      )),
                             )
                           : Container(
                               width: 130,
@@ -220,7 +247,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
                 buildTextField(
-                    email,
+                    labelemail,
                     "E-mail",
                     labelemail,
                     false,
@@ -230,7 +257,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       color: kPrimaryColor,
                     )),
                 buildTextField(
-                    name,
+                    labelname,
                     "Họ và tên",
                     //"Huỳnh Nhựt Thiên",
                     labelname,
@@ -241,7 +268,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       color: kPrimaryColor,
                     )),
                 buildTextField(
-                    phone,
+                    labelphone,
                     "Số điện thoại",
                     labelphone,
                     false,
@@ -251,7 +278,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       color: kPrimaryColor,
                     )),
                 buildTextField(
-                    address,
+                    labeladdress,
                     "Địa chỉ",
                     labeladdress,
                     false,
@@ -261,7 +288,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       color: kPrimaryColor,
                     )),
                 buildTextField(
-                    password,
+                    "",
                     "Mật khẩu",
                     "123456789AsZx",
                     true,
@@ -332,12 +359,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ? false
                   : true,
           keyboardType: TextInputType.text,
-          onSaved: (newValue) => input = newValue!,
+          onSaved: (newValue) => input == newValue!,
           onChanged: (value) {
             if (value.isNotEmpty) {
               removeError(error: kPhoneNumberNullError);
             }
-            input = value;
+            input == value;
             return;
           },
           validator: (value) {

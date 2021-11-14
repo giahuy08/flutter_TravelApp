@@ -37,20 +37,43 @@ class UserRepository {
   }
 
   Future<String?> editProfile(
-      String? name, String? address, String? phone, File? avatar) async {
-    var request =
-        http.MultipartRequest('PUT', Uri.http(root_url, 'user/editProfile'));
-    request.headers["Content-Type"] = 'multipart/form-data';
-    request.headers["Authorization"] = 'Bearer ' +
-        (userProvider.user == null ? '' : userProvider.user!.token!);
-    request.fields.addAll({
+      String? name, String? address, String? phone) async {
+    // var request =
+    //     http.MultipartRequest('PUT', Uri.http(root_url, 'user/editProfile'));
+    // request.headers["Content-Type"] = 'multipart/form-data';
+    // request.headers["Authorization"] = 'Bearer ' +
+    //     (userProvider.user == null ? '' : userProvider.user!.token!);
+    // request.fields.addAll({
+    //   "name": name!,
+    //   "address": address!,
+    //   "phone": phone!,
+    // });
+    // var response = await http.Response.fromStream(await request.send());
+    var body = {
       "name": name!,
       "address": address!,
       "phone": phone!,
-    });
-    if (avatar != null) {
-      print("aaaaaa");
+    };
+    var response = await HandleApis().put(ApiGateway.editProfile, body);
+    //print(response.statusCode);
+    //print(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['message'];
+    }
+    if (response.statusCode == 300) {
+      return jsonDecode(response.body)['message'];
+    }
 
+    return null;
+  }
+
+  Future<String?> updateAvatar(File? avatar) async {
+    var request =
+        http.MultipartRequest('PUT', Uri.http(root_url, 'user/updateAvatar'));
+    request.headers["Content-Type"] = 'multipart/form-data';
+    request.headers["Authorization"] = 'Bearer ' +
+        (userProvider.user == null ? '' : userProvider.user!.token!);
+    if (avatar != null) {
       request.files.add(
         http.MultipartFile.fromBytes(
           "Avatar",
@@ -59,10 +82,10 @@ class UserRepository {
         ),
       );
     }
-    if (request.files.length == 0) return null;
+    if (request.files.isEmpty) return null;
     var response = await http.Response.fromStream(await request.send());
-    print(response.statusCode);
-    print(jsonDecode(response.body));
+    //print(response.statusCode);
+    //print(jsonDecode(response.body));
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];
     }

@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/constants.dart';
 
-class MultilineInput extends StatelessWidget {
+class MultilineInput extends StatefulWidget {
   const MultilineInput({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<MultilineInput> createState() => _MultilineInputState();
+}
+
+class _MultilineInputState extends State<MultilineInput> {
+  late String comment = "";
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +31,14 @@ class MultilineInput extends StatelessWidget {
                     color: kTextColor.withAlpha(20),
                   ),
                 ]),
-            child: const TextField(
+            child: TextField(
+              onChanged: (value) {
+                comment = value;
+              },
               textInputAction: TextInputAction.newline,
               keyboardType: TextInputType.multiline,
               maxLines: 2,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: "Nhận xét của bạn",
                 hintStyle: TextStyle(

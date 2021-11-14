@@ -9,6 +9,7 @@ import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import '../../../size_config.dart';
+import 'package:intl/intl.dart';
 
 class TourBookedItem extends StatefulWidget {
   const TourBookedItem({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class TourBookedItem extends StatefulWidget {
 
 class _TourBookedItemState extends State<TourBookedItem> {
   List<dynamic> _listBookTour = [];
+  final oCcy = NumberFormat("#,##0", "en_US");
 
   //get kPrimaryColor => null;
 
@@ -132,7 +134,7 @@ class _TourBookedItemState extends State<TourBookedItem> {
             Align(
               alignment: Alignment.centerLeft,
               child: Container(
-                width: MediaQuery.of(context).size.width * .43,
+                width: MediaQuery.of(context).size.width * .48,
                 height: 200,
                 padding: const EdgeInsets.all(12),
                 decoration: const BoxDecoration(
@@ -152,7 +154,7 @@ class _TourBookedItemState extends State<TourBookedItem> {
                           size: 18,
                         ),
                         Text(
-                          _listBookTour[index].finalpayment.toString(),
+                          oCcy.format(_listBookTour[index].finalpayment),
                           style:
                               const TextStyle(fontSize: 16, color: Colors.red),
                         ),
@@ -243,79 +245,6 @@ class _TourBookedItemState extends State<TourBookedItem> {
               ),
             ),
           ])),
-    );
-  }
-
-  Widget getSearchBarUI() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16, top: 8, bottom: 8),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(38.0),
-                  ),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        offset: const Offset(0, 2),
-                        blurRadius: 8.0),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 16, right: 16, top: 4, bottom: 4),
-                  child: TextField(
-                    onChanged: (String txt) {},
-                    style: const TextStyle(
-                      fontSize: 18,
-                    ),
-                    cursorColor: kPrimaryColor,
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'London...',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(38.0),
-              ),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.4),
-                    offset: const Offset(0, 2),
-                    blurRadius: 8.0),
-              ],
-            ),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(32.0),
-                ),
-                onTap: () {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                },
-                child: const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Icon(Icons.search, size: 20, color: kPrimaryColor),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
