@@ -78,8 +78,7 @@ class _OtpFormState extends State<OtpForm> {
   }
 
   void forgotPassword(String otp, String email, String password) async {
-    print(otp);
-    await AuthenRepository().resetpassword(otp, email, password).then((value) {
+     await AuthenRepository().resetpassword(otp, email, password).then((value) {
       if (value != null) {
         if (value == 'OTP invalid') {
           addError(error: kOtpValidError);
