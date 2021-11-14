@@ -36,6 +36,11 @@ const String kAddressNullError = "Please Enter your address";
 const String kLoginFail = "Email or Password dont match";
 const String kEmailExistError = "Email already exists";
 const String kChangePasswordFail = "Mật khẩu hiện tại không trùng khớp";
+const String kEmailDontExistError = "Email không tồn tại";
+const String kOtpValidError = "Mã OTP không tồn tại";
+const String kOtpError = "Điền đầy đủ OTP";
+
+
 
 final otpInputDecoration = InputDecoration(
     contentPadding:

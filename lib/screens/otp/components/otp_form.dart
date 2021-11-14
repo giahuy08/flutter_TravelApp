@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:flutter_travelapp/components/custom_surfix_icon.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
+import 'package:flutter_travelapp/components/form_error.dart';
+import 'package:flutter_travelapp/repository/authen_repository.dart';
+import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class OtpForm extends StatefulWidget {
-  const OtpForm({Key? key}) : super(key: key);
+  final String email;
+  const OtpForm({
+    Key? key,
+    required this.email,
+  }) : super(key: key);
 
   @override
   _OtpFormState createState() => _OtpFormState();
@@ -15,6 +25,13 @@ class _OtpFormState extends State<OtpForm> {
   late FocusNode pin2FocusNode;
   late FocusNode pin3FocusNode;
   late FocusNode pin4FocusNode;
+  late String otp = '';
+  List<String> errors = [];
+  late String password;
+  late String confirmPassword;
+  late bool hidePassword = true;
+  late String emailAddress = widget.email;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -23,6 +40,8 @@ class _OtpFormState extends State<OtpForm> {
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
     pin4FocusNode = FocusNode();
+    otp = '';
+
     super.initState();
   }
 
@@ -36,80 +55,239 @@ class _OtpFormState extends State<OtpForm> {
     super.dispose();
   }
 
+  void addError({String? error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error!);
+      });
+    }
+  }
+
+  void removeError({String? error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
+
   void nextField({required String value, required FocusNode focusNode}) {
     if (value.length == 1) {
       focusNode.requestFocus();
     }
   }
 
+  void forgotPassword(String otp, String email, String password) async {
+    print(otp);
+    await AuthenRepository().resetpassword(otp, email, password).then((value) {
+      if (value != null) {
+        if (value == 'OTP invalid') {
+          addError(error: kOtpValidError);
+        }
+        if (value == 'Reset Password success') {
+          removeError(error: kOtpValidError);
+          Get.snackbar(
+            'Otp',
+            'Cập nhật mật khẩu thành công',
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.white,
+            backgroundColor: kPrimaryColor,
+            duration: const Duration(
+              milliseconds: 800,
+            ),
+          );
+          Future.delayed(const Duration(milliseconds: 800), () {
+            // Here you can write your code
+
+            setState(() {
+              Navigator.pushNamed(context, SignInScreen.routeName);
+            });
+          });
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
+        key: _formKey,
         child: Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              width: getProportionateScreenWidth(60),
-              child: TextFormField(
-                autofocus: true,
-                keyboardType: TextInputType.number,
-                style: const TextStyle(fontSize: 24),
-                decoration: otpInputDecoration,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  nextField(value: value, focusNode: pin2FocusNode);
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: getProportionateScreenWidth(60),
+                  child: TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: const TextStyle(fontSize: 24),
+                    decoration: otpInputDecoration,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      nextField(value: value, focusNode: pin2FocusNode);
+                      otp = otp + value;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  width: getProportionateScreenWidth(60),
+                  child: TextFormField(
+                    focusNode: pin2FocusNode,
+                    keyboardType: TextInputType.text,
+                    style: const TextStyle(fontSize: 24),
+                    decoration: otpInputDecoration,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      nextField(value: value, focusNode: pin3FocusNode);
+                      otp = otp + value;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  width: getProportionateScreenWidth(60),
+                  child: TextFormField(
+                    focusNode: pin3FocusNode,
+                    keyboardType: TextInputType.text,
+                    style: const TextStyle(fontSize: 24),
+                    decoration: otpInputDecoration,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      nextField(value: value, focusNode: pin4FocusNode);
+                      otp = otp + value;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  width: getProportionateScreenWidth(60),
+                  child: TextFormField(
+                    focusNode: pin4FocusNode,
+                    keyboardType: TextInputType.text,
+                    style: const TextStyle(fontSize: 24),
+                    decoration: otpInputDecoration,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      pin4FocusNode.unfocus();
+                      otp = otp + value;
+                    },
+                  ),
+                ),
+              ],
             ),
             SizedBox(
-              width: getProportionateScreenWidth(60),
-              child: TextFormField(
-                focusNode: pin2FocusNode,
-                keyboardType: TextInputType.number,
-                style: const TextStyle(fontSize: 24),
-                decoration: otpInputDecoration,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  nextField(value: value, focusNode: pin3FocusNode);
-                },
-              ),
+              height: getProportionateScreenHeight(20),
             ),
+            buildPasswordFormField(),
             SizedBox(
-              width: getProportionateScreenWidth(60),
-              child: TextFormField(
-                focusNode: pin3FocusNode,
-                keyboardType: TextInputType.number,
-                style: const TextStyle(fontSize: 24),
-                decoration: otpInputDecoration,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  nextField(value: value, focusNode: pin4FocusNode);
-                },
-              ),
+              height: getProportionateScreenHeight(20),
             ),
-            SizedBox(
-              width: getProportionateScreenWidth(60),
-              child: TextFormField(
-                focusNode: pin4FocusNode,
-                keyboardType: TextInputType.number,
-                style: const TextStyle(fontSize: 24),
-                decoration: otpInputDecoration,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  pin4FocusNode.unfocus();
-                },
-              ),
-            ),
+            buildConfirmPasswordFormField(),
+            SizedBox(height: SizeConfig.screenHeight * 0.05),
+            FormError(errors: errors),
+            SizedBox(height: getProportionateScreenHeight(20)),
+            DefaultButton(
+              text: "Gửi",
+              press: () {
+                if (otp.length == 4) {
+                  removeError(error: kOtpError);
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+
+                    forgotPassword(otp, emailAddress, password);
+                  }
+                } else {
+                  addError(error: kOtpError);
+                }
+              },
+            )
           ],
-        ),
-        SizedBox(height: SizeConfig.screenHeight * 0.15),
-        DefaultButton(
-          text: "Gửi",
-          press: () {},
-        )
-      ],
-    ));
+        ));
+  }
+
+  TextFormField buildConfirmPasswordFormField() {
+    return TextFormField(
+      obscureText: true,
+      onSaved: (newValue) => confirmPassword = newValue!,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+        }
+        if (value.isNotEmpty && password.compareTo(value) == 0) {
+          removeError(error: kMatchPassError);
+        }
+        confirmPassword = value;
+
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kPassNullError);
+          return "";
+        } else if ((password != confirmPassword)) {
+          addError(error: kMatchPassError);
+          return "";
+        }
+        return null;
+      },
+      decoration: const InputDecoration(
+        labelText: "Confirm Password",
+        hintText: "Re-enter your password",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSurffix(svgIcon: "assets/icons/Lock.svg"),
+      ),
+    );
+  }
+
+  TextFormField buildPasswordFormField() {
+    return TextFormField(
+      obscureText: hidePassword,
+      onSaved: (newValue) => password = newValue!,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+        }
+        if (value.isNotEmpty && value.length >= 8) {
+          removeError(error: kShortPassError);
+        }
+        password = value;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kPassNullError);
+          return "";
+        } else if (value.length < 8) {
+          addError(error: kShortPassError);
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Password",
+        hintText: "Enter your password",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: hidePassword
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                icon: const Icon(Icons.visibility),
+              )
+            : IconButton(
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                icon: const Icon(Icons.visibility_off),
+              ),
+      ),
+    );
   }
 }

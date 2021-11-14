@@ -3,8 +3,8 @@ import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:http/http.dart' as http;
 
 // const root_url = "freshfoodbe.tk";
-//const root_url = "192.168.1.12:3000";
-const root_url = "192.168.1.190:3000";
+const root_url = "192.168.1.12:3000";
+// const root_url = "192.168.1.190:3000";
 
 const socket_url = "45.212.16.10:3000";
 
@@ -23,11 +23,12 @@ class HandleApis {
 
   get(String name, [String? params]) async {
     Map<String, String> paramsObject = {};
-    if (params != null)
+    if (params != null) {
       params.split('&').forEach((element) {
         paramsObject[element.split('=')[0].toString()] =
             element.split('=')[1].toString();
       });
+    }
     // stderr.write("GET: " + root_url +'/'+ name + '\n' + paramsObject.toString());
     http.Response response = await http.get(
       params == null
