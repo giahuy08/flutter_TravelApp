@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/otp/components/otp_form.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body({
+    Key? key,
+    required this.email,
+  }) : super(key: key);
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +26,15 @@ class Body extends StatelessWidget {
                 "Xác thực OTP",
                 style: headingStyle,
               ),
-              const Text("Gửi mã của bạn đến email:...."),
-              buildTimer(),
-              SizedBox(
-                height: SizeConfig.screenHeight * 0.15,
+              Text(
+                "Mã OTP của bạn được đến email \n $email ",
+                textAlign: TextAlign.center,
               ),
-              const OtpForm(),
+              // buildTimer(),
+              SizedBox(
+                height: SizeConfig.screenHeight * 0.1,
+              ),
+              OtpForm(email: email),
               SizedBox(
                 height: SizeConfig.screenHeight * 0.1,
               ),
