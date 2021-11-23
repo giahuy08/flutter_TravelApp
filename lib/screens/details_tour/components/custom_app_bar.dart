@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelapp/components/rounded_icon_btn.dart';
+import 'package:flutter_travelapp/reviews/reviews.dart';
+import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final double? rating;
@@ -27,12 +29,22 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(14)),
               child: Row(
                 children: [
-                  Text(
-                    rating.toString(),
-                    style: const TextStyle(fontWeight: FontWeight.w600),
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Reviews(),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          rating.toString(),
+                          style: const TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        SvgPicture.asset("assets/icons/Star Icon.svg")
+                      ],
+                    ),
                   ),
-                  const SizedBox(width: 5),
-                  SvgPicture.asset("assets/icons/Star Icon.svg")
                 ],
               ),
             )

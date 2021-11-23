@@ -5,6 +5,7 @@ import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/hotel_tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
+import 'package:flutter_travelapp/success/success.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -67,7 +68,6 @@ class TourDescription extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: getProportionateScreenWidth(20)),
-
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -132,7 +132,7 @@ class TourDescription extends StatelessWidget {
                         Column(
                           children: [
                             Text(tour.payment.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20)),
                             const Text(
                               'VND',
@@ -145,7 +145,9 @@ class TourDescription extends StatelessWidget {
                             width: 170,
                             child: DefaultButton(
                               text: 'Đặt ngay',
-                              press: () {},
+                              press: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => const Success())),
                             ))
                       ],
                     ),

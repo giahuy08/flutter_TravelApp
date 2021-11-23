@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
+import 'package:flutter_travelapp/screens/notification/notification_list.dart';
+import 'package:flutter_travelapp/screens/notification/notification_page.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 import 'icon_btn_with_counter.dart';
@@ -30,7 +32,11 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: 'assets/icons/Bell.svg',
             numOfItems: 3,
-            press: () {},
+            press: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      const NotificationList()))
+            },
           )
         ],
       ),
