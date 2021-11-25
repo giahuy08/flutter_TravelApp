@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/repository/review_repository.dart';
+import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_navigation/src/snackbar/snack.dart';
 
 class MultilineInput extends StatefulWidget {
+  final String idTour;
+  final double star;
   const MultilineInput({
     Key? key,
+    required this.idTour,
+    required this.star,
   }) : super(key: key);
 
   @override
@@ -13,6 +22,31 @@ class MultilineInput extends StatefulWidget {
 
 class _MultilineInputState extends State<MultilineInput> {
   late String comment = "";
+  void review(String idTour, String star, String comment) {
+    ReviewRepository().createReviewTour(idTour, star, comment).then((value) {
+      print(value);
+      if (value != null) {
+        if (value == 'Successfully create ReviewTour') {
+          Get.snackbar(
+            'Review',
+            'Đăng nhận xét thành công',
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.green,
+            backgroundColor: kPrimaryColor,
+            duration: const Duration(
+              milliseconds: 800,
+            ),
+          );
+          Future.delayed(const Duration(milliseconds: 800), () {
+            // Here you can write your code
+            setState(() {
+              Navigator.pushNamed(context, ListBookedTourScreen.routeName);
+            });
+          });
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +96,12 @@ class _MultilineInputState extends State<MultilineInput> {
                   primary: Colors.white,
                   backgroundColor: const Color(0xFFF5F6F9),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  print(widget.idTour);
+                  print(widget.star.toString());
+                  print(comment);
+                  review(widget.idTour, widget.star.toString(), comment);
+                },
                 child: SvgPicture.asset("assets/icons/Camera Icon.svg"),
               ),
             ),

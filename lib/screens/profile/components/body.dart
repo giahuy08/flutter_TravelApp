@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/models/user.dart';
+import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:flutter_travelapp/screens/change_password/change_password_screen.dart';
 import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
 import 'package:flutter_travelapp/screens/profile/components/edit_profile.dart';
+import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
+import '../../../constants.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
@@ -60,10 +64,82 @@ class _BodyState extends State<Body> {
           ProfileMenu(
             text: "Đăng xuất",
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press: () => {signOutDrawer(context)},
           ),
         ],
       ),
     );
   }
+}
+
+void signOutDrawer(BuildContext context) {
+  showModalBottomSheet(
+      isDismissible: false,
+      context: context,
+      builder: (context) {
+        return Container(
+          color: kPrimaryColor,
+          height: 150.0,
+          padding: const EdgeInsets.symmetric(horizontal: 32.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const Text(
+                'Bạn muốn đăng xuất khỏi ứng dụng?',
+                style: TextStyle(
+                  color: kWhiteColor,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: MaterialButton(
+                        color: kWhiteColor,
+                        child: const Text(
+                          'Đăng xuất',
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        onPressed: () => {
+                              userProvider.setUser(User.fromLogin({
+                                "email": "",
+                                "password": "",
+                              })),
+                              Navigator.pushNamed(
+                                  context, SplashScreen.routeName),
+                            }),
+                  ),
+                  const SizedBox(
+                    width: 20.0,
+                  ),
+                  Expanded(
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        primary: kPrimaryColor,
+                        shadowColor: kWhiteColor,
+                        side: const BorderSide(color: kWhiteColor),
+                      ),
+                      child: const Text(
+                        'Hủy',
+                        style: TextStyle(
+                          color: kWhiteColor,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      });
 }

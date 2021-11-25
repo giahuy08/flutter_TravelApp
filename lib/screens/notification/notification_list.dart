@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/components/default_appbar.dart';
+import 'package:flutter_travelapp/components/default_backbutton.dart';
 
 import '../../constants.dart';
-import 'components/default_appbar.dart';
-import 'components/default_backbutton.dart';
 import 'components/notification_tiles.dart';
 import 'notification_page.dart';
 

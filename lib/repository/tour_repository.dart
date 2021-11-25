@@ -23,19 +23,14 @@ class TourRepository {
     return [];
   }
 
-  Future<TourModel?> getOneTour(id) async {
+  Future<dynamic> getOneTour(id) async {
     Response response = await HandleApis().get(ApiGateway.getOneTour, 'id=$id');
-    // print(response.statusCode);
-    // print(response.body.toString());
+    print(response.statusCode);
+    print(response.body.toString());
     if (response.statusCode == 200) {
-      List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
-
-      if (jsonResponse.isEmpty) {
-        return null;
-      }
-
-      return jsonResponse.map((item) => TourModel.fromMap(item)).single;
+      return jsonDecode(response.body)['data'];
     }
+
     return null;
   }
 

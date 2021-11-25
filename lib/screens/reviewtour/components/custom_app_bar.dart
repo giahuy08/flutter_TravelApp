@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                rating.toString(),
+                rating!.toStringAsFixed(1),
                 style: const TextStyle(fontWeight: FontWeight.w600),
               ),
               const SizedBox(width: 5),

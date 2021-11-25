@@ -29,22 +29,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(14)),
               child: Row(
                 children: [
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => Reviews(),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          rating.toString(),
-                          style: const TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        SvgPicture.asset("assets/icons/Star Icon.svg")
-                      ],
-                    ),
+                  Text(
+                    rating!.toStringAsFixed(1),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
+                  const SizedBox(width: 5),
+                  SvgPicture.asset("assets/icons/Star Icon.svg")
                 ],
               ),
             )

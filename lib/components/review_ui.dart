@@ -39,7 +39,7 @@ class ReviewUI extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 16.0),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(image),
+                    image: NetworkImage(image),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(44.0),

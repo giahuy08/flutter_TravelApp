@@ -1,15 +1,18 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/components/default_appbar.dart';
+import 'package:flutter_travelapp/components/default_backbutton.dart';
 import 'package:flutter_travelapp/components/review_ui.dart';
-import 'package:flutter_travelapp/screens/notification/components/default_appbar.dart';
-import 'package:flutter_travelapp/screens/notification/components/default_backbutton.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import '../constants.dart';
 
 class Reviews extends StatefulWidget {
-  const Reviews({Key? key}) : super(key: key);
+  final List<dynamic> reviewTour;
+  final dynamic tour;
+  const Reviews({Key? key, required this.reviewTour, required this.tour})
+      : super(key: key);
 
   @override
   _ReviewsState createState() => _ReviewsState();
@@ -25,7 +28,7 @@ class _ReviewsState extends State<Reviews> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhiteColor,
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         title: "Reviews",
         child: DefaultBackButton(),
       ),
@@ -33,7 +36,7 @@ class _ReviewsState extends State<Reviews> {
         children: [
           Container(
             color: kAccentColor,
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 16.0,
               vertical: 16.0,
             ),
@@ -47,10 +50,10 @@ class _ReviewsState extends State<Reviews> {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: "4.5",
-                            style: TextStyle(fontSize: 48.0),
+                            text: widget.tour.star.toStringAsFixed(1),
+                            style: const TextStyle(fontSize: 48.0),
                           ),
-                          TextSpan(
+                          const TextSpan(
                             text: "/5",
                             style: TextStyle(
                               fontSize: 24.0,
@@ -67,17 +70,17 @@ class _ReviewsState extends State<Reviews> {
                       color: Colors.orange,
                       borderColor: Colors.orange,
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     Text(
-                      "${reviewList.length} Reviews",
-                      style: TextStyle(
+                      "${widget.reviewTour.length} Reviews",
+                      style: const TextStyle(
                         fontSize: 20.0,
                         color: kLightColor,
                       ),
                     ),
                   ],
                 ),
-                Container(
+                SizedBox(
                   width: 200.0,
                   child: ListView.builder(
                     shrinkWrap: true,
@@ -88,11 +91,11 @@ class _ReviewsState extends State<Reviews> {
                         children: [
                           Text(
                             "${index + 1}",
-                            style: TextStyle(fontSize: 18.0),
+                            style: const TextStyle(fontSize: 18.0),
                           ),
-                          SizedBox(width: 4.0),
-                          Icon(Icons.star, color: Colors.orange),
-                          SizedBox(width: 8.0),
+                          const SizedBox(width: 4.0),
+                          const Icon(Icons.star, color: Colors.orange),
+                          const SizedBox(width: 8.0),
                           LinearPercentIndicator(
                             lineHeight: 6.0,
                             // linearStrokeCap: LinearStrokeCap.roundAll,
@@ -112,15 +115,17 @@ class _ReviewsState extends State<Reviews> {
           ),
           Expanded(
             child: ListView.separated(
-              padding: EdgeInsets.only(bottom: 8.0, top: 8.0),
-              itemCount: reviewList.length,
+              padding: const EdgeInsets.only(bottom: 8.0, top: 8.0),
+              itemCount: widget.reviewTour.length,
               itemBuilder: (context, index) {
                 return ReviewUI(
-                  image: reviewList[index].image,
-                  name: reviewList[index].name,
-                  date: reviewList[index].date,
-                  comment: reviewList[index].comment,
-                  rating: reviewList[index].rating,
+                  image: widget.reviewTour[index].avatarUser,
+                  name: widget.reviewTour[index].nameUser,
+                  date: DateFormat('yyyy-MM-dd – kk:mm')
+                      .format(widget.reviewTour[index].createdAt)
+                      .toString(),
+                  comment: widget.reviewTour[index].comment,
+                  rating: widget.reviewTour[index].star,
                   onPressed: () => print("More Action $index"),
                   onTap: () => setState(() {
                     isMore = !isMore;
@@ -129,7 +134,7 @@ class _ReviewsState extends State<Reviews> {
                 );
               },
               separatorBuilder: (context, index) {
-                return Divider(
+                return const Divider(
                   thickness: 2.0,
                   color: kAccentColor,
                 );
