@@ -96,7 +96,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     }
     UserRepository().editProfile(name, address, phone).then((value) {
       if (value != null) {
-        removeError(error: kEditProfileFail);
+        // removeError(error: kEditProfileFail);
         Get.snackbar(
           'Cập nhật thông tin',
           'Cập nhật thông tin thành công',
