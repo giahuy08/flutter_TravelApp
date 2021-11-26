@@ -6,6 +6,7 @@ import 'package:flutter_travelapp/screens/details_tour/components/review_tour.da
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
 import 'package:flutter_travelapp/screens/payment/payment.dart';
+import 'package:intl/intl.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -22,6 +23,7 @@ class TourDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final oCcy = NumberFormat("#,##0", "en_US");
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -136,11 +138,11 @@ class TourDescription extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            Text(tour.payment.toString(),
+                            Text(oCcy.format(tour.payment),
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20)),
                             const Text(
-                              'VND',
+                              'VNĐ',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )
                           ],

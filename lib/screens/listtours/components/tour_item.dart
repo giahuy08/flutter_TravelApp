@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
-import 'package:flutter_travelapp/screens/details_tour/components/hotel_tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
+import 'package:intl/intl.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-
-import 'package:flutter_travelapp/models/tour.dart';
-import 'package:flutter_travelapp/repository/tour_repository.dart';
-
-import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class TourItem extends StatelessWidget {
-   final List<dynamic> listTour;
+  final List<dynamic> listTour;
   const TourItem({Key? key, required this.listTour}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-   
     return Column(
       children: [
         Expanded(
@@ -39,12 +33,14 @@ class TourItem extends StatelessWidget {
   }
 
   Widget _buildItem(BuildContext context, int index) {
+    final oCcy = NumberFormat("#,##0", "en_US");
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-          padding: EdgeInsets.all(getProportionateScreenHeight(12)),
-          height: getProportionateScreenHeight(250),
-          child: Stack(children: <Widget>[
+        padding: EdgeInsets.all(getProportionateScreenHeight(12)),
+        height: getProportionateScreenHeight(250),
+        child: Stack(
+          children: <Widget>[
             Align(
               alignment: Alignment.centerRight,
               child: Container(
@@ -123,11 +119,11 @@ class TourItem extends StatelessWidget {
                           size: 18,
                         ),
                         Text(
-                          listTour[index].payment.toString(),
+                          oCcy.format(listTour[index].payment),
                           style:
                               const TextStyle(fontSize: 16, color: Colors.red),
                         ),
-                        const Text(' VND',
+                        const Text(' VNĐ',
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -155,13 +151,14 @@ class TourItem extends StatelessWidget {
                           spacing: 4,
                           rating: listTour[index].star,
                         ),
-                        const Text(
-                          "300 reviews",
-                          style: TextStyle(color: Colors.black87, fontSize: 10),
+                        Text(
+                          listTour[index].star.toStringAsFixed(1) + " Sao",
+                          style: const TextStyle(
+                              color: Colors.black87, fontSize: 10),
                         )
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Wrap(
                       children: <Widget>[
                         Container(
@@ -184,86 +181,15 @@ class TourItem extends StatelessWidget {
                               ),
                             ],
                           ),
-                        )
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
-          ])),
-    );
-  }
-
-  Widget getSearchBarUI() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16, top: 8, bottom: 8),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(38.0),
-                  ),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        offset: const Offset(0, 2),
-                        blurRadius: 8.0),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 16, right: 16, top: 4, bottom: 4),
-                  child: TextField(
-                    onChanged: (String txt) {},
-                    style: const TextStyle(
-                      fontSize: 18,
-                    ),
-                    cursorColor: kPrimaryColor,
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'London...',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(38.0),
-              ),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.4),
-                    offset: const Offset(0, 2),
-                    blurRadius: 8.0),
-              ],
-            ),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(32.0),
-                ),
-                onTap: () {
-             
-                },
-                child: const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Icon(Icons.search, size: 20, color: kPrimaryColor),
-                ),
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

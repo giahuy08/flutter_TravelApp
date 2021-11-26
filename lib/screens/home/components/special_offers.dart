@@ -142,8 +142,8 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
       child: GestureDetector(
         onTap: widget.press,
         child: SizedBox(
-          width: getProportionateScreenWidth(242),
-          height: getProportionateScreenWidth(100),
+          width: getProportionateScreenWidth(165),
+          height: getProportionateScreenWidth(90),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(
