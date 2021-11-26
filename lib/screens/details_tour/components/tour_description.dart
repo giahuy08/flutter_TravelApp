@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
-import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/hotel_tour.dart';
+import 'package:flutter_travelapp/screens/details_tour/components/review_tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
+import 'package:flutter_travelapp/screens/payment/payment.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -67,7 +68,6 @@ class TourDescription extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: getProportionateScreenWidth(20)),
-
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -77,13 +77,17 @@ class TourDescription extends StatelessWidget {
             ),
           ),
           const HotelTour(),
+          SizedBox(height: getProportionateScreenWidth(20)),
+          kSmallDivider,
+          ReviewTour(tour: tour),
+          kSmallDivider,
           TopRoundedContainer(
             color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(9.0),
               child: Column(
                 children: [
-                  Text('Cổng thanh toán'),
+                  const Text('Cổng thanh toán'),
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
@@ -125,14 +129,15 @@ class TourDescription extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 30, horizontal: 30),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           children: [
                             Text(tour.payment.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20)),
                             const Text(
                               'VND',
@@ -140,12 +145,14 @@ class TourDescription extends StatelessWidget {
                             )
                           ],
                         ),
-                        Container(
+                        SizedBox(
                             height: 55,
                             width: 170,
                             child: DefaultButton(
                               text: 'Đặt ngay',
-                              press: () {},
+                              press: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => Payment())),
                             ))
                       ],
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
+import 'package:flutter_travelapp/screens/discount_list/discount_list.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
@@ -7,6 +8,8 @@ import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.da
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import 'package:flutter_travelapp/screens/login_success/login_success_screen.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
+import 'package:flutter_travelapp/screens/notification/notification_list.dart';
+import 'package:flutter_travelapp/screens/notification/notification_page.dart';
 import 'package:flutter_travelapp/screens/otp/otp_screen.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
@@ -30,4 +33,7 @@ final Map<String, WidgetBuilder> routes = {
   ListToursScreen.routeName: (context) => const ListToursScreen(),
   ListBookedTourScreen.routeName: (context) => const ListBookedTourScreen(),
   ErrorScreen.routeName: (context) => const ErrorScreen(),
+  NotificationList.routeName: (context) => const NotificationList(),
+  NotificationPage.routeName: (context) => const NotificationPage(),
+  DiscountList.routeName: (context) => const DiscountList(),
 };

@@ -84,7 +84,7 @@ class TourModel {
           .toList(),
       star: double.tryParse((map['star'] ?? 0).toString()),
       category: map['category'],
-      id: map['id'],
+      id: map['_id'],
       name: map['name'],
       place: map['place'],
       time: map['time'],

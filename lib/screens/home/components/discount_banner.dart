@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 
 import 'package:flutter_travelapp/models/discount.dart';
 import 'package:flutter_travelapp/repository/discount_repository.dart';
+import 'package:flutter_travelapp/screens/discount_list/discount_list.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 import 'section_title.dart';
@@ -22,7 +23,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getListTour();
+    getListDiscount();
   }
 
   @override
@@ -31,7 +32,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
     super.dispose();
   }
 
-  void getListTour() async {
+  void getListDiscount() async {
     List<dynamic> discounts = await DiscountRepository().getListDiscount();
     setState(() {
       _listDiscount.addAll(discounts);
@@ -47,7 +48,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: SectionTitle(
             title: "Ưu đãi hấp dẫn",
-            press: () {},
+            press: () => Navigator.pushNamed(context, DiscountList.routeName),
           ),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),

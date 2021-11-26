@@ -19,6 +19,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int selectedImage = 0;
+    double star = 0;
     return SingleChildScrollView(
       child: Stack(
         children: [
@@ -96,14 +97,16 @@ class Body extends StatelessWidget {
                   borderColor: kPrimaryColor,
                   color: kPrimaryColor,
                   allowHalfRating: false,
-                  onRated: (v) {},
+                  onRated: (v) {
+                    star = v;
+                  },
                   starCount: 5,
                   size: 45,
                   isReadOnly: false,
                   spacing: kDefaultPadding,
                 ),
                 const SizedBox(height: kDefaultPadding),
-                const MultilineInput(),
+                MultilineInput(idTour: tour.idTour, star: star),
                 const SizedBox(height: kDefaultPadding),
                 const MainButton(),
               ],
