@@ -9,7 +9,7 @@ import 'multiline_input.dart';
 import 'review_header.dart';
 import 'tour_stat.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   final dynamic tour;
   const Body({
     Key? key,
@@ -17,9 +17,14 @@ class Body extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  late int selectedImage = 0;
+  late double star = 0;
+  @override
   Widget build(BuildContext context) {
-    int selectedImage = 0;
-    double star = 0;
     return SingleChildScrollView(
       child: Stack(
         children: [
@@ -29,7 +34,7 @@ class Body extends StatelessWidget {
             padding: const EdgeInsets.all(kDefaultPadding * 2),
             child: Column(
               children: [
-                CustomAppBar(rating: tour.star),
+                CustomAppBar(rating: widget.tour.star),
                 SizedBox(
                   height: 166,
                   width: 166,
@@ -39,7 +44,7 @@ class Body extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         backgroundImage:
-                            NetworkImage(tour.imagesTour[selectedImage]),
+                            NetworkImage(widget.tour.imagesTour[selectedImage]),
                         //AssetImage("assets/images/vungcao.jpg"),
                       ),
                     ],
@@ -53,7 +58,7 @@ class Body extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  tour.name,
+                  widget.tour.name,
                   //"Nha Trang, Đà Lạc",
                   style: const TextStyle(
                       color: kTextColor,
@@ -66,7 +71,7 @@ class Body extends StatelessWidget {
                 ),
                 const SizedBox(height: kDefaultPadding),
                 TourStats(
-                  tour: tour,
+                  tour: widget.tour,
                 ),
                 const SizedBox(height: kDefaultPadding),
                 const Divider(
@@ -98,7 +103,9 @@ class Body extends StatelessWidget {
                   color: kPrimaryColor,
                   allowHalfRating: false,
                   onRated: (v) {
-                    star = v;
+                    setState(() {
+                      star = v;
+                    });
                   },
                   starCount: 5,
                   size: 45,
@@ -106,9 +113,7 @@ class Body extends StatelessWidget {
                   spacing: kDefaultPadding,
                 ),
                 const SizedBox(height: kDefaultPadding),
-                MultilineInput(idTour: tour.idTour, star: star),
-                const SizedBox(height: kDefaultPadding),
-                const MainButton(),
+                MultilineInput(idTour: widget.tour.idTour, star: star),
               ],
             ),
           ))

@@ -73,6 +73,7 @@ class UserRepository {
     request.headers["Content-Type"] = 'multipart/form-data';
     request.headers["Authorization"] = 'Bearer ' +
         (userProvider.user == null ? '' : userProvider.user!.token!);
+   
     if (avatar != null) {
       request.files.add(
         http.MultipartFile.fromBytes(

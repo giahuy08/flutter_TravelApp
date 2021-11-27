@@ -190,7 +190,7 @@ class _TourBookedItemState extends State<TourBookedItem> {
                           rating: _listBookTour[index].star,
                         ),
                         Text(
-                          _listBookTour[index].star.toString() + " Sao",
+                          _listBookTour[index].star.toStringAsFixed(1) + " Sao",
                           style: const TextStyle(
                               color: Colors.black87, fontSize: 10),
                         )

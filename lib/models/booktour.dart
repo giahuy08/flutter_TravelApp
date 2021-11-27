@@ -120,7 +120,8 @@ class BookTourModel {
 
   String toJson() => json.encode(toMap());
 
-  factory BookTourModel.fromJson(String source) => BookTourModel.fromMap(json.decode(source));
+  factory BookTourModel.fromJson(String source) =>
+      BookTourModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -130,43 +131,43 @@ class BookTourModel {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is BookTourModel &&
-      other.idEnterprise == idEnterprise &&
-      listEquals(other.idVehicles, idVehicles) &&
-      other.detail == detail &&
-      other.payment == payment &&
-      listEquals(other.imagesTour, imagesTour) &&
-      other.star == star &&
-      other.category == category &&
-      other.idTour == idTour &&
-      other.name == name &&
-      other.place == place &&
-      other.time == time &&
-      other.idUser == idUser &&
-      other.status == status &&
-      other.finalpayment == finalpayment &&
-      other.startDate == startDate &&
-      other.endDate == endDate;
+        other.idEnterprise == idEnterprise &&
+        listEquals(other.idVehicles, idVehicles) &&
+        other.detail == detail &&
+        other.payment == payment &&
+        listEquals(other.imagesTour, imagesTour) &&
+        other.star == star &&
+        other.category == category &&
+        other.idTour == idTour &&
+        other.name == name &&
+        other.place == place &&
+        other.time == time &&
+        other.idUser == idUser &&
+        other.status == status &&
+        other.finalpayment == finalpayment &&
+        other.startDate == startDate &&
+        other.endDate == endDate;
   }
 
   @override
   int get hashCode {
     return idEnterprise.hashCode ^
-      idVehicles.hashCode ^
-      detail.hashCode ^
-      payment.hashCode ^
-      imagesTour.hashCode ^
-      star.hashCode ^
-      category.hashCode ^
-      idTour.hashCode ^
-      name.hashCode ^
-      place.hashCode ^
-      time.hashCode ^
-      idUser.hashCode ^
-      status.hashCode ^
-      finalpayment.hashCode ^
-      startDate.hashCode ^
-      endDate.hashCode;
+        idVehicles.hashCode ^
+        detail.hashCode ^
+        payment.hashCode ^
+        imagesTour.hashCode ^
+        star.hashCode ^
+        category.hashCode ^
+        idTour.hashCode ^
+        name.hashCode ^
+        place.hashCode ^
+        time.hashCode ^
+        idUser.hashCode ^
+        status.hashCode ^
+        finalpayment.hashCode ^
+        startDate.hashCode ^
+        endDate.hashCode;
   }
 }
