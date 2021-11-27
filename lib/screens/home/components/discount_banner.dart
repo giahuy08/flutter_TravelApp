@@ -111,8 +111,8 @@ class DiscountBannerCard extends StatelessWidget {
       child: GestureDetector(
         onTap: press,
         child: SizedBox(
-          width: getProportionateScreenWidth(242),
-          height: getProportionateScreenWidth(90),
+          width: getProportionateScreenWidth(165),
+          height: getProportionateScreenWidth(80),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelapp/models/tour.dart';
+import 'package:intl/intl.dart';
 import '../constants.dart';
 import '../size_config.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
     Key? key,
-    this.width = 140,
-    this.height = 240,
+    this.width = 160,
+    this.height = 260,
     this.aspectRetio = 1.02,
     required this.product,
     required this.press,
@@ -20,6 +21,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final oCcy = NumberFormat("#,##0", "en_US");
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       child: GestureDetector(
@@ -60,7 +62,7 @@ class ProductCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${product.payment} vnđ",
+                    "${oCcy.format(product.payment)} VNĐ",
                     style: TextStyle(
                       fontSize: getProportionateScreenWidth(13),
                       fontWeight: FontWeight.w600,
