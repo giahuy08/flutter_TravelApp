@@ -10,6 +10,7 @@ import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sizer/sizer.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  final _formKey = GlobalKey<FormState>();
+  final _editProfileFormKey = GlobalKey<FormState>();
   dynamic inforUser;
   String labelemail = "";
   String labelpassword = "";
@@ -172,132 +173,146 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
-                Center(
-                  child: Stack(
-                    children: [
-                      image != null
-                          ? Container(
-                              width: 130,
-                              height: 130,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 4,
-                                      color: Theme.of(context)
-                                          .scaffoldBackgroundColor),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        spreadRadius: 2,
-                                        blurRadius: 10,
-                                        color: Colors.black.withOpacity(0.1),
-                                        offset: const Offset(0, 10))
-                                  ],
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: FileImage(image!)
-                                      )),
-                            )
-                          : Container(
-                              width: 130,
-                              height: 130,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 4,
-                                      color: Theme.of(context)
-                                          .scaffoldBackgroundColor),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        spreadRadius: 2,
-                                        blurRadius: 10,
-                                        color: Colors.black.withOpacity(0.1),
-                                        offset: const Offset(0, 10))
-                                  ],
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(avatar),
+                labelemail == ""
+                    ? SizedBox(
+                        height: 50.h,
+                        width: 25.w,
+                        child: const CircularProgressIndicator())
+                    : Column(
+                        children: [
+                          Center(
+                            child: Stack(
+                              children: [
+                                image != null
+                                    ? Container(
+                                        width: 130,
+                                        height: 130,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 4,
+                                                color: Theme.of(context)
+                                                    .scaffoldBackgroundColor),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  spreadRadius: 2,
+                                                  blurRadius: 10,
+                                                  color: Colors.black
+                                                      .withOpacity(0.1),
+                                                  offset: const Offset(0, 10))
+                                            ],
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: FileImage(image!))),
+                                      )
+                                    : Container(
+                                        width: 130,
+                                        height: 130,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 4,
+                                                color: Theme.of(context)
+                                                    .scaffoldBackgroundColor),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  spreadRadius: 2,
+                                                  blurRadius: 10,
+                                                  color: Colors.black
+                                                      .withOpacity(0.1),
+                                                  offset: const Offset(0, 10))
+                                            ],
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(avatar),
 
-                                    //AssetImage("assets/images/Profile Image.png"),
-                                  )),
+                                              //AssetImage("assets/images/Profile Image.png"),
+                                            )),
+                                      ),
+                                Positioned(
+                                  right: 0,
+                                  bottom: 0,
+                                  child: SizedBox(
+                                    height: 46,
+                                    width: 46,
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          side: const BorderSide(
+                                              color: Colors.white),
+                                        ),
+                                        primary: Colors.white,
+                                        backgroundColor:
+                                            const Color(0xFFF5F6F9),
+                                      ),
+                                      onPressed: () =>
+                                          pickImage(ImageSource.gallery),
+                                      //onPressed: () {},
+                                      child: SvgPicture.asset(
+                                          "assets/icons/Camera Icon.svg"),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                      Positioned(
-                        right: 0,
-                        bottom: 0,
-                        child: SizedBox(
-                          height: 46,
-                          width: 46,
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                                side: const BorderSide(color: Colors.white),
-                              ),
-                              primary: Colors.white,
-                              backgroundColor: const Color(0xFFF5F6F9),
-                            ),
-                            onPressed: () => pickImage(ImageSource.gallery),
-                            //onPressed: () {},
-                            child: SvgPicture.asset(
-                                "assets/icons/Camera Icon.svg"),
                           ),
-                        ),
+                          SizedBox(height: getProportionateScreenHeight(20)),
+                          buildTextField(
+                              labelemail,
+                              "E-mail",
+                              labelemail,
+                              false,
+                              true,
+                              const Icon(
+                                Icons.email_outlined,
+                                color: kPrimaryColor,
+                              )),
+                          buildTextField(
+                              labelname,
+                              "Họ và tên",
+                              //"Huỳnh Nhựt Thiên",
+                              labelname,
+                              false,
+                              false,
+                              const Icon(
+                                Icons.account_circle,
+                                color: kPrimaryColor,
+                              )),
+                          buildTextField(
+                              labelphone,
+                              "Số điện thoại",
+                              labelphone,
+                              false,
+                              false,
+                              const Icon(
+                                Icons.phone,
+                                color: kPrimaryColor,
+                              )),
+                          buildTextField(
+                              labeladdress,
+                              "Địa chỉ",
+                              labeladdress,
+                              false,
+                              false,
+                              const Icon(
+                                Icons.home,
+                                color: kPrimaryColor,
+                              )),
+                          buildTextField(
+                              "",
+                              "Mật khẩu",
+                              "123456789AsZx",
+                              true,
+                              false,
+                              const Icon(
+                                Icons.remove_red_eye,
+                                color: kPrimaryColor,
+                              )),
+                          FormError(errors: errors),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: getProportionateScreenHeight(20)),
-                buildTextField(
-                    labelemail,
-                    "E-mail",
-                    labelemail,
-                    false,
-                    true,
-                    const Icon(
-                      Icons.email_outlined,
-                      color: kPrimaryColor,
-                    )),
-                buildTextField(
-                    labelname,
-                    "Họ và tên",
-                    //"Huỳnh Nhựt Thiên",
-                    labelname,
-                    false,
-                    false,
-                    const Icon(
-                      Icons.account_circle,
-                      color: kPrimaryColor,
-                    )),
-                buildTextField(
-                    labelphone,
-                    "Số điện thoại",
-                    labelphone,
-                    false,
-                    false,
-                    const Icon(
-                      Icons.phone,
-                      color: kPrimaryColor,
-                    )),
-                buildTextField(
-                    labeladdress,
-                    "Địa chỉ",
-                    labeladdress,
-                    false,
-                    false,
-                    const Icon(
-                      Icons.home,
-                      color: kPrimaryColor,
-                    )),
-                buildTextField(
-                    "",
-                    "Mật khẩu",
-                    "123456789AsZx",
-                    true,
-                    false,
-                    const Icon(
-                      Icons.remove_red_eye,
-                      color: kPrimaryColor,
-                    )),
-                FormError(errors: errors),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

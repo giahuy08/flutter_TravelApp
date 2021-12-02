@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_travelapp/success/success.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
@@ -24,6 +25,22 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
         ),
         body: WebView(
             javascriptMode: JavascriptMode.unrestricted,
-            initialUrl: widget.url));
+            initialUrl: widget.url,
+            onPageFinished: (url) {
+              print("linkurl");
+              print(url);
+              if (url.toLowerCase().startsWith(
+                  'https://fe-travelapp.vercel.app/booktour/payment'
+                      .toLowerCase())) {
+                // pickAddressController.disposeFormInput();
+                // getSnackBar = GetSnackBar(
+                //   title: 'Thanh toán thành công!',
+                //   subTitle: 'Hãy theo dõi quá trình vận đơn',
+                // );
+                // Get.offAllNamed(Routes.ROOT);
+                // getSnackBar.show();
+                Navigator.pushNamed(context, Success.routeName);
+              }
+            }));
   }
 }

@@ -16,6 +16,7 @@ import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter_travelapp/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
+import 'package:flutter_travelapp/success/success.dart';
 
 // All route
 final Map<String, WidgetBuilder> routes = {
@@ -36,5 +37,6 @@ final Map<String, WidgetBuilder> routes = {
   NotificationList.routeName: (context) => const NotificationList(),
   NotificationPage.routeName: (context) => const NotificationPage(),
   DiscountList.routeName: (context) => const DiscountList(),
+  Success.routeName: (context) => const Success(),
   // PaymentMethodScreen.routeName: (context) => const PaymentMethodScreen(),
 };

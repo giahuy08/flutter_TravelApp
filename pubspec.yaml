@@ -46,6 +46,8 @@ dependencies:
   intl: ^0.17.0
   percent_indicator: ^3.4.0
   webview_flutter: ^2.3.1
+  sizer: ^2.0.13
+
 
 dev_dependencies:
   flutter_test:

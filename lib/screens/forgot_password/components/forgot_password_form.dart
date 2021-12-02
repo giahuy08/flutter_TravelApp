@@ -19,7 +19,7 @@ class ForgotPassForm extends StatefulWidget {
 }
 
 class _ForgotPassFormState extends State<ForgotPassForm> {
-  final _formKey = GlobalKey<FormState>();
+  final _forgotFormKey = GlobalKey<FormState>();
   List<String> errors = [];
   late String email = '';
   void addError({String? error}) {
@@ -68,7 +68,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: _forgotFormKey,
       child: Column(
         children: [
           TextFormField(
@@ -113,9 +113,9 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
           DefaultButton(
               text: "Gửi",
               press: () {
-                if (_formKey.currentState!.validate()) {
+                if (_forgotFormKey.currentState!.validate()) {
                   // Navigator.pushNamed(context, OtpScreen.routeName);
-                  _formKey.currentState!.save();
+                  _forgotFormKey.currentState!.save();
                   forgotPassword(email);
                 }
               }),

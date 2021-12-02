@@ -31,7 +31,7 @@ class _OtpFormState extends State<OtpForm> {
   late String confirmPassword;
   late bool hidePassword = true;
   late String emailAddress = widget.email;
-  final _formKey = GlobalKey<FormState>();
+  final _otpFormKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -78,7 +78,7 @@ class _OtpFormState extends State<OtpForm> {
   }
 
   void forgotPassword(String otp, String email, String password) async {
-     await AuthenRepository().resetpassword(otp, email, password).then((value) {
+    await AuthenRepository().resetpassword(otp, email, password).then((value) {
       if (value != null) {
         if (value == 'OTP invalid') {
           addError(error: kOtpValidError);
@@ -110,7 +110,7 @@ class _OtpFormState extends State<OtpForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: _formKey,
+        key: _otpFormKey,
         child: Column(
           children: [
             Row(
@@ -190,8 +190,8 @@ class _OtpFormState extends State<OtpForm> {
               press: () {
                 if (otp.length == 4) {
                   removeError(error: kOtpError);
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
+                  if (_otpFormKey.currentState!.validate()) {
+                    _otpFormKey.currentState!.save();
 
                     forgotPassword(otp, emailAddress, password);
                   }

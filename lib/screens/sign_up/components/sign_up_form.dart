@@ -19,7 +19,7 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignUpForm> {
-  final _formKey = GlobalKey<FormState>();
+  final _signUpFormKey = GlobalKey<FormState>();
 
   late String email;
   late String password;
@@ -82,7 +82,7 @@ class _SignFormState extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: _formKey,
+        key: _signUpFormKey,
         child: Column(
           children: [
             SizedBox(height: getProportionateScreenHeight(20)),
@@ -104,8 +104,8 @@ class _SignFormState extends State<SignUpForm> {
                 press: () {
                   // print(email);
                   // Navigator.pushNamed(context, OtpScreen.routeName);
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
+                  if (_signUpFormKey.currentState!.validate()) {
+                    _signUpFormKey.currentState!.save();
                     // Navigator.pushNamed(context, OtpScreen.routeName);
                     // register(email, password, phone, name, address);
                     register(email, password, phone, name, address);

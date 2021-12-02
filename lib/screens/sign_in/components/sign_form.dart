@@ -20,7 +20,7 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
-  final _formKey = GlobalKey<FormState>();
+  final _signFormKey = GlobalKey<FormState>();
   late String email;
   late String password;
   bool remember = false;
@@ -92,7 +92,7 @@ class _SignFormState extends State<SignForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: _formKey,
+        key: _signFormKey,
         child: Column(children: [
           buildEmailFormField(),
           SizedBox(
@@ -134,8 +134,8 @@ class _SignFormState extends State<SignForm> {
           DefaultButton(
               text: "Đăng nhập",
               press: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
+                if (_signFormKey.currentState!.validate()) {
+                  _signFormKey.currentState!.save();
 
                   signIn(email, password);
                 }

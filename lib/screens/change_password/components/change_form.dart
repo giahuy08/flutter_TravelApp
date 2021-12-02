@@ -17,7 +17,7 @@ class ChangeForm extends StatefulWidget {
 }
 
 class _ChangeFormState extends State<ChangeForm> {
-  final _formKey = GlobalKey<FormState>();
+  final _changeFormKey = GlobalKey<FormState>();
 
   late String oldPassword;
   late String newPassword;
@@ -74,7 +74,7 @@ class _ChangeFormState extends State<ChangeForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: _formKey,
+        key: _changeFormKey,
         child: Column(
           children: [
             SizedBox(height: getProportionateScreenHeight(20)),
@@ -90,8 +90,8 @@ class _ChangeFormState extends State<ChangeForm> {
                 press: () {
                   // print(email);
                   // Navigator.pushNamed(context, OtpScreen.routeName);
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
+                  if (_changeFormKey.currentState!.validate()) {
+                    _changeFormKey.currentState!.save();
                     // Navigator.pushNamed(context, OtpScreen.routeName);
                     // register(email, password, phone, name, address);
                     //register(email, password, phone, name, address);
