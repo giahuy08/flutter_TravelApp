@@ -31,4 +31,48 @@ class BookTourRepository {
     }
     return [];
   }
+
+  Future<dynamic> bookTour(idTour, codediscount, date) async {
+    var body = {"idTour": idTour, "startDate": date};
+    var response = await HandleApis().post(ApiGateway.bookTour, body);
+    //print(response.statusCode);
+    //print(jsonDecode(response.body));
+    print(response);
+    if (response.statusCode == 200) {
+      print(jsonDecode(response.body)['data']);
+      return jsonDecode(response.body)['data'];
+    }
+    if (response.statusCode == 300) {
+      print(jsonDecode(response.body)['data']);
+
+      return jsonDecode(response.body)['message'];
+    }
+
+    return null;
+  }
+
+  Future<dynamic> bookTourPayment(
+      idTour, codediscount, typepayment, date) async {
+    var body = {
+      "idTour": idTour,
+      "codediscount": '',
+      "typePayment": typepayment,
+      "startDate": date
+    };
+    var response = await HandleApis().post(ApiGateway.bookTourPayment, body);
+    //print(response.statusCode);
+    //print(jsonDecode(response.body));
+    print(body);
+    if (response.statusCode == 200) {
+      print(jsonDecode(response.body)['data']);
+      return jsonDecode(response.body)['data'];
+    }
+    if (response.statusCode == 300) {
+      print(jsonDecode(response.body)['data']);
+
+      return jsonDecode(response.body)['message'];
+    }
+
+    return null;
+  }
 }

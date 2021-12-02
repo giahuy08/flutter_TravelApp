@@ -51,7 +51,7 @@ class _MultilineInputState extends State<MultilineInput> {
             'Review',
             'Đăng nhận xét thành công',
             snackPosition: SnackPosition.TOP,
-            colorText: Colors.green,
+            colorText: Colors.white,
             backgroundColor: kPrimaryColor,
             duration: const Duration(
               milliseconds: 800,
@@ -125,7 +125,30 @@ class _MultilineInputState extends State<MultilineInput> {
               ),
             ],
           ),
-          const SizedBox(height: 40),
+          image != null
+              ? Container(
+                  width: 100,
+                  height: 100,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 4,
+                          color: Theme.of(context).scaffoldBackgroundColor),
+                      boxShadow: [
+                        BoxShadow(
+                            spreadRadius: 2,
+                            blurRadius: 10,
+                            color: Colors.black.withOpacity(0.1),
+                            offset: const Offset(0, 10))
+                      ],
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.cover, image: FileImage(image!))),
+                )
+              : Container(
+                  width: 10,
+                  height: 10,
+                ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

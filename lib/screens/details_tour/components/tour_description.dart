@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
+import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/hotel_tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/review_tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
@@ -11,7 +12,7 @@ import 'package:intl/intl.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class TourDescription extends StatelessWidget {
+class TourDescription extends StatefulWidget {
   const TourDescription({
     Key? key,
     required this.tour,
@@ -22,12 +23,35 @@ class TourDescription extends StatelessWidget {
   final GestureTapCallback pressOnSeeMore;
 
   @override
+  State<TourDescription> createState() => _TourDescriptionState();
+}
+
+class _TourDescriptionState extends State<TourDescription> {
+  DateTime selectedDate = DateTime.now();
+
+  void selectDate() async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialEntryMode: DatePickerEntryMode.input,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final oCcy = NumberFormat("#,##0", "en_US");
+
     return SingleChildScrollView(
       child: Column(
         children: [
-          TourImages(tour: tour),
+          TourImages(tour: widget.tour),
           TopRoundedContainer(
             color: Colors.white,
             child: Column(
@@ -36,7 +60,7 @@ class TourDescription extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: getProportionateScreenWidth(20)),
                     child: Text(
-                      tour.name,
+                      widget.tour.name,
                       style: Theme.of(context).textTheme.headline6,
                     )),
                 const SizedBox(height: 5),
@@ -65,7 +89,7 @@ class TourDescription extends StatelessWidget {
                       left: getProportionateScreenWidth(20),
                       right: getProportionateScreenWidth(64)),
                   child: Text(
-                    tour.detail,
+                    widget.tour.detail,
                     maxLines: 3,
                   ),
                 ),
@@ -81,7 +105,7 @@ class TourDescription extends StatelessWidget {
           const HotelTour(),
           SizedBox(height: getProportionateScreenWidth(20)),
           kSmallDivider,
-          ReviewTour(tour: tour),
+          ReviewTour(tour: widget.tour),
           kSmallDivider,
           TopRoundedContainer(
             color: Colors.white,
@@ -89,46 +113,19 @@ class TourDescription extends StatelessWidget {
               padding: const EdgeInsets.all(9.0),
               child: Column(
                 children: [
-                  const Text('Cổng thanh toán'),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12, width: 1),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: ListTile(
-                      leading: SvgPicture.asset(
-                        "assets/images/paypal.svg",
-                        height: 40,
-                        width: 40,
-                      ),
-                      title: Text(
-                        "PAYPAL",
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle1!
-                            .copyWith(color: Colors.black),
-                      ),
-                    ),
+                  ElevatedButton.icon(
+                    onPressed: selectDate,
+                    icon:
+                        Icon(Icons.date_range), //icon data for elevated button
+                    label: const Text("Chọn ngày đi"), //label text
+                    style: ElevatedButton.styleFrom(
+                        primary: kPrimaryColor //elevated btton background color
+                        ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12, width: 1),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: ListTile(
-                      leading: Image.asset(
-                        "assets/images/vnpay_qr.png",
-                        height: 40,
-                        width: 40,
-                      ),
-                      title: Text(
-                        "VNPAY",
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle1!
-                            .copyWith(color: Colors.black),
-                      ),
-                    ),
+                  Text(
+                    "${selectedDate.toLocal()}".split(' ')[0],
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(
@@ -138,7 +135,7 @@ class TourDescription extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            Text(oCcy.format(tour.payment),
+                            Text(oCcy.format(widget.tour.payment),
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20)),
                             const Text(
@@ -149,12 +146,14 @@ class TourDescription extends StatelessWidget {
                         ),
                         SizedBox(
                             height: 55,
-                            width: 170,
+                            width: 150,
                             child: DefaultButton(
                               text: 'Đặt ngay',
                               press: () => Navigator.of(context).push(
                                   MaterialPageRoute(
-                                      builder: (context) => Payment())),
+                                      builder: (context) => Payment(
+                                          id: widget.tour.id,
+                                          date: selectedDate))),
                             ))
                       ],
                     ),

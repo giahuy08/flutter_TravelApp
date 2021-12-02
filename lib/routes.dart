@@ -36,4 +36,5 @@ final Map<String, WidgetBuilder> routes = {
   NotificationList.routeName: (context) => const NotificationList(),
   NotificationPage.routeName: (context) => const NotificationPage(),
   DiscountList.routeName: (context) => const DiscountList(),
+  // PaymentMethodScreen.routeName: (context) => const PaymentMethodScreen(),
 };
