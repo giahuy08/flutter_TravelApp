@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -25,17 +24,18 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Image.asset('assets/images/airline.png',
-            height: getProportionateScreenHeight(150)),
-        const SizedBox(height: 30.0),
-        const SpinKitSpinningLines(
-          color: Colors.red,
-        )
-      ],
-    ));
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Image.asset('assets/images/airline.png',
+              height: getProportionateScreenHeight(150)),
+          const SizedBox(height: 30.0),
+          const SpinKitSpinningLines(
+            color: Colors.red,
+          )
+        ],
+      ),
+    );
   }
 }

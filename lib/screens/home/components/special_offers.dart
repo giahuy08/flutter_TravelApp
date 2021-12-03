@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/components/listtours_argument.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
@@ -54,66 +55,81 @@ class _SpecialOffersState extends State<SpecialOffers> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(
-            title: "Có thể bạn quan tâm",
-            press: () {},
-          ),
-        ),
-        SizedBox(height: getProportionateScreenWidth(20)),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              SpecialOfferCard(
-                image: "assets/images/biendep.jpg",
-                category: "Biển Đảo",
-                numOfTours: _listSea.length,
-                press: () {
-                  if (_listSea.isEmpty) {
-                    Navigator.pushNamed(context, ErrorScreen.routeName);
-                  } else {
-                    Navigator.pushNamed(context, ListToursScreen.routeName,
-                        arguments: ListToursArguments(tours: _listSea));
-                  }
-                },
-              ),
-              SpecialOfferCard(
-                image: "assets/images/vungcao.jpg",
-                category: "Vùng Cao",
-                numOfTours: _listHighLand.length,
-                press: () {
-                  if (_listHighLand.isEmpty) {
-                    Navigator.pushNamed(context, ErrorScreen.routeName);
-                  } else {
-                    Navigator.pushNamed(context, ListToursScreen.routeName,
-                        arguments: ListToursArguments(tours: _listHighLand));
-                  }
-                },
-              ),
-              SpecialOfferCard(
-                image: "assets/images/dulichkhac.jpg",
-                category: "Khác",
-                numOfTours: _listOthers.length,
-                press: () {
-                  if (_listOthers.isEmpty) {
-                    Navigator.pushNamed(context, ErrorScreen.routeName);
-                  } else {
-                    Navigator.pushNamed(context, ListToursScreen.routeName,
-                        arguments: ListToursArguments(tours: _listOthers));
-                  }
-                },
-              ),
-              SizedBox(width: getProportionateScreenWidth(20)),
+    return _listSea.isEmpty
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const <Widget>[
+              SpinKitSpinningLines(
+                color: Colors.red,
+              )
             ],
-          ),
-        ),
-      ],
-    );
+          )
+        : Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(20)),
+                child: SectionTitle(
+                  title: "Có thể bạn quan tâm",
+                  press: () {},
+                ),
+              ),
+              SizedBox(height: getProportionateScreenWidth(20)),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SpecialOfferCard(
+                      image: "assets/images/biendep.jpg",
+                      category: "Biển Đảo",
+                      numOfTours: _listSea.length,
+                      press: () {
+                        if (_listSea.isEmpty) {
+                          Navigator.pushNamed(context, ErrorScreen.routeName);
+                        } else {
+                          Navigator.pushNamed(
+                              context, ListToursScreen.routeName,
+                              arguments: ListToursArguments(tours: _listSea));
+                        }
+                      },
+                    ),
+                    SpecialOfferCard(
+                      image: "assets/images/vungcao.jpg",
+                      category: "Vùng Cao",
+                      numOfTours: _listHighLand.length,
+                      press: () {
+                        if (_listHighLand.isEmpty) {
+                          Navigator.pushNamed(context, ErrorScreen.routeName);
+                        } else {
+                          Navigator.pushNamed(
+                              context, ListToursScreen.routeName,
+                              arguments:
+                                  ListToursArguments(tours: _listHighLand));
+                        }
+                      },
+                    ),
+                    SpecialOfferCard(
+                      image: "assets/images/dulichkhac.jpg",
+                      category: "Khác",
+                      numOfTours: _listOthers.length,
+                      press: () {
+                        if (_listOthers.isEmpty) {
+                          Navigator.pushNamed(context, ErrorScreen.routeName);
+                        } else {
+                          Navigator.pushNamed(
+                              context, ListToursScreen.routeName,
+                              arguments:
+                                  ListToursArguments(tours: _listOthers));
+                        }
+                      },
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(20)),
+                  ],
+                ),
+              ),
+            ],
+          );
   }
 }
 

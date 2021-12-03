@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:flutter_travelapp/models/discount.dart';
 import 'package:flutter_travelapp/repository/discount_repository.dart';
@@ -41,52 +42,65 @@ class _DiscountBannerState extends State<DiscountBanner> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(
-            title: "Ưu đãi hấp dẫn",
-            press: () => Navigator.pushNamed(context, DiscountList.routeName),
-          ),
-        ),
-        SizedBox(height: getProportionateScreenWidth(20)),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ...List.generate(
-                _listDiscount.length,
-                (index) {
-                  if (_listDiscount[index] != null) {
-                    return DiscountBannerCard(
-                      title: _listDiscount[index]['code'],
-                      discount: _listDiscount[index]['discount'].toString(),
-                      tourName: _listDiscount[index]['nameTour'].toString(),
-                      press: () {},
-                    );
-                  }
-                  return const SizedBox
-                      .shrink(); // here by default width and height is 0
-                },
-              ),
-              // DiscountBannerCard(
-              //   title: 'Nha Trang, Đà Lạt',
-              //   discount: 'Giảm giá 25%',
-              //   press: () {},
-              // ),
-              // DiscountBannerCard(
-              //   title: 'Vũng Tàu, Mũi Né',
-              //   discount: 'Giảm giá 10%',
-              //   press: () {},
-              // ),
-              SizedBox(width: getProportionateScreenWidth(20)),
+    return _listDiscount.isEmpty
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const <Widget>[
+              SpinKitSpinningLines(
+                color: Colors.red,
+              )
             ],
-          ),
-        ),
-      ],
-    );
+          )
+        : Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(20)),
+                child: SectionTitle(
+                  title: "Ưu đãi hấp dẫn",
+                  press: () =>
+                      Navigator.pushNamed(context, DiscountList.routeName),
+                ),
+              ),
+              SizedBox(height: getProportionateScreenWidth(20)),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ...List.generate(
+                      _listDiscount.length,
+                      (index) {
+                        if (_listDiscount[index] != null) {
+                          return DiscountBannerCard(
+                            title: _listDiscount[index]['code'],
+                            discount:
+                                _listDiscount[index]['discount'].toString(),
+                            tourName:
+                                _listDiscount[index]['nameTour'].toString(),
+                            press: () {},
+                          );
+                        }
+                        return const SizedBox
+                            .shrink(); // here by default width and height is 0
+                      },
+                    ),
+                    // DiscountBannerCard(
+                    //   title: 'Nha Trang, Đà Lạt',
+                    //   discount: 'Giảm giá 25%',
+                    //   press: () {},
+                    // ),
+                    // DiscountBannerCard(
+                    //   title: 'Vũng Tàu, Mũi Né',
+                    //   discount: 'Giảm giá 10%',
+                    //   press: () {},
+                    // ),
+                    SizedBox(width: getProportionateScreenWidth(20)),
+                  ],
+                ),
+              ),
+            ],
+          );
   }
 }
 

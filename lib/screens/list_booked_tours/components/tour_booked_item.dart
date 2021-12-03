@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/booktour.dart';
@@ -53,11 +54,20 @@ class _TourBookedItemState extends State<TourBookedItem> {
     return Column(
       children: [
         _listBookTour.isEmpty
-            ? Container(
-                padding: EdgeInsets.all(getProportionateScreenHeight(12)),
-                height: 55.h,
-                width: 100.w,
-                child: const CircularProgressIndicator())
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(height: 10.h),
+                  Image.asset('assets/images/airline.png',
+                      width: getProportionateScreenHeight(50.w),
+                      height: getProportionateScreenHeight(20.h)),
+                  SizedBox(height: 5.h),
+                  const SpinKitSpinningLines(
+                    color: Colors.red,
+                  )
+                ],
+              )
             : Expanded(
                 child: ListView.builder(
                     physics: const BouncingScrollPhysics(),

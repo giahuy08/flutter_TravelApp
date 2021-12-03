@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
@@ -174,10 +175,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
                 labelemail == ""
-                    ? SizedBox(
-                        height: 50.h,
-                        width: 25.w,
-                        child: const CircularProgressIndicator())
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(height: 10.h),
+                          Image.asset('assets/images/airline.png',
+                              width: getProportionateScreenHeight(50.w),
+                              height: getProportionateScreenHeight(20.h)),
+                          SizedBox(height: 5.h),
+                          const SpinKitSpinningLines(
+                            color: Colors.red,
+                          )
+                        ],
+                      )
                     : Column(
                         children: [
                           Center(

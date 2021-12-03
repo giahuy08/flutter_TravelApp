@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/components/listtours_argument.dart';
 
 import 'package:flutter_travelapp/components/product_card.dart';
@@ -45,44 +46,55 @@ class _PopularProductsState extends State<PopularProducts> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(
-            title: "Phổ biến nhất",
-            press: () => Navigator.pushNamed(context, ListToursScreen.routeName,
-                arguments: ListToursArguments(tours: _listTour)),
-          ),
-        ),
-        SizedBox(height: getProportionateScreenWidth(20)),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ...List.generate(
-                _listTour.length,
-                (index) {
-                  if (_listTour[index] != null) {
-                    return ProductCard(
-                      product: _listTour[index],
-                      press: () => Navigator.pushNamed(
-                          context, DetailScreen.routeName,
-                          arguments:
-                              ProductDetailsArguments(tour: _listTour[index])),
-                    );
-                  }
-                  return const SizedBox
-                      .shrink(); // here by default width and height is 0
-                },
-              ),
-              SizedBox(width: getProportionateScreenWidth(20)),
+    return _listTour.isEmpty
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const <Widget>[
+              SpinKitSpinningLines(
+                color: Colors.red,
+              )
             ],
-          ),
-        )
-      ],
-    );
+          )
+        : Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(20)),
+                child: SectionTitle(
+                  title: "Phổ biến nhất",
+                  press: () => Navigator.pushNamed(
+                      context, ListToursScreen.routeName,
+                      arguments: ListToursArguments(tours: _listTour)),
+                ),
+              ),
+              SizedBox(height: getProportionateScreenWidth(20)),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ...List.generate(
+                      _listTour.length,
+                      (index) {
+                        if (_listTour[index] != null) {
+                          return ProductCard(
+                            product: _listTour[index],
+                            press: () => Navigator.pushNamed(
+                                context, DetailScreen.routeName,
+                                arguments: ProductDetailsArguments(
+                                    tour: _listTour[index])),
+                          );
+                        }
+                        return const SizedBox
+                            .shrink(); // here by default width and height is 0
+                      },
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(20)),
+                  ],
+                ),
+              )
+            ],
+          );
   }
 }
 
