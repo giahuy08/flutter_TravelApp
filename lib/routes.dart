@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:flutter_travelapp/screens/discount_list/discount_list.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
@@ -16,7 +17,7 @@ import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter_travelapp/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
-import 'package:flutter_travelapp/success/success.dart';
+import 'package:flutter_travelapp/screens/success/success.dart';
 
 // All route
 final Map<String, WidgetBuilder> routes = {
@@ -38,5 +39,6 @@ final Map<String, WidgetBuilder> routes = {
   NotificationPage.routeName: (context) => const NotificationPage(),
   DiscountList.routeName: (context) => const DiscountList(),
   Success.routeName: (context) => const Success(),
+  BookedTourHomeScreen.routeName: (context) => const BookedTourHomeScreen(),
   // PaymentMethodScreen.routeName: (context) => const PaymentMethodScreen(),
 };

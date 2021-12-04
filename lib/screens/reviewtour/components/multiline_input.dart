@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/review_repository.dart';
+import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
 import 'package:flutter_travelapp/screens/reviewtour/components/rounded_button.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -60,7 +61,7 @@ class _MultilineInputState extends State<MultilineInput> {
           Future.delayed(const Duration(milliseconds: 800), () {
             // Here you can write your code
             setState(() {
-              Navigator.pushNamed(context, ListBookedTourScreen.routeName);
+              Navigator.pushNamed(context, BookedTourHomeScreen.routeName);
             });
           });
         }

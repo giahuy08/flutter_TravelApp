@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:flutter_travelapp/success/success.dart';
+import 'package:flutter_travelapp/screens/success/success.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PaymentMethodScreen extends StatefulWidget {

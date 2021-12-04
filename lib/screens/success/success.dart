@@ -4,7 +4,8 @@ import 'package:flutter_travelapp/components/empty_section.dart';
 import 'package:flutter_travelapp/components/sub_title.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
+
 
 class Success extends StatefulWidget {
   static String routeName = "/success";

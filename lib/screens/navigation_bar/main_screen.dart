@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
 import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/cart.dart';
@@ -24,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     const FeedScreen(),
     const MessageScreen(),
-    const ListBookedTourScreen(),
+    const BookedTourHomeScreen(),
     const ProfileScreen()
   ];
   @override

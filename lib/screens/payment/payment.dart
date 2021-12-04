@@ -9,7 +9,6 @@ import 'package:flutter_travelapp/repository/booktour_repository.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import 'package:flutter_travelapp/screens/payment/paymentmethod_screen.dart';
-import 'package:flutter_travelapp/success/success.dart';
 import 'package:get/get.dart';
 
 import '../../constants.dart';
