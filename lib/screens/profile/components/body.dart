@@ -3,7 +3,6 @@ import 'package:flutter_travelapp/models/user.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/change_password/change_password_screen.dart';
-import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
 import 'package:flutter_travelapp/screens/profile/components/edit_profile.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
 import '../../../constants.dart';

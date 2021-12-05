@@ -1,39 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
-import 'package:flutter_travelapp/models/booktour.dart';
-import 'package:flutter_travelapp/repository/booktour_repository.dart';
-import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
-import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
+import 'package:flutter_travelapp/models/enterprise.dart';
+import 'package:flutter_travelapp/repository/enterprise_repository.dart';
 import 'package:sizer/sizer.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import '../../../size_config.dart';
 import 'package:intl/intl.dart';
 
-class TourBookedItem extends StatefulWidget {
-  const TourBookedItem({Key? key}) : super(key: key);
+class EnterpriseItem extends StatefulWidget {
+  const EnterpriseItem({Key? key}) : super(key: key);
 
   @override
-  _TourBookedItemState createState() => _TourBookedItemState();
+  _EnterpriseItemState createState() => _EnterpriseItemState();
 }
 
-class _TourBookedItemState extends State<TourBookedItem> {
-  List<dynamic> _listBookTour = [];
+class _EnterpriseItemState extends State<EnterpriseItem> {
+  List<EnterpriseModel> _listEnterprise = [];
   final oCcy = NumberFormat("#,##0", "en_US");
 
   //get kPrimaryColor => null;
 
   initialController() {
-    _listBookTour = [];
+    _listEnterprise = [];
   }
 
   @override
   void initState() {
     super.initState();
-    getListBookTour();
+    getListEnterprise();
   }
 
   @override
@@ -41,11 +36,11 @@ class _TourBookedItemState extends State<TourBookedItem> {
     super.dispose();
   }
 
-  void getListBookTour() async {
-    List<BookTourModel> tours =
-        await BookTourRepository().getUserBookTour('1', '5');
+  void getListEnterprise() async {
+    List<EnterpriseModel> listenterprise =
+        await EnterpriseRepository().getListEnterprise();
     setState(() {
-      _listBookTour.addAll(tours);
+      _listEnterprise.addAll(listenterprise);
     });
   }
 
@@ -53,7 +48,7 @@ class _TourBookedItemState extends State<TourBookedItem> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _listBookTour.isEmpty
+        _listEnterprise.isEmpty
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,15 +66,11 @@ class _TourBookedItemState extends State<TourBookedItem> {
             : Expanded(
                 child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: _listBookTour.length,
+                    itemCount: _listEnterprise.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         child: _buildItem(context, index),
-                        onTap: () {
-                          Navigator.pushNamed(context, ReviewScreen.routeName,
-                              arguments: ProductDetailsArguments(
-                                  tour: _listBookTour[index]));
-                        },
+                        onTap: () {},
                       );
                     })),
       ],
@@ -91,7 +82,7 @@ class _TourBookedItemState extends State<TourBookedItem> {
       padding: const EdgeInsets.all(8.0),
       child: Container(
           padding: EdgeInsets.all(getProportionateScreenHeight(12)),
-          height: getProportionateScreenHeight(250),
+          height: getProportionateScreenHeight(25.h),
           child: Stack(children: <Widget>[
             Align(
               alignment: Alignment.centerRight,
@@ -100,7 +91,7 @@ class _TourBookedItemState extends State<TourBookedItem> {
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     image: DecorationImage(
-                      image: NetworkImage(_listBookTour[index].imagesTour[0]),
+                      image: NetworkImage(_listEnterprise[index].logo),
                       fit: BoxFit.cover,
                     ),
                     boxShadow: const [
@@ -131,10 +122,10 @@ class _TourBookedItemState extends State<TourBookedItem> {
                           const Spacer(),
                           Container(
                             padding: const EdgeInsets.all(6),
-                            child: const Icon(
-                              Icons.directions,
+                            child: Icon(
+                              Icons.work_outline,
                               color: Colors.white,
-                              size: 20,
+                              size: 10.sp,
                             ),
                             decoration: const BoxDecoration(
                                 color: Colors.black38,
@@ -152,7 +143,7 @@ class _TourBookedItemState extends State<TourBookedItem> {
               alignment: Alignment.centerLeft,
               child: Container(
                 width: MediaQuery.of(context).size.width * .48,
-                height: 200,
+                height: 20.h,
                 padding: const EdgeInsets.all(12),
                 decoration: const BoxDecoration(
                     color: Colors.white,
@@ -164,26 +155,21 @@ class _TourBookedItemState extends State<TourBookedItem> {
                 child: Column(
                   children: <Widget>[
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         const Icon(
-                          Icons.attach_money_outlined,
-                          size: 18,
+                          Icons.group,
+                          size: 16,
                         ),
                         Text(
-                          oCcy.format(_listBookTour[index].finalpayment),
+                          _listEnterprise[index].name,
                           style:
                               const TextStyle(fontSize: 16, color: Colors.red),
                         ),
-                        const Text(' VNĐ',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red))
                       ],
                     ),
                     Text(
-                      _listBookTour[index].name,
+                      _listEnterprise[index].detail,
                       style: const TextStyle(
                           fontFamily: 'Muli',
                           color: Colors.black,
@@ -191,69 +177,30 @@ class _TourBookedItemState extends State<TourBookedItem> {
                           fontWeight: FontWeight.bold),
                       maxLines: 2,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        SmoothStarRating(
-                          borderColor: Colors.yellow,
-                          color: Colors.yellow,
-                          allowHalfRating: true,
-                          starCount: 5,
-                          size: 12,
-                          filledIconData: Icons.star,
-                          onRated: (v) {},
-                          isReadOnly: false,
-                          spacing: 4,
-                          rating: _listBookTour[index].star,
-                        ),
-                        Text(
-                          _listBookTour[index].star.toStringAsFixed(1) + " Sao",
-                          style: const TextStyle(
-                              color: Colors.black87, fontSize: 10),
-                        )
-                      ],
-                    ),
-                    Wrap(
-                      children: <Widget>[
-                        _listBookTour[index].status == 0
-                            ? const StatusCard(
-                                status: " Chờ xác nhận",
-                                color: Colors.amber,
-                                icon: Icons.access_alarm)
-                            : _listBookTour[index].status == 1
-                                ? const StatusCard(
-                                    status: " Đã đặt",
-                                    color: Colors.greenAccent,
-                                    icon: Icons.task_alt)
-                                : const StatusCard(
-                                    status: " Đã Hủy",
-                                    color: Colors.redAccent,
-                                    icon: Icons.cancel_outlined),
-                      ],
-                    ),
                     const Spacer(),
                     Wrap(
                       children: <Widget>[
                         Container(
-                          padding: const EdgeInsets.all(6),
+                          padding: const EdgeInsets.all(3),
                           margin: const EdgeInsets.only(bottom: 6, right: 6),
                           decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(50)),
                               color: kPrimaryColor),
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.place,
-                                color: Colors.white,
-                              ),
-                              Text(
-                                _listBookTour[index].place,
-                                style: const TextStyle(
-                                    fontSize: 8, color: Colors.white),
-                              ),
-                            ],
-                          ),
+                          child: _listEnterprise[index].type == 0
+                              ? const StatusCard(
+                                  status: " ENTERPRISE",
+                                  color: kPrimaryColor,
+                                  icon: Icons.business)
+                              : _listEnterprise[index].type == 1
+                                  ? const StatusCard(
+                                      status: " HOTEL",
+                                      color: kPrimaryColor,
+                                      icon: Icons.hotel)
+                                  : const StatusCard(
+                                      status: " RESTAURANT",
+                                      color: kPrimaryColor,
+                                      icon: Icons.restaurant),
                         )
                       ],
                     )
@@ -281,7 +228,6 @@ class StatusCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(2),
       margin: const EdgeInsets.only(top: 4, bottom: 8, right: 48),
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -290,12 +236,12 @@ class StatusCard extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: Colors.black,
+            color: Colors.white,
           ),
           Text(
             status,
             style: const TextStyle(
-                fontFamily: 'Muli', fontSize: 10, color: Colors.black),
+                fontFamily: 'Muli', fontSize: 10, color: Colors.white),
           ),
         ],
       ),

@@ -22,11 +22,13 @@ class ApiGateway {
   static const bookTour = 'booktour/bookTour';
   static const bookTourPayment = 'booktour/bookTourPayment';
 
-
   // Discount
   static const getAllDiscount = 'discount/getAllDiscount';
 
   //Review Tour
   static const getReviewOfTour = 'reviewtour/getReviewOfTour';
   static const createReviewTour = 'reviewtour/createReviewTour';
+
+  //Enterprise
+  static const getAllEnterprise = 'enterprise/getAllEnterprise';
 }

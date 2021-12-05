@@ -11,14 +11,14 @@ import 'bookedtour_app_theme.dart';
 class BookedTourListView extends StatelessWidget {
   const BookedTourListView(
       {Key? key,
-      this.hotelData,
+      this.bookedTourData,
       this.animationController,
       this.animation,
       this.callback})
       : super(key: key);
 
   final VoidCallback? callback;
-  final BookTourModel? hotelData;
+  final BookTourModel? bookedTourData;
   final AnimationController? animationController;
   final Animation<double>? animation;
 
@@ -59,7 +59,7 @@ class BookedTourListView extends StatelessWidget {
                             AspectRatio(
                               aspectRatio: 2,
                               child: Image.network(
-                                hotelData!.imagesTour[0],
+                                bookedTourData!.imagesTour[0],
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -71,103 +71,88 @@ class BookedTourListView extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(
-                                    child: Container(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 16, top: 8, bottom: 8),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              hotelData!.name,
-                                              textAlign: TextAlign.left,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 20,
-                                              ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 16, top: 8, bottom: 8),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            bookedTourData!.name,
+                                            textAlign: TextAlign.left,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 20,
                                             ),
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                bookedTourData!.place,
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.grey
+                                                        .withOpacity(0.8)),
+                                              ),
+                                              const SizedBox(
+                                                width: 4,
+                                              ),
+                                              const Icon(
+                                                FontAwesomeIcons.mapMarkerAlt,
+                                                size: 12,
+                                                color: kPrimaryColor,
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 4),
+                                            child: Row(
                                               children: <Widget>[
+                                                RatingBar(
+                                                  initialRating:
+                                                      bookedTourData!.star!,
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemSize: 24,
+                                                  ratingWidget: RatingWidget(
+                                                    full: const Icon(
+                                                      Icons.star_rate_rounded,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                    half: const Icon(
+                                                      Icons.star_half_rounded,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                    empty: const Icon(
+                                                      Icons.star_border_rounded,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                  ),
+                                                  itemPadding: EdgeInsets.zero,
+                                                  onRatingUpdate: (rating) {
+                                                    print(rating);
+                                                  },
+                                                ),
                                                 Text(
-                                                  hotelData!.place,
+                                                  ' ${bookedTourData!.star!} star',
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       color: Colors.grey
                                                           .withOpacity(0.8)),
                                                 ),
-                                                const SizedBox(
-                                                  width: 4,
-                                                ),
-                                                Icon(
-                                                  FontAwesomeIcons.mapMarkerAlt,
-                                                  size: 12,
-                                                  color: kPrimaryColor,
-                                                ),
-                                                // Expanded(
-                                                //   child: Text(
-                                                //     '${hotelData!.dist.toStringAsFixed(1)} km to city',
-                                                //     overflow:
-                                                //         TextOverflow.ellipsis,
-                                                //     style: TextStyle(
-                                                //         fontSize: 14,
-                                                //         color: Colors.grey
-                                                //             .withOpacity(0.8)),
-                                                //   ),
-                                                // ),
                                               ],
                                             ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.only(top: 4),
-                                              child: Row(
-                                                children: <Widget>[
-                                                  RatingBar(
-                                                    initialRating:
-                                                        hotelData!.star!,
-                                                    direction: Axis.horizontal,
-                                                    allowHalfRating: true,
-                                                    itemCount: 5,
-                                                    itemSize: 24,
-                                                    ratingWidget: RatingWidget(
-                                                      full: Icon(
-                                                        Icons.star_rate_rounded,
-                                                        color: kPrimaryColor,
-                                                      ),
-                                                      half: Icon(
-                                                        Icons.star_half_rounded,
-                                                        color: kPrimaryColor,
-                                                      ),
-                                                      empty: Icon(
-                                                        Icons
-                                                            .star_border_rounded,
-                                                        color: kPrimaryColor,
-                                                      ),
-                                                    ),
-                                                    itemPadding:
-                                                        EdgeInsets.zero,
-                                                    onRatingUpdate: (rating) {
-                                                      print(rating);
-                                                    },
-                                                  ),
-                                                  Text(
-                                                    ' ${hotelData!.star!} star',
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        color: Colors.grey
-                                                            .withOpacity(0.8)),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -181,9 +166,10 @@ class BookedTourListView extends StatelessWidget {
                                           CrossAxisAlignment.end,
                                       children: <Widget>[
                                         Text(
-                                          oCcy.format(hotelData!.finalpayment),
+                                          oCcy.format(
+                                              bookedTourData!.finalpayment),
                                           textAlign: TextAlign.left,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 20,
                                           ),
@@ -197,12 +183,12 @@ class BookedTourListView extends StatelessWidget {
                                         ),
                                         Row(
                                           children: <Widget>[
-                                            hotelData!.status == 0
+                                            bookedTourData!.status == 0
                                                 ? const StatusCard(
                                                     status: " AWAIT",
                                                     color: kPrimaryColor,
                                                     icon: Icons.access_alarm)
-                                                : hotelData!.status == 1
+                                                : bookedTourData!.status == 1
                                                     ? const StatusCard(
                                                         status: " BOOKED",
                                                         color: kPrimaryColor,
@@ -232,12 +218,11 @@ class BookedTourListView extends StatelessWidget {
                                 Radius.circular(32.0),
                               ),
                               onTap: () {},
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.favorite_border,
-                                  color: BookedTourAppTheme.buildLightTheme()
-                                      .primaryColor,
+                                  color: kPrimaryColor,
                                 ),
                               ),
                             ),
