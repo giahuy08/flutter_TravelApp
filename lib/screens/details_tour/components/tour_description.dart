@@ -28,6 +28,10 @@ class TourDescription extends StatefulWidget {
 
 class _TourDescriptionState extends State<TourDescription> {
   DateTime selectedDate = DateTime.now();
+  dynamic _enterprise;
+
+
+ 
 
   void selectDate() async {
     final DateTime? picked = await showDatePicker(
@@ -37,6 +41,7 @@ class _TourDescriptionState extends State<TourDescription> {
       firstDate: DateTime(2000),
       lastDate: DateTime(2025),
     );
+
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
@@ -94,6 +99,7 @@ class _TourDescriptionState extends State<TourDescription> {
                   ),
                 ),
                 SizedBox(height: getProportionateScreenWidth(20)),
+               
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
