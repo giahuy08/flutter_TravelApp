@@ -62,7 +62,7 @@ class _PopularProductsState extends State<PopularProducts> {
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
                 child: SectionTitle(
-                  title: "Phổ biến nhất",
+                  title: "Chuyến du lịch mới",
                   press: () => Navigator.pushNamed(
                       context, ListToursScreen.routeName,
                       arguments: ListToursArguments(tours: _listTour)),

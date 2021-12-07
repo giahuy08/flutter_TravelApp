@@ -4,7 +4,6 @@ import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
-import 'package:flutter_travelapp/screens/otp/otp_screen.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/snackbar/snack.dart';

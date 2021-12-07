@@ -15,7 +15,6 @@ class PaymentMethodScreen extends StatefulWidget {
 }
 
 class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
-  final _key = UniqueKey();
 
   @override
   Widget build(BuildContext context) {

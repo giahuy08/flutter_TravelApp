@@ -26,7 +26,7 @@ class BookedTourHomeScreen extends StatefulWidget {
 class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<dynamic> _listBookTour = [];
+  final List<dynamic> _listBookTour = [];
   final oCcy = NumberFormat("#,##0", "en_US");
   final ScrollController _scrollController = ScrollController();
 
@@ -149,7 +149,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                                             arguments: ProductDetailsArguments(
                                                 tour: _listBookTour[index]));
                                       },
-                                      hotelData: _listBookTour[index],
+                                      bookedTourData: _listBookTour[index],
                                       animation: animation,
                                       animationController: animationController!,
                                     );
@@ -209,7 +209,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                               arguments: ProductDetailsArguments(
                                   tour: _listBookTour[index]));
                         },
-                        hotelData: _listBookTour[index],
+                        bookedTourData: _listBookTour[index],
                         animation: animation,
                         animationController: animationController!,
                       );
@@ -238,7 +238,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
       bookedTourListViews.add(
         BookedTourListView(
           callback: () {},
-          hotelData: _listBookTour[i],
+          bookedTourData: _listBookTour[i],
           animation: animation,
           animationController: animationController!,
         ),

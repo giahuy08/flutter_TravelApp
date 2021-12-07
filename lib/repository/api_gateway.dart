@@ -29,6 +29,6 @@ class ApiGateway {
   static const getReviewOfTour = 'reviewtour/getReviewOfTour';
   static const createReviewTour = 'reviewtour/createReviewTour';
 
-  //Enterpise
-  static const getOneEnterprise = 'enterprise/getOneEnterprise';
+  //Enterprise
+  static const getAllEnterprise = 'enterprise/getAllEnterprise';
 }

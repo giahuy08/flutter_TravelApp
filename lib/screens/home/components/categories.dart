@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
+import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 class Categories extends StatelessWidget {
@@ -8,13 +9,21 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/images/tour.png", "text": "Du lịch"},
+      {
+        "icon": "assets/images/tour.png",
+        "text": "Du lịch",
+        "press": BookedTourHomeScreen.routeName
+      },
       {
         "icon": "assets/images/hotelbuilding.png",
         "text": "Khách sạn",
-        "press": BookedTourHomeScreen.routeName
+        "press": ListEnterpriseScreen.routeName
       },
-      {"icon": "assets/images/restaurant.png", "text": "Nhà hàng"},
+      {
+        "icon": "assets/images/restaurant.png",
+        "text": "Nhà hàng",
+        "press": ListEnterpriseScreen.routeName
+      },
       {"icon": "assets/images/vehicles.png", "text": "Phương tiện"},
       {"icon": "assets/images/more.png", "text": "Khác"},
     ];

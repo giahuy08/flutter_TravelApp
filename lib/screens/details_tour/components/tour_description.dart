@@ -28,10 +28,8 @@ class TourDescription extends StatefulWidget {
 
 class _TourDescriptionState extends State<TourDescription> {
   DateTime selectedDate = DateTime.now();
-  dynamic _enterprise;
-
-
- 
+  late String discount = '';
+  final List<String> errors = [];
 
   void selectDate() async {
     final DateTime? picked = await showDatePicker(
@@ -99,7 +97,6 @@ class _TourDescriptionState extends State<TourDescription> {
                   ),
                 ),
                 SizedBox(height: getProportionateScreenWidth(20)),
-               
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -121,9 +118,9 @@ class _TourDescriptionState extends State<TourDescription> {
                 children: [
                   ElevatedButton.icon(
                     onPressed: selectDate,
-                    icon:
-                        Icon(Icons.date_range), //icon data for elevated button
-                    label: const Text("Chọn ngày đi"), //label text
+                    icon: const Icon(
+                        Icons.date_range), //icon data for elevated button
+                    label: const Text("Chọn ngày khởi hành"), //label text
                     style: ElevatedButton.styleFrom(
                         primary: kPrimaryColor //elevated btton background color
                         ),
@@ -132,6 +129,11 @@ class _TourDescriptionState extends State<TourDescription> {
                     "${selectedDate.toLocal()}".split(' ')[0],
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 5),
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: buildCodeFormField(),
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(
@@ -159,6 +161,7 @@ class _TourDescriptionState extends State<TourDescription> {
                                   MaterialPageRoute(
                                       builder: (context) => Payment(
                                           id: widget.tour.id,
+                                          codediscount: discount,
                                           date: selectedDate))),
                             ))
                       ],
@@ -171,5 +174,25 @@ class _TourDescriptionState extends State<TourDescription> {
         ],
       ),
     );
+  }
+
+  TextFormField buildCodeFormField() {
+    return TextFormField(
+        style: const TextStyle(fontSize: 15),
+        textCapitalization: TextCapitalization.characters,
+        keyboardType: TextInputType.text,
+        onSaved: (newValue) => discount = newValue!,
+        onChanged: (value) {
+          discount = value;
+          return;
+        },
+        decoration: InputDecoration(
+            hintText: "Mã giảm giá",
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            suffixIcon: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.wallet_giftcard),
+              color: kPrimaryColor,
+            )));
   }
 }

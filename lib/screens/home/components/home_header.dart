@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
-import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
 import 'package:flutter_travelapp/screens/notification/notification_list.dart';
 import 'package:flutter_travelapp/size_config.dart';
 

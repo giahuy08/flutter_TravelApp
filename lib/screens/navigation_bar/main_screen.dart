@@ -3,8 +3,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
-import 'package:flutter_travelapp/screens/list_booked_tours/listbooked_screen.dart';
-import 'package:flutter_travelapp/screens/navigation_bar/cart.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/message.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
