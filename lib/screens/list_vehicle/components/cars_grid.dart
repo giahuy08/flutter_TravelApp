@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_travelapp/models/cars.dart';
 import 'package:flutter_travelapp/models/vehicle.dart';
 import 'package:flutter_travelapp/repository/vehicle_repository.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_app_theme.dart';
@@ -111,7 +110,7 @@ class _CarsGridState extends State<CarsGrid> {
               ),
             ),
             gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           );
   }
 }
