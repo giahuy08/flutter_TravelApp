@@ -6,6 +6,7 @@ import 'package:flutter_travelapp/screens/error/error_screen.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
 import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
+import 'package:flutter_travelapp/screens/list_vehicle/cars_overview.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import 'package:flutter_travelapp/screens/login_success/login_success_screen.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
@@ -40,5 +41,6 @@ final Map<String, WidgetBuilder> routes = {
   Success.routeName: (context) => const Success(),
   BookedTourHomeScreen.routeName: (context) => const BookedTourHomeScreen(),
   ListEnterpriseScreen.routeName: (context) => const ListEnterpriseScreen(),
+  CarsOverviewScreen.routeName: (context) => const CarsOverviewScreen(),
   // PaymentMethodScreen.routeName: (context) => const PaymentMethodScreen(),
 };

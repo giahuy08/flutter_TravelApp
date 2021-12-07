@@ -31,4 +31,7 @@ class ApiGateway {
 
   //Enterprise
   static const getAllEnterprise = 'enterprise/getAllEnterprise';
+
+  //Vehicle
+  static const getAllVehicle = 'vehicle/getAllVehicle';
 }

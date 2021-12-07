@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
+import 'package:flutter_travelapp/screens/list_vehicle/cars_overview.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 class Categories extends StatelessWidget {
@@ -24,7 +25,11 @@ class Categories extends StatelessWidget {
         "text": "Nhà hàng",
         "press": ListEnterpriseScreen.routeName
       },
-      {"icon": "assets/images/vehicles.png", "text": "Phương tiện"},
+      {
+        "icon": "assets/images/vehicles.png",
+        "text": "Phương tiện",
+        "press": CarsOverviewScreen.routeName
+      },
       {"icon": "assets/images/more.png", "text": "Khác"},
     ];
     return Padding(
