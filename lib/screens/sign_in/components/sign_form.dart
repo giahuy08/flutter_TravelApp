@@ -7,7 +7,6 @@ import 'package:flutter_travelapp/models/user.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
-import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import 'package:flutter_travelapp/screens/login_success/login_success_screen.dart';
 import 'package:get/get.dart';
 import '../../../size_config.dart';

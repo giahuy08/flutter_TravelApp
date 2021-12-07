@@ -26,7 +26,7 @@ class BookedTourHomeScreen extends StatefulWidget {
 class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<dynamic> _listBookTour = [];
+  final List<dynamic> _listBookTour = [];
   final oCcy = NumberFormat("#,##0", "en_US");
   final ScrollController _scrollController = ScrollController();
 

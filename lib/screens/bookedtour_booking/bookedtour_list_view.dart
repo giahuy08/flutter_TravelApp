@@ -143,7 +143,7 @@ class BookedTourListView extends StatelessWidget {
                                                   },
                                                 ),
                                                 Text(
-                                                  ' ${bookedTourData!.star!} star',
+                                                  ' ${bookedTourData!.star!.toStringAsFixed(1)} star',
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       color: Colors.grey
