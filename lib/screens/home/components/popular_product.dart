@@ -21,9 +21,11 @@ class PopularProducts extends StatefulWidget {
 
 class _PopularProductsState extends State<PopularProducts> {
   List<dynamic> _listTour = [];
+  List<dynamic> _listTourMore = [];
 
   initialController() {
     _listTour = [];
+    _listTourMore = [];
   }
 
   @override
@@ -39,14 +41,16 @@ class _PopularProductsState extends State<PopularProducts> {
 
   void getListTour() async {
     List<TourModel> tours = await TourRepository().getListTour(1, 5);
+    List<TourModel> toursMore = await TourRepository().getListTour(1, 15);
     setState(() {
       _listTour.addAll(tours);
+      _listTourMore.addAll(toursMore);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return _listTour.isEmpty
+    return _listTourMore.isEmpty
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,7 +69,7 @@ class _PopularProductsState extends State<PopularProducts> {
                   title: "Chuyến du lịch mới",
                   press: () => Navigator.pushNamed(
                       context, ListToursScreen.routeName,
-                      arguments: ListToursArguments(tours: _listTour)),
+                      arguments: ListToursArguments(tours: _listTourMore)),
                 ),
               ),
               SizedBox(height: getProportionateScreenWidth(20)),

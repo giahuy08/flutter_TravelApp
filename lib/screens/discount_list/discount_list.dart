@@ -5,7 +5,6 @@ import 'package:flutter_travelapp/components/default_backbutton.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/discount_repository.dart';
-import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:sizer/sizer.dart';
 
@@ -29,14 +28,12 @@ class _DiscountListState extends State<DiscountList> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getListDiscount();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -45,10 +42,6 @@ class _DiscountListState extends State<DiscountList> {
 
     setState(() {
       _listDiscount.addAll(discounts);
-      // for (i = 0; i < discounts.length; i++) {
-      //   dynamic tour = TourRepository().getOneTour(_listDiscount[i]['idTour']);
-      //   _listTour.add(tour);
-      // }
     });
   }
 
@@ -89,8 +82,10 @@ class _DiscountListState extends State<DiscountList> {
                   onTap: () async => {
                     // tour = await TourRepository()
                     //     .getOneTour(_listDiscount[index]['idTour']),
-                    // Navigator.pushNamed(context, DetailScreen.routeName,
-                    //     arguments: ProductDetailsArguments(tour: tour)),
+                    Navigator.pushNamed(context, DetailScreen.routeName,
+                        arguments: ProductDetailsArguments(
+                            tour: TourModel.fromMap(
+                                _listDiscount[index]['tour']))),
                   },
                 );
               },

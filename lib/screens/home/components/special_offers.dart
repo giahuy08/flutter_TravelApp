@@ -22,11 +22,13 @@ class _SpecialOffersState extends State<SpecialOffers> {
   List<dynamic> _listOthers = [];
   List<dynamic> _listSea = [];
   List<dynamic> _listHighLand = [];
+  List<dynamic> _listTourMore = [];
 
   initialController() {
     _listOthers = [];
     _listSea = [];
     _listHighLand = [];
+    _listTourMore = [];
   }
 
   @override
@@ -46,16 +48,18 @@ class _SpecialOffersState extends State<SpecialOffers> {
     List<TourModel> listSea = await TourRepository().findAllTourByCategory(1);
     List<TourModel> listHighLand =
         await TourRepository().findAllTourByCategory(2);
+    List<TourModel> toursMore = await TourRepository().getListTour(1, 15);
     setState(() {
       _listOthers.addAll(listOthers);
       _listSea.addAll(listSea);
       _listHighLand.addAll(listHighLand);
+      _listTourMore.addAll(toursMore);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return _listSea.isEmpty
+    return _listTourMore.isEmpty
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,7 +76,9 @@ class _SpecialOffersState extends State<SpecialOffers> {
                     horizontal: getProportionateScreenWidth(20)),
                 child: SectionTitle(
                   title: "Có thể bạn quan tâm",
-                  press: () {},
+                  press: () => Navigator.pushNamed(
+                      context, ListToursScreen.routeName,
+                      arguments: ListToursArguments(tours: _listTourMore)),
                 ),
               ),
               SizedBox(height: getProportionateScreenWidth(20)),

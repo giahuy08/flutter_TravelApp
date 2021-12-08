@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
-import 'package:flutter_travelapp/models/discount.dart';
+import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/discount_repository.dart';
+import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:flutter_travelapp/screens/discount_list/discount_list.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
@@ -35,6 +36,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
 
   void getListDiscount() async {
     List<dynamic> discounts = await DiscountRepository().getListDiscount();
+
     setState(() {
       _listDiscount.addAll(discounts);
     });
@@ -78,23 +80,19 @@ class _DiscountBannerState extends State<DiscountBanner> {
                                 _listDiscount[index]['discount'].toString(),
                             tourName:
                                 _listDiscount[index]['nameTour'].toString(),
-                            press: () {},
+                            press: () => {
+                              Navigator.pushNamed(
+                                  context, DetailScreen.routeName,
+                                  arguments: ProductDetailsArguments(
+                                      tour: TourModel.fromMap(
+                                          _listDiscount[index]['tour']))),
+                            },
                           );
                         }
                         return const SizedBox
                             .shrink(); // here by default width and height is 0
                       },
                     ),
-                    // DiscountBannerCard(
-                    //   title: 'Nha Trang, Đà Lạt',
-                    //   discount: 'Giảm giá 25%',
-                    //   press: () {},
-                    // ),
-                    // DiscountBannerCard(
-                    //   title: 'Vũng Tàu, Mũi Né',
-                    //   discount: 'Giảm giá 10%',
-                    //   press: () {},
-                    // ),
                     SizedBox(width: getProportionateScreenWidth(20)),
                   ],
                 ),
