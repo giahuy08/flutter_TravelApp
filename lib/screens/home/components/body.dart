@@ -4,7 +4,7 @@ import 'package:flutter_travelapp/size_config.dart';
 import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
-import 'popular_product.dart';
+import 'popular_tour.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class Body extends StatelessWidget {
             const Categories(),
             const SpecialOffers(),
             SizedBox(height: getProportionateScreenWidth(30)),
-            const PopularProducts(),
+            const PopularTours(),
             SizedBox(height: getProportionateScreenWidth(30)),
           ],
         ),

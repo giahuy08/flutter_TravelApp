@@ -5,6 +5,7 @@ import 'package:flutter_travelapp/models/booktour.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/status_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:sizer/sizer.dart';
 
 import 'bookedtour_app_theme.dart';
 
@@ -155,6 +156,9 @@ class BookedTourListView extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+                                  ),
+                                  SizedBox(
+                                    width: 2.w,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(

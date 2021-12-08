@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelapp/models/tour.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:sizer/sizer.dart';
 import '../constants.dart';
 import '../size_config.dart';
 
-class ProductCard extends StatelessWidget {
-  const ProductCard({
+class TourCard extends StatelessWidget {
+  const TourCard({
     Key? key,
     this.width = 160,
     this.height = 260,
     this.aspectRetio = 1.02,
-    required this.product,
+    required this.tour,
     required this.press,
   }) : super(key: key);
 
   final double width, height, aspectRetio;
-  final TourModel product;
+  final TourModel tour;
   final GestureTapCallback press;
 
   @override
@@ -41,7 +43,7 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Image.network(
-                    product.imagesTour[0],
+                    tour.imagesTour[0],
                     width: MediaQuery.of(context).size.width,
                     fit: BoxFit.fill,
                   ),
@@ -49,20 +51,32 @@ class ProductCard extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                product.name,
+                tour.name,
                 style: const TextStyle(color: Colors.black),
                 maxLines: 2,
               ),
-              Text(
-                product.place,
-                style: const TextStyle(color: Colors.black),
-                maxLines: 1,
+              Row(
+                children: [
+                  Text(
+                    tour.place,
+                    style: TextStyle(color: Colors.grey.withOpacity(0.8)),
+                    maxLines: 1,
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  const Icon(
+                    FontAwesomeIcons.mapMarkerAlt,
+                    size: 12,
+                    color: kPrimaryColor,
+                  ),
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${oCcy.format(product.payment)} VNĐ",
+                    "${oCcy.format(tour.payment)} VNĐ",
                     style: TextStyle(
                       fontSize: getProportionateScreenWidth(13),
                       fontWeight: FontWeight.w600,
@@ -73,20 +87,24 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     onTap: () {},
                     child: Container(
-                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                      height: getProportionateScreenWidth(28),
-                      width: getProportionateScreenWidth(28),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 8.sp, vertical: 2.sp),
                       decoration: BoxDecoration(
-                        color: product.imagesTour[0].isNotEmpty
+                        color: (tour.star! > 3)
                             ? kPrimaryColor.withOpacity(0.15)
                             : kSecondaryColor.withOpacity(0.1),
-                        shape: BoxShape.circle,
+                        borderRadius: BorderRadius.circular(14),
+                        shape: BoxShape.rectangle,
                       ),
-                      child: SvgPicture.asset(
-                        "assets/icons/Heart Icon_2.svg",
-                        color: product.imagesTour[0].isNotEmpty
-                            ? const Color(0xFFFF4848)
-                            : const Color(0xFFDBDEE4),
+                      child: Row(
+                        children: [
+                          Text(
+                            tour.star!.toStringAsFixed(1),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(width: 5),
+                          SvgPicture.asset("assets/icons/Star Icon.svg")
+                        ],
                       ),
                     ),
                   ),

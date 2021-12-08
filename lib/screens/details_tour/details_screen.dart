@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/body.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/custom_app_bar.dart';
-import 'package:flutter_travelapp/screens/home/components/popular_product.dart';
 
 class DetailScreen extends StatelessWidget {
   static String routeName = "/details";

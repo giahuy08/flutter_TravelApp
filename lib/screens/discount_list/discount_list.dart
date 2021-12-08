@@ -79,7 +79,7 @@ class _DiscountListState extends State<DiscountList> {
                   tourname: _listDiscount[index]['nameTour'].toString(),
                   image: _listDiscount[index]['imageTour'].toString(),
                   enable: true,
-                  onTap: () async => {
+                  onTap: () => {
                     // tour = await TourRepository()
                     //     .getOneTour(_listDiscount[index]['idTour']),
                     Navigator.pushNamed(context, DetailScreen.routeName,

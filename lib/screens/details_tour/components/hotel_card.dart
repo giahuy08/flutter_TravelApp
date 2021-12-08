@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_travelapp/models/tour.dart';
-
 import '../../../constants.dart';
 import '../../../size_config.dart';
 

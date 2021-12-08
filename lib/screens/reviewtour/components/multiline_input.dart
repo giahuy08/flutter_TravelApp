@@ -11,6 +11,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/snackbar/snack.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sizer/sizer.dart';
 
 class MultilineInput extends StatefulWidget {
   final String idTour;
@@ -107,8 +108,8 @@ class _MultilineInputState extends State<MultilineInput> {
                 right: 0,
                 bottom: 0,
                 child: SizedBox(
-                  height: 46,
-                  width: 46,
+                  height: 5.h,
+                  width: 10.w,
                   child: TextButton(
                     style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(

@@ -159,8 +159,9 @@ class _EnterpriseItemState extends State<EnterpriseItem> {
                       children: <Widget>[
                         const Icon(
                           Icons.group,
-                          size: 16,
+                          size: 20,
                         ),
+                        SizedBox(width: 2.w),
                         Text(
                           _listEnterprise[index].name,
                           style:

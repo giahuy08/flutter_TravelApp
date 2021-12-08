@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_travelapp/components/default_button.dart';
+import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/models/tour.dart';
+import 'package:flutter_travelapp/repository/tour_repository.dart';
+import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
+import 'package:sizer/sizer.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'custom_app_bar.dart';
@@ -23,6 +29,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   late int selectedImage = 0;
   late double star = 0;
+  dynamic itemtour;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -36,8 +43,8 @@ class _BodyState extends State<Body> {
               children: [
                 CustomAppBar(rating: widget.tour.star),
                 SizedBox(
-                  height: 166,
-                  width: 166,
+                  height: 25.h,
+                  width: 50.w,
                   child: Stack(
                     fit: StackFit.expand,
                     clipBehavior: Clip.none,
@@ -62,7 +69,7 @@ class _BodyState extends State<Body> {
                   //"Nha Trang, Đà Lạc",
                   style: const TextStyle(
                       color: kTextColor,
-                      fontSize: 24,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: kDefaultPadding),
@@ -76,6 +83,21 @@ class _BodyState extends State<Body> {
                 const SizedBox(height: kDefaultPadding),
                 const Divider(
                   color: kTextColor,
+                ),
+                const SizedBox(height: kDefaultPadding),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: DefaultButton(
+                    text: "Xem chi tiết",
+                    press: () async => {
+                      itemtour =
+                          await TourRepository().getOneTour(widget.tour.idTour),
+                      Navigator.pushNamed(context, DetailScreen.routeName,
+                          arguments: ProductDetailsArguments(
+                              tour: TourModel.fromMap(itemtour))),
+                    },
+                  ),
                 ),
                 const SizedBox(height: kDefaultPadding),
                 const Text(

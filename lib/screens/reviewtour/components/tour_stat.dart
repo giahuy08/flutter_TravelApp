@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:intl/intl.dart';
+import 'package:sizer/sizer.dart';
 
 class TourStats extends StatelessWidget {
   const TourStats({
@@ -11,6 +13,7 @@ class TourStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final oCcy = NumberFormat("#,##0", "en_US");
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -18,9 +21,15 @@ class TourStats extends StatelessWidget {
           title: "Thời gian:",
           value: tour.time,
         ),
+        SizedBox(
+          width: 2.w,
+        ),
         TourInfo(
           title: "Giá: (VNĐ)",
-          value: tour.payment.toString(),
+          value: oCcy.format(tour.payment),
+        ),
+        SizedBox(
+          width: 2.w,
         ),
         TourInfo(
           title: "Địa điểm:",
@@ -50,25 +59,32 @@ class TourInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-              text: title + '\n',
-              style: const TextStyle(
-                color: kTextColor,
-                fontSize: 14,
-              )),
-          TextSpan(
-            text: value,
-            style: const TextStyle(
-              color: kTextColor,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                  text: title + '\n',
+                  style: const TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    color: kTextColor,
+                    fontSize: 12,
+                  )),
+              TextSpan(
+                text: value,
+                style: const TextStyle(
+                  overflow: TextOverflow.ellipsis,
+                  color: kTextColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
-
-import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/hotel_card.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';

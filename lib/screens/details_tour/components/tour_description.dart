@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
-import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/hotel_tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/review_tour.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
@@ -73,17 +72,17 @@ class _TourDescriptionState extends State<TourDescription> {
                     padding: const EdgeInsets.all(15),
                     width: 64,
                     decoration: BoxDecoration(
-                        // color: tour.isFavourite
-                        //     ? const Color(0xFFFFE6E6)
-                        //     : const Color(0xFFF5F6F9),
-                        color: const Color(0xFFF5F6F9),
+                        color: (widget.tour.star > 3)
+                            ? const Color(0xFFFFE6E6)
+                            : const Color(0xFFF5F6F9),
+                        //color: const Color(0xFFF5F6F9),
                         borderRadius: BorderRadius.circular(50)),
                     child: SvgPicture.asset(
                       "assets/icons/Heart Icon_2.svg",
-                      // color: tour.isFavourite
-                      //     ? const Color(0xFFFF4848)
-                      //     : const Color(0xFFDBDEE4),
-                      color: const Color(0xFFDBDEE4),
+                      color: (widget.tour.star > 3)
+                          ? const Color(0xFFFF4848)
+                          : const Color(0xFFDBDEE4),
+                      //color: const Color(0xFFDBDEE4),
                     ),
                   ),
                 ),
