@@ -32,6 +32,23 @@ class BookTourRepository {
     return [];
   }
 
+  Future<List<BookTourModel>> getUserBookTourByDate(dateStart, dateEnd) async {
+    Response response = await HandleApis().get(ApiGateway.getUserBookTourByDate,
+        'dateStart=$dateStart&dateEnd=$dateEnd');
+    print(response.statusCode);
+    print(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
+
+      if (jsonResponse.isEmpty) {
+        return [];
+      }
+
+      return jsonResponse.map((item) => BookTourModel.fromMap(item)).toList();
+    }
+    return [];
+  }
+
   Future<dynamic> bookTour(idTour, codediscount, date) async {
     var body = {"idTour": idTour, "startDate": date};
     var response = await HandleApis().post(ApiGateway.bookTour, body);
@@ -73,7 +90,7 @@ class BookTourRepository {
     }
 
     if (response.statusCode == 404) {
-           return jsonDecode(response.body)['message'];
+      return jsonDecode(response.body)['message'];
     }
     return null;
   }

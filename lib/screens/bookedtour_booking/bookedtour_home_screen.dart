@@ -26,7 +26,7 @@ class BookedTourHomeScreen extends StatefulWidget {
 class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  final List<dynamic> _listBookTour = [];
+  List<dynamic> _listBookTour = [];
   final oCcy = NumberFormat("#,##0", "en_US");
   final ScrollController _scrollController = ScrollController();
 
@@ -64,105 +64,101 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
   Widget build(BuildContext context) {
     return Theme(
       data: BookedTourAppTheme.buildLightTheme(),
-      child: Container(
-        child: Scaffold(
-          body: Stack(
-            children: <Widget>[
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                onTap: () {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                },
-                child: Column(
-                  children: <Widget>[
-                    getAppBarUI(),
-                    Expanded(
-                      child: NestedScrollView(
-                        controller: _scrollController,
-                        headerSliverBuilder:
-                            (BuildContext context, bool innerBoxIsScrolled) {
-                          return <Widget>[
-                            SliverList(
-                              delegate: SliverChildBuilderDelegate(
-                                  (BuildContext context, int index) {
-                                return Column(
-                                  children: <Widget>[
-                                    getSearchBarUI(),
-                                    getTimeDateUI(),
-                                  ],
-                                );
-                              }, childCount: 1),
-                            ),
-                            SliverPersistentHeader(
-                              pinned: true,
-                              floating: true,
-                              delegate: ContestTabHeader(
-                                getFilterBarUI(),
-                              ),
-                            ),
-                          ];
-                        },
-                        body: _listBookTour.isEmpty
-                            ? Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+      child: Scaffold(
+        body: Stack(
+          children: <Widget>[
+            InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              onTap: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+              },
+              child: Column(
+                children: <Widget>[
+                  getAppBarUI(),
+                  Expanded(
+                    child: NestedScrollView(
+                      controller: _scrollController,
+                      headerSliverBuilder:
+                          (BuildContext context, bool innerBoxIsScrolled) {
+                        return <Widget>[
+                          SliverList(
+                            delegate: SliverChildBuilderDelegate(
+                                (BuildContext context, int index) {
+                              return Column(
                                 children: <Widget>[
-                                  SizedBox(height: 10.h),
-                                  Image.asset('assets/images/airline.png',
-                                      width: getProportionateScreenHeight(50.w),
-                                      height:
-                                          getProportionateScreenHeight(20.h)),
-                                  SizedBox(height: 5.h),
-                                  const SpinKitSpinningLines(
-                                    color: Colors.red,
-                                  )
+                                  getSearchBarUI(),
+                                  getTimeDateUI(),
                                 ],
-                              )
-                            : Container(
-                                color: BookedTourAppTheme.buildLightTheme()
-                                    .backgroundColor,
-                                child: ListView.builder(
-                                  itemCount: _listBookTour.length,
-                                  padding: const EdgeInsets.only(top: 8),
-                                  scrollDirection: Axis.vertical,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    final int count = _listBookTour.length > 10
-                                        ? 10
-                                        : _listBookTour.length;
-                                    final Animation<double> animation =
-                                        Tween<double>(begin: 0.0, end: 1.0)
-                                            .animate(CurvedAnimation(
-                                                parent: animationController!,
-                                                curve: Interval(
-                                                    (1 / count) * index, 1.0,
-                                                    curve:
-                                                        Curves.fastOutSlowIn)));
-                                    animationController?.forward();
-                                    return BookedTourListView(
-                                      callback: () {
-                                        Navigator.pushNamed(
-                                            context, ReviewScreen.routeName,
-                                            arguments: ProductDetailsArguments(
-                                                tour: _listBookTour[index]));
-                                      },
-                                      bookedTourData: _listBookTour[index],
-                                      animation: animation,
-                                      animationController: animationController!,
-                                    );
-                                  },
-                                ),
+                              );
+                            }, childCount: 1),
+                          ),
+                          SliverPersistentHeader(
+                            pinned: true,
+                            floating: true,
+                            delegate: ContestTabHeader(
+                              getFilterBarUI(),
+                            ),
+                          ),
+                        ];
+                      },
+                      body: _listBookTour.isEmpty
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                SizedBox(height: 10.h),
+                                Image.asset('assets/images/airline.png',
+                                    width: getProportionateScreenHeight(50.w),
+                                    height: getProportionateScreenHeight(20.h)),
+                                SizedBox(height: 5.h),
+                                const SpinKitSpinningLines(
+                                  color: Colors.red,
+                                )
+                              ],
+                            )
+                          : Container(
+                              color: BookedTourAppTheme.buildLightTheme()
+                                  .backgroundColor,
+                              child: ListView.builder(
+                                itemCount: _listBookTour.length,
+                                padding: const EdgeInsets.only(top: 8),
+                                scrollDirection: Axis.vertical,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final int count = _listBookTour.length > 10
+                                      ? 10
+                                      : _listBookTour.length;
+                                  final Animation<double> animation =
+                                      Tween<double>(begin: 0.0, end: 1.0)
+                                          .animate(CurvedAnimation(
+                                              parent: animationController!,
+                                              curve: Interval(
+                                                  (1 / count) * index, 1.0,
+                                                  curve:
+                                                      Curves.fastOutSlowIn)));
+                                  animationController?.forward();
+                                  return BookedTourListView(
+                                    callback: () {
+                                      Navigator.pushNamed(
+                                          context, ReviewScreen.routeName,
+                                          arguments: ProductDetailsArguments(
+                                              tour: _listBookTour[index]));
+                                    },
+                                    bookedTourData: _listBookTour[index],
+                                    animation: animation,
+                                    animationController: animationController!,
+                                  );
+                                },
                               ),
-                      ),
-                    )
-                  ],
-                ),
+                            ),
+                    ),
+                  )
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -282,7 +278,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
+                          const Text(
                             'Chọn ngày',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -294,7 +290,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                           ),
                           Text(
                             '${DateFormat("dd, MMM").format(startDate)} - ${DateFormat("dd, MMM").format(endDate)}',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.normal,
                                 fontSize: 16,
                                 color: kPrimaryColor),
@@ -315,54 +311,54 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
               color: Colors.grey.withOpacity(0.8),
             ),
           ),
-          // Expanded(
-          //   child: Row(
-          //     children: <Widget>[
-          //       Material(
-          //         color: Colors.transparent,
-          //         child: InkWell(
-          //           focusColor: Colors.transparent,
-          //           highlightColor: Colors.transparent,
-          //           hoverColor: Colors.transparent,
-          //           splashColor: Colors.grey.withOpacity(0.2),
-          //           borderRadius: const BorderRadius.all(
-          //             Radius.circular(4.0),
-          //           ),
-          //           onTap: () {
-          //             FocusScope.of(context).requestFocus(FocusNode());
-          //           },
-          //           child: Padding(
-          //             padding: const EdgeInsets.only(
-          //                 left: 8, right: 8, top: 4, bottom: 4),
-          //             child: Column(
-          //               mainAxisAlignment: MainAxisAlignment.center,
-          //               crossAxisAlignment: CrossAxisAlignment.start,
-          //               children: <Widget>[
-          //                 Text(
-          //                   'Number of Rooms',
-          //                   style: TextStyle(
-          //                       fontWeight: FontWeight.w100,
-          //                       fontSize: 16,
-          //                       color: Colors.grey.withOpacity(0.8)),
-          //                 ),
-          //                 const SizedBox(
-          //                   height: 8,
-          //                 ),
-          //                 Text(
-          //                   '1 Room - 2 Adults',
-          //                   style: TextStyle(
-          //                     fontWeight: FontWeight.w100,
-          //                     fontSize: 16,
-          //                   ),
-          //                 ),
-          //               ],
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    focusColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    splashColor: Colors.grey.withOpacity(0.2),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(4.0),
+                    ),
+                    onTap: () {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 8, right: 8, top: 4, bottom: 4),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          const Text(
+                            'Các chuyến đi',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: kPrimaryColor),
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            _listBookTour.length.toString() + ' Booked Tour',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16,
+                                color: kPrimaryColor),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -398,7 +394,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                       fontSize: 18,
                     ),
                     cursorColor: kPrimaryColor,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Tìm kiếm...',
                     ),
@@ -473,9 +469,9 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      _listBookTour.length.toString() + ' Booked tour',
+                      _listBookTour.length.toString() + ' Booked Tour',
                       style: const TextStyle(
                         fontWeight: FontWeight.normal,
                         fontSize: 16,
@@ -529,14 +525,19 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
       context: context!,
       builder: (BuildContext context) => CalendarPopupView(
         barrierDismissible: true,
-        minimumDate: DateTime.now(),
+        //minimumDate: DateTime.now(),
         //  maximumDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 10),
         initialEndDate: endDate,
         initialStartDate: startDate,
-        onApplyClick: (DateTime startData, DateTime endData) {
+        onApplyClick: (DateTime startData, DateTime endData) async {
+          List<BookTourModel> tourByDate = await BookTourRepository()
+              .getUserBookTourByDate(startData, endData);
+
           setState(() {
             startDate = startData;
             endDate = endData;
+            _listBookTour.clear();
+            _listBookTour = tourByDate;
           });
         },
         onCancelClick: () {},
@@ -573,8 +574,8 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.arrow_back,
                       color: kPrimaryColor,
@@ -583,7 +584,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                 ),
               ),
             ),
-            Expanded(
+            const Expanded(
               child: Center(
                 child: Text(
                   'Booked Tour',
@@ -595,7 +596,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               width: AppBar().preferredSize.height + 40,
               height: AppBar().preferredSize.height,
               child: Row(
@@ -609,8 +610,8 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                         Radius.circular(32.0),
                       ),
                       onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.favorite_border,
                           color: kPrimaryColor,
@@ -625,8 +626,8 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                         Radius.circular(32.0),
                       ),
                       onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           FontAwesomeIcons.mapMarkerAlt,
                           color: kPrimaryColor,
