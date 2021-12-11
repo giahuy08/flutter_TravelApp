@@ -140,6 +140,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text("Cập nhật thông tin"),
+        centerTitle: true,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
         leading: IconButton(
@@ -168,11 +170,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
             },
             child: ListView(
               children: [
-                const Text(
-                  "Cập Nhật Thông Tin",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
-                  textAlign: TextAlign.center,
-                ),
+                // const Text(
+                //   "Cập Nhật Thông Tin",
+                //   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                //   textAlign: TextAlign.center,
+                // ),
                 SizedBox(height: getProportionateScreenHeight(20)),
                 labelemail == ""
                     ? Column(

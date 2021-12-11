@@ -3,6 +3,8 @@ import 'package:flutter_travelapp/models/user.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/change_password/change_password_screen.dart';
+import 'package:flutter_travelapp/screens/custom_screen/help_screen.dart';
+import 'package:flutter_travelapp/screens/custom_screen/invite_friend_screen.dart';
 import 'package:flutter_travelapp/screens/profile/components/edit_profile.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
 import '../../../constants.dart';
@@ -23,7 +25,7 @@ class _BodyState extends State<Body> {
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          ProfilePic(),
+          const ProfilePic(),
           const SizedBox(height: 20),
           ProfileMenu(
             text: "Tài khoản",
@@ -43,7 +45,7 @@ class _BodyState extends State<Body> {
             },
           ),
           ProfileMenu(
-            text: "Tour đã đặt",
+            text: "Chuyến đi đã đặt",
             icon: "assets/icons/order-history.svg",
             press: () => {
               Navigator.of(context).push(MaterialPageRoute(
@@ -52,14 +54,20 @@ class _BodyState extends State<Body> {
             },
           ),
           ProfileMenu(
-            text: "Cài đặt",
-            icon: "assets/icons/Settings.svg",
-            press: () {},
+            text: "Chia sẻ ứng dụng",
+            icon: "assets/icons/Conversation.svg",
+            press: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => const InviteFriend()))
+            },
           ),
           ProfileMenu(
             text: "Hỗ trợ khách hàng",
             icon: "assets/icons/Question mark.svg",
-            press: () {},
+            press: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => const HelpScreen()))
+            },
           ),
           ProfileMenu(
             text: "Đăng xuất",

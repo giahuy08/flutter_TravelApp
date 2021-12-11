@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:sizer/sizer.dart';
 import 'components/body.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -8,12 +8,17 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Hồ sơ cá nhân"),
-        centerTitle: true,
-      ),
-      body: const Body(),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(height: 5.h),
+        const Text(
+          "Hồ sơ cá nhân",
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+          textAlign: TextAlign.center,
+        ),
+        const Body(),
+      ],
     );
   }
 }

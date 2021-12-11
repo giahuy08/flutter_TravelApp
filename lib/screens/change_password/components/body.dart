@@ -16,10 +16,10 @@ class Body extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text(
-                "Đổi mật khẩu",
-                style: headingStyle,
-              ),
+              // Text(
+              //   "Đổi mật khẩu",
+              //   style: headingStyle,
+              // ),
               Image.asset('assets/images/airline.png',
                   height: getProportionateScreenHeight(80)),
               SizedBox(

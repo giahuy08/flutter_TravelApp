@@ -8,7 +8,8 @@ class ChangePasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Trở về"),
+        title: const Text("Đổi mật khẩu"),
+        centerTitle: true,
       ),
       body: const Body(),
     );

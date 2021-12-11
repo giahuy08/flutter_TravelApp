@@ -3,8 +3,8 @@ import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:http/http.dart' as http;
 
 // const root_url = "freshfoodbe.tk";
-const root_url = "app-travelbe.herokuapp.com";
-//const root_url = "be-travel.herokuapp.com";
+//const root_url = "app-travelbe.herokuapp.com";
+const root_url = "be-travel.herokuapp.com";
 //const root_url = "192.168.1.12:5000";
 //const root_url = "192.168.1.190:5000";
 
