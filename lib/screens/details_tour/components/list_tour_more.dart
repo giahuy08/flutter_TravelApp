@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/components/listtours_argument.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
-import 'package:flutter_travelapp/screens/details_tour/components/hotel_card.dart';
+import 'package:flutter_travelapp/screens/details_tour/components/tour_card.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
+import 'package:flutter_travelapp/screens/home/components/section_title.dart';
+import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import '../../../size_config.dart';
 
-class HotelTour extends StatefulWidget {
-  const HotelTour({Key? key}) : super(key: key);
+class ListTourMore extends StatefulWidget {
+  const ListTourMore({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _HotelTourState();
+  State<StatefulWidget> createState() => _ListTourMoreState();
 }
 
-class _HotelTourState extends State<HotelTour> {
+class _ListTourMoreState extends State<ListTourMore> {
   List<dynamic> _listTour = [];
+  List<dynamic> _listTourMore = [];
 
   initialController() {
     _listTour = [];
+    _listTourMore = [];
   }
 
   @override
@@ -32,8 +38,10 @@ class _HotelTourState extends State<HotelTour> {
 
   void getListTour() async {
     List<dynamic> tours = await TourRepository().getListTour(1, 5);
+    List<TourModel> toursMore = await TourRepository().getListTour(1, 15);
     setState(() {
       _listTour.addAll(tours);
+      _listTourMore.addAll(toursMore);
     });
   }
 
@@ -41,6 +49,15 @@ class _HotelTourState extends State<HotelTour> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          child: SectionTitle(
+            title: "Chuyến du lịch khác",
+            press: () => Navigator.pushNamed(context, ListToursScreen.routeName,
+                arguments: ListToursArguments(tours: _listTourMore)),
+          ),
+        ),
         SizedBox(height: getProportionateScreenWidth(10)),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -50,7 +67,7 @@ class _HotelTourState extends State<HotelTour> {
                 _listTour.length,
                 (index) {
                   if (_listTour[index] != null) {
-                    return HotelCard(
+                    return TourCard(
                       product: _listTour[index],
                       press: () => Navigator.pushNamed(
                           context, DetailScreen.routeName,

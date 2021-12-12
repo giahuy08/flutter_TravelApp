@@ -25,8 +25,8 @@ class TourRepository {
 
   Future<dynamic> getOneTour(id) async {
     Response response = await HandleApis().get(ApiGateway.getOneTour, 'id=$id');
-    print(response.statusCode);
-    print(response.body.toString());
+    // print(response.statusCode);
+    // print(response.body.toString());
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['data'];
     }

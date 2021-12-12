@@ -20,4 +20,16 @@ class VehicleRepository {
     }
     return [];
   }
+
+  Future<dynamic> getOneVehicle(id) async {
+    Response response =
+        await HandleApis().get(ApiGateway.getOneVehicle, 'id=$id');
+    // print(response.statusCode);
+    // print(response.body.toString());
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['data'];
+    }
+
+    return null;
+  }
 }

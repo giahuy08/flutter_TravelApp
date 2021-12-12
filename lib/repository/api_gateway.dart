@@ -32,7 +32,11 @@ class ApiGateway {
 
   //Enterprise
   static const getAllEnterprise = 'enterprise/getAllEnterprise';
+  static const getOneEnterprise = 'enterprise/getOneEnterprise';
+  static const getRoomOfEnterprise = 'hotelroom/getRoomOfEnterprise';
+  static const getTableOfEnterprise = 'restauranttable/getTableOfEnterprise';
 
   //Vehicle
   static const getAllVehicle = 'vehicle/getAllVehicle';
+  static const getOneVehicle = 'vehicle/getOneVehicle';
 }

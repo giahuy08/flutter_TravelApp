@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class HotelCard extends StatelessWidget {
-  const HotelCard({
+class TourCard extends StatelessWidget {
+  const TourCard({
     Key? key,
     this.width = 250,
     this.height = 240,
