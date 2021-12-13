@@ -17,6 +17,7 @@ import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
 import 'package:flutter_travelapp/screens/notification/notification_list.dart';
 import 'package:flutter_travelapp/screens/notification/notification_page.dart';
 import 'package:flutter_travelapp/screens/otp/otp_screen.dart';
+import 'package:flutter_travelapp/screens/otp_signup/otp_signup_screen.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
@@ -51,4 +52,5 @@ final Map<String, WidgetBuilder> routes = {
   FeedbackScreen.routeName: (context) => const FeedbackScreen(),
   HelpScreen.routeName: (context) => const HelpScreen(),
   InviteFriend.routeName: (context) => const InviteFriend(),
+  OtpSignUpScreen.routeName: (context) => const OtpSignUpScreen(),
 };

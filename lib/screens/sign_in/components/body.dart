@@ -42,23 +42,6 @@ class Body extends StatelessWidget {
                   height: SizeConfig.screenHeight * 0.08,
                 ),
                 const SignForm(),
-                
-                SizedBox(
-                  height: SizeConfig.screenHeight * 0.08,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SocialCard(
-                      icon: "assets/icons/google-icon.svg",
-                      press: () {},
-                    ),
-                    SocialCard(
-                      icon: "assets/icons/facebook-2.svg",
-                      press: () {},
-                    ),
-                  ],
-                ),
                 SizedBox(
                   height: getProportionateScreenHeight(20),
                 ),

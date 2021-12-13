@@ -17,6 +17,8 @@ class ApiGateway {
   static const changePassword = 'user/changePassword';
   static const editProfile = 'user/editProfile';
   static const updateAvatar = 'user/updateAvatar';
+  static const verifyUser= 'user/verifyUser';
+
   //Book Tour
   static const getUserBookTour = 'booktour/getUserBookTour';
   static const getUserBookTourByDate = 'booktour/getUserBookTourByDate';

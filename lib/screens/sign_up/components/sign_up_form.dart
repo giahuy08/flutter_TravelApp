@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/custom_surfix_icon.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
+import 'package:flutter_travelapp/components/text_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
+import 'package:flutter_travelapp/screens/otp_signup/otp_signup_screen.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/snackbar/snack.dart';
@@ -26,6 +28,7 @@ class _SignFormState extends State<SignUpForm> {
   late String phone;
   late String address;
   late String name;
+  late bool hidePassword = true;
 
   final List<String> errors = [];
 
@@ -40,23 +43,26 @@ class _SignFormState extends State<SignUpForm> {
           addError(error: kEmailExistError);
         } else {
           removeError(error: kEmailExistError);
-          Get.snackbar(
-            'Login',
-            'Đăng ký thành công',
-            snackPosition: SnackPosition.TOP,
-            colorText: Colors.green,
-            backgroundColor: kPrimaryColor,
-            duration: const Duration(
-              milliseconds: 800,
-            ),
-          );
-          Future.delayed(const Duration(milliseconds: 800), () {
-            // Here you can write your code
+          Navigator.pushNamed(context, OtpSignUpScreen.routeName,
+              arguments: TextArguments(text: email));
+          // Get.snackbar(
+          //   'Login',
+          //   'Đăng ký thành công',
+          //   snackPosition: SnackPosition.TOP,
+          //   colorText: Colors.green,
+          //   backgroundColor: kPrimaryColor,
+          //   duration: const Duration(
+          //     milliseconds: 800,
+          //   ),
+          // );
+          // Future.delayed(const Duration(milliseconds: 800), () {
+          //   // Here you can write your code
 
-            setState(() {
-              Navigator.pushNamed(context, SignInScreen.routeName);
-            });
-          });
+          //   setState(() {
+          //      Navigator.pushNamed(context, OtpSignUpScreen.routeName,
+          //             arguments: TextArguments(text: email));
+          //   });
+          // });
         }
       }
     });
@@ -98,11 +104,12 @@ class _SignFormState extends State<SignUpForm> {
             buildAddressFormField(),
             SizedBox(height: getProportionateScreenHeight(20)),
             FormError(errors: errors),
+            SizedBox(height: getProportionateScreenHeight(10)),
             DefaultButton(
                 text: "Đăng ký",
                 press: () {
                   // print(email);
-                  // Navigator.pushNamed(context, OtpScreen.routeName);
+
                   if (_signUpFormKey.currentState!.validate()) {
                     _signUpFormKey.currentState!.save();
                     // Navigator.pushNamed(context, OtpScreen.routeName);
@@ -152,7 +159,7 @@ class _SignFormState extends State<SignUpForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-      obscureText: true,
+      obscureText: hidePassword,
       onSaved: (newValue) => password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -173,13 +180,29 @@ class _SignFormState extends State<SignUpForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffix(svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: hidePassword
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                icon: const Icon(Icons.visibility),
+              )
+            : IconButton(
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                icon: const Icon(Icons.visibility_off),
+              ),
       ),
     );
   }

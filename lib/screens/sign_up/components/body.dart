@@ -29,23 +29,23 @@ class Body extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.screenHeight * 0.06,
               ),
-              const Text('Hoặc tiếp tục với'),
-              SizedBox(
-                height: getProportionateScreenHeight(20),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SocialCard(
-                    icon: "assets/icons/google-icon.svg",
-                    press: () {},
-                  ),
-                  SocialCard(
-                    icon: "assets/icons/facebook-2.svg",
-                    press: () {},
-                  ),
-                ],
-              ),
+              // const Text('Hoặc tiếp tục với'),
+              // SizedBox(
+              //   height: getProportionateScreenHeight(20),
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     SocialCard(
+              //       icon: "assets/icons/google-icon.svg",
+              //       press: () {},
+              //     ),
+              //     SocialCard(
+              //       icon: "assets/icons/facebook-2.svg",
+              //       press: () {},
+              //     ),
+              //   ],
+              // ),
               SizedBox(
                 height: getProportionateScreenHeight(20),
               ),

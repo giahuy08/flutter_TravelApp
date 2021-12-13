@@ -58,16 +58,16 @@ final headingStyle = TextStyle(
 // Form Error
 final RegExp emailValidatorRegExp =
     RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-const String kEmailNullError = "Please Enter your email";
-const String kInvalidEmailError = "Please Enter Valid Email";
-const String kPassNullError = "Please Enter your password";
-const String kShortPassError = "Password is too short";
-const String kMatchPassError = "Passwords don't match";
-const String kNamelNullError = "Please Enter your name";
-const String kPhoneNumberNullError = "Please Enter your phone number";
-const String kAddressNullError = "Please Enter your address";
-const String kLoginFail = "Email or Password dont match";
-const String kEmailExistError = "Email already exists";
+const String kEmailNullError = "Vui lòng nhập email";
+const String kInvalidEmailError = "Email không hợp lệ";
+const String kPassNullError = "Vui lòng nhập mật khẩu";
+const String kShortPassError = "Mật khẩu quá ngắn";
+const String kMatchPassError = "Mật khẩu không khớp";
+const String kNamelNullError = "Vui lòng nhập tên";
+const String kPhoneNumberNullError = "Vui lòng nhập số điện thoại";
+const String kAddressNullError = "Vui lòng nhập địa chỉ";
+const String kLoginFail = "Email hoặc mật khẩu không hợp lệ";
+const String kEmailExistError = "Email đã tồn tại";
 const String kChangePasswordFail = "Mật khẩu hiện tại không trùng khớp";
 const String kEditProfileFail = "Thông tin cập nhật không hợp lệ";
 const String kEmailDontExistError = "Email không tồn tại";
@@ -86,4 +86,3 @@ OutlineInputBorder outlineInputBorder() {
       borderRadius: BorderRadius.circular(15),
       borderSide: const BorderSide(color: kTextColor));
 }
-

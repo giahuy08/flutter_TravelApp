@@ -39,7 +39,6 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
   }
 
   void forgotPassword(String email) async {
-    print(email);
     await AuthenRepository().forgotpassword(email).then((value) {
       if (value != null) {
         if (value == 'Do not email') {
@@ -92,7 +91,8 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
                   setState(() {
                     errors.add(kEmailNullError);
                   });
-                } else if (!emailValidatorRegExp.hasMatch(value) &&
+                }
+                if (!emailValidatorRegExp.hasMatch(value) &&
                     !errors.contains(kInvalidEmailError)) {
                   setState(() {
                     errors.add(kInvalidEmailError);
@@ -116,7 +116,9 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
                 if (_forgotFormKey.currentState!.validate()) {
                   // Navigator.pushNamed(context, OtpScreen.routeName);
                   _forgotFormKey.currentState!.save();
-                  forgotPassword(email);
+                  if (email != '') {
+                    forgotPassword(email);
+                  }
                 }
               }),
           SizedBox(height: SizeConfig.screenHeight * 0.1),

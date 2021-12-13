@@ -65,4 +65,24 @@ class AuthenRepository {
     }
     return null;
   }
+
+  
+  Future<String?> verifyUser(String otp,String email) async {
+
+    var body = {
+      "otp": otp,
+      "email": email,
+
+    };
+    var response =
+        await HandleApis().post(ApiGateway.verifyUser, body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['message'];
+    }
+    if (response.statusCode == 300) {
+      return jsonDecode(response.body)['message'];
+    }
+    return null;
+  }
 }

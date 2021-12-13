@@ -23,6 +23,7 @@ class _SignFormState extends State<SignForm> {
   late String email;
   late String password;
   bool remember = false;
+  late bool hidePassword = true;
   final List<String> errors = [];
   void signIn(String email, String pass) async {
     // SharedPreferences sharedReferences = await SharedPreferences.getInstance();
@@ -144,35 +145,52 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-        obscureText: true,
-        onSaved: (newValue) => password = newValue!,
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-            removeError(error: kPassNullError);
-          } else if (value.length >= 8) {
-            removeError(error: kShortPassError);
-          }
-          return;
-        },
-        validator: (value) {
-          if (value!.isEmpty) {
-            addError(error: kPassNullError);
-            // print(kPassNullError);
-            return "";
-          } else if (value.length < 8) {
-            addError(error: kShortPassError);
-            return "";
-          }
-          return null;
-        },
-        decoration: const InputDecoration(
-          labelText: "Password",
-          hintText: "Nhập Password",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: CustomSurffix(
-            svgIcon: "assets/icons/Lock.svg",
-          ),
-        ));
+      obscureText: hidePassword,
+      onSaved: (newValue) => password = newValue!,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+        } else if (value.length >= 8) {
+          removeError(error: kShortPassError);
+        }
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kPassNullError);
+          // print(kPassNullError);
+          return "";
+        } else if (value.length < 8) {
+          addError(error: kShortPassError);
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Password",
+        hintText: "Nhập mật khẩu",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: hidePassword
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                icon: const Icon(Icons.visibility),
+              )
+            : IconButton(
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                icon: const Icon(Icons.visibility_off),
+              ),
+      ),
+    );
   }
 
   TextFormField buildEmailFormField() {

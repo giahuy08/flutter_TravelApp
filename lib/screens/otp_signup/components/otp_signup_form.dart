@@ -10,9 +10,9 @@ import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class OtpForm extends StatefulWidget {
+class OtpSignUpForm extends StatefulWidget {
   final String email;
-  const OtpForm({
+  const OtpSignUpForm({
     Key? key,
     required this.email,
   }) : super(key: key);
@@ -21,7 +21,7 @@ class OtpForm extends StatefulWidget {
   _OtpFormState createState() => _OtpFormState();
 }
 
-class _OtpFormState extends State<OtpForm> {
+class _OtpFormState extends State<OtpSignUpForm> {
   late FocusNode pin2FocusNode;
   late FocusNode pin3FocusNode;
   late FocusNode pin4FocusNode;
@@ -82,17 +82,17 @@ class _OtpFormState extends State<OtpForm> {
     }
   }
 
-  void forgotPassword(String otp, String email, String password) async {
-    await AuthenRepository().resetpassword(otp, email, password).then((value) {
+  void verifyUser(String otp, String email) async {
+    await AuthenRepository().verifyUser(otp, email).then((value) {
       if (value != null) {
         if (value == 'OTP invalid') {
           addError(error: kOtpValidError);
         }
-        if (value == 'Reset Password success') {
+        if (value == 'Account Verification Successful') {
           removeError(error: kOtpValidError);
           Get.snackbar(
             'Otp',
-            'Cập nhật mật khẩu thành công',
+            'Tạo thành công tài khoản',
             snackPosition: SnackPosition.TOP,
             colorText: Colors.white,
             backgroundColor: kPrimaryColor,
@@ -100,7 +100,7 @@ class _OtpFormState extends State<OtpForm> {
               milliseconds: 800,
             ),
           );
-          Future.delayed(const Duration(milliseconds: 800), () {
+          Future.delayed(const Duration(milliseconds: 900), () {
             // Here you can write your code
 
             setState(() {
@@ -186,11 +186,6 @@ class _OtpFormState extends State<OtpForm> {
             SizedBox(
               height: getProportionateScreenHeight(20),
             ),
-            buildPasswordFormField(),
-            SizedBox(
-              height: getProportionateScreenHeight(20),
-            ),
-            buildConfirmPasswordFormField(),
             SizedBox(height: SizeConfig.screenHeight * 0.05),
             FormError(errors: errors),
             SizedBox(height: getProportionateScreenHeight(20)),
@@ -204,7 +199,7 @@ class _OtpFormState extends State<OtpForm> {
                   if (_otpFormKey.currentState!.validate()) {
                     _otpFormKey.currentState!.save();
 
-                    forgotPassword(otp, emailAddress, password);
+                    verifyUser(otp, emailAddress);
                   }
                 } else {
                   addError(error: kOtpError);
