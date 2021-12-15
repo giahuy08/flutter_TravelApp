@@ -53,14 +53,14 @@ class _BodyState extends State<Body> {
                       const BookedTourHomeScreen()))
             },
           ),
-          ProfileMenu(
-            text: "Chia sẻ ứng dụng",
-            icon: "assets/icons/Conversation.svg",
-            press: () => {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const InviteFriend()))
-            },
-          ),
+          // ProfileMenu(
+          //   text: "Chia sẻ ứng dụng",
+          //   icon: "assets/icons/Conversation.svg",
+          //   press: () => {
+          //     Navigator.of(context).push(MaterialPageRoute(
+          //         builder: (BuildContext context) => const InviteFriend()))
+          //   },
+          // ),
           ProfileMenu(
             text: "Hỗ trợ khách hàng",
             icon: "assets/icons/Question mark.svg",

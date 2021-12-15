@@ -169,15 +169,43 @@ class BookedTourListView extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
                                       children: <Widget>[
-                                        Text(
-                                          oCcy.format(
-                                              bookedTourData!.finalpayment),
-                                          textAlign: TextAlign.left,
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 20,
-                                          ),
-                                        ),
+                                        bookedTourData!.payment! >
+                                                bookedTourData!.finalpayment!
+                                            ? Column(
+                                                children: [
+                                                  Text(
+                                                    oCcy.format(bookedTourData!
+                                                        .payment),
+                                                    textAlign: TextAlign.left,
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      fontSize: 20,
+                                                      decoration: TextDecoration
+                                                          .lineThrough,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    oCcy.format(bookedTourData!
+                                                        .finalpayment),
+                                                    textAlign: TextAlign.left,
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 20,
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            : Text(
+                                                oCcy.format(bookedTourData!
+                                                    .finalpayment),
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 20,
+                                                ),
+                                              ),
                                         Text(
                                           'VNĐ /tour',
                                           style: TextStyle(

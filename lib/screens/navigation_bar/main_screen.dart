@@ -5,7 +5,6 @@ import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_scr
 import 'package:flutter_travelapp/screens/custom_screen/feedback_screen.dart';
 import 'package:flutter_travelapp/screens/google_map/google_map_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
-import 'package:flutter_travelapp/screens/navigation_bar/message.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'navbar_key.dart';

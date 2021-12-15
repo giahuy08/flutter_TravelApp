@@ -107,7 +107,7 @@ class MapSampleState extends State<MapSample> {
               child: GoogleMap(
                 myLocationEnabled: true,
                 myLocationButtonEnabled: true,
-                zoomControlsEnabled: false,
+                zoomControlsEnabled: true,
                 mapType: MapType.normal,
                 // polylines: {_kPolyline},
                 markers: {_kGooglePlexMarker},
@@ -123,11 +123,11 @@ class MapSampleState extends State<MapSample> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _currentLocation,
-        label: const Text('Đến vị trí của bạn!'),
-        icon: const Icon(Icons.location_on),
-      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: _currentLocation,
+      //   label: const Text('Đến vị trí của bạn!'),
+      //   icon: const Icon(Icons.location_on),
+      // ),
     );
   }
 

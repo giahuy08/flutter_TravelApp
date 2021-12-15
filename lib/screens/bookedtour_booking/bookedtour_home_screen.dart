@@ -89,7 +89,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                                 (BuildContext context, int index) {
                               return Column(
                                 children: <Widget>[
-                                  getSearchBarUI(),
+                                  //getSearchBarUI(),
                                   getTimeDateUI(),
                                 ],
                               );
@@ -248,7 +248,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
 
   Widget getTimeDateUI() {
     return Padding(
-      padding: const EdgeInsets.only(left: 18, bottom: 16),
+      padding: const EdgeInsets.only(left: 18, bottom: 16, top: 16),
       child: Row(
         children: <Widget>[
           Expanded(
