@@ -211,7 +211,7 @@ class _TourDescriptionState extends State<TourDescription> {
           kSmallDivider,
           TopRoundedContainer(
             color: Colors.white,
-            height: 40.h,
+            height: 45.h,
             child: Padding(
               padding: const EdgeInsets.all(9.0),
               child: Column(
