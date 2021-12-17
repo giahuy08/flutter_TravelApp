@@ -15,7 +15,7 @@ class Body extends StatelessWidget {
         Image.asset("assets/images/success.png"),
         SizedBox(height: SizeConfig.screenHeight * 0.08),
         Text(
-          "Login Success",
+          "Đăng nhập thành công",
           style: TextStyle(
               fontSize: getProportionateScreenWidth(30),
               fontWeight: FontWeight.bold,
@@ -25,7 +25,7 @@ class Body extends StatelessWidget {
         SizedBox(
             width: SizeConfig.screenWidth * 0.6,
             child: DefaultButton(
-                text: "Go to home",
+                text: "Đến trang chủ",
                 press: () =>
                     Navigator.pushNamed(context, MainScreen.routeName))),
         const Spacer(),

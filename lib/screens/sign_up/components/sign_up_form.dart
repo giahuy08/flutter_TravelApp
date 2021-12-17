@@ -147,8 +147,8 @@ class _SignFormState extends State<SignUpForm> {
         return null;
       },
       decoration: const InputDecoration(
-        labelText: "Confirm Password",
-        hintText: "Re-enter your password",
+        labelText: "Xác nhận mật khẩu",
+        hintText: "Nhập lại mật khẩu",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -181,8 +181,8 @@ class _SignFormState extends State<SignUpForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Password",
-        hintText: "Enter your password",
+        labelText: "Mật khẩu",
+        hintText: "Nhập mật khẩu",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -251,8 +251,8 @@ class _SignFormState extends State<SignUpForm> {
           return null;
         },
         decoration: const InputDecoration(
-          labelText: "Tên",
-          hintText: "Nhập tên người dùng",
+          labelText: "Họ và tên",
+          hintText: "Nhập họ và tên người dùng",
           floatingLabelBehavior: FloatingLabelBehavior.always,
         ));
   }

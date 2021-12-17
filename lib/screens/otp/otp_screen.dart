@@ -14,6 +14,7 @@ class OtpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("OTP"),
+        centerTitle: true,
       ),
       body: Body(email: arguments.text),
     );

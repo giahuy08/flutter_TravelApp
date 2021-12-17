@@ -345,7 +345,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                             height: 8,
                           ),
                           Text(
-                            _listBookTour.length.toString() + ' Booked Tour',
+                            _listBookTour.length.toString() + ' chuyến',
                             style: const TextStyle(
                                 fontWeight: FontWeight.normal,
                                 fontSize: 16,
@@ -471,7 +471,9 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      _listBookTour.length.toString() + ' Booked Tour',
+                      'Có ' +
+                          _listBookTour.length.toString() +
+                          ' chuyến đi đã đặt',
                       style: const TextStyle(
                         fontWeight: FontWeight.normal,
                         fontSize: 16,
@@ -587,10 +589,10 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
             const Expanded(
               child: Center(
                 child: Text(
-                  'Booked Tour',
+                  'Chuyến Đi Đã Đặt',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 22,
+                    fontSize: 20,
                     color: kPrimaryColor,
                   ),
                 ),

@@ -4,7 +4,7 @@ import 'package:flutter_travelapp/components/sticky_label.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/reviewtour.dart';
 import 'package:flutter_travelapp/repository/review_repository.dart';
-import 'package:flutter_travelapp/reviews/reviews.dart';
+import 'package:flutter_travelapp/screens/list_reviews/list_reviews.dart';
 import 'package:intl/intl.dart';
 
 class ReviewTour extends StatefulWidget {
@@ -57,20 +57,20 @@ class _ReviewTourState extends State<ReviewTour>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const StickyLabel(
-                    text: "Review",
+                    text: "Nhận xét",
                     textColor: kPrimaryColor,
                   ),
                   GestureDetector(
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) =>
-                            Reviews(reviewTour: _listReview, tour: widget.tour),
+                            ListReviews(reviewTour: _listReview, tour: widget.tour),
                       ),
                     ),
                     child: const Padding(
                       padding: EdgeInsets.only(right: kDefaultPadding),
                       child: StickyLabel(
-                          text: "View All", textColor: kPrimaryColor),
+                          text: "Xem thêm", textColor: kPrimaryColor),
                     ),
                   ),
                 ],

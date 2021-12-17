@@ -20,7 +20,7 @@ class _NotificationListState extends State<NotificationList> {
     return Scaffold(
       backgroundColor: kWhiteColor,
       appBar: const DefaultAppBar(
-        title: 'Notifications',
+        title: 'Danh sách thông báo',
         child: DefaultBackButton(),
       ),
       body: ListView.separated(
@@ -30,7 +30,7 @@ class _NotificationListState extends State<NotificationList> {
           itemBuilder: (context, index) {
             return NotificationTiles(
               title: 'TRAVEL',
-              subtitle: 'Thanks for download TRAVEL app.',
+              subtitle: 'Cảm ơn  bạn đã sử dụng TRAVEL.',
               enable: true,
               onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const NotificationPage())),

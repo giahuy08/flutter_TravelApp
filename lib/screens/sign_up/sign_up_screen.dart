@@ -10,6 +10,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Đăng ký"),
+        centerTitle: true,
       ),
       body: const Body(),
     );

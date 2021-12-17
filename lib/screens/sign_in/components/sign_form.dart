@@ -115,13 +115,13 @@ class _SignFormState extends State<SignForm> {
                       remember = value!;
                     });
                   }),
-              const Text("Remmber me"),
+              const Text("Lưu thông tin"),
               const Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
                 child: const Text(
-                  "Forgot Password",
+                  "Quên mật khẩu?",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               )
@@ -167,7 +167,7 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Password",
+        labelText: "Mật khẩu",
         hintText: "Nhập mật khẩu",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly

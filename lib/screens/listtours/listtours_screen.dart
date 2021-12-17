@@ -16,10 +16,11 @@ class _ListToursScreenState extends State<ListToursScreen> {
   Widget build(BuildContext context) {
     ListToursArguments arguments =
         ModalRoute.of(context)!.settings.arguments as ListToursArguments;
-  
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Danh sách tour'),
+        title: const Text('Danh sách chuyến đi'),
+        centerTitle: true,
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(arguments),
             icon: const Icon(Icons.arrow_back)),

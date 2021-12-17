@@ -6,7 +6,6 @@ import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
 
 import '../../constants.dart';
 
-
 class Success extends StatefulWidget {
   static String routeName = "/success";
   const Success({Key? key}) : super(key: key);
@@ -27,16 +26,16 @@ class _SuccessState extends State<Success> {
         children: [
           const EmptySection(
             emptyImg: success,
-            emptyMsg: 'Successful !!',
+            emptyMsg: 'Thành Công !!',
           ),
           const SubTitle(
-            subTitleText: 'Your payment was done successfully',
+            subTitleText: 'Bạn đã thành toán thành công',
           ),
           Container(
             height: 55,
             width: 170,
             child: DefaultButton(
-              text: 'Ok',
+              text: 'Xác nhận',
               press: () => Navigator.pushNamed(context, MainScreen.routeName),
             ),
           ),

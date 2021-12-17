@@ -22,7 +22,7 @@ class Body extends StatelessWidget {
                   height: SizeConfig.screenHeight * 0.04,
                 ),
                 Text(
-                  "Welcome",
+                  "Xin Chào!",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: getProportionateScreenWidth(28),
@@ -34,7 +34,7 @@ class Body extends StatelessWidget {
                   height: getProportionateScreenHeight(20),
                 ),
                 const Text(
-                  "Đăng nhập với email và password ",
+                  "Đăng nhập với email và mật khẩu của bạn ",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16),
                 ),

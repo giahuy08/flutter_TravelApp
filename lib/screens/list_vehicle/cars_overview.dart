@@ -14,7 +14,7 @@ class CarsOverviewScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: const Text('Vehicle',
+        title: const Text('Phương tiện',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
       ),
       body: ListView(
@@ -22,7 +22,7 @@ class CarsOverviewScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              'Available Vehicles',
+              'Danh sách phương tiện',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
           ),
