@@ -27,6 +27,7 @@ class ApiGateway {
 
   // Discount
   static const getAllDiscount = 'discount/getAllDiscount';
+  static const getAllDiscountByEXP = 'discount/getAllDiscountByEXP';
 
   //Review Tour
   static const getReviewOfTour = 'reviewtour/getReviewOfTour';

@@ -38,7 +38,7 @@ class _DiscountListState extends State<DiscountList> {
   }
 
   void getListDiscount() async {
-    List<dynamic> discounts = await DiscountRepository().getListDiscount();
+    List<dynamic> discounts = await DiscountRepository().getListDiscountByEXP();
 
     setState(() {
       _listDiscount.addAll(discounts);

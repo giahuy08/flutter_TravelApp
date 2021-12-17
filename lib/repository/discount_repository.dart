@@ -18,4 +18,17 @@ class DiscountRepository {
     }
     return [];
   }
+
+  Future<List<dynamic>> getListDiscountByEXP() async {
+    Response response = await HandleApis().get(ApiGateway.getAllDiscountByEXP);
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
+      if (jsonResponse.isEmpty) {
+        return [];
+      }
+      return jsonResponse;
+    }
+    return [];
+  }
 }

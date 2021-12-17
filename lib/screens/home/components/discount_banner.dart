@@ -35,7 +35,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
   }
 
   void getListDiscount() async {
-    List<dynamic> discounts = await DiscountRepository().getListDiscount();
+    List<dynamic> discounts = await DiscountRepository().getListDiscountByEXP();
 
     setState(() {
       _listDiscount.addAll(discounts);
