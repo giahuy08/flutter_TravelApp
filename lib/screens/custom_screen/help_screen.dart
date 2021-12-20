@@ -85,7 +85,7 @@ class _HelpScreenState extends State<HelpScreen> {
                         width: 50.w,
                         height: 6.h,
                         child: DefaultButton(
-                          text: "Liên hệ với chúng tôi",
+                          text: "Liên hệ",
                           press: () {},
                         ),
                       ),
