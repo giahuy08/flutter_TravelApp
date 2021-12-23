@@ -217,12 +217,9 @@ class _SignFormState extends State<SignForm> {
           return null;
         },
         decoration: const InputDecoration(
-          labelText: "Email",
-          hintText: "Nhập Email",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: CustomSurffix(
-            svgIcon: "assets/icons/Mail.svg",
-          ),
-        ));
+            labelText: "Email",
+            hintText: "Nhập Email",
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            suffixIcon: Icon(Icons.mail_outline_outlined)));
   }
 }

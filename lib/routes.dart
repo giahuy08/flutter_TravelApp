@@ -13,7 +13,6 @@ import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.
 import 'package:flutter_travelapp/screens/list_vehicle/cars_overview.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import 'package:flutter_travelapp/screens/login_success/login_success_screen.dart';
-import 'package:flutter_travelapp/screens/navigation_bar/bottom_app_bar.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
 import 'package:flutter_travelapp/screens/notification/notification_list.dart';
