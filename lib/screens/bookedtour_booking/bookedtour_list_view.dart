@@ -144,7 +144,7 @@ class BookedTourListView extends StatelessWidget {
                                                   },
                                                 ),
                                                 Text(
-                                                  ' ${bookedTourData!.star!.toStringAsFixed(1)} star',
+                                                  ' ${bookedTourData!.star!.toStringAsFixed(1)} sao',
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       color: Colors.grey
@@ -217,16 +217,16 @@ class BookedTourListView extends StatelessWidget {
                                           children: <Widget>[
                                             bookedTourData!.status == 0
                                                 ? const StatusCard(
-                                                    status: " AWAIT",
+                                                    status: " CHỜ",
                                                     color: kPrimaryColor,
                                                     icon: Icons.access_alarm)
                                                 : bookedTourData!.status == 1
                                                     ? const StatusCard(
-                                                        status: " BOOKED",
+                                                        status: " ĐÃ ĐẶT",
                                                         color: kPrimaryColor,
                                                         icon: Icons.task_alt)
                                                     : const StatusCard(
-                                                        status: " CANCEL",
+                                                        status: " HỦY",
                                                         color: kPrimaryColor,
                                                         icon: Icons
                                                             .cancel_outlined),

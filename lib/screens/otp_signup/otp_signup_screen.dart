@@ -14,6 +14,7 @@ class OtpSignUpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("OTP Đăng ký"),
+        centerTitle: true,
       ),
       body: Body(email: arguments.text),
     );

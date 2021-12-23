@@ -42,7 +42,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   Container(
                     padding: const EdgeInsets.only(top: 8),
                     child: Text(
-                      'Your FeedBack',
+                      'Phản hồi của bạn',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   Container(
                     padding: const EdgeInsets.only(top: 16),
                     child: const Text(
-                      'Give your best time for this moment.',
+                      'Hãy cho chúng tôi những nhận xét để cải thiện',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
@@ -67,7 +67,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         width: 50.w,
                         height: 6.h,
                         child: DefaultButton(
-                          text: "Send",
+                          text: "Gửi",
                           press: () {},
                         ),
                       ),

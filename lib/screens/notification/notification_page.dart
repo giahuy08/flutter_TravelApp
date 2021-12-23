@@ -17,7 +17,7 @@ class _NotificationPageState extends State<NotificationPage> {
     return Scaffold(
       backgroundColor: kWhiteColor,
       appBar: DefaultAppBar(
-        title: 'Notification',
+        title: 'Thông báo',
         child: DefaultBackButton(),
       ),
       body: FittedBox(

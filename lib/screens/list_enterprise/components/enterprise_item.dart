@@ -190,16 +190,16 @@ class _EnterpriseItemState extends State<EnterpriseItem> {
                               color: kPrimaryColor),
                           child: _listEnterprise[index].type == 0
                               ? const StatusCard(
-                                  status: " ENTERPRISE",
+                                  status: " ĐỐI TÁC",
                                   color: kPrimaryColor,
                                   icon: Icons.business)
                               : _listEnterprise[index].type == 1
                                   ? const StatusCard(
-                                      status: " HOTEL",
+                                      status: " KHÁCH SẠN",
                                       color: kPrimaryColor,
                                       icon: Icons.hotel)
                                   : const StatusCard(
-                                      status: " RESTAURANT",
+                                      status: " NHÀ HÀNG",
                                       color: kPrimaryColor,
                                       icon: Icons.restaurant),
                         )

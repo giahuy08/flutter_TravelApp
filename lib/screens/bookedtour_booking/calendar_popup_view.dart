@@ -111,7 +111,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        'From',
+                                        'Từ',
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
@@ -148,7 +148,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        'To',
+                                        'Đến',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
                                             fontSize: 16,
@@ -223,7 +223,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                     },
                                     child: const Center(
                                       child: Text(
-                                        'Apply',
+                                        'Xác nhận',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 18,

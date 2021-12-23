@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/default_appbar.dart';
 import 'package:flutter_travelapp/components/default_backbutton.dart';
 import 'package:flutter_travelapp/components/review_ui.dart';
+import 'package:flutter_travelapp/constants.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-import '../constants.dart';
-
-class Reviews extends StatefulWidget {
+class ListReviews extends StatefulWidget {
   final List<dynamic> reviewTour;
   final dynamic tour;
-  const Reviews({Key? key, required this.reviewTour, required this.tour})
+  const ListReviews({Key? key, required this.reviewTour, required this.tour})
       : super(key: key);
 
   @override
-  _ReviewsState createState() => _ReviewsState();
+  _ListReviewsState createState() => _ListReviewsState();
 }
 
-class _ReviewsState extends State<Reviews> {
+class _ListReviewsState extends State<ListReviews> {
   bool isMore = false;
   List<double> ratings = [0.1, 0.3, 0.5, 0.7, 0.9];
 
@@ -29,7 +28,7 @@ class _ReviewsState extends State<Reviews> {
     return Scaffold(
       backgroundColor: kWhiteColor,
       appBar: const DefaultAppBar(
-        title: "Reviews",
+        title: "Nhận xét",
         child: DefaultBackButton(),
       ),
       body: Column(
@@ -72,7 +71,7 @@ class _ReviewsState extends State<Reviews> {
                     ),
                     const SizedBox(height: 16.0),
                     Text(
-                      "${widget.reviewTour.length} Reviews",
+                      "${widget.reviewTour.length} Nhận xét",
                       style: const TextStyle(
                         fontSize: 20.0,
                         color: kLightColor,

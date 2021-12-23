@@ -152,7 +152,7 @@ class TourItem extends StatelessWidget {
                           rating: listTour[index].star,
                         ),
                         Text(
-                          listTour[index].star.toStringAsFixed(1) + " Sao",
+                          listTour[index].star.toStringAsFixed(1) + " sao",
                           style: const TextStyle(
                               color: Colors.black87, fontSize: 10),
                         )

@@ -10,7 +10,7 @@ class ListEnterpriseScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Business Partner'),
+        title: const Text('Đối tác kinh doanh'),
       ),
       body: const Body(),
     );
