@@ -20,7 +20,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int selectedIndex = 0;
   final screen = [
-    const HomeScreen(),
+    // const HomeScreen(),
     const MapSample(),
     const FeedbackScreen(),
     const BookedTourHomeScreen(),
@@ -29,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       bottomNavigationBar: CurvedNavigationBar(
         height: getProportionateScreenHeight(58),
         backgroundColor: Colors.transparent,

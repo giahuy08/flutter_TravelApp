@@ -30,10 +30,10 @@ class Categories extends StatelessWidget {
         "text": "Phương tiện",
         "press": CarsOverviewScreen.routeName
       },
-      {"icon": "assets/images/more.png", "text": "Khác"},
+      // {"icon": "assets/images/more.png", "text": "Khác"},
     ];
     return Padding(
-      padding: EdgeInsets.all(getProportionateScreenWidth(20)),
+      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,

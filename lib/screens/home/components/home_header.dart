@@ -28,15 +28,15 @@ class HomeHeader extends StatelessWidget {
                       const BookedTourHomeScreen()))
             },
           ),
-          IconBtnWithCounter(
-            svgSrc: 'assets/icons/Bell.svg',
-            numOfItems: 3,
-            press: () => {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      const NotificationList()))
-            },
-          )
+          // IconBtnWithCounter(
+          //   svgSrc: 'assets/icons/Bell.svg',
+          //   numOfItems: 3,
+          //   press: () => {
+          //     Navigator.of(context).push(MaterialPageRoute(
+          //         builder: (BuildContext context) =>
+          //             const NotificationList()))
+          //   },
+          // )
         ],
       ),
     );

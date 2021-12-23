@@ -61,14 +61,14 @@ class _BodyState extends State<Body> {
           //         builder: (BuildContext context) => const InviteFriend()))
           //   },
           // ),
-          ProfileMenu(
-            text: "Hỗ trợ khách hàng",
-            icon: "assets/icons/Question mark.svg",
-            press: () => {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const HelpScreen()))
-            },
-          ),
+          // ProfileMenu(
+          //   text: "Hỗ trợ khách hàng",
+          //   icon: "assets/icons/Question mark.svg",
+          //   press: () => {
+          //     Navigator.of(context).push(MaterialPageRoute(
+          //         builder: (BuildContext context) => const HelpScreen()))
+          //   },
+          // ),
           ProfileMenu(
             text: "Đăng xuất",
             icon: "assets/icons/Log out.svg",
