@@ -24,23 +24,23 @@ Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
 ●	Chọn và mở giả lập di động lên
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img4.png" width="700" height="600" title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img4.png" width="700"  title="hover text">
 </p>
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img5.png" width="700" height="600" title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img5.png" width="700"  title="hover text">
 </p>
 
 ●	Tiến hành chạy ứng dụng bằng “Ctrl + F5” hoặc Run/Run Without Debugging trên VSCode (Lưu ý chọn loại code Flutter/Dart)
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img6.png" width="700" height="600" title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img6.png" width="700"  title="hover text">
 </p>
 
 ●	Giao diện sau khi được thực thi
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img7.png" width="700" height="600" title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img7.png" width="350"  title="hover text">
 </p>
 
 ##### ReactJS Admin
@@ -48,19 +48,19 @@ Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
 ●	Mở VSCode, chọn File – Open folder chọn folder admin-travelapp
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img8.png" width="700" height="600" title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img8.png" width="700"  title="hover text">
 </p>
 
 ●	Chọn Terminal, New Terminal Gõ lệnh npm start
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img9.png" width="700" height="600" title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img9.png" width="700"  title="hover text">
 </p>
 
 ●	Giao diện sau khi được thực thi
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img10.png" width="700" height="600" title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img10.png" width="700"  title="hover text">
 </p>
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
