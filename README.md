@@ -10,7 +10,7 @@
 ### Hướng dẫn cài đặt
 
 #### Backend :rocket: :rocket: :octocat:
-Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
+Deploy: http://be-travel.herokuapp.com
 #### Frontend :rocket: :rocket: :octocat:
 ##### Flutter
 
