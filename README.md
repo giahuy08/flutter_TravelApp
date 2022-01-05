@@ -9,16 +9,16 @@
 
 ### Hướng dẫn cài đặt
 
-#### Backend
+#### Backend :rocket: :rocket: :octocat:
 Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
-#### Frontend
+#### Frontend :rocket: :rocket: :octocat:
 ##### Flutter
 
 ●	Cài đặt ngôn ngữ Dart và Flutter (https://dart.dev/get-dart)
 ●	Mở VSCode, chọn File – Open folder chọn folder flutter_TravelApp
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img3.png" width="700" height="600" title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img3.png" width="700"  title="hover text">
 </p>
 
 ●	Chọn và mở giả lập di động lên
@@ -28,7 +28,7 @@ Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
 </p>
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img5.png" width="700"  title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img5.png" width="350"  title="hover text">
 </p>
 
 ●	Tiến hành chạy ứng dụng bằng “Ctrl + F5” hoặc Run/Run Without Debugging trên VSCode (Lưu ý chọn loại code Flutter/Dart)
@@ -40,7 +40,7 @@ Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
 ●	Giao diện sau khi được thực thi
 
 <p align="center">
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img7.png" width="350"  title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img7.png" width="700" title="hover text">
 </p>
 
 ##### ReactJS Admin
