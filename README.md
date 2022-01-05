@@ -4,8 +4,8 @@
 
 
 #### Người thực hiện:
-* Nguyễn Gia Huy - 18110121
-* Huỳnh Nhựt Thiên - 18110203
+* Nguyễn Gia Huy - 18110121 :books:
+* Huỳnh Nhựt Thiên - 18110203 :books:
 
 ### Hướng dẫn cài đặt
 
@@ -15,6 +15,7 @@ Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
 ##### Flutter
 
 ●	Cài đặt ngôn ngữ Dart và Flutter (https://dart.dev/get-dart)
+
 ●	Mở VSCode, chọn File – Open folder chọn folder flutter_TravelApp
 
 <p align="center">
@@ -44,6 +45,8 @@ Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
 </p>
 
 ##### ReactJS Admin
+
+Deploy: https://react-admin-travel-app-tlcn.vercel.app/login
 
 ●	Mở VSCode, chọn File – Open folder chọn folder admin-travelapp
 
