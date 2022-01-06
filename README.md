@@ -11,6 +11,7 @@
 
 #### Backend :rocket: :rocket: :octocat:
 Deploy: http://be-travel.herokuapp.com
+Link github code BE: https://github.com/thienviva/TravelApp-BE
 #### Frontend :rocket: :rocket: :octocat:
 ##### Flutter
 
