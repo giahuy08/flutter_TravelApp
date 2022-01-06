@@ -6,6 +6,8 @@
 #### Người thực hiện:
 * Nguyễn Gia Huy - 18110121 :books:
 * Huỳnh Nhựt Thiên - 18110203 :books:
+### Báo Cáo
+Link: https://drive.google.com/drive/folders/1ltjuLVn-BZ02mpUCoiirOGrzhrMZn0nj?usp=sharing
 
 ### Hướng dẫn cài đặt
 
