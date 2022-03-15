@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
+import 'package:flutter_travelapp/screens/chat/chat_screen.dart';
 import 'package:flutter_travelapp/screens/custom_screen/feedback_screen.dart';
 import 'package:flutter_travelapp/screens/google_map/google_map_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
@@ -22,7 +23,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final screen = [
     const HomeScreen(),
     const MapSample(),
-    const BookedTourHomeScreen(),
+    const ChatScreen(),
+    // const BookedTourHomeScreen(),
     const ProfileScreen()
   ];
   static const List<Widget> _widgetOptions = <Widget>[

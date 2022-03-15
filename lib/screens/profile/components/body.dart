@@ -115,10 +115,7 @@ void signOutDrawer(BuildContext context) {
                           ),
                         ),
                         onPressed: () => {
-                              userProvider.setUser(User.fromLogin({
-                                "email": "",
-                                "password": "",
-                              })),
+                              userProvider.setUser(null),
                               Navigator.pushNamed(
                                   context, SplashScreen.routeName),
                             }),

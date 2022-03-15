@@ -8,7 +8,6 @@ import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/otp_signup/otp_signup_screen.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/snackbar/snack.dart';
 
 import '../../../size_config.dart';
 

@@ -92,7 +92,7 @@ class _TourDescriptionState extends State<TourDescription> {
           TourImages(tour: widget.tour),
           TopRoundedContainer(
             color: Colors.white,
-            height: 90.h,
+            height: 95.h,
             child: Column(
               children: [
                 Padding(

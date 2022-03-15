@@ -4,6 +4,7 @@ import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/user_repository.dart';
+import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:get/get.dart';
 
@@ -47,7 +48,7 @@ class _ChangeFormState extends State<ChangeForm> {
             // Here you can write your code
 
             setState(() {
-              Navigator.pushNamed(context, ProfileScreen.routeName);
+              Navigator.pushNamed(context, BottomNavBar.routeName);
             });
           });
         }

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class UserModel {
+class UserGoogle {
   final String id;
   int? role;
   String? otp;
@@ -11,7 +11,7 @@ class UserModel {
   String? name;
   String? address;
   String? avatar;
-  UserModel({
+  UserGoogle({
     required this.id,
     this.role,
     this.otp,
@@ -24,8 +24,8 @@ class UserModel {
     this.avatar,
   });
 
-  factory UserModel.fromLogin(Map<String, dynamic> data) {
-    return UserModel(
+  factory UserGoogle.fromLogin(Map<String, dynamic> data) {
+    return UserGoogle(
       token: data['token'],
       id: '',
       address: '',
@@ -39,7 +39,7 @@ class UserModel {
     );
   }
 
-  UserModel copyWith({
+  UserGoogle copyWith({
     String? id,
     int? role,
     String? otp,
@@ -51,7 +51,7 @@ class UserModel {
     String? address,
     String? avatar,
   }) {
-    return UserModel(
+    return UserGoogle(
       id: id ?? this.id,
       role: role ?? this.role,
       otp: otp ?? this.otp,
@@ -80,8 +80,8 @@ class UserModel {
     };
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
+  factory UserGoogle.fromMap(Map<String, dynamic> map) {
+    return UserGoogle(
       id: map['_id'],
       role: map['role'],
       otp: map['otp'],
@@ -97,18 +97,18 @@ class UserModel {
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source));
+  factory UserGoogle.fromJson(String source) => UserGoogle.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'UserModel(id: $id, role: $role, otp: $otp, fcm: $fcm, token: $token, email: $email, phone: $phone, name: $name, address: $address, avatar: $avatar)';
+    return 'User(id: $id, role: $role, otp: $otp, fcm: $fcm, token: $token, email: $email, phone: $phone, name: $name, address: $address, avatar: $avatar)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is UserModel &&
+    return other is UserGoogle &&
         other.id == id &&
         other.role == role &&
         other.otp == otp &&
@@ -137,23 +137,23 @@ class UserModel {
 }
 
 
-//   UserModel({
+//   User({
 //     required this.id,
 //     required this.token,
 //   });
 
-//   factory UserModel.fromLogin(Map<String, dynamic> data) {
-//     return UserModel(
+//   factory User.fromLogin(Map<String, dynamic> data) {
+//     return User(
 //       token: data['token'],
 //       id: '',
 //     );
 //   }
 
-//   UserModel copyWith({
+//   User copyWith({
 //     String? id,
 //     String? token,
 //   }) {
-//     return UserModel(
+//     return User(
 //       id: id ?? this.id,
 //       token: token ?? this.token,
 //     );
@@ -166,8 +166,8 @@ class UserModel {
 //     };
 //   }
 
-//   factory UserModel.fromMap(Map<String, dynamic> map) {
-//     return UserModel(
+//   factory User.fromMap(Map<String, dynamic> map) {
+//     return User(
 //       id: map['id'],
 //       token: map['token'],
 //     );
@@ -175,18 +175,20 @@ class UserModel {
 
 //   String toJson() => json.encode(toMap());
 
-//   factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source));
+//   factory User.fromJson(String source) => User.fromMap(json.decode(source));
 
 //   @override
-//   String toString() => 'UserModel(id: $id, token: $token)';
+//   String toString() => 'User(id: $id, token: $token)';
 
 //   @override
 //   bool operator ==(Object other) {
 //     if (identical(this, other)) return true;
 
-//     return other is UserModel && other.id == id && other.token == token;
+//     return other is User && other.id == id && other.token == token;
 //   }
 
 //   @override
 //   int get hashCode => id.hashCode ^ token.hashCode;
 // }
+
+

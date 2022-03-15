@@ -17,6 +17,22 @@ class AuthenRepository {
     return null;
   }
 
+  Future<Map<String, dynamic>?> loginwithGoogle(
+      String email, String name) async {
+    var body = {
+      "email": email,
+      "name": name,
+    };
+
+    var response = await HandleApis().post(ApiGateway.loginwithGoogle, body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['data'];
+    }
+
+    return null;
+  }
+
   Future<String?> register(String email, String password, String phone,
       String name, String address) async {
     var body = {
@@ -66,16 +82,12 @@ class AuthenRepository {
     return null;
   }
 
-  
-  Future<String?> verifyUser(String otp,String email) async {
-
+  Future<String?> verifyUser(String otp, String email) async {
     var body = {
       "otp": otp,
       "email": email,
-
     };
-    var response =
-        await HandleApis().post(ApiGateway.verifyUser, body);
+    var response = await HandleApis().post(ApiGateway.verifyUser, body);
     print(response.statusCode);
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];

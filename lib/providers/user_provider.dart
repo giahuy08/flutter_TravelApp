@@ -5,24 +5,35 @@ import 'package:get_storage/get_storage.dart';
 class UserProvider extends ChangeNotifier {
   final _getStorage = GetStorage();
   final storageKey = 'token';
-  User? _user;
+  dynamic _user;
 
-  User? get user => _user;
+  dynamic get user => _user;
 
-  setUser(User data) {
+  setUser(dynamic data) {
+    print(_user);
     _user = data;
     if (user != null) {
       _getStorage.write(storageKey, user!.token);
     } else {
-      _getStorage.write(storageKey, '');
+      _getStorage.remove(storageKey);
     }
     notifyListeners();
   }
 
+  // setUserGoogle(String data){
+  //   if(data!=null){
+  //        _getStorage.write(storageKey, user!.token);
+  //   }
+  //   else {
+  //     _getStorage.write(storageKey, '');
+  //   }
+  //   notifyListeners();
+  // }
+
   checkLogined() {
     String token = _getStorage.read(storageKey) ?? '';
     if (token != '') {
-      _user = User(
+      _user = UserModel(
         token: token,
         id: '',
       );

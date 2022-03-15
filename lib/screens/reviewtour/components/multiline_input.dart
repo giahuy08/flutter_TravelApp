@@ -9,7 +9,7 @@ import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_scr
 import 'package:flutter_travelapp/screens/reviewtour/components/rounded_button.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/get_navigation/src/snackbar/snack.dart';
+import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/empty_section.dart';
 import 'package:flutter_travelapp/components/sub_title.dart';
+import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
 
 import '../../constants.dart';
@@ -36,7 +37,7 @@ class _SuccessState extends State<Success> {
             width: 170,
             child: DefaultButton(
               text: 'Xác nhận',
-              press: () => Navigator.pushNamed(context, MainScreen.routeName),
+              press: () => Navigator.pushNamed(context, BottomNavBar.routeName),
             ),
           ),
         ],

@@ -57,7 +57,7 @@ class _SignFormState extends State<SignForm> {
             milliseconds: 800,
           ),
         );
-        userProvider.setUser(User.fromLogin(value));
+        userProvider.setUser(UserModel.fromLogin(value));
         Future.delayed(const Duration(milliseconds: 800), () {
           // Here you can write your code
 
@@ -66,7 +66,7 @@ class _SignFormState extends State<SignForm> {
           });
         });
 
-        print(User.fromLogin(value));
+        print(UserModel.fromLogin(value));
       } else {
         addError(error: kLoginFail);
       }

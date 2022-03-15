@@ -110,6 +110,27 @@ class BookedTourListView extends StatelessWidget {
                                                 size: 12,
                                                 color: kPrimaryColor,
                                               ),
+                                              const SizedBox(
+                                                width: 8,
+                                              ),
+                                              Text(
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(bookedTourData!
+                                                        .startDate!)
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.grey
+                                                        .withOpacity(0.8)),
+                                              ),
+                                              const SizedBox(
+                                                width: 4,
+                                              ),
+                                              const Icon(
+                                                FontAwesomeIcons.calendarCheck,
+                                                size: 12,
+                                                color: kPrimaryColor,
+                                              ),
                                             ],
                                           ),
                                           Padding(
