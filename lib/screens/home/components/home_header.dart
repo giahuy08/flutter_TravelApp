@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/notification/notification_list.dart';
+import 'package:flutter_travelapp/screens/notification/notify_home.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 import 'icon_btn_with_counter.dart';
@@ -20,23 +21,22 @@ class HomeHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const SearchField(),
-          IconBtnWithCounter(
-            svgSrc: "assets/icons/order-history.svg",
-            press: () => {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      const BookedTourHomeScreen()))
-            },
-          ),
           // IconBtnWithCounter(
-          //   svgSrc: 'assets/icons/Bell.svg',
-          //   numOfItems: 3,
+          //   svgSrc: "assets/icons/order-history.svg",
           //   press: () => {
           //     Navigator.of(context).push(MaterialPageRoute(
           //         builder: (BuildContext context) =>
-          //             const NotificationList()))
+          //             const BookedTourHomeScreen()))
           //   },
-          // )
+          // ),
+          IconBtnWithCounter(
+            svgSrc: 'assets/icons/Bell.svg',
+            numOfItems: 3,
+            press: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => const NotifyHome()))
+            },
+          )
         ],
       ),
     );

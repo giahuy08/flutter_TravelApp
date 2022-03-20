@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 
 // const root_url = "freshfoodbe.tk";
 // const root_url = "app-travelbe.herokuapp.com";
-const root_url = "be-travel.herokuapp.com";
-// const root_url = "192.168.1.22:5000";
+// const root_url = "be-travel.herokuapp.com";
+const root_url = "192.168.1.22:5000";
 //const root_url = "192.168.1.190:5000";
 
 // const socket_url = "45.212.16.10:5000";
@@ -17,7 +17,13 @@ class HandleApis {
 
   //   return 'http://$socket_url?fcm=$fcmToken&token=Bearer ${userProvider.user.token}';
   // }
+  Future<String> getBaseURLSocket() async {
+    // var fcmToken = await getFcmToken();
+    // debugPrint('FCM Token: ' + fcmToken.toString());
 
+    // return 'http://$socket_url?fcm=$fcmToken&token=Bearer ${userProvider.user.token}';
+    return 'http://$root_url?token=Bearer ${userProvider.user.token}';
+  }
   // Future<String> getFcmToken() async {
   //   FirebaseMessaging _fcm = FirebaseMessaging.instance;
   //   return await _fcm.getToken();

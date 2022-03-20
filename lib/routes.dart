@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
-import 'package:flutter_travelapp/screens/chat/chat_screen.dart';
 import 'package:flutter_travelapp/screens/custom_screen/feedback_screen.dart';
 import 'package:flutter_travelapp/screens/custom_screen/help_screen.dart';
 import 'package:flutter_travelapp/screens/custom_screen/invite_friend_screen.dart';
@@ -57,5 +56,5 @@ final Map<String, WidgetBuilder> routes = {
   HelpScreen.routeName: (context) => const HelpScreen(),
   InviteFriend.routeName: (context) => const InviteFriend(),
   OtpSignUpScreen.routeName: (context) => const OtpSignUpScreen(),
-  ChatScreen.routeName:(context) => const ChatScreen()
+  
 };

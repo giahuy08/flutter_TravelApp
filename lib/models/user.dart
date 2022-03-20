@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class UserModel {
-  final String id;
+   String? id;
   int? role;
   String? otp;
   String? fcm;
@@ -12,7 +12,7 @@ class UserModel {
   String? address;
   String? avatar;
   UserModel({
-    required this.id,
+    this.id,
     this.role,
     this.otp,
     this.fcm,

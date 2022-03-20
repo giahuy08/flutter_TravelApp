@@ -43,4 +43,9 @@ class ApiGateway {
   //Vehicle
   static const getAllVehicle = 'vehicle/getAllVehicle';
   static const getOneVehicle = 'vehicle/getOneVehicle';
+
+  // Message
+    static const getMessage= 'chat/getMessage';
+
+      static const getlistroom = 'chat/getRoom';
 }

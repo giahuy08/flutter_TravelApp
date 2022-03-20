@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/models/user.dart';
+import 'package:flutter_travelapp/repository/user_repository.dart';
 import 'package:get_storage/get_storage.dart';
 
 class UserProvider extends ChangeNotifier {
@@ -9,10 +10,15 @@ class UserProvider extends ChangeNotifier {
 
   dynamic get user => _user;
 
-  setUser(dynamic data) {
+  setUser(dynamic data) async {
     print(_user);
     _user = data;
     if (user != null) {
+      await UserRepository().getProfile().then((value) {
+        _user = UserModel.fromMap(value);
+        print(_user);
+        _user.token = data.token;
+      });
       _getStorage.write(storageKey, user!.token);
     } else {
       _getStorage.remove(storageKey);
@@ -30,13 +36,14 @@ class UserProvider extends ChangeNotifier {
   //   notifyListeners();
   // }
 
-  checkLogined() {
-    String token = _getStorage.read(storageKey) ?? '';
+  Future checkLogined() async {
+    String token = await _getStorage.read(storageKey) ?? '';
     if (token != '') {
-      _user = UserModel(
-        token: token,
-        id: '',
-      );
+      _user = UserModel(token: token);
+      await UserRepository().getProfile().then((value) {
+        _user = UserModel.fromMap(value);
+        _user.token = token;
+      });
     } else {
       _user = null;
     }

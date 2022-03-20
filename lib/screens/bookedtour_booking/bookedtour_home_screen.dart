@@ -220,7 +220,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
     );
   }
 
-  Widget getHotelViewList() {
+  Widget getTourViewList() {
     final List<Widget> bookedTourListViews = <Widget>[];
     for (int i = 0; i < _listBookTour.length; i++) {
       final int count = _listBookTour.length;
@@ -567,24 +567,6 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
               alignment: Alignment.centerLeft,
               width: AppBar().preferredSize.height + 40,
               height: AppBar().preferredSize.height,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(32.0),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                ),
-              ),
             ),
             const Expanded(
               child: Center(

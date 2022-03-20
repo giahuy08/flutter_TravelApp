@@ -3,6 +3,7 @@ import 'package:flutter_travelapp/models/user.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/change_password/change_password_screen.dart';
+import 'package:flutter_travelapp/screens/chat/chat_screen.dart';
 import 'package:flutter_travelapp/screens/custom_screen/help_screen.dart';
 import 'package:flutter_travelapp/screens/custom_screen/invite_friend_screen.dart';
 import 'package:flutter_travelapp/screens/profile/components/edit_profile.dart';
@@ -35,6 +36,7 @@ class _BodyState extends State<Body> {
                   builder: (BuildContext context) => const EditProfilePage()))
             },
           ),
+
           ProfileMenu(
             text: "Đổi mật khẩu",
             icon: "assets/icons/change-password.svg",
@@ -44,15 +46,30 @@ class _BodyState extends State<Body> {
                       const ChangePasswordScreen()))
             },
           ),
+
           ProfileMenu(
-            text: "Chuyến đi đã đặt",
-            icon: "assets/icons/order-history.svg",
+            text: "Chăm sóc khách hàng",
+            icon: "assets/icons/message.svg",
             press: () => {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      const BookedTourHomeScreen()))
+                builder: (BuildContext context) => ChatScreen(
+                  id: userProvider.user.id,
+                  name: "Travel",
+                  image:
+                      "https://firebasestorage.googleapis.com/v0/b/travel-app-34be2.appspot.com/o/unknown.jpg?alt=media&token=3dbbbcec-60e1-419b-89b8-cedb9d7f0514",
+                ),
+              ))
             },
           ),
+          // ProfileMenu(
+          //   text: "Chuyến đi đã đặt",
+          //   icon: "assets/icons/order-history.svg",
+          //   press: () => {
+          //     Navigator.of(context).push(MaterialPageRoute(
+          //         builder: (BuildContext context) =>
+          //             const BookedTourHomeScreen()))
+          //   },
+          // ),
           // ProfileMenu(
           //   text: "Chia sẻ ứng dụng",
           //   icon: "assets/icons/Conversation.svg",

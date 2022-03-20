@@ -19,6 +19,28 @@ class UserRepository {
     return null;
   }
 
+  Future<List<dynamic>> getMessage({required int skip, String? idRoom}) async {
+    var response = await HandleApis().get(
+      ApiGateway.getMessage,
+      'skip=$skip&idRoom=$idRoom',
+    );
+    print(response.body.toString());
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['data'];
+    }
+
+    return [];
+  }
+
+ Future<List<dynamic>> getRoom(int skip) async {
+    var response = await HandleApis().get(ApiGateway.getlistroom);
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['data'];
+    }
+    return [];
+  }
+
   Future<String?> changePassword(String oldPassword, String newPassword) async {
     var body = {
       "oldPassword": oldPassword,
