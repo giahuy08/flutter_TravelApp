@@ -72,8 +72,7 @@ handleReceiveNotification(context) async {
   // });
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('firebase');
-    print(message.data);
+ 
     if (message.data != null) {
       if (message.data['action'] != 'MESSAGE') {
         if (message.data['action'] == 'NEW_ORDER' ||
@@ -89,6 +88,16 @@ handleReceiveNotification(context) async {
           //   showDialogFCM(context, message);
         }
       } else {
+        Get.snackbar(
+          message.notification!.title!,
+          message.notification!.body!,
+          snackPosition: SnackPosition.TOP,
+          colorText: Colors.white,
+          backgroundColor: kPrimaryColor,
+          duration: const Duration(
+            milliseconds: 800,
+          ),
+        );
         // GetSnackBar getSnackBar = GetSnackBar(
         //   title: message.notification?.title,
         //   subTitle: limitString(message.notification?.body, 35),
