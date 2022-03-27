@@ -31,4 +31,18 @@ class DiscountRepository {
     }
     return [];
   }
+
+  Future<List<dynamic>> getListDiscountOfTourByEXP(idTour) async {
+    Response response = await HandleApis()
+        .get(ApiGateway.getDiscountOfTourByEXP, 'idTour=$idTour');
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
+      if (jsonResponse.isEmpty) {
+        return [];
+      }
+      return jsonResponse;
+    }
+    return [];
+  }
 }

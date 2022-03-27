@@ -7,7 +7,7 @@ import 'package:flutter_travelapp/screens/details_tour/components/tour_card.dart
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:flutter_travelapp/screens/home/components/section_title.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
-import '../../../size_config.dart';
+import 'package:flutter_travelapp/size_config.dart';
 
 class ListTourMore extends StatefulWidget {
   const ListTourMore({Key? key}) : super(key: key);

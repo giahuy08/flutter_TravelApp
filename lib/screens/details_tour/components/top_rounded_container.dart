@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/size_config.dart';
-import 'package:sizer/sizer.dart';
 
 class TopRoundedContainer extends StatelessWidget {
   const TopRoundedContainer({

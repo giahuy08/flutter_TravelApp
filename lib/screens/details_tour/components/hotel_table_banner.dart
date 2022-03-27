@@ -1,12 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
-import 'package:flutter_travelapp/models/tour.dart';
-import 'package:flutter_travelapp/repository/discount_repository.dart';
 import 'package:flutter_travelapp/repository/enterprise_repository.dart';
-import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
-import 'package:flutter_travelapp/screens/discount_list/discount_list.dart';
 import 'package:flutter_travelapp/screens/home/components/section_title.dart';
 import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';

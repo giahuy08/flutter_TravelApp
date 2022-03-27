@@ -18,7 +18,7 @@ class ApiGateway {
   static const changePassword = 'user/changePassword';
   static const editProfile = 'user/editProfile';
   static const updateAvatar = 'user/updateAvatar';
-  static const verifyUser= 'user/verifyUser';
+  static const verifyUser = 'user/verifyUser';
 
   //Book Tour
   static const getUserBookTour = 'booktour/getUserBookTour';
@@ -29,6 +29,7 @@ class ApiGateway {
   // Discount
   static const getAllDiscount = 'discount/getAllDiscount';
   static const getAllDiscountByEXP = 'discount/getAllDiscountByEXP';
+  static const getDiscountOfTourByEXP = 'discount/getDiscountOfTourByEXP';
 
   //Review Tour
   static const getReviewOfTour = 'reviewtour/getReviewOfTour';
@@ -45,7 +46,6 @@ class ApiGateway {
   static const getOneVehicle = 'vehicle/getOneVehicle';
 
   // Message
-    static const getMessage= 'chat/getMessage';
-
-      static const getlistroom = 'chat/getRoom';
+  static const getMessage = 'chat/getMessage';
+  static const getlistroom = 'chat/getRoom';
 }

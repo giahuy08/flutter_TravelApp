@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/size_config.dart';
 
 class TourImages extends StatefulWidget {
   const TourImages({

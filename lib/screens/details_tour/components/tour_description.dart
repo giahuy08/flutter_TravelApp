@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
+import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/enterprise.dart';
 import 'package:flutter_travelapp/models/vehicle.dart';
 import 'package:flutter_travelapp/repository/enterprise_repository.dart';
@@ -10,14 +11,13 @@ import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_app_them
 import 'package:flutter_travelapp/screens/details_tour/components/hotel_table_banner.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/list_tour_more.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/review_tour.dart';
+import 'package:flutter_travelapp/screens/details_tour/components/tour_discount_bottom.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
 import 'package:flutter_travelapp/screens/payment/payment.dart';
+import 'package:flutter_travelapp/size_config.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../../constants.dart';
-import '../../../size_config.dart';
 
 class TourDescription extends StatefulWidget {
   const TourDescription({
@@ -85,7 +85,6 @@ class _TourDescriptionState extends State<TourDescription> {
   @override
   Widget build(BuildContext context) {
     final oCcy = NumberFormat("#,##0", "en_US");
-
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -426,7 +425,9 @@ class _TourDescriptionState extends State<TourDescription> {
             hintText: "Mã giảm giá",
             floatingLabelBehavior: FloatingLabelBehavior.always,
             suffixIcon: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                _settingModalBottomSheet(context, widget.tour.id);
+              },
               icon: const Icon(Icons.wallet_giftcard),
               color: kPrimaryColor,
             )));
@@ -468,4 +469,20 @@ class StatusCard extends StatelessWidget {
       ),
     );
   }
+}
+
+void _settingModalBottomSheet(context, idTour) {
+  showModalBottomSheet(
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+      ),
+      context: context,
+      builder: (BuildContext bc) {
+        return TourDiscountBottom(idTour : idTour);
+      });
 }
