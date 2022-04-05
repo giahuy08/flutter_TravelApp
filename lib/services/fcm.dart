@@ -1,7 +1,10 @@
 // import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/models/notify.dart';
+import 'package:flutter_travelapp/providers/notification_provider.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
 // import 'package:freshfood/src/app.dart';
 // import 'package:freshfood/src/common/dialog/dialogAnimationWrapper.dart';
@@ -72,7 +75,6 @@ handleReceiveNotification(context) async {
   // });
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
- 
     if (message.data != null) {
       if (message.data['action'] != 'MESSAGE') {
         if (message.data['action'] == 'NEW_ORDER' ||
@@ -88,6 +90,7 @@ handleReceiveNotification(context) async {
           //   showDialogFCM(context, message);
         }
       } else {
+      
         Get.snackbar(
           message.notification!.title!,
           message.notification!.body!,
@@ -98,6 +101,7 @@ handleReceiveNotification(context) async {
             milliseconds: 800,
           ),
         );
+
         // GetSnackBar getSnackBar = GetSnackBar(
         //   title: message.notification?.title,
         //   subTitle: limitString(message.notification?.body, 35),
@@ -124,15 +128,10 @@ handleReceiveNotification(context) async {
         // if (Get.currentRoute != Routes.CHAT_DETAIL) {
         // getSnackBar.show();
         // }
+
       }
     }
   });
-
-  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    debugPrint(
-        'A new onMessageOpenedApp event was published!' + ' lambiengcode');
-    showDialogFCM(context, message);
-  }).onError((error) => print('Error: $error [\'lambiengcode\']'));
 }
 
 showDialogFCM(context, RemoteMessage message) async {

@@ -49,6 +49,7 @@ class _ListTourMoreState extends State<ListTourMore> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: getProportionateScreenWidth(14)),
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
@@ -58,31 +59,86 @@ class _ListTourMoreState extends State<ListTourMore> {
                 arguments: ListToursArguments(tours: _listTourMore)),
           ),
         ),
-        SizedBox(height: getProportionateScreenWidth(10)),
+        SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              ...List.generate(
-                _listTour.length,
-                (index) {
-                  if (_listTour[index] != null) {
-                    return TourCard(
-                      product: _listTour[index],
-                      press: () => Navigator.pushNamed(
-                          context, DetailScreen.routeName,
-                          arguments:
-                              ProductDetailsArguments(tour: _listTour[index])),
-                    );
-                  }
-                  return const SizedBox
-                      .shrink(); // here by default width and height is 0
-                },
-              ),
-              SizedBox(width: getProportionateScreenWidth(20)),
+              ...List.generate(_listTour.length, (index) {
+                return Padding(
+                  padding:
+                      EdgeInsets.only(left: getProportionateScreenWidth(20)),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: SizedBox(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Stack(
+                          children: [
+                            Image.network(
+                              _listTour[index].imagesTour[0],
+                              width: getProportionateScreenWidth(150),
+                              height: getProportionateScreenWidth(200),
+                              fit: BoxFit.cover,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    const Color(0xFF343434).withOpacity(0.4),
+                                    const Color(0xFF343434).withOpacity(0.15),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              left: 3,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      "${_listTour[index].name}\n",
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                        fontSize:
+                                            getProportionateScreenWidth(16),
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "${(_listTour[index].star).toStringAsFixed(1)}",
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        const Icon(Icons.star,
+                                            size: 20, color: Colors.orange),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              })
             ],
           ),
-        )
+        ),
       ],
     );
   }

@@ -164,16 +164,15 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
       child: GestureDetector(
         onTap: widget.press,
         child: SizedBox(
-          width: getProportionateScreenWidth(165),
-          height: getProportionateScreenWidth(90),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(
               children: [
                 Image.asset(
                   widget.image,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.fill,
+                  width: getProportionateScreenWidth(150),
+                  height: getProportionateScreenWidth(200),
+                  fit: BoxFit.cover,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -187,24 +186,28 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(15.0),
-                    vertical: getProportionateScreenWidth(10),
-                  ),
-                  child: Text.rich(
-                    TextSpan(
-                      style: const TextStyle(color: Colors.white),
-                      children: [
-                        TextSpan(
-                          text: "${widget.category}\n",
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(18),
-                            fontWeight: FontWeight.bold,
+                Positioned(
+                  bottom: 8,
+                  left: 0,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(15.0),
+                      vertical: getProportionateScreenWidth(10),
+                    ),
+                    child: Text.rich(
+                      TextSpan(
+                        style: const TextStyle(color: Colors.white),
+                        children: [
+                          TextSpan(
+                            text: "${widget.category}\n",
+                            style: TextStyle(
+                              fontSize: getProportionateScreenWidth(18),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        TextSpan(text: "${widget.numOfTours} Tours")
-                      ],
+                          TextSpan(text: "${widget.numOfTours} Tours")
+                        ],
+                      ),
                     ),
                   ),
                 ),

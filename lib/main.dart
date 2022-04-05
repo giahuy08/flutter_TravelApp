@@ -1,15 +1,24 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/providers/notification_provider.dart';
+import 'package:flutter_travelapp/providers/user_provider.dart';
 import 'package:flutter_travelapp/routes.dart';
+import 'package:flutter_travelapp/screens/home/components/home_header.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
 import 'package:flutter_travelapp/theme.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<UserProvider>(
+      create: (context) => userProvider,
+    ),
+  
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

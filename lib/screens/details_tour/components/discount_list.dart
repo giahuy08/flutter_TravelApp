@@ -7,7 +7,7 @@ import 'package:flutter_travelapp/screens/details_tour/components/discount_list_
 import 'package:flutter_travelapp/size_config.dart';
 
 class DiscountList extends StatefulWidget {
-  final Function(List<String>) onSelect;
+  final Function(String) onSelect;
   final String idTour;
 
   const DiscountList({Key? key, required this.onSelect, required this.idTour})
@@ -19,7 +19,8 @@ class DiscountList extends StatefulWidget {
 
 class _FilterListState extends State<DiscountList> {
   List<dynamic> _listDiscount = [];
-  List<String> selected = [];
+  // List<String> selected = [];
+  String selected = '';
 
   @override
   void initState() {
@@ -42,13 +43,15 @@ class _FilterListState extends State<DiscountList> {
   }
 
   toggle(title) {
-    if (selected.contains(title)) {
-      selected.remove(title);
-    } else {
-      selected.add(title);
-    }
+    // if (selected.contains(title)) {
+    //   selected.remove(title);
+    // } else {
+    //   selected.add(title);
+    // }
+    // selected = title;
 
     setState(() {
+      selected = title;
       widget.onSelect(selected);
     });
   }
@@ -75,7 +78,7 @@ class _FilterListState extends State<DiscountList> {
         : Column(
             children: _listDiscount.map((o) {
               return DiscountListItem(
-                selected: selected.contains(o['code']),
+                selected: selected == o['code'],
                 onTap: () {
                   toggle(o['code']);
                 },

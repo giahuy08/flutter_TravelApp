@@ -15,9 +15,11 @@ class TourDiscountBottom extends StatefulWidget {
 class _TourDiscountBottomState extends State<TourDiscountBottom> {
   void close(context) {
     if (Navigator.canPop(context)) {
-      Navigator.pop(context);
+      Navigator.pop(context, discount);
     }
   }
+
+  late String discount = '';
 
   @override
   Widget build(BuildContext context) {
@@ -50,16 +52,21 @@ class _TourDiscountBottomState extends State<TourDiscountBottom> {
                 ),
               ],
             ),
-            DiscountList(onSelect: (selected) => print(selected), idTour: widget.idTour,),
+            DiscountList(
+              onSelect: (selected) => discount = selected,
+              idTour: widget.idTour,
+            ),
             Container(
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(vertical: 20),
-                child: DefaultButton(
-                  text: 'Chọn mã',
-                  press: () {close(context);},
-                  ),
-                  ),
-                  ],
+              width: double.infinity,
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              child: DefaultButton(
+                text: 'Chọn mã',
+                press: () {
+                  close(context);
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

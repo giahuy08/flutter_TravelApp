@@ -63,8 +63,9 @@ class _ListReviewsState extends State<ListReviews> {
                       ),
                     ),
                     SmoothStarRating(
+                      isReadOnly: true,
                       starCount: 5,
-                      rating: 4.5,
+                      rating: widget.tour.star,
                       size: 28.0,
                       color: Colors.orange,
                       borderColor: Colors.orange,
@@ -102,6 +103,7 @@ class _ListReviewsState extends State<ListReviews> {
                             animation: true,
                             animationDuration: 2500,
                             percent: ratings[index],
+
                             progressColor: Colors.orange,
                           ),
                         ],

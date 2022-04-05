@@ -67,6 +67,7 @@ class ReviewUI extends StatelessWidget {
                 starCount: 5,
                 rating: rating,
                 size: 28.0,
+                isReadOnly: true,
                 color: Colors.orange,
                 borderColor: Colors.orange,
               ),

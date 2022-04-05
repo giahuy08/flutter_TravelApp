@@ -21,11 +21,18 @@ class _TourImagesState extends State<TourImages> {
     return Column(
       children: [
         SizedBox(
-          width: getProportionateScreenWidth(350),
+          width: MediaQuery.of(context).size.width,
+          height: getProportionateScreenHeight(240),
           child: AspectRatio(
             aspectRatio: 1,
-            child: Image.network(widget.tour.imagesTour[selectedImage]),
+            child: Image.network(
+              widget.tour.imagesTour[selectedImage],
+              fit: BoxFit.cover,
+            ),
           ),
+        ),
+        SizedBox(
+          height: 10,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

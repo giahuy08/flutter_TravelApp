@@ -91,21 +91,38 @@ class _TourDescriptionState extends State<TourDescription> {
           TourImages(tour: widget.tour),
           TopRoundedContainer(
             color: Colors.white,
-            height: 95.h,
+            height: 80.h,
             child: Column(
               children: [
                 Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: getProportionateScreenWidth(20)),
-                    child: Text(
-                      widget.tour.name,
-                      style: Theme.of(context).textTheme.headline6,
-                    )),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(20),
+                      vertical: getProportionateScreenWidth(10)),
+                  child: Text(
+                    widget.tour.name,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w600, fontSize: 20),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(20),
+                      vertical: getProportionateScreenHeight(5)),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.place_outlined),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(widget.tour.place),
+                    ],
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Container(
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(10),
                     width: 15.w,
                     decoration: BoxDecoration(
                         color: (widget.tour.star > 3)
@@ -123,16 +140,16 @@ class _TourDescriptionState extends State<TourDescription> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                      left: getProportionateScreenWidth(20),
-                      right: getProportionateScreenWidth(64)),
-                  child: Text(
-                    widget.tour.detail,
-                    maxLines: 3,
-                  ),
-                ),
+                    padding: EdgeInsets.only(
+                        left: getProportionateScreenWidth(20),
+                        right: getProportionateScreenWidth(64)),
+                    child: Text(
+                      widget.tour.detail,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                    )),
                 SizedBox(height: getProportionateScreenWidth(20)),
-                nameEnterprise == ""
+                nameVehicle == "" || nameEnterprise == ""
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -145,56 +162,27 @@ class _TourDescriptionState extends State<TourDescription> {
                       )
                     : Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 5),
-                        child: _buildItemEnterprise(context),
-                      ),
-                nameVehicle == ""
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          SizedBox(height: 10.h),
-                          const SpinKitSpinningLines(
-                            color: Colors.red,
-                          )
-                        ],
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                              width: MediaQuery.of(context).size.width * .48,
-                              padding: EdgeInsets.all(
-                                  getProportionateScreenHeight(10.sp)),
-                              decoration: BoxDecoration(
-                                  color: BookedTourAppTheme.buildLightTheme()
-                                      .backgroundColor,
-                                  boxShadow: const [
-                                    BoxShadow(
-                                        color: Colors.black26,
-                                        blurRadius: 10,
-                                        spreadRadius: 1)
-                                  ]),
-                              child: Column(
-                                children: [
-                                  Hero(
-                                      tag: itemVehicle.name,
-                                      child: Image.network(
-                                          itemVehicle.imagesVehicle[0])),
-                                  Text(
-                                    itemVehicle.vehicleNumber,
-                                    style: const TextStyle(fontSize: 12),
-                                  ),
-                                  Text(
-                                    itemVehicle.name,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
-                                    maxLines: 1,
-                                  ),
-                                ],
-                              )),
+                            horizontal: 8, vertical: 10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ServiceCard(
+                                  image: itemVehicle.imagesVehicle[0],
+                                  text: itemVehicle.vehicleNumber,
+                                  color: const Color(0xfff3c7fff),
+                                  subText: itemVehicle.name,
+                                ),
+                                ServiceCard(
+                                  image: itemEnterprise.logo,
+                                  text: itemEnterprise.name,
+                                  color: const Color(0xfffffa13a),
+                                  subText: 'ENTERPRISE',
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                 HotelTableBanner(
@@ -416,11 +404,7 @@ class _TourDescriptionState extends State<TourDescription> {
         style: const TextStyle(fontSize: 15),
         textCapitalization: TextCapitalization.characters,
         keyboardType: TextInputType.text,
-        onSaved: (newValue) => discount = newValue!,
-        onChanged: (value) {
-          discount = value;
-          return;
-        },
+        controller: TextEditingController(text: discount),
         decoration: InputDecoration(
             hintText: "Mã giảm giá",
             floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -431,6 +415,112 @@ class _TourDescriptionState extends State<TourDescription> {
               icon: const Icon(Icons.wallet_giftcard),
               color: kPrimaryColor,
             )));
+  }
+
+  _settingModalBottomSheet(context, idTour) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+        ),
+        context: context,
+        builder: (BuildContext bc) {
+          return TourDiscountBottom(idTour: idTour);
+        }).then((value) => setState(() {
+          discount = value;
+        }));
+  }
+}
+
+class ServiceCard extends StatelessWidget {
+  const ServiceCard({
+    Key? key,
+    required this.text,
+    required this.image,
+    required this.color,
+    this.subText = '',
+  }) : super(key: key);
+
+  final String text;
+  final String subText;
+
+  final String image;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 140,
+      width: MediaQuery.of(context).size.width / 2 - 30,
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 10, left: 10),
+            width: getProportionateScreenWidth(70),
+            height: getProportionateScreenWidth(60),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                image: DecorationImage(image: NetworkImage(image)),
+                boxShadow: const [
+                  BoxShadow(
+                      color: Colors.black26, blurRadius: 10, spreadRadius: 1)
+                ]),
+          ),
+          Positioned(
+            bottom: 10,
+            left: 3,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    text,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: getProportionateScreenWidth(13),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  Text(
+                    subText,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  )
+                  // Row(
+
+                  //   children: [
+                  //     Text(
+                  //       "${(_listTour[index].star).toStringAsFixed(1)}",
+                  //       style: const TextStyle(
+                  //         color: Colors.white,
+                  //       ),
+                  //     ),
+                  //     const Icon(Icons.star,
+                  //         size: 20, color: Colors.orange),
+
+                  // ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -469,20 +559,4 @@ class StatusCard extends StatelessWidget {
       ),
     );
   }
-}
-
-void _settingModalBottomSheet(context, idTour) {
-  showModalBottomSheet(
-      isScrollControlled: true,
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
-        ),
-      ),
-      context: context,
-      builder: (BuildContext bc) {
-        return TourDiscountBottom(idTour : idTour);
-      });
 }

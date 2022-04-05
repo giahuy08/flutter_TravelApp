@@ -39,14 +39,14 @@ class TourCard extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(getProportionateScreenWidth(5)),
                   decoration: BoxDecoration(
-                    color: kSecondaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Image.network(
-                    tour.imagesTour[0],
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.fill,
-                  ),
+                      color: kSecondaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                          tour.imagesTour[0],
+                        ),
+                      )),
                 ),
               ),
               const SizedBox(height: 10),

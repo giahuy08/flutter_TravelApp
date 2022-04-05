@@ -59,6 +59,7 @@ dependencies:
   flutter_signin_button: ^2.0.0
   socket_io_client: ^1.0.2
   device_info: ^2.0.2
+  carousel_slider: ^4.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_travelapp/screens/home/components/slider_banner.dart';
 import 'package:flutter_travelapp/screens/home/components/special_offers.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'categories.dart';
@@ -17,6 +18,8 @@ class Body extends StatelessWidget {
           children: [
             SizedBox(height: getProportionateScreenHeight(20)),
             const HomeHeader(),
+            SizedBox(height: getProportionateScreenWidth(10)),
+            const SliderBanner(),
             SizedBox(height: getProportionateScreenWidth(10)),
             const DiscountBanner(),
             const Categories(),
