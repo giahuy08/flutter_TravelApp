@@ -13,6 +13,8 @@ class TourModel {
   final String id;
   String name;
   String place;
+  String latitude;
+  String longtitude;
   String time;
   TourModel(
       {required this.idEnterprise,
@@ -25,6 +27,8 @@ class TourModel {
       required this.id,
       required this.name,
       required this.place,
+      required this.latitude,
+      required this.longtitude,
       required this.time});
 
   TourModel copyWith({
@@ -38,6 +42,8 @@ class TourModel {
     String? id,
     String? name,
     String? place,
+    String? latitude,
+    String? longtitude,
     String? time,
   }) {
     return TourModel(
@@ -51,6 +57,8 @@ class TourModel {
       id: id ?? this.id,
       name: name ?? this.name,
       place: place ?? this.place,
+      latitude: latitude ?? this.latitude,
+      longtitude: latitude ?? this.longtitude,
       time: time ?? this.time,
     );
   }
@@ -87,6 +95,8 @@ class TourModel {
       id: map['_id'],
       name: map['name'],
       place: map['place'],
+      latitude: map['latitude'],
+      longtitude: map['longtitude'],
       time: map['time'],
     );
   }
@@ -98,7 +108,7 @@ class TourModel {
 
   @override
   String toString() {
-    return 'TourModel(idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, id: $id, name: $name, place: $place, time: $time)';
+    return 'TourModel(idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, id: $id, name: $name, place: $place, latitude:$latitude,longtitude:$longtitude, time: $time)';
   }
 
   @override
@@ -116,6 +126,8 @@ class TourModel {
         other.id == id &&
         other.name == name &&
         other.place == place &&
+        other.latitude == latitude &&
+        other.longtitude == longtitude &&
         other.time == time;
   }
 
@@ -131,6 +143,8 @@ class TourModel {
         id.hashCode ^
         name.hashCode ^
         place.hashCode ^
+        latitude.hashCode ^
+        longtitude.hashCode ^
         time.hashCode;
   }
 }

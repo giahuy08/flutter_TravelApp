@@ -5,8 +5,8 @@ import 'package:flutter_travelapp/repository/chat_repository.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/chat/chat_screen.dart';
 import 'package:flutter_travelapp/screens/custom_screen/feedback_screen.dart';
-import 'package:flutter_travelapp/screens/google_map/google_map_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
+import 'package:flutter_travelapp/screens/map/map.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/services/fcm.dart';
 import 'package:flutter_travelapp/services/socket.dart';
@@ -34,7 +34,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   final screen = [
     const HomeScreen(),
-    const MapSample(),
+    // const MapSample(),
+    Map(),
     // const ChatScreen(),
     // ChatScreen(
     //   id: userProvider.user.id,

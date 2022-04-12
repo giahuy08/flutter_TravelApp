@@ -7,7 +7,6 @@ import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:flutter_travelapp/screens/discount_list/discount_list.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
-import 'package:flutter_travelapp/screens/google_map/google_map_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
 import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
 import 'package:flutter_travelapp/screens/list_vehicle/cars_overview.dart';
@@ -51,7 +50,6 @@ final Map<String, WidgetBuilder> routes = {
   ListEnterpriseScreen.routeName: (context) => const ListEnterpriseScreen(),
   CarsOverviewScreen.routeName: (context) => const CarsOverviewScreen(),
   // PaymentMethodScreen.routeName: (context) => const PaymentMethodScreen(),
-  MapSample.routeName: (context) => const MapSample(),
   FeedbackScreen.routeName: (context) => const FeedbackScreen(),
   HelpScreen.routeName: (context) => const HelpScreen(),
   InviteFriend.routeName: (context) => const InviteFriend(),
