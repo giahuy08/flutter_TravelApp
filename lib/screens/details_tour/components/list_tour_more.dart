@@ -69,7 +69,11 @@ class _ListTourMoreState extends State<ListTourMore> {
                   padding:
                       EdgeInsets.only(left: getProportionateScreenWidth(20)),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, DetailScreen.routeName,
+                          arguments:
+                              ProductDetailsArguments(tour: _listTour[index]));
+                    },
                     child: SizedBox(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),

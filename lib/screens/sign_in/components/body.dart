@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelapp/components/social_card.dart';
+import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/userGoogle.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/sign_in/components/no_account.dart';
 import 'package:flutter_travelapp/screens/sign_in/components/sign_form.dart';
+import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -22,10 +26,52 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late String token;
+  final FacebookLogin facebookSignIn = new FacebookLogin();
+
+  // Future fbSignIn() async {
+  //   // facebookSignIn.loginBehavior = FacebookLoginBehavior.webViewOnly;
+  //   final FacebookLoginResult result = await facebookSignIn.logIn(['email']);
+
+  //   switch (result.status) {
+  //     case FacebookLoginStatus.loggedIn:
+  //       final FacebookAccessToken accessToken = result.accessToken;
+  //       final snackbar =
+  //           SnackBar(content: Text("Đăng nhập bằng Facebook thành công!"));
+  //       ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  //       Navigator.pushAndRemoveUntil(
+  //           context,
+  //           MaterialPageRoute(builder: (builder) => const SignInScreen()),
+  //           (route) => false);
+  //       break;
+  //     case FacebookLoginStatus.cancelledByUser:
+  //       final snackbar = SnackBar(content: Text("Yêu cầu đã được hủy!"));
+  //       ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  //       break;
+  //     case FacebookLoginStatus.error:
+  //       final snackbar = SnackBar(content: Text("Không thể đăng nhập!"));
+  //       ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  //       break;
+  //   }
+  // }
+
   Future<UserCredential> googleSignIn() async {
+    //  await FirebaseAuth.instance.signOut();
+
     GoogleSignIn googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
     final FirebaseAuth _auth = FirebaseAuth.instance;
-    GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    // GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    final googleUser = GoogleSignIn().currentUser ??
+        await GoogleSignIn(
+          scopes: [
+            'email',
+            'https://www.googleapis.com/auth/userinfo.profile',
+          ],
+        ).signIn();
+
+    if (GoogleSignIn().currentUser != null) {
+      await _auth.signOut();
+    }
     if (googleUser != null) {
       GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
@@ -36,10 +82,6 @@ class _BodyState extends State<Body> {
         final UserCredential user =
             await _auth.signInWithCredential(credential);
 
-        // print('hello');
-        // // print(user.additionalUserInfo!.profile!['given_name']);
-        // print(user.additionalUserInfo!.profile);
-
         _auth.authStateChanges().listen((user) {
           // if (user == null) {
           //   Navigator.of(context).pushReplacementNamed("start");
@@ -49,34 +91,14 @@ class _BodyState extends State<Body> {
               .loginwithGoogle(
                   user!.email.toString(), user.displayName.toString())
               .then((value) => {
-                    // Future.delayed(const Duration(milliseconds: 800), () {
-                    //   // Here you can write your code
-
-                    //   setState(() {
-                    //     Navigator.pushNamed(
-                    //         context, LoginSuccessScreen.routeName);
-                    //   });
-                    // })
-                    print('hello'),
-                    // print(value),
-
                     userProvider.setUser(UserModel.fromLogin(value!)),
-                    // userProvider.setUser(value),
                     Navigator.pushReplacementNamed(
                         context, LoginSuccessScreen.routeName)
-                    // userProvider.setUser((value))
                   });
 
           // user?.getIdToken().then((t) => {print(t)});
         });
-        // await Navigator.pushReplacementNamed(
-        //     context, LoginSuccessScreen.routeName);
-        // await Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => HomePage(ava),
-        //   ),
-        // );
+
         return user;
       } else {
         throw StateError('Missing Google Auth Token');
@@ -131,8 +153,47 @@ class _BodyState extends State<Body> {
                 SizedBox(
                   height: getProportionateScreenHeight(10),
                 ),
-                SignInButton(Buttons.Google,
-                    text: "Sign up with Google", onPressed: googleSignIn),
+                InkWell(
+                  onTap: googleSignIn,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width - 60,
+                    height: 60,
+                    child: Card(
+                      color: const Color(0xFFF5F6F9),
+                      elevation: 8,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/google-icon.svg',
+                            height: 26,
+                            width: 26,
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            'Đăng nhập với Google',
+                            style: TextStyle(color: kTextColor, fontSize: 18),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     SocialCard(
+                //         icon: 'assets/icons/google-icon.svg',
+                //         press: googleSignIn),
+                //     SocialCard(
+                //         icon: 'assets/icons/facebook-2.svg', press: fbSignIn),
+                //   ],
+                // ),
               ],
             ),
           ),

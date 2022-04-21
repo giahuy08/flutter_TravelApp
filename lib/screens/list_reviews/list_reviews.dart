@@ -3,6 +3,7 @@ import 'package:flutter_travelapp/components/default_appbar.dart';
 import 'package:flutter_travelapp/components/default_backbutton.dart';
 import 'package:flutter_travelapp/components/review_ui.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/screens/details_tour/components/review_tour.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -19,9 +20,33 @@ class ListReviews extends StatefulWidget {
 
 class _ListReviewsState extends State<ListReviews> {
   bool isMore = false;
-  List<double> ratings = [0.1, 0.3, 0.5, 0.7, 0.9];
 
+  List<double> ratings = [0.1, 0.3, 0.5, 0.7, 0.9];
+  List<double> reviews = [];
+  List<double> array = [1, 2, 3, 4, 5];
   get kWhiteColor => null;
+  void countRating() {
+    for (int i = 0; i < array.length; i++) {
+      double count = 0;
+      for (int j = 0; j < widget.reviewTour.length; j++) {
+        if (array[i] == widget.reviewTour[j].star) {
+          count++;
+        }
+      }
+
+      setState(() {
+        reviews.add(double.parse(
+            (count / widget.reviewTour.length).toStringAsFixed(1)));
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    countRating();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +127,7 @@ class _ListReviewsState extends State<ListReviews> {
                             width: MediaQuery.of(context).size.width / 2.8,
                             animation: true,
                             animationDuration: 2500,
-                            percent: ratings[index],
+                            percent: reviews[index],
 
                             progressColor: Colors.orange,
                           ),

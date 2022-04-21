@@ -8,6 +8,7 @@ import 'package:flutter_travelapp/screens/custom_screen/help_screen.dart';
 import 'package:flutter_travelapp/screens/custom_screen/invite_friend_screen.dart';
 import 'package:flutter_travelapp/screens/profile/components/edit_profile.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../../constants.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
@@ -97,6 +98,11 @@ class _BodyState extends State<Body> {
   }
 }
 
+void signOutGoogle() async {
+  GoogleSignIn googleSignIn = GoogleSignIn();
+  await googleSignIn.signOut();
+}
+
 void signOutDrawer(BuildContext context) {
   showModalBottomSheet(
       isDismissible: false,
@@ -133,6 +139,7 @@ void signOutDrawer(BuildContext context) {
                         ),
                         onPressed: () => {
                               userProvider.setUser(null),
+                              // signOutGoogle(),
                               Navigator.pushNamed(
                                   context, SplashScreen.routeName),
                             }),

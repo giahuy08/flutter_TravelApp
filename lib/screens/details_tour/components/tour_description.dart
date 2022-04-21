@@ -91,7 +91,7 @@ class _TourDescriptionState extends State<TourDescription> {
           TourImages(tour: widget.tour),
           TopRoundedContainer(
             color: Colors.white,
-            height: 80.h,
+            height: 90.h,
             child: Column(
               children: [
                 Padding(
@@ -149,7 +149,7 @@ class _TourDescriptionState extends State<TourDescription> {
                       overflow: TextOverflow.ellipsis,
                     )),
                 SizedBox(height: getProportionateScreenWidth(20)),
-                nameVehicle == "" || nameEnterprise == ""
+                nameVehicle == "" || nameEnterprise == "" || itemVehicle == null
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
