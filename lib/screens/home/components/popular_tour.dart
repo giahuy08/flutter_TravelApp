@@ -39,7 +39,7 @@ class _PopularToursState extends State<PopularTours> {
 
   void getListTour() async {
     List<TourModel> tours = await TourRepository().getListTour(1, 5);
-    List<TourModel> toursMore = await TourRepository().getListTour(1, 15);
+    List<TourModel> toursMore = await TourRepository().getListTour('', '');
     setState(() {
       _listTour.addAll(tours);
       _listTourMore.addAll(toursMore);
