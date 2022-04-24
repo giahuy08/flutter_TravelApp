@@ -48,7 +48,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
     List<TourModel> listSea = await TourRepository().findAllTourByCategory(1);
     List<TourModel> listHighLand =
         await TourRepository().findAllTourByCategory(2);
-    List<TourModel> toursMore = await TourRepository().getListTour(1, 15);
+    List<TourModel> toursMore = await TourRepository().getListTour('', '');
     setState(() {
       _listOthers.addAll(listOthers);
       _listSea.addAll(listSea);
