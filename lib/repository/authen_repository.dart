@@ -23,7 +23,7 @@ class AuthenRepository {
       "email": email,
       "name": name,
     };
-
+    print(body);
     var response = await HandleApis().post(ApiGateway.loginwithGoogle, body);
     print(response.statusCode);
     if (response.statusCode == 200) {

@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelapp/components/social_card.dart';
 import 'package:flutter_travelapp/constants.dart';
@@ -26,7 +25,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late String token;
-  final FacebookLogin facebookSignIn = new FacebookLogin();
+  
 
   // Future fbSignIn() async {
   //   // facebookSignIn.loginBehavior = FacebookLoginBehavior.webViewOnly;
@@ -86,6 +85,7 @@ class _BodyState extends State<Body> {
           // if (user == null) {
           //   Navigator.of(context).pushReplacementNamed("start");
           // }
+          
 
           AuthenRepository()
               .loginwithGoogle(
