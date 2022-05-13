@@ -21,6 +21,12 @@ const kAnimationDuration = Duration(milliseconds: 200);
 const kLessPadding = 10.0;
 const kDefaultPadding = 18.0;
 
+//padding
+const double appPadding = 20.0;
+
+//colors used in this app
+
+
 const kDarkTextStyle = TextStyle(
   fontSize: 20.0,
   color: kDarkColor,
