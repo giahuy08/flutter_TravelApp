@@ -15,6 +15,8 @@ import 'package:flutter_travelapp/screens/details_tour/components/tour_discount_
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
 import 'package:flutter_travelapp/screens/payment/payment.dart';
+import 'package:flutter_travelapp/screens/schedule_tour/seats_grid_page.dart';
+import 'package:flutter_travelapp/screens/schedule_tour/widgets/flight_provider.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
@@ -204,7 +206,15 @@ class _TourDescriptionState extends State<TourDescription> {
               child: Column(
                 children: [
                   ElevatedButton.icon(
-                    onPressed: selectDate,
+                    onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SeatsGridPage(
+                                        flight: flightsAvailable[0]),
+                                  ),
+                                );
+                              },
                     icon: const Icon(
                         Icons.date_range), //icon data for elevated button
                     label: const Text("Chọn ngày khởi hành"), //label text
