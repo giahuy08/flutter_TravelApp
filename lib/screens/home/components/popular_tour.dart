@@ -84,7 +84,7 @@ class _PopularToursState extends State<PopularTours> {
                             press: () => Navigator.pushNamed(
                                 context, DetailScreen.routeName,
                                 arguments: ProductDetailsArguments(
-                                    tour: _listTour[index])),
+                                    object: _listTour[index])),
                           );
                         }
                         return const SizedBox

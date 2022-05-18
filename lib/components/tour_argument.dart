@@ -1,6 +1,6 @@
 
 class ProductDetailsArguments {
-  final dynamic tour;
+  final dynamic object;
 
-  ProductDetailsArguments({required this.tour});
+  ProductDetailsArguments({required this.object});
 }

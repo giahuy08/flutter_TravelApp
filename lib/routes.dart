@@ -24,6 +24,7 @@ import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter_travelapp/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
 import 'package:flutter_travelapp/screens/success/success.dart';
+import 'package:flutter_travelapp/screens/ticket/ticket_tour_screen.dart';
 
 // All route
 final Map<String, WidgetBuilder> routes = {
@@ -54,5 +55,5 @@ final Map<String, WidgetBuilder> routes = {
   HelpScreen.routeName: (context) => const HelpScreen(),
   InviteFriend.routeName: (context) => const InviteFriend(),
   OtpSignUpScreen.routeName: (context) => const OtpSignUpScreen(),
-  
+  TicketTourScreen.routeName: (context) => const TicketTourScreen(),
 };
