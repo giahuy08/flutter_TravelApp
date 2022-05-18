@@ -24,7 +24,7 @@ class TourItem extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, DetailScreen.routeName,
                           arguments:
-                              ProductDetailsArguments(tour: listTour[index]));
+                              ProductDetailsArguments(object: listTour[index]));
                     },
                   );
                 })),

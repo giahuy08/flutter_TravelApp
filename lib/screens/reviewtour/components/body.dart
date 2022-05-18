@@ -95,7 +95,7 @@ class _BodyState extends State<Body> {
                           await TourRepository().getOneTour(widget.tour.idTour),
                       Navigator.pushNamed(context, DetailScreen.routeName,
                           arguments: ProductDetailsArguments(
-                              tour: TourModel.fromMap(itemtour))),
+                              object: TourModel.fromMap(itemtour))),
                     },
                   ),
                 ),

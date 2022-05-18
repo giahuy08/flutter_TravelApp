@@ -84,7 +84,7 @@ class _DiscountListState extends State<DiscountList> {
                     //     .getOneTour(_listDiscount[index]['idTour']),
                     Navigator.pushNamed(context, DetailScreen.routeName,
                         arguments: ProductDetailsArguments(
-                            tour: TourModel.fromMap(
+                            object: TourModel.fromMap(
                                 _listDiscount[index]['tour']))),
                   },
                 );

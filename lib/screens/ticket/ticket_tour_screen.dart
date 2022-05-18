@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'components/body.dart';
 
-class ReviewScreen extends StatelessWidget {
-  static String routeName = "/review";
-  const ReviewScreen({Key? key}) : super(key: key);
+class TicketTourScreen extends StatelessWidget {
+  static String routeName = "/ticket";
+  const TicketTourScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,9 @@ class ReviewScreen extends StatelessWidget {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as ProductDetailsArguments;
     return Scaffold(
-      body: Body(tour: arguments.object,),
+      body: Body(
+        booktour: arguments.object,
+      ),
     );
   }
 }
