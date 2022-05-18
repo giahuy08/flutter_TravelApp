@@ -5,7 +5,8 @@ import '../size_config.dart';
 
 class CustomSurffix extends StatelessWidget {
   const CustomSurffix({
-    Key? key, required this.svgIcon,
+    Key? key,
+    required this.svgIcon,
   }) : super(key: key);
   final String svgIcon;
 
@@ -15,7 +16,7 @@ class CustomSurffix extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(0, getProportionateScreenWidth(20),
           getProportionateScreenWidth(20), getProportionateScreenWidth(20)),
       child: SvgPicture.asset(
-       svgIcon,
+        svgIcon,
         height: getProportionateScreenHeight(18),
       ),
     );

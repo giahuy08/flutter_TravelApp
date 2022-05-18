@@ -1,4 +1,3 @@
-
 class ProductDetailsArguments {
   final dynamic object;
 

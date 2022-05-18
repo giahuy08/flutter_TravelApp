@@ -13,7 +13,9 @@ class ReviewScreen extends StatelessWidget {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as ProductDetailsArguments;
     return Scaffold(
-      body: Body(tour: arguments.object,),
+      body: Body(
+        tour: arguments.object,
+      ),
     );
   }
 }

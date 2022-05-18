@@ -21,8 +21,6 @@ class CustomAppBar extends StatelessWidget {
           bgColor: Colors.white,
           tap: () => Navigator.pop(context),
         ),
-        //const SizedBox(width: kDefaultPadding),
-        //const SizedBox(width: kDefaultPadding),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
           decoration: BoxDecoration(

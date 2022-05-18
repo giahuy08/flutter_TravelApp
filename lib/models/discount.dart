@@ -52,7 +52,8 @@ class DiscountModel {
 
   String toJson() => json.encode(toMap());
 
-  factory DiscountModel.fromJson(String source) => DiscountModel.fromMap(json.decode(source));
+  factory DiscountModel.fromJson(String source) =>
+      DiscountModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -62,21 +63,21 @@ class DiscountModel {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is DiscountModel &&
-      other.id == id &&
-      other.code == code &&
-      other.discount == discount &&
-      other.status == status &&
-      other.idTour == idTour;
+        other.id == id &&
+        other.code == code &&
+        other.discount == discount &&
+        other.status == status &&
+        other.idTour == idTour;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      code.hashCode ^
-      discount.hashCode ^
-      status.hashCode ^
-      idTour.hashCode;
+        code.hashCode ^
+        discount.hashCode ^
+        status.hashCode ^
+        idTour.hashCode;
   }
 }

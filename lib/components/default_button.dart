@@ -31,4 +31,3 @@ class DefaultButton extends StatelessWidget {
     );
   }
 }
-
