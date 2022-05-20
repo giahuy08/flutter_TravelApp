@@ -25,6 +25,8 @@ class ApiGateway {
   static const getUserBookTourByDate = 'booktour/getUserBookTourByDate';
   static const bookTour = 'booktour/bookTour';
   static const bookTourPayment = 'booktour/bookTourPayment';
+  static const getScheduleTourOfTourByEXP =
+      'scheduletour/getScheduleTourOfTourByEXP';
 
   // Discount
   static const getAllDiscount = 'discount/getAllDiscount';

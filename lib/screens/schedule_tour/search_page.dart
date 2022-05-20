@@ -1,6 +1,8 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/components/text_frave.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/models/datetime_model.dart';
 import 'package:flutter_travelapp/screens/schedule_tour/widgets/list_flights.dart';
 import 'package:flutter_travelapp/screens/schedule_tour/widgets/search_results.dart';
 
@@ -66,6 +68,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
           children: [
             Column(
               children: [
+                
                 Container(
                   color: kPrimaryColor,
                   height: MediaQuery.of(context).size.height * 0.25,
@@ -95,7 +98,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     changeFromTo
-                                        ? DelayedDisplay(
+                                        ? const DelayedDisplay(
                                             child: Text(
                                               'Porto Alegre',
                                               style: TextStyle(
@@ -104,7 +107,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                               ),
                                             ),
                                           )
-                                        : DelayedDisplay(
+                                        : const DelayedDisplay(
                                             child: Text(
                                               'Florianópolis',
                                               style: TextStyle(
@@ -176,6 +179,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                     : Container(),
                               ],
                             ),
+                          
                           ],
                         ),
                         searchSelected
@@ -353,6 +357,47 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _ItemDate extends StatelessWidget {
+  final DateTimeModel date;
+
+  const _ItemDate({Key? key, required this.date}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // final cinemaBloc = BlocProvider.of<CinemaBloc>(context);
+
+    return InkWell(
+      // onTap: () => cinemaBloc.add( OnSelectedDateEvent( date.number ) ),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10.0),
+        child:
+            // BlocBuilder<CinemaBloc, CinemaState>(
+            //   builder: (context, state) =>
+            Container(
+          height: 100,
+          width: 75,
+          decoration: BoxDecoration(
+              color: date == date.number ? Colors.amber : Color(0xff4A5660),
+              borderRadius: BorderRadius.circular(15.0)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.circle,
+                  color: Color(0xff21242C).withOpacity(.8), size: 12),
+              SizedBox(height: 10.0),
+              TextFrave(text: date.day, color: Colors.white, fontSize: 17),
+              SizedBox(height: 5.0),
+              TextFrave(text: date.number, color: Colors.white, fontSize: 30),
+            ],
+          ),
+        ),
+      ),
+      // ),
     );
   }
 }

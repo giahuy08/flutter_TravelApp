@@ -4,7 +4,6 @@ import 'package:flutter_travelapp/screens/schedule_tour/seats_grid_page.dart';
 import 'package:flutter_travelapp/screens/schedule_tour/widgets/flight_provider.dart';
 import 'package:delayed_display/delayed_display.dart';
 
-
 class ListFlights extends StatefulWidget {
   const ListFlights({Key? key}) : super(key: key);
 
@@ -15,7 +14,28 @@ class ListFlights extends StatefulWidget {
 class _ListFlightsState extends State<ListFlights>
     with TickerProviderStateMixin {
   PageController _cardController = PageController(initialPage: 0);
-  List<int> passengers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  List<int> passengers = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ];
   int currentPassengers = 1;
   int currentIndex = 0;
 
@@ -170,13 +190,13 @@ class _ListFlightsState extends State<ListFlights>
                                 ),
                               ),
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SeatsGridPage(
-                                        flight: flightsAvailable[index]),
-                                  ),
-                                );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => SeatsGridPage(
+                                //         flight: flightsAvailable[index]),
+                                //   ),
+                                // );
                               },
                               child: Text(
                                 'next step',
