@@ -7,7 +7,6 @@ class Notify {
     this.title,
     this.body,
   });
-  // dynamic data;
 
   Notify copyWith({
     String? title,
@@ -35,26 +34,23 @@ class Notify {
 
   String toJson() => json.encode(toMap());
 
-  factory Notify.fromJson(String source) =>
-      Notify.fromMap(json.decode(source));
+  factory Notify.fromJson(String source) => Notify.fromMap(json.decode(source));
 
   @override
   String toString() => 'Notify(title: $title, body: $body)';
-  
+
   Map<String, dynamic> toStringJson() {
-        return {
-          "title": this.title,
-          "body": this.body,
-         
-        };
-    }
+    return {
+      "title": this.title,
+      "body": this.body,
+    };
+  }
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Notify &&
-        other.title == title &&
-        other.body == body;
+    return other is Notify && other.title == title && other.body == body;
   }
 
   @override

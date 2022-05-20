@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/empty_section.dart';
 import 'package:flutter_travelapp/components/sub_title.dart';
+import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
-import 'package:flutter_travelapp/screens/navigation_bar/main_screen.dart';
-
-import '../../constants.dart';
 
 class Success extends StatefulWidget {
   static String routeName = "/success";
@@ -32,7 +30,7 @@ class _SuccessState extends State<Success> {
           const SubTitle(
             subTitleText: 'Bạn đã thành toán thành công',
           ),
-          Container(
+          SizedBox(
             height: 55,
             width: 170,
             child: DefaultButton(

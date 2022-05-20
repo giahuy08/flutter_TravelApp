@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/user_repository.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
-import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';

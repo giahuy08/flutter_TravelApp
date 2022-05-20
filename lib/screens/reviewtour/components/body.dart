@@ -10,7 +10,6 @@ import 'package:sizer/sizer.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'custom_app_bar.dart';
-import 'main_button.dart';
 import 'multiline_input.dart';
 import 'review_header.dart';
 import 'tour_stat.dart';
@@ -95,7 +94,7 @@ class _BodyState extends State<Body> {
                           await TourRepository().getOneTour(widget.tour.idTour),
                       Navigator.pushNamed(context, DetailScreen.routeName,
                           arguments: ProductDetailsArguments(
-                              tour: TourModel.fromMap(itemtour))),
+                              object: TourModel.fromMap(itemtour))),
                     },
                   ),
                 ),

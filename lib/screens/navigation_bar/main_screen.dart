@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
-import 'package:flutter_travelapp/screens/custom_screen/feedback_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
 import 'package:flutter_travelapp/screens/map/map.dart';
 import 'package:flutter_travelapp/screens/profile/profile_screen.dart';

@@ -72,7 +72,8 @@ class Message {
 
   String toJson() => json.encode(toMap());
 
-  factory Message.fromJson(String source) => Message.fromMap(json.decode(source));
+  factory Message.fromJson(String source) =>
+      Message.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -82,27 +83,27 @@ class Message {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is Message &&
-      other.id == id &&
-      other.creatorUser == creatorUser &&
-      listEquals(other.seenByUser, seenByUser) &&
-      other.isDelete == isDelete &&
-      other.message == message &&
-      other.idRoom == idRoom &&
-      other.createdAt == createdAt &&
-      other.updatedAt == updatedAt;
+        other.id == id &&
+        other.creatorUser == creatorUser &&
+        listEquals(other.seenByUser, seenByUser) &&
+        other.isDelete == isDelete &&
+        other.message == message &&
+        other.idRoom == idRoom &&
+        other.createdAt == createdAt &&
+        other.updatedAt == updatedAt;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      creatorUser.hashCode ^
-      seenByUser.hashCode ^
-      isDelete.hashCode ^
-      message.hashCode ^
-      idRoom.hashCode ^
-      createdAt.hashCode ^
-      updatedAt.hashCode;
+        creatorUser.hashCode ^
+        seenByUser.hashCode ^
+        isDelete.hashCode ^
+        message.hashCode ^
+        idRoom.hashCode ^
+        createdAt.hashCode ^
+        updatedAt.hashCode;
   }
 }

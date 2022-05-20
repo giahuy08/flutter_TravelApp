@@ -32,8 +32,8 @@ class _NotificationListState extends State<NotificationList> {
               title: 'TRAVEL',
               subtitle: 'Cảm ơn  bạn đã sử dụng TRAVEL.',
               enable: true,
-              onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const NotificationPage())),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const NotificationPage())),
             );
           },
           separatorBuilder: (context, index) {

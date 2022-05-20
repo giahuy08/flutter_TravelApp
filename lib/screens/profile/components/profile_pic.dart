@@ -1,10 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelapp/repository/user_repository.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfilePic extends StatefulWidget {
   const ProfilePic({
