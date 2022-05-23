@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:intl/intl.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -114,10 +115,6 @@ class TourItem extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        const Icon(
-                          Icons.attach_money_outlined,
-                          size: 18,
-                        ),
                         Text(
                           oCcy.format(listTour[index].payment),
                           style:
@@ -133,28 +130,28 @@ class TourItem extends StatelessWidget {
                     Text(
                       listTour[index].name,
                       style: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                          color: kDarkColor, fontWeight: FontWeight.normal),
                       maxLines: 2,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         SmoothStarRating(
-                          borderColor: Colors.yellow,
-                          color: Colors.yellow,
+                          borderColor: kPrimaryColor,
+                          color: kPrimaryColor,
                           allowHalfRating: true,
                           starCount: 5,
                           size: 12,
                           filledIconData: Icons.star,
                           onRated: (v) {},
-                          isReadOnly: false,
+                          isReadOnly: true,
                           spacing: 4,
                           rating: listTour[index].star,
                         ),
                         Text(
                           listTour[index].star.toStringAsFixed(1) + " sao",
-                          style: const TextStyle(
-                              color: Colors.black87, fontSize: 10),
+                          style:
+                              const TextStyle(color: kDarkColor, fontSize: 10),
                         )
                       ],
                     ),
@@ -167,7 +164,7 @@ class TourItem extends StatelessWidget {
                           decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(50)),
-                              color: Colors.green),
+                              color: kPrimaryColor),
                           child: Row(
                             children: [
                               const Icon(
@@ -177,7 +174,8 @@ class TourItem extends StatelessWidget {
                               Text(
                                 listTour[index].place,
                                 style: const TextStyle(
-                                    fontSize: 8, color: Colors.white),
+                                    fontSize: 12, color: Colors.white),
+                                maxLines: 1,
                               ),
                             ],
                           ),

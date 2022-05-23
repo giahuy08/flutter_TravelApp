@@ -30,36 +30,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   final screen = [
     const HomeScreen(),
-    // const MapSample(),
-    Map(),
-    // const ChatScreen(),
-    // ChatScreen(
-    //   id: userProvider.user.id,
-    //   name: "Travel",
-    //   image: "",
-    // ),
+    const Map(),
     const BookedTourHomeScreen(),
     const ProfileScreen()
   ];
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Likes',
-      style: optionStyle,
-    ),
-    Text(
-      'Search',
-      style: optionStyle,
-    ),
-    Text(
-      'Profile',
-      style: optionStyle,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,8 +57,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
               gap: 8,
               activeColor: kPrimaryColor,
               iconSize: 22,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              duration: Duration(milliseconds: 400),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              duration: const Duration(milliseconds: 400),
               tabBackgroundColor: Colors.grey[100]!,
               color: Colors.white,
               tabs: const [
