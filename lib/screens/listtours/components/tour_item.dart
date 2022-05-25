@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
-<<<<<<< HEAD
 import 'package:flutter_travelapp/repository/tour_repository.dart';
-=======
 import 'package:flutter_travelapp/constants.dart';
->>>>>>> c81da205f402a33ee71fed25af582922b69a8c2c
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:intl/intl.dart';
 // ignore: import_of_legacy_library_into_null_safe
