@@ -50,4 +50,8 @@ class ApiGateway {
   // Message
   static const getMessage = 'chat/getMessage';
   static const getlistroom = 'chat/getRoom';
+
+  //Favorite
+  static const favoriteTour = 'favorite/access';
+
 }

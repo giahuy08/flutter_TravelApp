@@ -11,7 +11,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Truyền data qua route
     final arguments =
-        ModalRoute.of(context)!.settings.arguments as ProductDetailsArguments;
+        ModalRoute.of(context)!.settings.arguments as TourDetailsArguments;
     return Scaffold(
       backgroundColor: const Color(0xFFF5F6F9),
       appBar: CustomAppBar(

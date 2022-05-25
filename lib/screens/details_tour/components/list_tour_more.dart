@@ -72,7 +72,7 @@ class _ListTourMoreState extends State<ListTourMore> {
                     onTap: () {
                       Navigator.pushNamed(context, DetailScreen.routeName,
                           arguments:
-                              ProductDetailsArguments(object: _listTour[index]));
+                              TourDetailsArguments(object: _listTour[index]));
                     },
                     child: SizedBox(
                       child: ClipRRect(

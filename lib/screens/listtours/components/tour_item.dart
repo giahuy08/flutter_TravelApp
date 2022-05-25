@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:intl/intl.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -9,6 +10,11 @@ import '../../../size_config.dart';
 class TourItem extends StatelessWidget {
   final List<dynamic> listTour;
   const TourItem({Key? key, required this.listTour}) : super(key: key);
+  void favoriteTour(String idTour) async {
+    await TourRepository().favoriteTour(idTour).then((value) {
+      print(value);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +28,10 @@ class TourItem extends StatelessWidget {
                   return GestureDetector(
                     child: _buildItem(context, index),
                     onTap: () {
+                      favoriteTour(listTour[index].id);
                       Navigator.pushNamed(context, DetailScreen.routeName,
                           arguments:
-                              ProductDetailsArguments(object: listTour[index]));
+                              TourDetailsArguments(object: listTour[index]));
                     },
                   );
                 })),

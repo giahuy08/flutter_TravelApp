@@ -83,7 +83,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
                             press: () => {
                               Navigator.pushNamed(
                                   context, DetailScreen.routeName,
-                                  arguments: ProductDetailsArguments(
+                                  arguments: TourDetailsArguments(
                                       object: TourModel.fromMap(
                                           _listDiscount[index]['tour']))),
                             },

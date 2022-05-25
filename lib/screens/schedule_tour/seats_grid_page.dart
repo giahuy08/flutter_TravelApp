@@ -67,31 +67,41 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
   //   }
   // }
 
-  List<DateTime> getDaysInBetween(DateTime startDate, DateTime endDate) {
-    List<DateTime> days = [];
-    for (int i = 0; i <= endDate.difference(startDate).inDays; i++) {
-      days.add(startDate.add(Duration(days: i)));
-    }
-    return days;
-  }
+  // List<DateTime> getDaysInBetween(DateTime startDate, DateTime endDate) {
+  //   List<DateTime> days = [];
+  //   for (int i = 0; i <= endDate.difference(startDate).inDays; i++) {
+  //     days.add(startDate.add(Duration(days: i)));
+  //   }
+  //   return days;
+  // }
 
   void getSheduleOfTour() async {
     listSchedules = await BookTourRepository().getSheduleOfTour(widget.tour.id);
-    setState(() {
-      listDateSelected = getDaysInBetween(
-          DateTime.parse(listSchedules[0]['startDate']),
-          DateTime.parse(listSchedules[0]['endDate']));
-    });
+    // setState(() {
+    //   listDateSelected = getDaysInBetween(
+    //       DateTime.parse(listSchedules[0]['startDate']),
+    //       DateTime.parse(listSchedules[0]['endDate']));
+    // });
 
     setState(() {
+      selectedDate = DateTime.parse(listSchedules[0]['startDate']);
       seatFree = listSchedules[0]['slot'] - listSchedules[0]['booked'].length;
       seatFull = listSchedules[0]['booked'].length;
     });
     handleSeats();
   }
 
+  void getSeatBySchedule(int slot, int booked) {
+    setState(() {
+      seatFree = slot - booked;
+      seatFull = booked;
+    });
+    handleSeats();
+  }
+
   void handleSeats() {
     print(seats.length);
+    seats.clear();
     for (int i = 0; i < seatFull; i++) {
       seats.add({"available": true});
     }
@@ -180,18 +190,20 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              listDateSelected != []
+              listSchedules != []
                   ? Container(
                       margin: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 10),
                       height: 120,
                       width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: listDateSelected.length,
-                        itemBuilder: (_, i) =>
-                            _ItemDate(listDateSelected[i], i),
-                      ))
+                          scrollDirection: Axis.horizontal,
+                          itemCount: listSchedules.length,
+                          itemBuilder: (_, i) => _ItemDate(
+                              DateTime.parse(listSchedules[i]['startDate']),
+                              i,
+                              listSchedules[i]['slot'],
+                              listSchedules[i]['booked'].length)))
                   : const SubTitle(
                       subTitleText: 'chưa có thông tin lịch trình'),
               DelayedDisplay(
@@ -460,10 +472,15 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
         }));
   }
 
-  Widget _ItemDate(DateTime date, int index) {
+  Widget _ItemDate(DateTime date, int index, int slot, int booked) {
     return InkWell(
       onTap: () => {
-        setState(() => {selectedDate = date, print(selectedDate)})
+        setState(() => {
+              selectedDate = date,
+              dateSelectedIndex = index,
+              print(selectedDate),
+              getSeatBySchedule(slot, booked)
+            })
       },
       child: Padding(
         padding: const EdgeInsets.only(right: 10.0),
