@@ -5,7 +5,7 @@ const kWhiteColor = Color(0xFFFFFFFF);
 const kLightColor = Color(0xFF808080);
 const kDarkColor = Color(0xFF303030);
 const kAccentColor = Color(0xFFF1F1F1);
-const kPrimaryColor = Color(0xFFF1786a);
+const kPrimaryColor = Color(0xFFF1786A);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,

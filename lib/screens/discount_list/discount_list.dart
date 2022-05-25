@@ -83,7 +83,7 @@ class _DiscountListState extends State<DiscountList> {
                     // tour = await TourRepository()
                     //     .getOneTour(_listDiscount[index]['idTour']),
                     Navigator.pushNamed(context, DetailScreen.routeName,
-                        arguments: ProductDetailsArguments(
+                        arguments: TourDetailsArguments(
                             object: TourModel.fromMap(
                                 _listDiscount[index]['tour']))),
                   },

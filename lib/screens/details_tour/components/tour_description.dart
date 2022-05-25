@@ -11,7 +11,8 @@ import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_app_them
 import 'package:flutter_travelapp/screens/details_tour/components/hotel_table_banner.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/list_tour_more.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/review_tour.dart';
-import 'package:flutter_travelapp/screens/details_tour/components/tour_discount_bottom.dart';
+import 'package:flutter_travelapp/screens/schedule_tour/search_page.dart';
+import 'package:flutter_travelapp/screens/schedule_tour/widgets/tour_discount_bottom.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
 import 'package:flutter_travelapp/screens/payment/payment.dart';
@@ -68,21 +69,21 @@ class _TourDescriptionState extends State<TourDescription> {
     });
   }
 
-  void selectDate() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialEntryMode: DatePickerEntryMode.input,
-      initialDate: selectedDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2025),
-    );
+  // void selectDate() async {
+  //   final DateTime? picked = await showDatePicker(
+  //     context: context,
+  //     initialEntryMode: DatePickerEntryMode.input,
+  //     initialDate: selectedDate,
+  //     firstDate: DateTime(2000),
+  //     lastDate: DateTime(2025),
+  //   );
 
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-  }
+  //   if (picked != null && picked != selectedDate) {
+  //     setState(() {
+  //       selectedDate = picked;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -198,76 +199,15 @@ class _TourDescriptionState extends State<TourDescription> {
           kSmallDivider,
           ReviewTour(tour: widget.tour),
           kSmallDivider,
-          TopRoundedContainer(
-            color: Colors.white,
-            height: 45.h,
-            child: Padding(
-              padding: const EdgeInsets.all(9.0),
-              child: Column(
-                children: [
-                  ElevatedButton.icon(
-                    onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SeatsGridPage(
-                                        flight: flightsAvailable[0]),
-                                  ),
-                                );
-                              },
-                    icon: const Icon(
-                        Icons.date_range), //icon data for elevated button
-                    label: const Text("Chọn ngày khởi hành"), //label text
-                    style: ElevatedButton.styleFrom(
-                        primary: kPrimaryColor //elevated btton background color
-                        ),
-                  ),
-                  Text(
-                    "${selectedDate.toLocal()}".split(' ')[0],
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 5),
-                  Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: buildCodeFormField(),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 30, horizontal: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            Text(oCcy.format(widget.tour.payment),
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20)),
-                            const Text(
-                              'VNĐ',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                            height: 55,
-                            width: 150,
-                            child: DefaultButton(
-                              text: 'Đặt ngay',
-                              press: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) => Payment(
-                                          id: widget.tour.id,
-                                          codediscount: discount,
-                                          date: selectedDate))),
-                            ))
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          SizedBox(
+              height: 55,
+              width: MediaQuery.of(context).size.width - 20,
+              child: DefaultButton(
+                text: 'Đặt ngay',
+                press: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => SeatsGridPage(tour: widget.tour))),
+              )),
+          kSmallDivider,
         ],
       ),
     );
@@ -400,49 +340,13 @@ class _TourDescriptionState extends State<TourDescription> {
                                       icon: Icons.restaurant),
                         )
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
           ])),
     );
-  }
-
-  TextFormField buildCodeFormField() {
-    return TextFormField(
-        style: const TextStyle(fontSize: 15),
-        textCapitalization: TextCapitalization.characters,
-        keyboardType: TextInputType.text,
-        controller: TextEditingController(text: discount),
-        decoration: InputDecoration(
-            hintText: "Mã giảm giá",
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            suffixIcon: IconButton(
-              onPressed: () {
-                _settingModalBottomSheet(context, widget.tour.id);
-              },
-              icon: const Icon(Icons.wallet_giftcard),
-              color: kPrimaryColor,
-            )));
-  }
-
-  _settingModalBottomSheet(context, idTour) {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: Colors.white,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
-          ),
-        ),
-        context: context,
-        builder: (BuildContext bc) {
-          return TourDiscountBottom(idTour: idTour);
-        }).then((value) => setState(() {
-          discount = value;
-        }));
   }
 }
 

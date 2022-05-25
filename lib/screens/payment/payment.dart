@@ -32,6 +32,7 @@ class _PaymentState extends State<Payment> {
   void initState() {
     super.initState();
     print(widget.codediscount);
+    print(widget.date);
   }
 
   Object? value = 0;

@@ -34,6 +34,18 @@ class TourRepository {
     return null;
   }
 
+  Future<dynamic> favoriteTour(id) async {
+     var body = {"idTour": id};
+       var response = await HandleApis().post(ApiGateway.favoriteTour, body);
+    print(response.statusCode);
+    // print(response.body.toString());
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['data'];
+    }
+
+    return null;
+  }
+
   Future<List<TourModel>> findTourByName(name) async {
     Response response =
         await HandleApis().get(ApiGateway.findTourByName, 'name=$name');

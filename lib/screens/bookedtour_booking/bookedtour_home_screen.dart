@@ -144,7 +144,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                                     callback: () {
                                       Navigator.pushNamed(
                                           context, TicketTourScreen.routeName,
-                                          arguments: ProductDetailsArguments(
+                                          arguments: TourDetailsArguments(
                                               object: _listBookTour[index]));
                                     },
                                     bookedTourData: _listBookTour[index],
@@ -203,7 +203,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                       return BookedTourListView(
                         callback: () {
                           Navigator.pushNamed(context, ReviewScreen.routeName,
-                              arguments: ProductDetailsArguments(
+                              arguments: TourDetailsArguments(
                                   object: _listBookTour[index]));
                         },
                         bookedTourData: _listBookTour[index],

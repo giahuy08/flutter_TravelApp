@@ -156,8 +156,7 @@ class _NotifyHomeState extends State<NotifyHome> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Notify'),
-          brightness: Brightness.dark,
+          title: const Text('Thông báo'),
         ),
         body: notificationProvider.listNotification.isNotEmpty
             ? ListView.separated(
@@ -178,7 +177,9 @@ class _NotifyHomeState extends State<NotifyHome> {
                 separatorBuilder: (context, index) {
                   return const Divider();
                 })
-            : Container());
+            : const Align(
+                alignment: Alignment.center,
+                child: Text('Không có thông báo')));
   }
 }
 
@@ -201,7 +202,7 @@ class NotificationBadge extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             '$totalNotifications',
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
       ),

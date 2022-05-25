@@ -46,6 +46,12 @@ class _PopularToursState extends State<PopularTours> {
     });
   }
 
+  void favoriteTour(String idTour) async {
+    await TourRepository().favoriteTour(idTour).then((value) {
+      print(value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return _listTourMore.isEmpty
@@ -80,12 +86,15 @@ class _PopularToursState extends State<PopularTours> {
                       (index) {
                         if (_listTour[index] != null) {
                           return TourCard(
-                            tour: _listTour[index],
-                            press: () => Navigator.pushNamed(
-                                context, DetailScreen.routeName,
-                                arguments: ProductDetailsArguments(
-                                    object: _listTour[index])),
-                          );
+                              tour: _listTour[index],
+                              press: () => {
+                                   
+                                    favoriteTour(_listTour[index].id),
+                                    Navigator.pushNamed(
+                                        context, DetailScreen.routeName,
+                                        arguments: TourDetailsArguments(
+                                            object: _listTour[index]))
+                                  });
                         }
                         return const SizedBox
                             .shrink(); // here by default width and height is 0

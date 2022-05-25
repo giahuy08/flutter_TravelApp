@@ -26,7 +26,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             initialUrl: widget.url,
             onPageFinished: (url) {
               print("linkurl");
-              print(url);
+              print('duong dan' + url);
               if (url.toLowerCase().startsWith(
                   'https://fe-travelapp.vercel.app/booktour/payment'
                       .toLowerCase())) {

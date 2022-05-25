@@ -1,5 +1,5 @@
-class ProductDetailsArguments {
+class TourDetailsArguments {
   final dynamic object;
 
-  ProductDetailsArguments({required this.object});
+  TourDetailsArguments({required this.object});
 }

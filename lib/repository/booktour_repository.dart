@@ -68,6 +68,25 @@ class BookTourRepository {
     return null;
   }
 
+  Future<List<dynamic>> getSheduleOfTour(idTour) async {
+    Response response = await HandleApis()
+        .get(ApiGateway.getScheduleTourOfTourByEXP, 'idTour=$idTour');
+    List<dynamic> jsonResponse = [];
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      jsonResponse = jsonDecode(response.body)['data'];
+
+      if (jsonResponse.isEmpty) {
+        return [];
+      }
+
+      return jsonResponse;
+
+      // return jsonResponse.map((item) => BookTourModel.fromMap(item)).toList();
+    }
+    return jsonResponse;
+  }
+
   Future<dynamic> bookTourPayment(
       idTour, codediscount, typepayment, date) async {
     var body = {

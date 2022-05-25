@@ -167,7 +167,7 @@ class BookedTourListView extends StatelessWidget {
                                                     Navigator.pushNamed(context,
                                                         ReviewScreen.routeName,
                                                         arguments:
-                                                            ProductDetailsArguments(
+                                                            TourDetailsArguments(
                                                                 object:
                                                                     bookedTourData!));
                                                   },
