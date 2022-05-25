@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/otp_signup/components/otp_signup_form.dart';
 import 'package:flutter_travelapp/size_config.dart';

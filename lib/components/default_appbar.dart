@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
-class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget{
+class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Widget child;
   final action;
   const DefaultAppBar({
-    Key? key, required this.title, required this.child, this.action,
+    Key? key,
+    required this.title,
+    required this.child,
+    this.action,
   }) : super(key: key);
 
   @override

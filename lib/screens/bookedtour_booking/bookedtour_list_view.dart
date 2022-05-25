@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/booktour.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/status_card.dart';
+import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
@@ -139,6 +141,7 @@ class BookedTourListView extends StatelessWidget {
                                             child: Row(
                                               children: <Widget>[
                                                 RatingBar(
+                                                  ignoreGestures: true,
                                                   initialRating:
                                                       bookedTourData!.star!,
                                                   direction: Axis.horizontal,
@@ -161,7 +164,12 @@ class BookedTourListView extends StatelessWidget {
                                                   ),
                                                   itemPadding: EdgeInsets.zero,
                                                   onRatingUpdate: (rating) {
-                                                    print(rating);
+                                                    Navigator.pushNamed(context,
+                                                        ReviewScreen.routeName,
+                                                        arguments:
+                                                            ProductDetailsArguments(
+                                                                object:
+                                                                    bookedTourData!));
                                                   },
                                                 ),
                                                 Text(

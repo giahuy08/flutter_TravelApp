@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 class BookTourModel {
+  String? id;
   String idEnterprise;
   List<String> idVehicles;
   String detail;
@@ -19,65 +20,74 @@ class BookTourModel {
   double? finalpayment;
   DateTime? startDate;
   DateTime? endDate;
-  BookTourModel({
-    required this.idEnterprise,
-    required this.idVehicles,
-    required this.detail,
-    this.payment,
-    required this.imagesTour,
-    this.star,
-    required this.category,
-    required this.idTour,
-    required this.name,
-    required this.place,
-    required this.time,
-    required this.idUser,
-    required this.status,
-    this.finalpayment,
-    required this.startDate,
-    required this.endDate,
-  });
+  String? nameUser;
+  String? phoneUser;
+  BookTourModel(
+      {this.id,
+      required this.idEnterprise,
+      required this.idVehicles,
+      required this.detail,
+      this.payment,
+      required this.imagesTour,
+      this.star,
+      required this.category,
+      required this.idTour,
+      required this.name,
+      required this.place,
+      required this.time,
+      required this.idUser,
+      required this.status,
+      this.finalpayment,
+      required this.startDate,
+      required this.endDate,
+      this.nameUser,
+      this.phoneUser});
 
-  BookTourModel copyWith({
-    String? idEnterprise,
-    List<String>? idVehicles,
-    String? detail,
-    double? payment,
-    List<String>? imagesTour,
-    double? star,
-    int? category,
-    String? idTour,
-    String? name,
-    String? place,
-    String? time,
-    String? idUser,
-    int? status,
-    double? finalpayment,
-    DateTime? startDate,
-    DateTime? endDate,
-  }) {
+  BookTourModel copyWith(
+      {String? id,
+      String? idEnterprise,
+      List<String>? idVehicles,
+      String? detail,
+      double? payment,
+      List<String>? imagesTour,
+      double? star,
+      int? category,
+      String? idTour,
+      String? name,
+      String? place,
+      String? time,
+      String? idUser,
+      int? status,
+      double? finalpayment,
+      DateTime? startDate,
+      DateTime? endDate,
+      String? nameUser,
+      String? phoneUser}) {
     return BookTourModel(
-      idEnterprise: idEnterprise ?? this.idEnterprise,
-      idVehicles: idVehicles ?? this.idVehicles,
-      detail: detail ?? this.detail,
-      payment: payment ?? this.payment,
-      imagesTour: imagesTour ?? this.imagesTour,
-      star: star ?? this.star,
-      category: category ?? this.category,
-      idTour: idTour ?? this.idTour,
-      name: name ?? this.name,
-      place: place ?? this.place,
-      time: time ?? this.time,
-      idUser: idUser ?? this.idUser,
-      status: status ?? this.status,
-      finalpayment: finalpayment ?? this.finalpayment,
-      startDate: startDate ?? this.startDate,
-      endDate: endDate ?? this.endDate,
-    );
+        id: id ?? this.id,
+        idEnterprise: idEnterprise ?? this.idEnterprise,
+        idVehicles: idVehicles ?? this.idVehicles,
+        detail: detail ?? this.detail,
+        payment: payment ?? this.payment,
+        imagesTour: imagesTour ?? this.imagesTour,
+        star: star ?? this.star,
+        category: category ?? this.category,
+        idTour: idTour ?? this.idTour,
+        name: name ?? this.name,
+        place: place ?? this.place,
+        time: time ?? this.time,
+        idUser: idUser ?? this.idUser,
+        status: status ?? this.status,
+        finalpayment: finalpayment ?? this.finalpayment,
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate,
+        nameUser: nameUser ?? this.nameUser,
+        phoneUser: phoneUser ?? this.phoneUser);
   }
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'idEnterprise': idEnterprise,
       'idVehicles': idVehicles,
       'detail': detail,
@@ -94,28 +104,32 @@ class BookTourModel {
       'finalpayment': finalpayment,
       'startDate': startDate!.millisecondsSinceEpoch,
       'endDate': endDate!.millisecondsSinceEpoch,
+      'nameUser': nameUser,
+      'phoneUser': phoneUser,
     };
   }
 
   factory BookTourModel.fromMap(Map<String, dynamic> map) {
     return BookTourModel(
-      idEnterprise: map['idEnterprise'],
-      idVehicles: List<String>.from(map['idVehicles']),
-      detail: map['detail'],
-      payment: double.tryParse((map['payment'] ?? 0).toString()),
-      imagesTour: List<String>.from(map['imagesTour']),
-      star: double.tryParse((map['star'] ?? 0).toString()),
-      category: map['category'],
-      idTour: map['idTour'],
-      name: map['name'],
-      place: map['place'],
-      time: map['time'],
-      idUser: map['idUser'],
-      status: map['status'],
-      finalpayment: double.tryParse((map['finalpayment'] ?? 0).toString()),
-      startDate: DateTime.parse(map['startDate']),
-      endDate: DateTime.parse(map['endDate']),
-    );
+        id: map['_id'],
+        idEnterprise: map['idEnterprise'],
+        idVehicles: List<String>.from(map['idVehicles']),
+        detail: map['detail'],
+        payment: double.tryParse((map['payment'] ?? 0).toString()),
+        imagesTour: List<String>.from(map['imagesTour']),
+        star: double.tryParse((map['star'] ?? 0).toString()),
+        category: map['category'],
+        idTour: map['idTour'],
+        name: map['name'],
+        place: map['place'],
+        time: map['time'],
+        idUser: map['idUser'],
+        status: map['status'],
+        finalpayment: double.tryParse((map['finalpayment'] ?? 0).toString()),
+        startDate: DateTime.parse(map['startDate']),
+        endDate: DateTime.parse(map['endDate']),
+        nameUser: map['nameUser'],
+        phoneUser: map['phoneUser']);
   }
 
   String toJson() => json.encode(toMap());
@@ -125,7 +139,7 @@ class BookTourModel {
 
   @override
   String toString() {
-    return 'BookTourModel(idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, idTour: $idTour, name: $name, place: $place, time: $time, idUser: $idUser, status: $status, finalpayment: $finalpayment, startDate: $startDate, endDate: $endDate)';
+    return 'BookTourModel(id: $id, idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, idTour: $idTour, name: $name, place: $place, time: $time, idUser: $idUser, status: $status, finalpayment: $finalpayment, startDate: $startDate, endDate: $endDate, nameUser: $nameUser, phoneUser: $phoneUser)';
   }
 
   @override
@@ -133,6 +147,7 @@ class BookTourModel {
     if (identical(this, other)) return true;
 
     return other is BookTourModel &&
+        other.id == id &&
         other.idEnterprise == idEnterprise &&
         listEquals(other.idVehicles, idVehicles) &&
         other.detail == detail &&
@@ -148,12 +163,15 @@ class BookTourModel {
         other.status == status &&
         other.finalpayment == finalpayment &&
         other.startDate == startDate &&
-        other.endDate == endDate;
+        other.endDate == endDate &&
+        other.nameUser == nameUser &&
+        other.phoneUser == phoneUser;
   }
 
   @override
   int get hashCode {
-    return idEnterprise.hashCode ^
+    return id.hashCode ^
+        idEnterprise.hashCode ^
         idVehicles.hashCode ^
         detail.hashCode ^
         payment.hashCode ^
@@ -168,6 +186,8 @@ class BookTourModel {
         status.hashCode ^
         finalpayment.hashCode ^
         startDate.hashCode ^
-        endDate.hashCode;
+        endDate.hashCode ^
+        nameUser.hashCode ^
+        phoneUser.hashCode;
   }
 }

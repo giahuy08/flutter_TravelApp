@@ -6,10 +6,8 @@ import 'package:flutter_travelapp/components/text_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/otp_signup/otp_signup_screen.dart';
-import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
-import 'package:get/get.dart';
+import 'package:flutter_travelapp/size_config.dart';
 
-import '../../../size_config.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);

@@ -1,16 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_travelapp/components/social_card.dart';
 import 'package:flutter_travelapp/constants.dart';
-import 'package:flutter_travelapp/models/userGoogle.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/sign_in/components/no_account.dart';
 import 'package:flutter_travelapp/screens/sign_in/components/sign_form.dart';
-import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
 import '../../login_success/login_success_screen.dart';
 import 'package:flutter_travelapp/models/user.dart';
@@ -25,7 +21,6 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late String token;
-  
 
   // Future fbSignIn() async {
   //   // facebookSignIn.loginBehavior = FacebookLoginBehavior.webViewOnly;
@@ -85,7 +80,6 @@ class _BodyState extends State<Body> {
           // if (user == null) {
           //   Navigator.of(context).pushReplacementNamed("start");
           // }
-          
 
           AuthenRepository()
               .loginwithGoogle(

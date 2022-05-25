@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_travelapp/models/user.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
-import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/change_password/change_password_screen.dart';
 import 'package:flutter_travelapp/screens/chat/chat_screen.dart';
-import 'package:flutter_travelapp/screens/custom_screen/help_screen.dart';
-import 'package:flutter_travelapp/screens/custom_screen/invite_friend_screen.dart';
 import 'package:flutter_travelapp/screens/profile/components/edit_profile.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';

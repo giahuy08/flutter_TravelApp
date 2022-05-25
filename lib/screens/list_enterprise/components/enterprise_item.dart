@@ -87,6 +87,7 @@ class _EnterpriseItemState extends State<EnterpriseItem> {
             Align(
               alignment: Alignment.centerRight,
               child: Container(
+                height: 20.h,
                 width: MediaQuery.of(context).size.width * .5,
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -107,7 +108,7 @@ class _EnterpriseItemState extends State<EnterpriseItem> {
                               colors: [
                                 Colors.transparent,
                                 Colors.transparent,
-                                Colors.black87
+                                kPrimaryColor
                               ],
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter),
@@ -150,7 +151,7 @@ class _EnterpriseItemState extends State<EnterpriseItem> {
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
-                          blurRadius: 7, spreadRadius: 1, color: Colors.black12)
+                          blurRadius: 7, spreadRadius: 1, color: kDarkColor)
                     ]),
                 child: Column(
                   children: <Widget>[
@@ -183,7 +184,8 @@ class _EnterpriseItemState extends State<EnterpriseItem> {
                       children: <Widget>[
                         Container(
                           padding: const EdgeInsets.all(3),
-                          margin: const EdgeInsets.only(bottom: 6, right: 6),
+                          margin: const EdgeInsets.only(
+                              bottom: 6, right: 6, left: 6),
                           decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(50)),

@@ -6,6 +6,7 @@ import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/booktour.dart';
 import 'package:flutter_travelapp/repository/booktour_repository.dart';
 import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
+import 'package:flutter_travelapp/screens/ticket/ticket_tour_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 import '../../size_config.dart';
@@ -142,9 +143,9 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                                   return BookedTourListView(
                                     callback: () {
                                       Navigator.pushNamed(
-                                          context, ReviewScreen.routeName,
+                                          context, TicketTourScreen.routeName,
                                           arguments: ProductDetailsArguments(
-                                              tour: _listBookTour[index]));
+                                              object: _listBookTour[index]));
                                     },
                                     bookedTourData: _listBookTour[index],
                                     animation: animation,
@@ -203,7 +204,7 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                         callback: () {
                           Navigator.pushNamed(context, ReviewScreen.routeName,
                               arguments: ProductDetailsArguments(
-                                  tour: _listBookTour[index]));
+                                  object: _listBookTour[index]));
                         },
                         bookedTourData: _listBookTour[index],
                         animation: animation,
