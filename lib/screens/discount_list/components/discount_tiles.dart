@@ -26,16 +26,23 @@ class _DiscountTilesState extends State<DiscountTiles> {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Container(
-          height: 20.h,
-          width: 30.w,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(widget.image), fit: BoxFit.cover))),
+        height: 30.h,
+        width: 30.w,
+        decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            image: DecorationImage(
+              image: NetworkImage(widget.image),
+              fit: BoxFit.cover,
+            ),
+            boxShadow: const [
+              BoxShadow(blurRadius: 7, spreadRadius: 1, color: kDarkColor)
+            ]),
+      ),
       title: Text(widget.tourname,
           maxLines: 2, style: const TextStyle(color: kDarkColor)),
       subtitle: Text(widget.title, style: const TextStyle(color: kLightColor)),
       trailing:
-          Text(widget.discount, style: const TextStyle(color: kDarkColor)),
+          Text(widget.discount, style: const TextStyle(color: kPrimaryColor)),
       onTap: widget.onTap,
       enabled: widget.enable,
     );

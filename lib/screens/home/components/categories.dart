@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
 import 'package:flutter_travelapp/screens/list_vehicle/cars_overview.dart';
@@ -33,7 +34,7 @@ class Categories extends StatelessWidget {
       // {"icon": "assets/images/more.png", "text": "Khác"},
     ];
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +78,7 @@ class CategoryCard extends StatelessWidget {
               height: getProportionateScreenWidth(55),
               width: getProportionateScreenWidth(55),
               decoration: BoxDecoration(
-                color: const Color(0xFFFFECDF),
+                color: kPrimaryLightColor,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Image.asset(icon),
