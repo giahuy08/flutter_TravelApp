@@ -7,17 +7,18 @@ import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
-import '../../../size_config.dart';
+import 'package:flutter_travelapp/size_config.dart';
+
 import 'section_title.dart';
 
-class PopularTours extends StatefulWidget {
-  const PopularTours({Key? key}) : super(key: key);
+class HistoryAccesses extends StatefulWidget {
+  const HistoryAccesses({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _PopularToursState();
+  State<StatefulWidget> createState() => _HistoryAccessesState();
 }
 
-class _PopularToursState extends State<PopularTours> {
+class _HistoryAccessesState extends State<HistoryAccesses> {
   List<dynamic> _listTour = [];
   List<dynamic> _listTourMore = [];
 
@@ -38,7 +39,11 @@ class _PopularToursState extends State<PopularTours> {
   }
 
   void getListTour() async {
-    List<TourModel> tours = await TourRepository().getListTour(1, 5);
+    //List<TourModel> tours = await TourRepository().getListTour(1, 5);
+    List<TourModel> tours = await TourRepository().getHistoryAccess();
+    if (tours.isEmpty) {
+      tours = await TourRepository().getListTour(1, 5);
+    }
     List<TourModel> toursMore = await TourRepository().getListTour('', '');
     setState(() {
       _listTour.addAll(tours);
@@ -47,9 +52,7 @@ class _PopularToursState extends State<PopularTours> {
   }
 
   void favoriteTour(String idTour) async {
-    await TourRepository().favoriteTour(idTour).then((value) {
-      print(value);
-    });
+    await TourRepository().favoriteTour(idTour).then((value) {});
   }
 
   @override
@@ -70,7 +73,7 @@ class _PopularToursState extends State<PopularTours> {
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
                 child: SectionTitle(
-                  title: "Chuyến du lịch mới",
+                  title: "Vừa truy cập",
                   press: () => Navigator.pushNamed(
                       context, ListToursScreen.routeName,
                       arguments: ListToursArguments(tours: _listTourMore)),
@@ -88,7 +91,6 @@ class _PopularToursState extends State<PopularTours> {
                           return TourCard(
                               tour: _listTour[index],
                               press: () => {
-                                   
                                     favoriteTour(_listTour[index].id),
                                     Navigator.pushNamed(
                                         context, DetailScreen.routeName,

@@ -11,8 +11,7 @@ import 'package:http/http.dart' as http;
 class UserRepository {
   Future<dynamic> getProfile() async {
     var response = await HandleApis().get(ApiGateway.findUserByToken);
-    //print(response.statusCode);
-    //print(response.body.toString());
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['data'];
     }
@@ -24,7 +23,7 @@ class UserRepository {
       ApiGateway.getMessage,
       'skip=$skip&idRoom=$idRoom',
     );
-    print(response.body.toString());
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['data'];
     }
@@ -47,8 +46,7 @@ class UserRepository {
       "newPassword": newPassword,
     };
     var response = await HandleApis().post(ApiGateway.changePassword, body);
-    //print(response.statusCode);
-    //print(response.body.toString());
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];
     }
@@ -60,25 +58,14 @@ class UserRepository {
 
   Future<String?> editProfile(
       String? name, String? address, String? phone) async {
-    // var request =
-    //     http.MultipartRequest('PUT', Uri.http(root_url, 'user/editProfile'));
-    // request.headers["Content-Type"] = 'multipart/form-data';
-    // request.headers["Authorization"] = 'Bearer ' +
-    //     (userProvider.user == null ? '' : userProvider.user!.token!);
-    // request.fields.addAll({
-    //   "name": name!,
-    //   "address": address!,
-    //   "phone": phone!,
-    // });
-    // var response = await http.Response.fromStream(await request.send());
+
     var body = {
       "name": name!,
       "address": address!,
       "phone": phone!,
     };
     var response = await HandleApis().put(ApiGateway.editProfile, body);
-    //print(response.statusCode);
-    //print(jsonDecode(response.body));
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];
     }
@@ -107,8 +94,7 @@ class UserRepository {
     }
     if (request.files.isEmpty) return null;
     var response = await http.Response.fromStream(await request.send());
-    //print(response.statusCode);
-    //print(jsonDecode(response.body));
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];
     }

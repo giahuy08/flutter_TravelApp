@@ -5,6 +5,8 @@ class ApiGateway {
   static const findTourByName = 'tour/findTourByName';
   static const findTourByCategory = 'tour/findTourByCategory';
   static const findAllTourByCategory = 'tour/findAllTourByCategory';
+  static const getUserFarvorite = 'tour/getUserFarvorite';
+  static const getHistoryAccess = 'tour/getHistoryAccess';
 
   //Authen
   static const login = 'user/login';
@@ -53,5 +55,4 @@ class ApiGateway {
 
   //Favorite
   static const favoriteTour = 'favorite/access';
-
 }

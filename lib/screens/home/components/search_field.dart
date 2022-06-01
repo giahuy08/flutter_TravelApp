@@ -1,13 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:flutter_travelapp/components/listtours_argument.dart';
-import 'package:flutter_travelapp/components/tour_argument.dart';
-import 'package:flutter_travelapp/models/tour.dart';
+import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
-
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import 'package:flutter_travelapp/size_config.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({

@@ -23,9 +23,9 @@ class AuthenRepository {
       "email": email,
       "name": name,
     };
-    print(body);
+
     var response = await HandleApis().post(ApiGateway.loginwithGoogle, body);
-    print(response.statusCode);
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['data'];
     }
@@ -55,7 +55,7 @@ class AuthenRepository {
   Future<String?> forgotpassword(String email) async {
     var response =
         await HandleApis().get(ApiGateway.forgotPassword, 'email=$email');
-    print(response.statusCode);
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];
     }
@@ -88,7 +88,7 @@ class AuthenRepository {
       "email": email,
     };
     var response = await HandleApis().post(ApiGateway.verifyUser, body);
-    print(response.statusCode);
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];
     }

@@ -13,8 +13,7 @@ class ChatRepository {
   void connectSocket (){
     IO.Socket socket;
     getSocketConnectring().then((value) {
-    print("vô socket");
-    print(value);
+
     socket = IO.io(
       value,
       IO.OptionBuilder().enableForceNew().setTransports(['websocket']).build(),
