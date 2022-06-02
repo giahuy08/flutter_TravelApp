@@ -140,30 +140,8 @@ class BookedTourListView extends StatelessWidget {
                                                 const EdgeInsets.only(top: 4),
                                             child: Row(
                                               children: <Widget>[
-                                                RatingBar(
-                                                  ignoreGestures: true,
-                                                  initialRating:
-                                                      bookedTourData!.star!,
-                                                  direction: Axis.horizontal,
-                                                  allowHalfRating: true,
-                                                  itemCount: 5,
-                                                  itemSize: 24,
-                                                  ratingWidget: RatingWidget(
-                                                    full: const Icon(
-                                                      Icons.star_rate_rounded,
-                                                      color: kPrimaryColor,
-                                                    ),
-                                                    half: const Icon(
-                                                      Icons.star_half_rounded,
-                                                      color: kPrimaryColor,
-                                                    ),
-                                                    empty: const Icon(
-                                                      Icons.star_border_rounded,
-                                                      color: kPrimaryColor,
-                                                    ),
-                                                  ),
-                                                  itemPadding: EdgeInsets.zero,
-                                                  onRatingUpdate: (rating) {
+                                                GestureDetector(
+                                                  onTap: () {
                                                     Navigator.pushNamed(context,
                                                         ReviewScreen.routeName,
                                                         arguments:
@@ -171,6 +149,33 @@ class BookedTourListView extends StatelessWidget {
                                                                 object:
                                                                     bookedTourData!));
                                                   },
+                                                  child: RatingBar(
+                                                    ignoreGestures: true,
+                                                    initialRating:
+                                                        bookedTourData!.star!,
+                                                    direction: Axis.horizontal,
+                                                    allowHalfRating: true,
+                                                    itemCount: 5,
+                                                    itemSize: 24,
+                                                    ratingWidget: RatingWidget(
+                                                      full: const Icon(
+                                                        Icons.star_rate_rounded,
+                                                        color: kPrimaryColor,
+                                                      ),
+                                                      half: const Icon(
+                                                        Icons.star_half_rounded,
+                                                        color: kPrimaryColor,
+                                                      ),
+                                                      empty: const Icon(
+                                                        Icons
+                                                            .star_border_rounded,
+                                                        color: kPrimaryColor,
+                                                      ),
+                                                    ),
+                                                    itemPadding:
+                                                        EdgeInsets.zero,
+                                                    onRatingUpdate: (x) {},
+                                                  ),
                                                 ),
                                                 Text(
                                                   ' ${bookedTourData!.star!.toStringAsFixed(1)} sao',
