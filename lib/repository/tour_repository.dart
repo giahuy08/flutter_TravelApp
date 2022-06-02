@@ -9,8 +9,7 @@ class TourRepository {
   Future<List<TourModel>> getListTour(skip, limit) async {
     Response response = await HandleApis()
         .get(ApiGateway.getAllTour, 'skip=$skip&limit=$limit');
-    //print(response.statusCode);
-    //print(response.body.toString());
+
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
 
@@ -25,8 +24,7 @@ class TourRepository {
 
   Future<dynamic> getOneTour(id) async {
     Response response = await HandleApis().get(ApiGateway.getOneTour, 'id=$id');
-    // print(response.statusCode);
-    // print(response.body.toString());
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['data'];
     }
@@ -35,10 +33,9 @@ class TourRepository {
   }
 
   Future<dynamic> favoriteTour(id) async {
-     var body = {"idTour": id};
-       var response = await HandleApis().post(ApiGateway.favoriteTour, body);
-    print(response.statusCode);
-    // print(response.body.toString());
+    var body = {"idTour": id};
+    var response = await HandleApis().post(ApiGateway.favoriteTour, body);
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['data'];
     }
@@ -69,8 +66,7 @@ class TourRepository {
   Future<List<TourModel>> findTourByCategory(category, skip, limit) async {
     Response response = await HandleApis().get(ApiGateway.findTourByCategory,
         'category=$category&skip=$skip&limit=$limit');
-    // print(response.statusCode);
-    // print(response.body.toString());
+
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
 
@@ -86,8 +82,37 @@ class TourRepository {
   Future<List<TourModel>> findAllTourByCategory(category) async {
     Response response = await HandleApis()
         .get(ApiGateway.findAllTourByCategory, 'category=$category');
-    //print(response.statusCode);
-    //print(response.body.toString());
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
+
+      if (jsonResponse.isEmpty) {
+        return [];
+      }
+
+      return jsonResponse.map((item) => TourModel.fromMap(item)).toList();
+    }
+    return [];
+  }
+
+  Future<List<TourModel>> getUserFarvorite() async {
+    Response response = await HandleApis().get(ApiGateway.getUserFarvorite);
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
+
+      if (jsonResponse.isEmpty) {
+        return [];
+      }
+
+      return jsonResponse.map((item) => TourModel.fromMap(item)).toList();
+    }
+    return [];
+  }
+
+  Future<List<TourModel>> getHistoryAccess() async {
+    Response response = await HandleApis().get(ApiGateway.getHistoryAccess);
+
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
 

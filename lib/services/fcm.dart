@@ -89,8 +89,8 @@ handleReceiveNotification(context) async {
           // } else {
           //   showDialogFCM(context, message);
         }
-      } else {
-      
+      } 
+      else {
         Get.snackbar(
           message.notification!.title!,
           message.notification!.body!,

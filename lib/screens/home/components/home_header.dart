@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/models/notify.dart';
 import 'package:flutter_travelapp/providers/notification_provider.dart';
-import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
-import 'package:flutter_travelapp/screens/notification/notification_list.dart';
 import 'package:flutter_travelapp/screens/notification/notify_home.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';

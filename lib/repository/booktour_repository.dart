@@ -11,15 +11,7 @@ class BookTourRepository {
   Future<List<BookTourModel>> getUserBookTour(skip, limit) async {
     Response response = await HandleApis()
         .get(ApiGateway.getUserBookTour, 'skip=$skip&limit=$limit');
-    // print(response.statusCode);
-    // print(response.body.toString());
-    // var request = http.MultipartRequest(
-    //     'GET', Uri.http(root_url, 'booktour/getUserBookTour'));
-    // request.headers["Content-Type"] = 'multipart/form-data';
-    // request.headers["Authorization"] = 'Bearer ' +
-    //     (userProvider.user == null ? '' : userProvider.user!.token!);
 
-    // var response = await http.Response.fromStream(await request.send());
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
 
@@ -35,8 +27,7 @@ class BookTourRepository {
   Future<List<BookTourModel>> getUserBookTourByDate(dateStart, dateEnd) async {
     Response response = await HandleApis().get(ApiGateway.getUserBookTourByDate,
         'dateStart=$dateStart&dateEnd=$dateEnd');
-    print(response.statusCode);
-    print(jsonDecode(response.body));
+
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
 
@@ -52,16 +43,11 @@ class BookTourRepository {
   Future<dynamic> bookTour(idTour, codediscount, date) async {
     var body = {"idTour": idTour, "startDate": date};
     var response = await HandleApis().post(ApiGateway.bookTour, body);
-    //print(response.statusCode);
-    //print(jsonDecode(response.body));
-    print(response);
+
     if (response.statusCode == 200) {
-      print(jsonDecode(response.body)['data']);
       return jsonDecode(response.body)['data'];
     }
     if (response.statusCode == 300) {
-      print(jsonDecode(response.body)['data']);
-
       return jsonDecode(response.body)['message'];
     }
 
@@ -72,17 +58,13 @@ class BookTourRepository {
     Response response = await HandleApis()
         .get(ApiGateway.getScheduleTourOfTourByEXP, 'idTour=$idTour');
     List<dynamic> jsonResponse = [];
-    print(response.statusCode);
     if (response.statusCode == 200) {
       jsonResponse = jsonDecode(response.body)['data'];
 
       if (jsonResponse.isEmpty) {
         return [];
       }
-
       return jsonResponse;
-
-      // return jsonResponse.map((item) => BookTourModel.fromMap(item)).toList();
     }
     return jsonResponse;
   }
@@ -96,15 +78,11 @@ class BookTourRepository {
       "startDate": date
     };
     var response = await HandleApis().post(ApiGateway.bookTourPayment, body);
-    print(response.statusCode);
-    //print(jsonDecode(response.body));
 
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['data'];
     }
     if (response.statusCode == 300) {
-      print(jsonDecode(response.body)['data']);
-
       return jsonDecode(response.body)['message'];
     }
 

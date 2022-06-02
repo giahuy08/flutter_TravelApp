@@ -13,8 +13,7 @@ class ReviewRepository {
   Future<List<ReviewTourModel>> getListReview(idTour) async {
     Response response =
         await HandleApis().get(ApiGateway.getReviewOfTour, 'idTour=$idTour');
-    // print(response.statusCode);
-    // print(response.body.toString());
+
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
       if (jsonResponse.isEmpty) {

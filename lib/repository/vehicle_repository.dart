@@ -7,8 +7,7 @@ import 'package:flutter_travelapp/repository/base_repository.dart';
 class VehicleRepository {
   Future<List<VehicleModel>> getListVehicle() async {
     Response response = await HandleApis().get(ApiGateway.getAllVehicle);
-    // print(response.statusCode);
-    // print(response.body.toString());
+
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
 
@@ -24,8 +23,7 @@ class VehicleRepository {
   Future<dynamic> getOneVehicle(id) async {
     Response response =
         await HandleApis().get(ApiGateway.getOneVehicle, 'id=$id');
-    // print(response.statusCode);
-    // print(response.body.toString());
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['data'];
     }
