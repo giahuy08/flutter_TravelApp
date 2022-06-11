@@ -2,22 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
+import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/enterprise.dart';
+import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/models/vehicle.dart';
 import 'package:flutter_travelapp/repository/enterprise_repository.dart';
 import 'package:flutter_travelapp/repository/vehicle_repository.dart';
-import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_app_theme.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/hotel_table_banner.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/list_tour_more.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/review_tour.dart';
-import 'package:flutter_travelapp/screens/schedule_tour/search_page.dart';
-import 'package:flutter_travelapp/screens/schedule_tour/widgets/tour_discount_bottom.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/tour_images.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
-import 'package:flutter_travelapp/screens/payment/payment.dart';
+import 'package:flutter_travelapp/screens/itinerary_pdf/itinerary_screen.dart';
 import 'package:flutter_travelapp/screens/schedule_tour/seats_grid_page.dart';
-import 'package:flutter_travelapp/screens/schedule_tour/widgets/flight_provider.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
@@ -69,22 +67,6 @@ class _TourDescriptionState extends State<TourDescription> {
     });
   }
 
-  // void selectDate() async {
-  //   final DateTime? picked = await showDatePicker(
-  //     context: context,
-  //     initialEntryMode: DatePickerEntryMode.input,
-  //     initialDate: selectedDate,
-  //     firstDate: DateTime(2000),
-  //     lastDate: DateTime(2025),
-  //   );
-
-  //   if (picked != null && picked != selectedDate) {
-  //     setState(() {
-  //       selectedDate = picked;
-  //     });
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     final oCcy = NumberFormat("#,##0", "en_US");
@@ -114,7 +96,7 @@ class _TourDescriptionState extends State<TourDescription> {
                   child: Row(
                     children: [
                       const Icon(Icons.place_outlined),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(widget.tour.place),
@@ -131,14 +113,12 @@ class _TourDescriptionState extends State<TourDescription> {
                         color: (widget.tour.star > 3)
                             ? const Color(0xFFFFE6E6)
                             : const Color(0xFFF5F6F9),
-                        //color: const Color(0xFFF5F6F9),
                         borderRadius: BorderRadius.circular(50)),
                     child: SvgPicture.asset(
                       "assets/icons/Heart Icon_2.svg",
                       color: (widget.tour.star > 3)
                           ? const Color(0xFFFF4848)
                           : const Color(0xFFDBDEE4),
-                      //color: const Color(0xFFDBDEE4),
                     ),
                   ),
                 ),
@@ -194,6 +174,17 @@ class _TourDescriptionState extends State<TourDescription> {
               ],
             ),
           ),
+          SizedBox(
+              height: 6.h,
+              width: MediaQuery.of(context).size.width - 45,
+              child: DefaultButton(
+                text: 'Xem lịch trình',
+                press: () => {
+                  Navigator.pushNamed(context, ItineraryScreen.routeName,
+                      arguments: TourDetailsArguments(object: widget.tour)),
+                },
+              )),
+          kSmallDivider,
           const ListTourMore(),
           SizedBox(height: getProportionateScreenWidth(20)),
           kSmallDivider,
@@ -210,142 +201,6 @@ class _TourDescriptionState extends State<TourDescription> {
           kSmallDivider,
         ],
       ),
-    );
-  }
-
-  Widget _buildItemEnterprise(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-          padding: EdgeInsets.all(getProportionateScreenHeight(12)),
-          height: 20.h,
-          child: Stack(children: <Widget>[
-            Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                width: MediaQuery.of(context).size.width * .5,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    image: DecorationImage(
-                      image: NetworkImage(itemEnterprise.logo),
-                      fit: BoxFit.cover,
-                    ),
-                    boxShadow: const [
-                      BoxShadow(
-                          blurRadius: 7, spreadRadius: 1, color: Colors.black12)
-                    ]),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: <Widget>[
-                    Container(
-                      decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [
-                                Colors.transparent,
-                                Colors.transparent,
-                                Colors.black87
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 12, left: 40, right: 12),
-                        child: Row(children: <Widget>[
-                          const Spacer(),
-                          Container(
-                            padding: const EdgeInsets.all(6),
-                            child: Icon(
-                              Icons.work_outline,
-                              color: Colors.white,
-                              size: 10.sp,
-                            ),
-                            decoration: const BoxDecoration(
-                                color: Colors.black38,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100))),
-                          )
-                        ]),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                width: MediaQuery.of(context).size.width * .48,
-                height: 15.h,
-                padding: const EdgeInsets.all(12),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 7, spreadRadius: 1, color: Colors.black12)
-                    ]),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        const Icon(
-                          Icons.group,
-                          size: 14,
-                        ),
-                        SizedBox(width: 2.w),
-                        Text(
-                          itemEnterprise.name,
-                          style:
-                              const TextStyle(fontSize: 16, color: Colors.red),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      itemEnterprise.detail,
-                      style: const TextStyle(
-                          fontFamily: 'Muli',
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold),
-                      maxLines: 1,
-                    ),
-                    const Spacer(),
-                    Wrap(
-                      children: <Widget>[
-                        Container(
-                          padding: const EdgeInsets.all(3),
-                          margin: const EdgeInsets.only(bottom: 6, right: 6),
-                          decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(50)),
-                              color: kPrimaryColor),
-                          child: itemEnterprise.type == 0
-                              ? const StatusCard(
-                                  status: " ENTERPRISE",
-                                  color: kPrimaryColor,
-                                  icon: Icons.business)
-                              : itemEnterprise.type == 1
-                                  ? const StatusCard(
-                                      status: " HOTEL",
-                                      color: kPrimaryColor,
-                                      icon: Icons.hotel)
-                                  : const StatusCard(
-                                      status: " RESTAURANT",
-                                      color: kPrimaryColor,
-                                      icon: Icons.restaurant),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ])),
     );
   }
 }
@@ -378,7 +233,7 @@ class ServiceCard extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 10, left: 10),
+            margin: const EdgeInsets.only(top: 10, left: 10),
             width: getProportionateScreenWidth(70),
             height: getProportionateScreenWidth(60),
             decoration: BoxDecoration(
@@ -408,26 +263,12 @@ class ServiceCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   Text(
                     subText,
                     style: const TextStyle(
                       color: Colors.white,
                     ),
                   )
-                  // Row(
-
-                  //   children: [
-                  //     Text(
-                  //       "${(_listTour[index].star).toStringAsFixed(1)}",
-                  //       style: const TextStyle(
-                  //         color: Colors.white,
-                  //       ),
-                  //     ),
-                  //     const Icon(Icons.star,
-                  //         size: 20, color: Colors.orange),
-
-                  // ),
                 ],
               ),
             ),

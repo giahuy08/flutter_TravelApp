@@ -16,6 +16,7 @@ class TourModel {
   String latitude;
   String longtitude;
   String time;
+  String itinerary;
   TourModel(
       {required this.idEnterprise,
       required this.idVehicles,
@@ -29,7 +30,8 @@ class TourModel {
       required this.place,
       required this.latitude,
       required this.longtitude,
-      required this.time});
+      required this.time,
+      required this.itinerary});
 
   TourModel copyWith({
     String? idEnterprise,
@@ -45,6 +47,7 @@ class TourModel {
     String? latitude,
     String? longtitude,
     String? time,
+    String? itinerary,
   }) {
     return TourModel(
       idEnterprise: idEnterprise ?? this.idEnterprise,
@@ -60,6 +63,7 @@ class TourModel {
       latitude: latitude ?? this.latitude,
       longtitude: latitude ?? this.longtitude,
       time: time ?? this.time,
+      itinerary: itinerary ?? this.itinerary,
     );
   }
 
@@ -76,6 +80,7 @@ class TourModel {
       'name': name,
       'place': place,
       'time': time,
+      'itinerary': itinerary,
     };
   }
 
@@ -98,6 +103,7 @@ class TourModel {
       latitude: map['latitude'],
       longtitude: map['longtitude'],
       time: map['time'],
+      itinerary: map['itinerary'],
     );
   }
 
@@ -108,7 +114,7 @@ class TourModel {
 
   @override
   String toString() {
-    return 'TourModel(idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, id: $id, name: $name, place: $place, latitude:$latitude,longtitude:$longtitude, time: $time)';
+    return 'TourModel(idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, id: $id, name: $name, place: $place, latitude:$latitude,longtitude:$longtitude, time: $time, itinerary: $itinerary)';
   }
 
   @override
@@ -128,7 +134,8 @@ class TourModel {
         other.place == place &&
         other.latitude == latitude &&
         other.longtitude == longtitude &&
-        other.time == time;
+        other.time == time &&
+        other.itinerary == itinerary;
   }
 
   @override
@@ -145,6 +152,7 @@ class TourModel {
         place.hashCode ^
         latitude.hashCode ^
         longtitude.hashCode ^
-        time.hashCode;
+        time.hashCode ^
+        itinerary.hashCode;
   }
 }

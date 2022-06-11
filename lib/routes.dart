@@ -8,6 +8,7 @@ import 'package:flutter_travelapp/screens/discount_list/discount_list.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_travelapp/screens/home/home_screen.dart';
+import 'package:flutter_travelapp/screens/itinerary_pdf/itinerary_screen.dart';
 import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
 import 'package:flutter_travelapp/screens/list_vehicle/cars_overview.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
@@ -56,4 +57,5 @@ final Map<String, WidgetBuilder> routes = {
   InviteFriend.routeName: (context) => const InviteFriend(),
   OtpSignUpScreen.routeName: (context) => const OtpSignUpScreen(),
   TicketTourScreen.routeName: (context) => const TicketTourScreen(),
+  ItineraryScreen.routeName: (context) => const ItineraryScreen(),
 };
