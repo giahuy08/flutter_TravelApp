@@ -31,15 +31,18 @@ class _TourImagesState extends State<TourImages> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(widget.tour.imagesTour.length,
-                (index) => buildSmallPreview(index))
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ...List.generate(widget.tour.imagesTour.length,
+                  (index) => buildSmallPreview(index))
+            ],
+          ),
         )
       ],
     );
