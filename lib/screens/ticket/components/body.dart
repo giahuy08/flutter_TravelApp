@@ -114,7 +114,7 @@ class _BodyState extends State<Body> {
                                       color: kDarkColor,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                const Text('Trường ĐH SPKT'),
+                                Text(widget.booktour.startingplace),
                                 const SizedBox(height: 14),
                                 const Text(
                                   'Đến',
@@ -174,7 +174,7 @@ class _BodyState extends State<Body> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Khách hàng',
                                   style: TextStyle(
                                       color: kDarkColor,
@@ -182,13 +182,13 @@ class _BodyState extends State<Body> {
                                 ),
                                 Text(
                                   widget.booktour.nameUser,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                   ),
                                 ),
                               ],
                             ),
-                            Spacer(),
+                            const Spacer(),
                           ],
                         ),
                         const SizedBox(height: 14),
@@ -197,7 +197,7 @@ class _BodyState extends State<Body> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Số điện thoại',
                                   style: TextStyle(
                                       color: kDarkColor,
@@ -205,7 +205,7 @@ class _BodyState extends State<Body> {
                                 ),
                                 Text(
                                   widget.booktour.phoneUser,
-                                  style: TextStyle(fontSize: 14),
+                                  style: const TextStyle(fontSize: 14),
                                 ),
                               ],
                             ),

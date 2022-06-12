@@ -3,7 +3,6 @@ import 'package:flutter_travelapp/components/listtours_argument.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
-import 'package:flutter_travelapp/screens/details_tour/components/tour_card.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:flutter_travelapp/screens/home/components/section_title.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';

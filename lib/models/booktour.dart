@@ -14,6 +14,7 @@ class BookTourModel {
   final String idTour;
   String name;
   String place;
+  String startingplace;
   String time;
   final String idUser;
   int status;
@@ -34,6 +35,7 @@ class BookTourModel {
       required this.idTour,
       required this.name,
       required this.place,
+      required this.startingplace,
       required this.time,
       required this.idUser,
       required this.status,
@@ -55,6 +57,7 @@ class BookTourModel {
       String? idTour,
       String? name,
       String? place,
+      String? startingplace,
       String? time,
       String? idUser,
       int? status,
@@ -75,6 +78,7 @@ class BookTourModel {
         idTour: idTour ?? this.idTour,
         name: name ?? this.name,
         place: place ?? this.place,
+        startingplace: startingplace ?? this.startingplace,
         time: time ?? this.time,
         idUser: idUser ?? this.idUser,
         status: status ?? this.status,
@@ -98,6 +102,7 @@ class BookTourModel {
       'idTour': idTour,
       'name': name,
       'place': place,
+      'startingplace': startingplace,
       'time': time,
       'idUser': idUser,
       'status': status,
@@ -122,6 +127,7 @@ class BookTourModel {
         idTour: map['idTour'],
         name: map['name'],
         place: map['place'],
+        startingplace: map['startingplace'],
         time: map['time'],
         idUser: map['idUser'],
         status: map['status'],
@@ -139,7 +145,7 @@ class BookTourModel {
 
   @override
   String toString() {
-    return 'BookTourModel(id: $id, idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, idTour: $idTour, name: $name, place: $place, time: $time, idUser: $idUser, status: $status, finalpayment: $finalpayment, startDate: $startDate, endDate: $endDate, nameUser: $nameUser, phoneUser: $phoneUser)';
+    return 'BookTourModel(id: $id, idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, idTour: $idTour, name: $name, place: $place, startingplace: $startingplace, time: $time, idUser: $idUser, status: $status, finalpayment: $finalpayment, startDate: $startDate, endDate: $endDate, nameUser: $nameUser, phoneUser: $phoneUser)';
   }
 
   @override
@@ -158,6 +164,7 @@ class BookTourModel {
         other.idTour == idTour &&
         other.name == name &&
         other.place == place &&
+        other.startingplace == startingplace &&
         other.time == time &&
         other.idUser == idUser &&
         other.status == status &&
@@ -181,6 +188,7 @@ class BookTourModel {
         idTour.hashCode ^
         name.hashCode ^
         place.hashCode ^
+        startingplace.hashCode ^
         time.hashCode ^
         idUser.hashCode ^
         status.hashCode ^

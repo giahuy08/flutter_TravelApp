@@ -111,8 +111,3 @@ class _FarvoriteToursState extends State<FarvoriteTours> {
   }
 }
 
-// class ProductDetailsArguments {
-//   final TourModel tour;
-
-//   ProductDetailsArguments({required this.tour});
-// }

@@ -38,13 +38,11 @@ class _MapState extends State<Map> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getListTour();
     _listTour.forEach((element) async {
@@ -97,7 +95,7 @@ class _MapState extends State<Map> {
           child: Stack(children: [
             Center(
                 child: Container(
-                    margin: EdgeInsets.symmetric(
+                    margin: const EdgeInsets.symmetric(
                       horizontal: 10.0,
                       vertical: 20.0,
                     ),
@@ -105,7 +103,7 @@ class _MapState extends State<Map> {
                     width: 700.0,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.black54,
                             offset: Offset(0.0, 4.0),
@@ -121,50 +119,48 @@ class _MapState extends State<Map> {
                               height: 90.0,
                               width: 90.0,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(10.0),
                                       topLeft: Radius.circular(10.0)),
                                   image: DecorationImage(
                                       image: NetworkImage(
                                           _listTour[index].imagesTour[0]),
                                       fit: BoxFit.cover))),
-                          SizedBox(width: 5.0),
+                          const SizedBox(width: 5.0),
                           Flexible(
-                            child: Container(
-                              child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      _listTour[index].name,
+                            child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    _listTour[index].name,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: const TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    _listTour[index].place,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: const TextStyle(
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  SizedBox(
+                                    width: 170.0,
+                                    child: Text(
+                                      _listTour[index].detail,
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
-                                      style: TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                          fontSize: 11.0,
+                                          fontWeight: FontWeight.w300),
                                     ),
-                                    Text(
-                                      _listTour[index].place,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                          fontSize: 12.0,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    Container(
-                                      width: 170.0,
-                                      child: Text(
-                                        _listTour[index].detail,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontSize: 11.0,
-                                            fontWeight: FontWeight.w300),
-                                      ),
-                                    )
-                                  ]),
-                            ),
+                                  )
+                                ]),
                           )
                         ]))))
           ])),
@@ -179,8 +175,8 @@ class _MapState extends State<Map> {
           automaticallyImplyLeading: false,
           centerTitle: true,
         ),
-        body: _listTour.length == 0
-            ? SpinKitSpinningLines(
+        body: _listTour.isEmpty
+            ? const SpinKitSpinningLines(
                 color: Colors.red,
               )
             : Stack(
@@ -199,7 +195,7 @@ class _MapState extends State<Map> {
                   ),
                   Positioned(
                     bottom: 20.0,
-                    child: Container(
+                    child: SizedBox(
                       height: 150.0,
                       width: MediaQuery.of(context).size.width,
                       child: PageView.builder(

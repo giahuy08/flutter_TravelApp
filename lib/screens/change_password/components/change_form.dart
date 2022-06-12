@@ -5,7 +5,6 @@ import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/user_repository.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
-import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:get/get.dart';
 
 import '../../../size_config.dart';

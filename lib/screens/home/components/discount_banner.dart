@@ -23,14 +23,12 @@ class _DiscountBannerState extends State<DiscountBanner> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getListDiscount();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 

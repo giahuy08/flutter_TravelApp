@@ -5,7 +5,6 @@ import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/enterprise.dart';
-import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/models/vehicle.dart';
 import 'package:flutter_travelapp/repository/enterprise_repository.dart';
 import 'package:flutter_travelapp/repository/vehicle_repository.dart';
@@ -17,7 +16,6 @@ import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_co
 import 'package:flutter_travelapp/screens/itinerary_pdf/itinerary_screen.dart';
 import 'package:flutter_travelapp/screens/schedule_tour/seats_grid_page.dart';
 import 'package:flutter_travelapp/size_config.dart';
-import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class TourDescription extends StatefulWidget {
@@ -69,7 +67,6 @@ class _TourDescriptionState extends State<TourDescription> {
 
   @override
   Widget build(BuildContext context) {
-    final oCcy = NumberFormat("#,##0", "en_US");
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -97,9 +94,31 @@ class _TourDescriptionState extends State<TourDescription> {
                     children: [
                       const Icon(Icons.place_outlined),
                       const SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
-                      Text(widget.tour.place),
+                      const Text('Điểm xuất phát: '),
+                      Text(
+                        widget.tour.startingplace,
+                        style: const TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(20),
+                      vertical: getProportionateScreenHeight(5)),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.place_rounded),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Text('Điểm đến: '),
+                      Text(
+                        widget.tour.place,
+                        style: const TextStyle(fontWeight: FontWeight.w600),
+                      ),
                     ],
                   ),
                 ),

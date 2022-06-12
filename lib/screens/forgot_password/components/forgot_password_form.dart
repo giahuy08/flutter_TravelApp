@@ -6,7 +6,6 @@ import 'package:flutter_travelapp/components/text_argument.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/otp/otp_screen.dart';
 import 'package:flutter_travelapp/screens/sign_in/components/no_account.dart';
-import 'package:get/get.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';

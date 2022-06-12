@@ -111,8 +111,3 @@ class _HistoryAccessesState extends State<HistoryAccesses> {
   }
 }
 
-// class ProductDetailsArguments {
-//   final TourModel tour;
-
-//   ProductDetailsArguments({required this.tour});
-// }

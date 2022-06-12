@@ -41,7 +41,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   ),
                   Container(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text(
+                    child: const Text(
                       'Phản hồi của bạn',
                       style: TextStyle(
                         fontSize: 20,

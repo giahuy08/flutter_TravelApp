@@ -20,7 +20,6 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  final _editProfileFormKey = GlobalKey<FormState>();
   dynamic inforUser;
   String labelemail = "";
   String labelpassword = "";

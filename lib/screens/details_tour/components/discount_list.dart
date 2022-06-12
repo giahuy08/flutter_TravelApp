@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/discount_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/discount_list_item.dart';
-import 'package:flutter_travelapp/size_config.dart';
 
 class DiscountList extends StatefulWidget {
   final Function(String) onSelect;

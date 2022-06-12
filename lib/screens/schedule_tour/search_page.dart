@@ -68,7 +68,6 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
           children: [
             Column(
               children: [
-                
                 Container(
                   color: kPrimaryColor,
                   height: MediaQuery.of(context).size.height * 0.25,
@@ -179,7 +178,6 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                     : Container(),
                               ],
                             ),
-                          
                           ],
                         ),
                         searchSelected

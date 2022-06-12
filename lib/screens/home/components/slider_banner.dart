@@ -83,9 +83,9 @@ class _SliderBannerState extends State<SliderBanner> {
                   height: 5.0,
                   margin: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: const Color.fromRGBO(0, 0, 0, 0.3),
+                    color: Color.fromRGBO(0, 0, 0, 0.3),
                   ),
                 );
         }).toList(),

@@ -40,8 +40,6 @@ class _OtpFormState extends State<OtpForm> {
 
   @override
   void initState() {
-    // ignore: todo
-    // TODO: implement initState
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
     pin4FocusNode = FocusNode();
@@ -52,8 +50,6 @@ class _OtpFormState extends State<OtpForm> {
 
   @override
   void dispose() {
-    // ignore: todo
-    // TODO: implement dispose
     pin2FocusNode.dispose();
     pin3FocusNode.dispose();
     pin4FocusNode.dispose();

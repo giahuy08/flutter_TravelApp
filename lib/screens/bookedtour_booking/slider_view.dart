@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
 
-import 'bookedtour_app_theme.dart';
 
 class SliderView extends StatefulWidget {
   const SliderView({Key? key, this.onChangedistValue, this.distValue})
@@ -25,51 +24,49 @@ class _SliderViewState extends State<SliderView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                flex: distValue.round(),
-                child: const SizedBox(),
-              ),
-              Container(
-                width: 170,
-                child: Text(
-                  'Less than ${(distValue / 10).toStringAsFixed(1)} Km',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Expanded(
-                flex: 100 - distValue.round(),
-                child: const SizedBox(),
-              ),
-            ],
-          ),
-          SliderTheme(
-            data: SliderThemeData(
-              thumbShape: CustomThumbShape(),
+    return Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Expanded(
+              flex: distValue.round(),
+              child: const SizedBox(),
             ),
-            child: Slider(
-              onChanged: (double value) {
-                setState(() {
-                  distValue = value;
-                });
-                try {
-                  widget.onChangedistValue!(distValue);
-                } catch (_) {}
-              },
-              min: 0,
-              max: 100,
-              activeColor: kPrimaryColor,
-              inactiveColor: Colors.grey.withOpacity(0.4),
-              divisions: 100,
-              value: distValue,
+            SizedBox(
+              width: 170,
+              child: Text(
+                'Less than ${(distValue / 10).toStringAsFixed(1)} Km',
+                textAlign: TextAlign.center,
+              ),
             ),
+            Expanded(
+              flex: 100 - distValue.round(),
+              child: const SizedBox(),
+            ),
+          ],
+        ),
+        SliderTheme(
+          data: SliderThemeData(
+            thumbShape: CustomThumbShape(),
           ),
-        ],
-      ),
+          child: Slider(
+            onChanged: (double value) {
+              setState(() {
+                distValue = value;
+              });
+              try {
+                widget.onChangedistValue!(distValue);
+              } catch (_) {}
+            },
+            min: 0,
+            max: 100,
+            activeColor: kPrimaryColor,
+            inactiveColor: Colors.grey.withOpacity(0.4),
+            divisions: 100,
+            value: distValue,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -93,6 +90,7 @@ class CustomThumbShape extends SliderComponentShape {
   @override
   void paint(
     PaintingContext context,
+    // ignore: avoid_renaming_method_parameters
     Offset thumbCenter, {
     Animation<double>? activationAnimation,
     Animation<double>? enableAnimation,
@@ -122,9 +120,12 @@ class CustomThumbShape extends SliderComponentShape {
               MaskFilter.blur(BlurStyle.normal, convertRadiusToSigma(8)));
 
     final Paint cPaint = Paint();
+    // ignore: avoid_single_cascade_in_expression_statements
     cPaint..color = Colors.white;
+    // ignore: avoid_single_cascade_in_expression_statements
     cPaint..strokeWidth = 14 / 2;
     canvas.drawCircle(Offset(thumbCenter.dx, thumbCenter.dy), 12, cPaint);
+    // ignore: avoid_single_cascade_in_expression_statements
     cPaint..color = colorTween.evaluate(enableAnimation!)!;
     canvas.drawCircle(Offset(thumbCenter.dx, thumbCenter.dy), 10, cPaint);
   }
