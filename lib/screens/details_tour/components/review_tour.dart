@@ -90,10 +90,11 @@ class _ReviewTourState extends State<ReviewTour>
                     comment: _listReview[index].comment,
                     rating: _listReview[index].star,
                     onPressed: () => print("More Action $index"),
-                    onTap: () => setState(() {
+                      onTap: () => setState(() {
                       isMore = !isMore;
                     }),
-                    isLess: isMore,
+                    isLess: isMore, 
+                    reviewImages: _listReview[index].imagesReview,
                   );
                 },
                 separatorBuilder: (context, index) {

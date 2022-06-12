@@ -4,20 +4,22 @@ import '../constants.dart';
 
 class ReviewUI extends StatelessWidget {
   final String image, name, date, comment;
+  final List<String> reviewImages;
   final double rating;
   final Function() onTap, onPressed;
   final bool isLess;
-  const ReviewUI({
-    Key? key,
-    required this.image,
-    required this.name,
-    required this.date,
-    required this.comment,
-    required this.rating,
-    required this.onTap,
-    required this.isLess,
-    required this.onPressed,
-  }) : super(key: key);
+  const ReviewUI(
+      {Key? key,
+      required this.image,
+      required this.name,
+      required this.date,
+      required this.comment,
+      required this.rating,
+      required this.onTap,
+      required this.isLess,
+      required this.onPressed,
+      required this.reviewImages})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +101,21 @@ class ReviewUI extends StatelessWidget {
                     ),
                   ),
           ),
+          reviewImages.isEmpty
+              ? Container()
+              : Row(
+                  children: reviewImages
+                      .map<Widget>((imgSrc) => Container(
+                            height: 60.0,
+                            width: 60.0,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(imgSrc),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ))
+                      .toList())
         ],
       ),
     );

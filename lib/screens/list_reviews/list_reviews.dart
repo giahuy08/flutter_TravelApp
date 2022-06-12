@@ -153,6 +153,7 @@ class _ListReviewsState extends State<ListReviews> {
                   comment: widget.reviewTour[index].comment,
                   rating: widget.reviewTour[index].star,
                   onPressed: () => print("More Action $index"),
+                  reviewImages: widget.reviewTour[index].imagesReview,
                   onTap: () => setState(() {
                     isMore = !isMore;
                   }),

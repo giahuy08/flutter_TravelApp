@@ -45,6 +45,10 @@ class _ListTourMoreState extends State<ListTourMore> {
     });
   }
 
+  void favoriteTour(String idTour) async {
+    await TourRepository().favoriteTour(idTour).then((value) {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -70,6 +74,7 @@ class _ListTourMoreState extends State<ListTourMore> {
                       EdgeInsets.only(left: getProportionateScreenWidth(20)),
                   child: GestureDetector(
                     onTap: () {
+                      favoriteTour(_listTour[index].id);
                       Navigator.pushNamed(context, DetailScreen.routeName,
                           arguments:
                               TourDetailsArguments(object: _listTour[index]));
