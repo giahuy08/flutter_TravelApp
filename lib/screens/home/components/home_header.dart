@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/components/calendar_search.dart';
 import 'package:flutter_travelapp/components/listtours_argument.dart';
 import 'package:flutter_travelapp/models/notify.dart';
 import 'package:flutter_travelapp/models/tour.dart';
@@ -160,7 +161,7 @@ class _HomeHeaderState extends State<HomeHeader> {
   void showDemoDialog({BuildContext? context}) {
     showDialog<dynamic>(
       context: context!,
-      builder: (BuildContext context) => CalendarPopupView(
+      builder: (BuildContext context) => CalendarSearch(
         barrierDismissible: true,
         //minimumDate: DateTime.now(),
         //  maximumDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 10),
@@ -172,16 +173,16 @@ class _HomeHeaderState extends State<HomeHeader> {
             endDate = endData;
           });
 
-          tourByDate =
-              await TourRepository().findTourByDate(startDate, endDate);
-          if (tourByDate.isEmpty) {
-            Navigator.of(context).pop();
-            Navigator.pushNamed(context, ErrorScreen.routeName,
-                arguments: true);
-          } else {
-            Navigator.pushNamed(context, ListToursScreen.routeName,
-                arguments: ListToursArguments(tours: tourByDate));
-          }
+          // tourByDate =
+          //     await TourRepository().findTourByDate(startDate, endDate);
+          // if (tourByDate.isEmpty) {
+          //   Navigator.of(context).pop();
+          //   Navigator.pushNamed(context, ErrorScreen.routeName,
+          //       arguments: true);
+          // } else {
+          //   Navigator.pushNamed(context, ListToursScreen.routeName,
+          //       arguments: ListToursArguments(tours: tourByDate));
+          // }
         },
         onCancelClick: () {},
       ),
