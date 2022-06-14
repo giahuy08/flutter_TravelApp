@@ -49,7 +49,7 @@ class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: SizeConfig.screenWidth * 0.7,
+      width: SizeConfig.screenWidth * 0.6,
       //height: 50,
       decoration: BoxDecoration(
         color: kSecondaryColor.withOpacity(0.1),

@@ -7,6 +7,7 @@ class ApiGateway {
   static const findAllTourByCategory = 'tour/findAllTourByCategory';
   static const getUserFarvorite = 'tour/getUserFarvorite';
   static const getHistoryAccess = 'tour/getHistoryAccess';
+  static const findTourByDate = 'tour/findTourByDate';
 
   //Authen
   static const login = 'user/login';

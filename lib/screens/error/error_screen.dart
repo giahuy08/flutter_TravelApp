@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
-import 'package:flutter_travelapp/screens/home/home_screen.dart';
+import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 
 class ErrorScreen extends StatelessWidget {
   static String routeName = "/error";
@@ -25,7 +25,7 @@ class ErrorScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50)),
               onPressed: () =>
-                  Navigator.pushNamed(context, HomeScreen.routeName),
+                  Navigator.pushNamed(context, BottomNavBar.routeName),
               child: Text(
                 "Về trang chủ".toUpperCase(),
                 style: const TextStyle(color: Colors.white),

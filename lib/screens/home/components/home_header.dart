@@ -1,11 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/components/listtours_argument.dart';
 import 'package:flutter_travelapp/models/notify.dart';
+import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/providers/notification_provider.dart';
+import 'package:flutter_travelapp/repository/tour_repository.dart';
+import 'package:flutter_travelapp/screens/bookedtour_booking/calendar_popup_view.dart';
+import 'package:flutter_travelapp/screens/error/error_screen.dart';
+import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
 import 'package:flutter_travelapp/screens/notification/notify_home.dart';
 import 'package:flutter_travelapp/size_config.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
@@ -24,33 +29,16 @@ class HomeHeader extends StatefulWidget {
 }
 
 class _HomeHeaderState extends State<HomeHeader> {
+  DateTime startDate = DateTime.now();
+  DateTime endDate = DateTime.now().add(const Duration(days: 5));
+  late List<TourModel> tourByDate;
   late final FirebaseMessaging _messaging;
   late int count = notificationProvider.listNotification.length;
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  Future<void> _noti() async {}
 
-  Future<void> _noti() async {
-    // final SharedPreferences prefs = await _prefs;
-    // // final JsonDecoder json =
-    // //     JsonDecoder(prefs.getStringList('notifications') );
-    // print('refer');
-    // print(prefs.getStringList('notifications') as List<Notify>);
-    // if (prefs.getStringList('notifications') != null &&
-    //     notificationProvider.listNotification.length == 0) {
-    //   // notificationProvider.listNotification
-    //   //     .addAll(jsonDecode(prefs.getString('notifications').toString()));
-    // }
-  }
-
-  // late int _totalNotifications;
-  // Notify? _notificationInfo;
   @override
   void dispose() {
     super.dispose();
-  }
-
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
   }
 
   void registerNotification() async {
@@ -145,14 +133,16 @@ class _HomeHeaderState extends State<HomeHeader> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const SearchField(),
-          // IconBtnWithCounter(
-          //   svgSrc: "assets/icons/order-history.svg",
-          //   press: () => {
-          //     Navigator.of(context).push(MaterialPageRoute(
-          //         builder: (BuildContext context) =>
-          //             const BookedTourHomeScreen()))
-          //   },
-          // ),
+          IconBtnWithCounter(
+            svgSrc: "assets/icons/calendar.svg",
+            press: () async => {
+              FocusScope.of(context).requestFocus(FocusNode()),
+              // setState(() {
+              //   isDatePopupOpen = true;
+              // });
+              showDemoDialog(context: context),
+            },
+          ),
           IconBtnWithCounter(
             numOfItems: notificationProvider.listNotification.length,
             svgSrc: 'assets/icons/Bell.svg',
@@ -163,6 +153,37 @@ class _HomeHeaderState extends State<HomeHeader> {
             },
           )
         ],
+      ),
+    );
+  }
+
+  void showDemoDialog({BuildContext? context}) {
+    showDialog<dynamic>(
+      context: context!,
+      builder: (BuildContext context) => CalendarPopupView(
+        barrierDismissible: true,
+        //minimumDate: DateTime.now(),
+        //  maximumDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 10),
+        initialEndDate: endDate,
+        initialStartDate: startDate,
+        onApplyClick: (DateTime startData, DateTime endData) async {
+          setState(() {
+            startDate = startData;
+            endDate = endData;
+          });
+
+          tourByDate =
+              await TourRepository().findTourByDate(startDate, endDate);
+          if (tourByDate.isEmpty) {
+            Navigator.of(context).pop();
+            Navigator.pushNamed(context, ErrorScreen.routeName,
+                arguments: true);
+          } else {
+            Navigator.pushNamed(context, ListToursScreen.routeName,
+                arguments: ListToursArguments(tours: tourByDate));
+          }
+        },
+        onCancelClick: () {},
       ),
     );
   }

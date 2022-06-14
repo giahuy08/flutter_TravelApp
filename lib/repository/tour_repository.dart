@@ -124,4 +124,20 @@ class TourRepository {
     }
     return [];
   }
+
+  Future<List<TourModel>> findTourByDate(dateStart, dateEnd) async {
+    Response response = await HandleApis().get(ApiGateway.getUserBookTourByDate,
+        'dateStart=$dateStart&dateEnd=$dateEnd');
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
+
+      if (jsonResponse.isEmpty) {
+        return [];
+      }
+
+      return jsonResponse.map((item) => TourModel.fromMap(item)).toList();
+    }
+    return [];
+  }
 }
