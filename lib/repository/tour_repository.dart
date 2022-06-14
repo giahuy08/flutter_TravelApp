@@ -126,8 +126,8 @@ class TourRepository {
   }
 
   Future<List<TourModel>> findTourByDate(dateStart, dateEnd) async {
-    Response response = await HandleApis().get(ApiGateway.getUserBookTourByDate,
-        'dateStart=$dateStart&dateEnd=$dateEnd');
+    Response response = await HandleApis().get(
+        ApiGateway.findTourByDate, 'dateStart=$dateStart&dateEnd=$dateEnd');
 
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body)['data'];
