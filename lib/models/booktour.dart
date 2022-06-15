@@ -23,6 +23,7 @@ class BookTourModel {
   DateTime? endDate;
   String? nameUser;
   String? phoneUser;
+  String? emailUser;
   BookTourModel(
       {this.id,
       required this.idEnterprise,
@@ -43,7 +44,8 @@ class BookTourModel {
       required this.startDate,
       required this.endDate,
       this.nameUser,
-      this.phoneUser});
+      this.phoneUser,
+      this.emailUser});
 
   BookTourModel copyWith(
       {String? id,
@@ -65,7 +67,8 @@ class BookTourModel {
       DateTime? startDate,
       DateTime? endDate,
       String? nameUser,
-      String? phoneUser}) {
+      String? phoneUser,
+      String? emailUser}) {
     return BookTourModel(
         id: id ?? this.id,
         idEnterprise: idEnterprise ?? this.idEnterprise,
@@ -86,7 +89,8 @@ class BookTourModel {
         startDate: startDate ?? this.startDate,
         endDate: endDate ?? this.endDate,
         nameUser: nameUser ?? this.nameUser,
-        phoneUser: phoneUser ?? this.phoneUser);
+        phoneUser: phoneUser ?? this.phoneUser,
+        emailUser: emailUser ?? this.emailUser);
   }
 
   Map<String, dynamic> toMap() {
@@ -111,6 +115,7 @@ class BookTourModel {
       'endDate': endDate!.millisecondsSinceEpoch,
       'nameUser': nameUser,
       'phoneUser': phoneUser,
+      'emailUser': emailUser
     };
   }
 
@@ -135,7 +140,8 @@ class BookTourModel {
         startDate: DateTime.parse(map['startDate']),
         endDate: DateTime.parse(map['endDate']),
         nameUser: map['nameUser'],
-        phoneUser: map['phoneUser']);
+        phoneUser: map['phoneUser'],
+        emailUser: map['emailUser']);
   }
 
   String toJson() => json.encode(toMap());
@@ -145,7 +151,7 @@ class BookTourModel {
 
   @override
   String toString() {
-    return 'BookTourModel(id: $id, idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, idTour: $idTour, name: $name, place: $place, startingplace: $startingplace, time: $time, idUser: $idUser, status: $status, finalpayment: $finalpayment, startDate: $startDate, endDate: $endDate, nameUser: $nameUser, phoneUser: $phoneUser)';
+    return 'BookTourModel(id: $id, idEnterprise: $idEnterprise, idVehicles: $idVehicles, detail: $detail, payment: $payment, imagesTour: $imagesTour, star: $star, category: $category, idTour: $idTour, name: $name, place: $place, startingplace: $startingplace, time: $time, idUser: $idUser, status: $status, finalpayment: $finalpayment, startDate: $startDate, endDate: $endDate, nameUser: $nameUser, phoneUser: $phoneUser, emailUser: $emailUser)';
   }
 
   @override
@@ -172,7 +178,8 @@ class BookTourModel {
         other.startDate == startDate &&
         other.endDate == endDate &&
         other.nameUser == nameUser &&
-        other.phoneUser == phoneUser;
+        other.phoneUser == phoneUser &&
+        other.emailUser == emailUser;
   }
 
   @override
@@ -196,6 +203,7 @@ class BookTourModel {
         startDate.hashCode ^
         endDate.hashCode ^
         nameUser.hashCode ^
-        phoneUser.hashCode;
+        phoneUser.hashCode ^
+        emailUser.hashCode;
   }
 }

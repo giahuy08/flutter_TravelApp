@@ -243,7 +243,11 @@ class _BodyState extends State<Body> {
                 ),
               ),
               QrImage(
-                data: widget.booktour.id + '/n' + widget.booktour.nameUser,
+                data: widget.booktour.id +
+                    //'\n' +
+                    // widget.booktour.emailUser +
+                    '\n' +
+                    widget.booktour.phoneUser,
                 size: 300,
                 embeddedImage: const AssetImage(logo),
                 embeddedImageStyle:
