@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:intl/intl.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class Body extends StatefulWidget {
   final dynamic booktour;
@@ -238,6 +241,13 @@ class _BodyState extends State<Body> {
                   color: kLightColor,
                   fontSize: 10,
                 ),
+              ),
+              QrImage(
+                data: widget.booktour.id + '/n' + widget.booktour.nameUser,
+                size: 300,
+                embeddedImage: const AssetImage(logo),
+                embeddedImageStyle:
+                    QrEmbeddedImageStyle(size: const Size(80, 80)),
               ),
             ],
           ),
