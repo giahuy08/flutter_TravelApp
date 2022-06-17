@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/review_ui.dart';
 import 'package:flutter_travelapp/components/sticky_label.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/reviewtour.dart';
 import 'package:flutter_travelapp/repository/review_repository.dart';
 import 'package:flutter_travelapp/screens/list_reviews/list_reviews.dart';
@@ -56,21 +57,22 @@ class _ReviewTourState extends State<ReviewTour>
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const StickyLabel(
-                    text: "Nhận xét",
+                  StickyLabel(
+                    text: Languages.of(context)!.commentText,
                     textColor: kPrimaryColor,
                   ),
                   GestureDetector(
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) =>
-                            ListReviews(reviewTour: _listReview, tour: widget.tour),
+                        builder: (context) => ListReviews(
+                            reviewTour: _listReview, tour: widget.tour),
                       ),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.only(right: kDefaultPadding),
                       child: StickyLabel(
-                          text: "Xem thêm", textColor: kPrimaryColor),
+                          text: Languages.of(context)!.seeMoreText,
+                          textColor: kPrimaryColor),
                     ),
                   ),
                 ],
@@ -90,10 +92,10 @@ class _ReviewTourState extends State<ReviewTour>
                     comment: _listReview[index].comment,
                     rating: _listReview[index].star,
                     onPressed: () => print("More Action $index"),
-                      onTap: () => setState(() {
+                    onTap: () => setState(() {
                       isMore = !isMore;
                     }),
-                    isLess: isMore, 
+                    isLess: isMore,
                     reviewImages: _listReview[index].imagesReview,
                   );
                 },
@@ -113,8 +115,8 @@ class _ReviewTourState extends State<ReviewTour>
                 width: 160,
                 height: 160,
               ),
-              const Text(
-                "Chưa có nhận xét",
+              Text(
+                Languages.of(context)!.donthaveCommentText,
                 style: TextStyle(
                   color: kPrimaryColor,
                   fontSize: 20.0,

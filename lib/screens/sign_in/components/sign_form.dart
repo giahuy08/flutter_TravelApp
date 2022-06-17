@@ -8,6 +8,7 @@ import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_travelapp/screens/login_success/login_success_screen.dart';
 import 'package:get/get.dart';
+import '../../../localization/language/languages.dart';
 import '../../../size_config.dart';
 
 class SignForm extends StatefulWidget {
@@ -48,7 +49,7 @@ class _SignFormState extends State<SignForm> {
         removeError(error: kLoginFail);
         Get.snackbar(
           'Login',
-          'Đăng nhập thành công',
+          Languages.of(context)!.successText,
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: kPrimaryColor,
@@ -114,13 +115,13 @@ class _SignFormState extends State<SignForm> {
                       remember = value!;
                     });
                   }),
-              const Text("Lưu thông tin"),
+              Text(Languages.of(context)!.saveInfo),
               const Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
-                child: const Text(
-                  "Quên mật khẩu?",
+                child: Text(
+                  Languages.of(context)!.forgotPassText,
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               )
@@ -131,7 +132,7 @@ class _SignFormState extends State<SignForm> {
             height: getProportionateScreenHeight(10),
           ),
           DefaultButton(
-              text: "Đăng nhập",
+              text: Languages.of(context)!.loginText,
               press: () {
                 if (_signFormKey.currentState!.validate()) {
                   _signFormKey.currentState!.save();
@@ -166,8 +167,8 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Mật khẩu",
-        hintText: "Nhập mật khẩu",
+        labelText: Languages.of(context)!.passDesc,
+        hintText: Languages.of(context)!.passForm,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -215,9 +216,9 @@ class _SignFormState extends State<SignForm> {
           }
           return null;
         },
-        decoration: const InputDecoration(
-            labelText: "Email",
-            hintText: "Nhập Email",
+        decoration: InputDecoration(
+            labelText: Languages.of(context)!.emailDesc,
+            hintText: Languages.of(context)!.emailForm,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             suffixIcon: Icon(Icons.mail_outline_outlined)));
   }

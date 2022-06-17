@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../constants.dart';
@@ -67,7 +68,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         width: 50.w,
                         height: 6.h,
                         child: DefaultButton(
-                          text: "Gửi",
+                          text: Languages.of(context)!.sendText,
                           press: () {},
                         ),
                       ),

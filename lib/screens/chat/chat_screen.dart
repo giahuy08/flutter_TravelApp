@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/message.dart';
 import 'package:flutter_travelapp/providers/chat_provider.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
@@ -192,7 +193,7 @@ class _ChatScreenState extends State<ChatScreen> {
               keyboardType: TextInputType.text,
 
               decoration: InputDecoration(
-                  hintText: "nhập tin nhắn...",
+                  hintText:  Languages.of(context)!.enterMessageText+"...",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   suffixIcon: IconButton(
                     color: kPrimaryColor,
@@ -233,7 +234,7 @@ class _ChatScreenState extends State<ChatScreen> {
             text: TextSpan(
               children: [
                 TextSpan(
-                    text: 'Tin nhắn',
+                    text: Languages.of(context)!.messageText,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black54,

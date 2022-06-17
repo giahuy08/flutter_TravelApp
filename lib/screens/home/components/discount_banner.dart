@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/discount_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
@@ -58,7 +59,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
                 child: SectionTitle(
-                  title: "Ưu đãi hấp dẫn",
+                  title: Languages.of(context)!.saleText,
                   press: () =>
                       Navigator.pushNamed(context, DiscountList.routeName),
                 ),

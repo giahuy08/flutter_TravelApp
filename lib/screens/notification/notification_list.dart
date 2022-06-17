@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/default_appbar.dart';
 import 'package:flutter_travelapp/components/default_backbutton.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 
 import '../../constants.dart';
 import 'components/notification_tiles.dart';
@@ -19,8 +20,8 @@ class _NotificationListState extends State<NotificationList> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhiteColor,
-      appBar: const DefaultAppBar(
-        title: 'Danh sách thông báo',
+      appBar:  DefaultAppBar(
+        title: Languages.of(context)!.listnotiText,
         child: DefaultBackButton(),
       ),
       body: ListView.separated(
@@ -30,7 +31,7 @@ class _NotificationListState extends State<NotificationList> {
           itemBuilder: (context, index) {
             return NotificationTiles(
               title: 'TRAVEL',
-              subtitle: 'Cảm ơn  bạn đã sử dụng TRAVEL.',
+              subtitle:Languages.of(context)!.thankYouText,
               enable: true,
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const NotificationPage())),

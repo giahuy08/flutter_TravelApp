@@ -13,6 +13,8 @@ import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../localization/language/languages.dart';
+
 class MultilineInput extends StatefulWidget {
   final String idTour;
   final double star;
@@ -50,7 +52,7 @@ class _MultilineInputState extends State<MultilineInput> {
         if (value == 'Successfully create ReviewTour') {
           Get.snackbar(
             'Review',
-            'Đăng nhận xét thành công',
+             Languages.of(context)!.successText,
             snackPosition: SnackPosition.TOP,
             colorText: Colors.white,
             backgroundColor: kPrimaryColor,
@@ -95,9 +97,9 @@ class _MultilineInputState extends State<MultilineInput> {
                   textInputAction: TextInputAction.newline,
                   keyboardType: TextInputType.multiline,
                   maxLines: 2,
-                  decoration: const InputDecoration(
+                  decoration:  InputDecoration(
                     border: InputBorder.none,
-                    hintText: "Nhận xét của bạn",
+                    hintText: Languages.of(context)!.commentText,
                     hintStyle: TextStyle(
                       color: kSecondaryColor,
                     ),
@@ -153,8 +155,8 @@ class _MultilineInputState extends State<MultilineInput> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Text(
-                "Nhận xét",
+               Text(
+                   Languages.of(context)!.commentText,
                 style: TextStyle(
                     color: kPrimaryColor,
                     fontWeight: FontWeight.bold,

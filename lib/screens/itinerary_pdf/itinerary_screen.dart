@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'components/body.dart';
 
 class ItineraryScreen extends StatelessWidget {
@@ -16,7 +17,7 @@ class ItineraryScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFFF5F6F9),
         centerTitle: true,
-        title: const Text('Lịch trình'),
+        title:  Text(Languages.of(context)!.scheduleText),
       ),
       body: Body(
         tour: arguments.object,

@@ -34,7 +34,7 @@ const kSmallDivider = Divider(
   thickness: 5.0,
 );
 final paymentLabels = [
-  'Tiền mặt',
+  'Cash',
   'PayPal',
   'VNPay',
 ];

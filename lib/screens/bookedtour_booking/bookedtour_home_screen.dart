@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/booktour.dart';
 import 'package:flutter_travelapp/repository/booktour_repository.dart';
 import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
@@ -278,8 +279,8 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const Text(
-                            'Chọn ngày',
+                          Text(
+                            Languages.of(context)!.chooseDateText,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -334,8 +335,8 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const Text(
-                            'Các chuyến đi',
+                          Text(
+                            Languages.of(context)!.listToursText,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -345,7 +346,9 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                             height: 8,
                           ),
                           Text(
-                            _listBookTour.length.toString() + ' chuyến',
+                            _listBookTour.length.toString() +
+                                ' ' +
+                                Languages.of(context)!.tourText,
                             style: const TextStyle(
                                 fontWeight: FontWeight.normal,
                                 fontSize: 16,
@@ -394,9 +397,9 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                       fontSize: 18,
                     ),
                     cursorColor: kPrimaryColor,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Tìm kiếm...',
+                      hintText: Languages.of(context)!.searchText + '...',
                     ),
                   ),
                 ),
@@ -568,10 +571,10 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
               width: AppBar().preferredSize.height + 40,
               height: AppBar().preferredSize.height,
             ),
-            const Expanded(
+            Expanded(
               child: Center(
                 child: Text(
-                  'Chuyến Đi Đã Đặt',
+                  Languages.of(context)!.bookedTourText,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 20,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'components/body.dart';
 
 class ListEnterpriseScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class ListEnterpriseScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Đối tác kinh doanh'),
+        title:  Text(Languages.of(context)!.partnerText),
       ),
       body: const Body(),
     );

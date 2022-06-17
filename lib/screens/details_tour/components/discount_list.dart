@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/repository/discount_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/discount_list_item.dart';
 
@@ -60,12 +61,12 @@ class _FilterListState extends State<DiscountList> {
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const <Widget>[
+            children:  <Widget>[
               SpinKitSpinningLines(
                 color: Colors.red,
               ),
               Text(
-                "Không có mã giảm giá",
+                Languages.of(context)!.dontHaveDiscountText,
                 style: TextStyle(
                   color: kPrimaryColor,
                   fontSize: 14.0,

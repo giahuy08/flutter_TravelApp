@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/repository/enterprise_repository.dart';
 import 'package:flutter_travelapp/screens/home/components/section_title.dart';
 import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
@@ -54,8 +55,8 @@ class _HotelTableBannerState extends State<HotelTableBanner> {
                 width: 50.h,
                 height: 15.h,
               ),
-              const Text(
-                "Chưa cập nhật dịch vụ",
+              Text(
+                Languages.of(context)!.dontUpdateServiceText,
                 style: TextStyle(
                   color: kPrimaryColor,
                   fontSize: 20.0,
@@ -69,7 +70,7 @@ class _HotelTableBannerState extends State<HotelTableBanner> {
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
                 child: SectionTitle(
-                  title: "Dịch vụ",
+                  title: Languages.of(context)!.serviceText,
                   press: () => Navigator.pushNamed(
                       context, ListEnterpriseScreen.routeName),
                 ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/screens/forgot_password/components/forgot_password_form.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
+import '../../../localization/language/languages.dart';
+
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
@@ -16,14 +18,14 @@ class Body extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Quên mật khẩu",
+                Languages.of(context)!.forgotPassText,
                 style: TextStyle(
                     fontSize: getProportionateScreenWidth(28),
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
-              const Text(
-                "Nhập email của bạn",
+               Text(
+                Languages.of(context)!.emailDesc,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.1),

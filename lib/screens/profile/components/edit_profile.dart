@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/repository/user_repository.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 import 'package:flutter_travelapp/size_config.dart';
@@ -98,8 +99,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
       if (value != null) {
         // removeError(error: kEditProfileFail);
         Get.snackbar(
-          'Cập nhật thông tin',
-          'Cập nhật thông tin thành công',
+           Languages.of(context)!.userProfile,
+          Languages.of(context)!.successText,
           snackPosition: SnackPosition.TOP,
           colorText: kPrimaryLightColor,
           backgroundColor: kPrimaryColor,
@@ -138,7 +139,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Cập nhật thông tin"),
+        title: Text(Languages.of(context)!.userProfile),
         centerTitle: true,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
@@ -282,7 +283,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               )),
                           buildTextField(
                               labelname,
-                              "Họ và tên",
+                              Languages.of(context)!.fullnameDescText,
                               //"Huỳnh Nhựt Thiên",
                               labelname,
                               false,
@@ -293,7 +294,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               )),
                           buildTextField(
                               labelphone,
-                              "Số điện thoại",
+                              Languages.of(context)!.phoneDescText,
                               labelphone,
                               false,
                               false,
@@ -303,7 +304,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               )),
                           buildTextField(
                               labeladdress,
-                              "Địa chỉ",
+                              Languages.of(context)!.addressDescText,
                               labeladdress,
                               false,
                               false,
@@ -311,58 +312,57 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 Icons.home,
                                 color: kPrimaryColor,
                               )),
-                          buildTextField(
-                              "",
-                              "Mật khẩu",
-                              "123456789AsZx",
-                              true,
-                              false,
-                              const Icon(
-                                Icons.remove_red_eye,
-                                color: kPrimaryColor,
-                              )),
+                          // buildTextField(
+                          //     "",
+                          //     Languages.of(context)!.passDesc,
+                          //     "123456789AsZx",
+                          //     true,
+                          //     false,
+                          //     const Icon(
+                          //       Icons.remove_red_eye,
+                          //       color: kPrimaryColor,
+                          //     )),
                           FormError(errors: errors),
                         ],
                       ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: kPrimaryColor,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 10),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: kPrimaryColor,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 10),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                        child: Text(Languages.of(context)!.cancelText,
+                            style:
+                                TextStyle(fontSize: 18, color: Colors.white)),
                       ),
-                      onPressed: () => Navigator.pop(context),
-                      child: const Text("Hủy",
-                          style: TextStyle(
-                              fontSize: 18,
-                              letterSpacing: 5.5,
-                              color: Colors.white)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        editProfile(labelname, labeladdress, labelphone, image);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.green,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 10),
-                        elevation: 2,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      child: const Text(
-                        "Lưu",
-                        style: TextStyle(
-                            fontSize: 18,
-                            letterSpacing: 5.5,
-                            color: Colors.white),
-                      ),
-                    )
-                  ],
+                      ElevatedButton(
+                        onPressed: () {
+                          editProfile(
+                              labelname, labeladdress, labelphone, image);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.green,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 10),
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        child: Text(
+                          Languages.of(context)!.saveText,
+                          style: TextStyle(fontSize: 18, color: Colors.white),
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

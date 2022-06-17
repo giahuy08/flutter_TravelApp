@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 class SectionTitle extends StatelessWidget {
@@ -25,7 +26,8 @@ class SectionTitle extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          GestureDetector(onTap: press, child: const Text("Xem thêm")),
+          GestureDetector(
+              onTap: press, child: Text(Languages.of(context)!.seeMoreText)),
         ],
       ),
     );

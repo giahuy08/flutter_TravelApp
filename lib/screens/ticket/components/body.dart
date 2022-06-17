@@ -5,6 +5,8 @@ import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_scr
 import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../../../localization/language/languages.dart';
+
 class Body extends StatefulWidget {
   final dynamic booktour;
   const Body({Key? key, required this.booktour}) : super(key: key);
@@ -33,16 +35,16 @@ class _BodyState extends State<Body> {
         title: PreferredSize(
           preferredSize: const Size.fromHeight(52),
           child: Container(
-            padding: EdgeInsets.fromLTRB(0, 0, 32, 0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 32, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Text(
-                      'THÔNG TIN VÉ ĐÃ ĐẶT',
-                      style: TextStyle(
+                    Text(
+                      Languages.of(context)!.infoTicketText.toUpperCase(),
+                      style: const TextStyle(
                         color: kWhiteColor,
                         fontWeight: FontWeight.w600,
                         fontSize: 20,
@@ -111,16 +113,16 @@ class _BodyState extends State<Body> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Từ',
-                                  style: TextStyle(
+                                Text(
+                                  Languages.of(context)!.fromText,
+                                  style: const TextStyle(
                                       color: kDarkColor,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(widget.booktour.startingplace),
                                 const SizedBox(height: 14),
-                                const Text(
-                                  'Đến',
+                                Text(
+                                  Languages.of(context)!.toText,
                                   style: TextStyle(
                                       color: kDarkColor,
                                       fontWeight: FontWeight.bold),
@@ -128,13 +130,13 @@ class _BodyState extends State<Body> {
                                 Text(widget.booktour.place),
                               ],
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Ngày khởi hành',
-                                  style: TextStyle(
+                                Text(
+                                  Languages.of(context)!.startDateText,
+                                  style: const TextStyle(
                                       color: kDarkColor,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -147,9 +149,9 @@ class _BodyState extends State<Body> {
                                       color: Colors.grey.withOpacity(0.8)),
                                 ),
                                 const SizedBox(height: 14),
-                                const Text(
-                                  'Ngày kết thúc',
-                                  style: TextStyle(
+                                Text(
+                                  Languages.of(context)!.endDateText,
+                                  style: const TextStyle(
                                       color: kDarkColor,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -177,9 +179,9 @@ class _BodyState extends State<Body> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Khách hàng',
-                                  style: TextStyle(
+                                Text(
+                                  Languages.of(context)!.customerText,
+                                  style: const TextStyle(
                                       color: kDarkColor,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -200,9 +202,9 @@ class _BodyState extends State<Body> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Số điện thoại',
-                                  style: TextStyle(
+                                Text(
+                                  Languages.of(context)!.phoneDescText,
+                                  style: const TextStyle(
                                       color: kDarkColor,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -245,8 +247,6 @@ class _BodyState extends State<Body> {
               QrImage(
                 data: widget.booktour.id +
                     //'\n' +
-                    // widget.booktour.emailUser +
-                    '\n' +
                     widget.booktour.phoneUser,
                 size: 300,
                 embeddedImage: const AssetImage(logo),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/components/listtours_argument.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
@@ -75,7 +76,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
                 child: SectionTitle(
-                  title: "Có thể bạn quan tâm",
+                  title:  Languages.of(context)!.youCanCareText,
                   press: () => Navigator.pushNamed(
                       context, ListToursScreen.routeName,
                       arguments: ListToursArguments(tours: _listTourMore)),

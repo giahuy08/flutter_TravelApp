@@ -6,6 +6,7 @@ import 'package:flutter_travelapp/screens/profile/components/edit_profile.dart';
 import 'package:flutter_travelapp/screens/splash/splash_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../../constants.dart';
+import '../../../localization/language/languages.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
@@ -26,7 +27,7 @@ class _BodyState extends State<Body> {
           const ProfilePic(),
           const SizedBox(height: 20),
           ProfileMenu(
-            text: "Tài khoản",
+            text: Languages.of(context)!.accountText,
             icon: "assets/icons/User Icon.svg",
             press: () => {
               Navigator.of(context).push(MaterialPageRoute(
@@ -35,7 +36,7 @@ class _BodyState extends State<Body> {
           ),
 
           ProfileMenu(
-            text: "Đổi mật khẩu",
+            text: Languages.of(context)!.changePasswordText,
             icon: "assets/icons/change-password.svg",
             press: () => {
               Navigator.of(context).push(MaterialPageRoute(
@@ -45,7 +46,7 @@ class _BodyState extends State<Body> {
           ),
 
           ProfileMenu(
-            text: "Chăm sóc khách hàng",
+            text: Languages.of(context)!.customerCareText,
             icon: "assets/icons/message.svg",
             press: () => {
               Navigator.of(context).push(MaterialPageRoute(
@@ -84,7 +85,7 @@ class _BodyState extends State<Body> {
           //   },
           // ),
           ProfileMenu(
-            text: "Đăng xuất",
+            text: Languages.of(context)!.logoutText,
             icon: "assets/icons/Log out.svg",
             press: () => {signOutDrawer(context)},
           ),
@@ -112,8 +113,8 @@ void signOutDrawer(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             mainAxisSize: MainAxisSize.max,
             children: [
-              const Text(
-                'Bạn muốn đăng xuất khỏi ứng dụng?',
+              Text(
+                Languages.of(context)!.wantLogoutText,
                 style: TextStyle(
                   color: kWhiteColor,
                   fontSize: 18.0,
@@ -125,8 +126,8 @@ void signOutDrawer(BuildContext context) {
                   Expanded(
                     child: MaterialButton(
                         color: kWhiteColor,
-                        child: const Text(
-                          'Đăng xuất',
+                        child: Text(
+                          Languages.of(context)!.logoutText,
                           style: TextStyle(
                             color: kPrimaryColor,
                             fontSize: 16.0,
@@ -150,8 +151,8 @@ void signOutDrawer(BuildContext context) {
                         shadowColor: kWhiteColor,
                         side: const BorderSide(color: kWhiteColor),
                       ),
-                      child: const Text(
-                        'Hủy',
+                      child: Text(
+                        Languages.of(context)!.cancelText,
                         style: TextStyle(
                           color: kWhiteColor,
                           fontSize: 16.0,

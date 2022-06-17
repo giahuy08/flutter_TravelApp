@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/enterprise.dart';
 import 'package:flutter_travelapp/models/vehicle.dart';
 import 'package:flutter_travelapp/repository/enterprise_repository.dart';
@@ -96,7 +97,7 @@ class _TourDescriptionState extends State<TourDescription> {
                       const SizedBox(
                         width: 5,
                       ),
-                      const Text('Điểm xuất phát: '),
+                      Text(Languages.of(context)!.startingPointText+': '),
                       Text(
                         widget.tour.startingplace,
                         style: const TextStyle(fontWeight: FontWeight.w600),
@@ -114,7 +115,7 @@ class _TourDescriptionState extends State<TourDescription> {
                       const SizedBox(
                         width: 5,
                       ),
-                      const Text('Điểm đến: '),
+                       Text(Languages.of(context)!.destinationText+': '),
                       Text(
                         widget.tour.place,
                         style: const TextStyle(fontWeight: FontWeight.w600),
@@ -197,7 +198,7 @@ class _TourDescriptionState extends State<TourDescription> {
               height: 6.h,
               width: MediaQuery.of(context).size.width - 45,
               child: DefaultButton(
-                text: 'Xem lịch trình',
+                text: Languages.of(context)!.watchScheduleText,
                 press: () => {
                   Navigator.pushNamed(context, ItineraryScreen.routeName,
                       arguments: TourDetailsArguments(object: widget.tour)),
@@ -213,7 +214,7 @@ class _TourDescriptionState extends State<TourDescription> {
               height: 55,
               width: MediaQuery.of(context).size.width - 20,
               child: DefaultButton(
-                text: 'Đặt ngay',
+                text: Languages.of(context)!.bookNowText,
                 press: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => SeatsGridPage(tour: widget.tour))),
               )),

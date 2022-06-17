@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
 import 'package:intl/intl.dart';
@@ -156,7 +157,7 @@ class TourItem extends StatelessWidget {
                           rating: listTour[index].star,
                         ),
                         Text(
-                          listTour[index].star.toStringAsFixed(1) + " sao",
+                          listTour[index].star.toStringAsFixed(1) + " "+ Languages.of(context)!.starText,
                           style:
                               const TextStyle(color: kDarkColor, fontSize: 10),
                         )

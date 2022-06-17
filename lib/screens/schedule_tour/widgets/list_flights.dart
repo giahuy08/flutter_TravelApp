@@ -59,14 +59,14 @@ class _ListFlightsState extends State<ListFlights>
             },
             child: AnimatedContainer(
               height: currentIndex == index ? 134 : 66,
-              duration: Duration(milliseconds: 200),
+              duration: const Duration(milliseconds: 200),
               margin: EdgeInsets.fromLTRB(
                   16, 0, 16, index == flightsAvailable.length - 1 ? 80 : 16),
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(4),
+                borderRadius: const BorderRadius.all(
+                  const Radius.circular(4),
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -88,25 +88,25 @@ class _ListFlightsState extends State<ListFlights>
                             flightsAvailable[index].logo!,
                             width: 64,
                           ),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           Container(
                             color: kLightColor,
                             height: 32,
                             width: 1,
                           ),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Select',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: kLightColor,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Travel Date',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: kLightColor,
                                 ),
                               ),
@@ -114,9 +114,9 @@ class _ListFlightsState extends State<ListFlights>
                           )
                         ],
                       ),
-                      Spacer(),
+                      const Spacer(),
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 200),
+                        duration: const Duration(milliseconds: 200),
                         height: currentIndex == index ? 32 : 0,
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
@@ -131,7 +131,7 @@ class _ListFlightsState extends State<ListFlights>
                             ),
                           ),
                           onPressed: () {},
-                          child: Text(
+                          child: const Text(
                             'Select Travel date',
                             style: TextStyle(
                               color: Colors.white,
@@ -147,35 +147,35 @@ class _ListFlightsState extends State<ListFlights>
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.supervised_user_circle,
                             size: 32,
                           ),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           Container(
                             color: kLightColor,
                             height: 32,
                             width: 1,
                           ),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Passengers',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: kLightColor,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Adults (12+)',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: kLightColor,
                                 ),
                               ),
                             ],
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Container(
                             height: 34,
                             child: ElevatedButton(
@@ -198,7 +198,7 @@ class _ListFlightsState extends State<ListFlights>
                                 //   ),
                                 // );
                               },
-                              child: Text(
+                              child: const Text(
                                 'next step',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -208,13 +208,13 @@ class _ListFlightsState extends State<ListFlights>
                           ),
                         ],
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Expanded(
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: passengers.map((e) {
                             return Container(
-                              margin: EdgeInsets.all(4),
+                              margin: const EdgeInsets.all(4),
                               width: 32,
                               height: 32,
                               decoration: BoxDecoration(

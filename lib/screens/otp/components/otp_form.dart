@@ -8,6 +8,7 @@ import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 
 import '../../../constants.dart';
+import '../../../localization/language/languages.dart';
 import '../../../size_config.dart';
 
 class OtpForm extends StatefulWidget {
@@ -88,7 +89,7 @@ class _OtpFormState extends State<OtpForm> {
           removeError(error: kOtpValidError);
           Get.snackbar(
             'Otp',
-            'Cập nhật mật khẩu thành công',
+            Languages.of(context)!.successChangePassText,
             snackPosition: SnackPosition.TOP,
             colorText: Colors.white,
             backgroundColor: kPrimaryColor,
@@ -191,10 +192,9 @@ class _OtpFormState extends State<OtpForm> {
             FormError(errors: errors),
             SizedBox(height: getProportionateScreenHeight(20)),
             DefaultButton(
-              text: "Gửi",
+              text: Languages.of(context)!.sendText,
               press: () {
                 otp = code1 + code2 + code3 + code4;
-                print(otp);
                 if (otp.length == 4) {
                   removeError(error: kOtpError);
                   if (_otpFormKey.currentState!.validate()) {
@@ -236,9 +236,9 @@ class _OtpFormState extends State<OtpForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
-        labelText: "Xác nhận mật khẩu",
-        hintText: "Nhập lại mật khẩu",
+      decoration: InputDecoration(
+        labelText: Languages.of(context)!.confirmPassDesText,
+        hintText: Languages.of(context)!.confirmPassFormText,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -271,8 +271,8 @@ class _OtpFormState extends State<OtpForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Mật khẩu",
-        hintText: "Nhập mật khẩu",
+        labelText: Languages.of(context)!.passDesc,
+        hintText: Languages.of(context)!.passForm,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,

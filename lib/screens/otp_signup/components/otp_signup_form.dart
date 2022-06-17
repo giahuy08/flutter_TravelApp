@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_travelapp/components/custom_surfix_icon.dart';
@@ -90,7 +91,7 @@ class _OtpFormState extends State<OtpSignUpForm> {
           removeError(error: kOtpValidError);
           Get.snackbar(
             'Otp',
-            'Tạo thành công tài khoản',
+            Languages.of(context)!.successCreateAccountText,
             snackPosition: SnackPosition.TOP,
             colorText: Colors.white,
             backgroundColor: kPrimaryColor,
@@ -188,7 +189,7 @@ class _OtpFormState extends State<OtpSignUpForm> {
             FormError(errors: errors),
             SizedBox(height: getProportionateScreenHeight(20)),
             DefaultButton(
-              text: "Gửi",
+              text: Languages.of(context)!.sendText,
               press: () {
                 otp = code1 + code2 + code3 + code4;
                 print(otp);
@@ -233,9 +234,9 @@ class _OtpFormState extends State<OtpSignUpForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
-        labelText: "Xác nhận mật khẩu",
-        hintText: "Nhập lại mật khẩu",
+      decoration: InputDecoration(
+        labelText: Languages.of(context)!.confirmPassFormText,
+        hintText: Languages.of(context)!.confirmPassDesText,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -268,8 +269,8 @@ class _OtpFormState extends State<OtpSignUpForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Mật khẩu",
-        hintText: "Nhập mật khẩu",
+        labelText: Languages.of(context)!.passDesc,
+        hintText: Languages.of(context)!.passForm,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,

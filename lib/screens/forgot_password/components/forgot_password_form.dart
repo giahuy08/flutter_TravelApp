@@ -8,6 +8,7 @@ import 'package:flutter_travelapp/screens/otp/otp_screen.dart';
 import 'package:flutter_travelapp/screens/sign_in/components/no_account.dart';
 
 import '../../../constants.dart';
+import '../../../localization/language/languages.dart';
 import '../../../size_config.dart';
 
 class ForgotPassForm extends StatefulWidget {
@@ -99,18 +100,18 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
                 }
                 return null;
               },
-              decoration: const InputDecoration(
-                labelText: "Email",
-                hintText: "Nhập Email",
+              decoration: InputDecoration(
+                labelText: Languages.of(context)!.emailDesc,
+                hintText: Languages.of(context)!.addressFormText,
                 floatingLabelBehavior: FloatingLabelBehavior.always,
-                suffixIcon: CustomSurffix(
+                suffixIcon: const CustomSurffix(
                   svgIcon: "assets/icons/Mail.svg",
                 ),
               )),
           FormError(errors: errors),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
           DefaultButton(
-              text: "Gửi",
+              text: Languages.of(context)!.sendText,
               press: () {
                 if (_forgotFormKey.currentState!.validate()) {
                   // Navigator.pushNamed(context, OtpScreen.routeName);

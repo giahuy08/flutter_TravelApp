@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
@@ -14,7 +15,7 @@ class Body extends StatelessWidget {
         Image.asset("assets/images/success.png"),
         SizedBox(height: SizeConfig.screenHeight * 0.08),
         Text(
-          "Đăng nhập thành công",
+          Languages.of(context)!.loginSuccess,
           style: TextStyle(
               fontSize: getProportionateScreenWidth(30),
               fontWeight: FontWeight.bold,
@@ -24,7 +25,7 @@ class Body extends StatelessWidget {
         SizedBox(
             width: SizeConfig.screenWidth * 0.6,
             child: DefaultButton(
-                text: "Đến trang chủ",
+                text: Languages.of(context)!.gotoHome,
                 press: () =>
                     Navigator.pushNamed(context, BottomNavBar.routeName))),
         const Spacer(),

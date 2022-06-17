@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_travelapp/components/default_appbar.dart';
@@ -133,8 +134,8 @@ class _PaymentState extends State<Payment> {
       ),
       body: Column(
         children: [
-          const HeaderLabel(
-            headerText: 'Chọn phương thức thanh toán',
+          HeaderLabel(
+            headerText: Languages.of(context)!.typeofPaymentText,
           ),
           Expanded(
             child: ListView.separated(
@@ -166,7 +167,7 @@ class _PaymentState extends State<Payment> {
             height: 55,
             width: 360,
             child: DefaultButton(
-                text: 'Thanh toán',
+                text: Languages.of(context)!.paymentText,
                 press: () {
                   booktour(widget.id, widget.codediscount, value.toString(),
                       widget.date.toString());

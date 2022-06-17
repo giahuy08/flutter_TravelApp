@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:intl/intl.dart';
 
 import 'bookedtour_app_theme.dart';
@@ -81,7 +82,8 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                     padding: const EdgeInsets.all(24.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: BookedTourAppTheme.buildLightTheme().backgroundColor,
+                        color: BookedTourAppTheme.buildLightTheme()
+                            .backgroundColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(24.0)),
                         boxShadow: <BoxShadow>[
@@ -109,7 +111,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        'Từ',
+                                        Languages.of(context)!.starText,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
@@ -146,7 +148,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        'Đến',
+                                        Languages.of(context)!.toText,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
                                             fontSize: 16,
@@ -219,9 +221,9 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                         Navigator.pop(context);
                                       } catch (_) {}
                                     },
-                                    child: const Center(
+                                    child: Center(
                                       child: Text(
-                                        'Xác nhận',
+                                        Languages.of(context)!.confirmText,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 18,
