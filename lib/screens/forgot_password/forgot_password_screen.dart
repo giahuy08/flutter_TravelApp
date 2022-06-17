@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../localization/language/languages.dart';
 import 'components/body.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Quên mật khẩu"),
+        title: Text(Languages.of(context)!.forgotPassText),
       ),
       body: const Body(),
     );

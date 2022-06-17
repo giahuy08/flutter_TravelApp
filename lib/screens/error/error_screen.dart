@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 
 class ErrorScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class ErrorScreen extends StatelessWidget {
               onPressed: () =>
                   Navigator.pushNamed(context, BottomNavBar.routeName),
               child: Text(
-                "Về trang chủ".toUpperCase(),
+                Languages.of(context)!.gotoHome.toUpperCase(),
                 style: const TextStyle(color: Colors.white),
               ),
             ),

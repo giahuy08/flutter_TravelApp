@@ -3,6 +3,7 @@ import 'package:flutter_travelapp/components/custom_surfix_icon.dart';
 import 'package:flutter_travelapp/components/default_button.dart';
 import 'package:flutter_travelapp/components/form_error.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/repository/user_repository.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 import 'package:get/get.dart';
@@ -34,8 +35,8 @@ class _ChangeFormState extends State<ChangeForm> {
         } else {
           removeError(error: kChangePasswordFail);
           Get.snackbar(
-            'Đổi mật khẩu',
-            'Đổi mật khẩu thành công',
+             Languages.of(context)!.changePasswordText,
+            Languages.of(context)!.successText,
             snackPosition: SnackPosition.TOP,
             colorText: kPrimaryLightColor,
             backgroundColor: kPrimaryColor,
@@ -86,7 +87,7 @@ class _ChangeFormState extends State<ChangeForm> {
             SizedBox(height: getProportionateScreenHeight(20)),
             FormError(errors: errors),
             DefaultButton(
-                text: "Đổi mật khẩu",
+                text: Languages.of(context)!.changePasswordText,
                 press: () {
                   // print(email);
                   // Navigator.pushNamed(context, OtpScreen.routeName);
@@ -127,9 +128,9 @@ class _ChangeFormState extends State<ChangeForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
-        labelText: "Xác nhận lại mật khẩu mới",
-        hintText: "Nhập lại mật khẩu mới",
+      decoration: InputDecoration(
+        labelText: Languages.of(context)!.reEnterNewPassTextDes,
+        hintText: Languages.of(context)!.reEnterNewPassTextForm,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -161,9 +162,9 @@ class _ChangeFormState extends State<ChangeForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
-        labelText: "Mật khẩu mới",
-        hintText: "Nhập mật khẩu mới",
+      decoration: InputDecoration(
+        labelText: Languages.of(context)!.newPasswordDes,
+        hintText: Languages.of(context)!.newPasswordForm,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -195,9 +196,10 @@ class _ChangeFormState extends State<ChangeForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
-        labelText: "Mật khẩu hiện tại",
-        hintText: "Nhập mật khẩu hiện tại",
+      decoration: InputDecoration(
+        labelText: Languages.of(context)!.oldPasswordDes,
+        hintText: Languages.of(context)!.oldPasswordForm,
+
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,

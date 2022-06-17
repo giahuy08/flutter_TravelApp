@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/components/listtours_argument.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
@@ -57,7 +58,7 @@ class _ListTourMoreState extends State<ListTourMore> {
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: SectionTitle(
-            title: "Chuyến du lịch khác",
+            title:  Languages.of(context)!.otherTourText,
             press: () => Navigator.pushNamed(context, ListToursScreen.routeName,
                 arguments: ListToursArguments(tours: _listTourMore)),
           ),

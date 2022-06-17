@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
-class TourStats extends StatelessWidget {
-  const TourStats({
+class TourStarts extends StatelessWidget {
+  const TourStarts({
     Key? key,
     required this.tour,
   }) : super(key: key);
@@ -18,21 +19,21 @@ class TourStats extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TourInfo(
-          title: "Thời gian:",
+          title: Languages.of(context)!.timeText + ":",
           value: tour.time,
         ),
         SizedBox(
           width: 2.w,
         ),
         TourInfo(
-          title: "Giá: (VNĐ)",
+          title: Languages.of(context)!.priceText + ": (VNĐ)",
           value: oCcy.format(tour.payment),
         ),
         SizedBox(
           width: 2.w,
         ),
         TourInfo(
-          title: "Địa điểm:",
+          title: Languages.of(context)!.placeText + ":",
           value: tour.place,
         ),
         // TourInfo(

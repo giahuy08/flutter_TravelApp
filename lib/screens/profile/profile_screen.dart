@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import '../../localization/language/languages.dart';
 import 'components/body.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -14,8 +15,8 @@ class ProfileScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: 5.h),
-            const Text(
-              "Hồ sơ cá nhân",
+            Text(
+              Languages.of(context)!.userProfile,
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               textAlign: TextAlign.center,
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:intl/intl.dart';
 
@@ -66,7 +67,8 @@ class DiscountListItem extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'HSD: ' +
+                          Languages.of(context)!.endText +
+                              ': ' +
                               DateFormat('yyyy-MM-dd')
                                   .format(DateTime.parse(endDiscount))
                                   .toString(),

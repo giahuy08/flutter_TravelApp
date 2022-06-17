@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/screens/change_password/components/change_form.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
@@ -24,7 +25,7 @@ class Body extends StatelessWidget {
               SizedBox(
                 height: getProportionateScreenHeight(20),
               ),
-              const Text("Vui lòng điền đầy đủ thông tin"),
+               Text(Languages.of(context)!.enterFullInfoText),
               const SizedBox(
                   // height: SizeConfig.screenHeight * 0.08,
                   ),

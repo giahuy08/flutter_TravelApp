@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_travelapp/components/listtours_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
@@ -62,7 +63,7 @@ class _SearchFieldState extends State<SearchField> {
         decoration: InputDecoration(
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
-          hintText: "Tìm kiếm",
+          hintText: Languages.of(context)!.searchText,
           prefixIcon: IconButton(
               icon: const Icon(Icons.search),
               onPressed: () => {

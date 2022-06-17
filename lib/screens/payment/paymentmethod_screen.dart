@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/screens/success/success.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -19,7 +20,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Thanh toán"),
+          title: Text(Languages.of(context)!.paymentText),
         ),
         body: WebView(
             javascriptMode: JavascriptMode.unrestricted,

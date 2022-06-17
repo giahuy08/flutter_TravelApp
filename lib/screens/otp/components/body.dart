@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/screens/otp/components/otp_form.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
@@ -23,11 +24,11 @@ class Body extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Xác thực OTP",
+                Languages.of(context)!.authorOtpText,
                 style: headingStyle,
               ),
               Text(
-                "Mã OTP của bạn được đến email \n $email ",
+                Languages.of(context)!.emailOtpText + " \n $email ",
                 textAlign: TextAlign.center,
               ),
               // buildTimer(),
@@ -38,13 +39,6 @@ class Body extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.screenHeight * 0.1,
               ),
-              GestureDetector(
-                onTap: () {},
-                child: const Text(
-                  "Gửi lại mã",
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              )
             ],
           ),
         ),

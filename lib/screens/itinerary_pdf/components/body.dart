@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/size_config.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sizer/sizer.dart';
@@ -173,7 +174,7 @@ class _PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
         builder: (context, AsyncSnapshot<PDFViewController> snapshot) {
           if (snapshot.hasData) {
             return FloatingActionButton.extended(
-              label: Text("Đến trang ${pages! ~/ 2}"),
+              label: Text(Languages.of(context)!.gotoPageText+" ${pages! ~/ 2}"),
               onPressed: () async {
                 await snapshot.data!.setPage(pages! ~/ 2);
               },

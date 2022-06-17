@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_app_theme.dart';
 
 import 'components/cars_grid.dart';
@@ -14,15 +15,15 @@ class CarsOverviewScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: const Text('Phương tiện',
+        title: Text(Languages.of(context)!.vehicleText,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
       ),
       body: ListView(
-        children: const [
+        children: [
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              'Danh sách phương tiện',
+              Languages.of(context)!.listVehicleText,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
           ),

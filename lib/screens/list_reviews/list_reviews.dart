@@ -8,6 +8,8 @@ import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
+import '../../localization/language/languages.dart';
+
 class ListReviews extends StatefulWidget {
   final List<dynamic> reviewTour;
   final dynamic tour;
@@ -52,8 +54,8 @@ class _ListReviewsState extends State<ListReviews> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhiteColor,
-      appBar: const DefaultAppBar(
-        title: "Nhận xét",
+      appBar: DefaultAppBar(
+        title: Languages.of(context)!.commentText,
         child: DefaultBackButton(),
       ),
       body: Column(
@@ -97,7 +99,8 @@ class _ListReviewsState extends State<ListReviews> {
                     ),
                     const SizedBox(height: 16.0),
                     Text(
-                      "${widget.reviewTour.length} Nhận xét",
+                      "${widget.reviewTour.length} " +
+                          Languages.of(context)!.commentText,
                       style: const TextStyle(
                         fontSize: 20.0,
                         color: kLightColor,

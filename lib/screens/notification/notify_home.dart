@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/providers/notification_provider.dart';
 import 'package:flutter_travelapp/screens/notification/components/notification_tiles.dart';
 import 'package:flutter_travelapp/screens/notification/notification_page.dart';
@@ -155,7 +156,7 @@ class _NotifyHomeState extends State<NotifyHome> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Thông báo'),
+          title: Text(Languages.of(context)!.paymentText),
         ),
         body: notificationProvider.listNotification.isNotEmpty
             ? ListView.separated(
@@ -176,9 +177,9 @@ class _NotifyHomeState extends State<NotifyHome> {
                 separatorBuilder: (context, index) {
                   return const Divider();
                 })
-            : const Align(
+            : Align(
                 alignment: Alignment.center,
-                child: Text('Không có thông báo')));
+                child: Text(Languages.of(context)!.donthaveNoti)));
   }
 }
 

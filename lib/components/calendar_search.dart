@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
 import 'package:intl/intl.dart';
 
@@ -114,7 +115,7 @@ class _CalendarSearchState extends State<CalendarSearch>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        'Từ',
+                                        Languages.of(context)!.fromText,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
@@ -151,7 +152,7 @@ class _CalendarSearchState extends State<CalendarSearch>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        'Đến',
+                                        Languages.of(context)!.toText,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
                                             fontSize: 16,
@@ -217,7 +218,7 @@ class _CalendarSearchState extends State<CalendarSearch>
                                     onTap: () async {
                                       try {
                                         // animationController.reverse().then((f) {
-                                      
+
                                         // });
 
                                         widget.onApplyClick!(
@@ -243,9 +244,9 @@ class _CalendarSearchState extends State<CalendarSearch>
                                         }
                                       } catch (_) {}
                                     },
-                                    child: const Center(
+                                    child: Center(
                                       child: Text(
-                                        'Xác nhận',
+                                         Languages.of(context)!.confirmText,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 18,

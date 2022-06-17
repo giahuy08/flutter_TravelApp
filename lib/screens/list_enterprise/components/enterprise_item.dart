@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/enterprise.dart';
 import 'package:flutter_travelapp/repository/enterprise_repository.dart';
 import 'package:sizer/sizer.dart';
@@ -191,17 +192,20 @@ class _EnterpriseItemState extends State<EnterpriseItem> {
                                   BorderRadius.all(Radius.circular(50)),
                               color: kPrimaryColor),
                           child: _listEnterprise[index].type == 0
-                              ? const StatusCard(
-                                  status: " ĐỐI TÁC",
+                              ? StatusCard(
+                                  status:
+                                      " " + Languages.of(context)!.partnerText.toUpperCase(),
                                   color: kPrimaryColor,
                                   icon: Icons.business)
                               : _listEnterprise[index].type == 1
-                                  ? const StatusCard(
-                                      status: " KHÁCH SẠN",
+                                  ? StatusCard(
+                                      status: " " +
+                                          Languages.of(context)!.hotelText.toUpperCase(),
                                       color: kPrimaryColor,
                                       icon: Icons.hotel)
-                                  : const StatusCard(
-                                      status: " NHÀ HÀNG",
+                                  : StatusCard(
+                                      status: " " +
+                                          Languages.of(context)!.restaurantText.toUpperCase(),
                                       color: kPrimaryColor,
                                       icon: Icons.restaurant),
                         )

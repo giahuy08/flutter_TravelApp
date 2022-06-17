@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
 import 'package:flutter_travelapp/screens/list_enterprise/listenterprise_screen.dart';
 import 'package:flutter_travelapp/screens/list_vehicle/cars_overview.dart';
@@ -13,22 +14,22 @@ class Categories extends StatelessWidget {
     List<Map<String, dynamic>> categories = [
       {
         "icon": "assets/images/tour.png",
-        "text": "Du lịch",
+        "text": Languages.of(context)!.travelText,
         "press": BookedTourHomeScreen.routeName
       },
       {
         "icon": "assets/images/hotelbuilding.png",
-        "text": "Khách sạn",
+        "text": Languages.of(context)!.hotelText,
         "press": ListEnterpriseScreen.routeName
       },
       {
         "icon": "assets/images/restaurant.png",
-        "text": "Nhà hàng",
+        "text": Languages.of(context)!.restaurantText,
         "press": ListEnterpriseScreen.routeName
       },
       {
         "icon": "assets/images/vehicles.png",
-        "text": "Phương tiện",
+        "text": Languages.of(context)!.vehicleText,
         "press": CarsOverviewScreen.routeName
       },
       // {"icon": "assets/images/more.png", "text": "Khác"},

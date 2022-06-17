@@ -1,13 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_travelapp/components/google_btn.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/sign_in/components/no_account.dart';
 import 'package:flutter_travelapp/screens/sign_in/components/sign_form.dart';
 import 'package:flutter_travelapp/size_config.dart';
+import 'package:fswitch/fswitch.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_travelapp/providers/user_provider.dart';
+import '../../../localization/language/languages.dart';
+import '../../../localization/locale_constant.dart';
 import '../../login_success/login_success_screen.dart';
 import 'package:flutter_travelapp/models/user.dart';
 
@@ -21,32 +25,6 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late String token;
-
-  // Future fbSignIn() async {
-  //   // facebookSignIn.loginBehavior = FacebookLoginBehavior.webViewOnly;
-  //   final FacebookLoginResult result = await facebookSignIn.logIn(['email']);
-
-  //   switch (result.status) {
-  //     case FacebookLoginStatus.loggedIn:
-  //       final FacebookAccessToken accessToken = result.accessToken;
-  //       final snackbar =
-  //           SnackBar(content: Text("Đăng nhập bằng Facebook thành công!"));
-  //       ScaffoldMessenger.of(context).showSnackBar(snackbar);
-  //       Navigator.pushAndRemoveUntil(
-  //           context,
-  //           MaterialPageRoute(builder: (builder) => const SignInScreen()),
-  //           (route) => false);
-  //       break;
-  //     case FacebookLoginStatus.cancelledByUser:
-  //       final snackbar = SnackBar(content: Text("Yêu cầu đã được hủy!"));
-  //       ScaffoldMessenger.of(context).showSnackBar(snackbar);
-  //       break;
-  //     case FacebookLoginStatus.error:
-  //       final snackbar = SnackBar(content: Text("Không thể đăng nhập!"));
-  //       ScaffoldMessenger.of(context).showSnackBar(snackbar);
-  //       break;
-  //   }
-  // }
 
   Future<UserCredential> googleSignIn() async {
     //  await FirebaseAuth.instance.signOut();
@@ -101,98 +79,82 @@ class _BodyState extends State<Body> {
       throw StateError('Sign in Aborted');
   }
 
+  bool status = false;
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: SizeConfig.screenHeight * 0.04,
-                ),
-                Text(
-                  "Xin Chào!",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: getProportionateScreenWidth(28),
-                      fontWeight: FontWeight.bold),
-                ),
-                Image.asset('assets/images/airline.png',
-                    height: getProportionateScreenHeight(80)),
-                SizedBox(
-                  height: getProportionateScreenHeight(20),
-                ),
-                const Text(
-                  "Đăng nhập với email và mật khẩu của bạn ",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(
-                  height: SizeConfig.screenHeight * 0.08,
-                ),
-                const SignForm(),
-                SizedBox(
-                  height: getProportionateScreenHeight(20),
-                ),
-                const NoAccountText(),
-                SizedBox(
-                  height: getProportionateScreenHeight(20),
-                ),
-                const Text('Hoặc tiếp tục với'),
-                SizedBox(
-                  height: getProportionateScreenHeight(10),
-                ),
-                InkWell(
-                  onTap: googleSignIn,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width - 60,
-                    height: 60,
-                    child: Card(
-                      color: const Color(0xFFF5F6F9),
-                      elevation: 8,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icons/google-icon.svg',
-                            height: 26,
-                            width: 26,
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Text(
-                            'Đăng nhập với Google',
-                            style: TextStyle(color: kTextColor, fontSize: 18),
-                          )
-                        ],
+  Widget build(BuildContext context) => SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(20)),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: FSwitch(
+                        width: 65.0,
+                        openColor: kPrimaryColor,
+                        height: 35.538,
+                        open: status,
+                        onChanged: (v) {
+                          status = v;
+
+                          if (status == true) {
+                            changeLanguage(context, "en");
+                          } else {
+                            changeLanguage(context, "vi");
+                          }
+                        },
+                        closeChild: const Text(
+                          "VN",
+                          style: TextStyle(color: Colors.white, fontSize: 11),
+                        ),
+                        openChild: const Text(
+                          "ENG",
+                          style: TextStyle(color: Colors.white, fontSize: 11),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     SocialCard(
-                //         icon: 'assets/icons/google-icon.svg',
-                //         press: googleSignIn),
-                //     SocialCard(
-                //         icon: 'assets/icons/facebook-2.svg', press: fbSignIn),
-                //   ],
-                // ),
-              ],
+                  Text(
+                    Languages.of(context)!.appName,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: getProportionateScreenWidth(28),
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Image.asset('assets/images/airline.png',
+                      height: getProportionateScreenHeight(80)),
+                  SizedBox(
+                    height: getProportionateScreenHeight(20),
+                  ),
+                  Text(
+                    Languages.of(context)!.loginWarn,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: SizeConfig.screenHeight * 0.08,
+                  ),
+                  const SignForm(),
+                  const NoAccountText(),
+                  SizedBox(
+                    height: getProportionateScreenHeight(20),
+                  ),
+                  Text(
+                    Languages.of(context)!.orContinueText,
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(10),
+                  ),
+                  GoogleBtn(onPressed: googleSignIn)
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

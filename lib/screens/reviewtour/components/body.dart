@@ -6,13 +6,14 @@ import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
+import 'package:flutter_travelapp/screens/reviewtour/components/tour_start.dart';
 import 'package:sizer/sizer.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import '../../../localization/language/languages.dart';
 import 'custom_app_bar.dart';
 import 'multiline_input.dart';
 import 'review_header.dart';
-import 'tour_stat.dart';
 
 class Body extends StatefulWidget {
   final dynamic tour;
@@ -56,8 +57,8 @@ class _BodyState extends State<Body> {
                     ],
                   ),
                 ),
-                const Text(
-                  "Chuyến du lịch:",
+                Text(
+                  Languages.of(context)!.tourText,
                   style: TextStyle(
                     color: kTextColor,
                     fontSize: 14,
@@ -76,7 +77,7 @@ class _BodyState extends State<Body> {
                   color: kTextColor,
                 ),
                 const SizedBox(height: kDefaultPadding),
-                TourStats(
+                TourStarts(
                   tour: widget.tour,
                 ),
                 const SizedBox(height: kDefaultPadding),
@@ -88,7 +89,7 @@ class _BodyState extends State<Body> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   child: DefaultButton(
-                    text: "Xem chi tiết",
+                    text: Languages.of(context)!.detailText,
                     press: () async => {
                       itemtour =
                           await TourRepository().getOneTour(widget.tour.idTour),
@@ -99,8 +100,8 @@ class _BodyState extends State<Body> {
                   ),
                 ),
                 const SizedBox(height: kDefaultPadding),
-                const Text(
-                  "Cảm ơn bạn đã chọn chúng tôi",
+                Text(
+                  Languages.of(context)!.thankYouText,
                   style: TextStyle(
                     color: kTextColor,
                     fontSize: 14,
@@ -110,8 +111,8 @@ class _BodyState extends State<Body> {
                   "assets/icons/Heart Icon_2.svg",
                   color: Colors.red,
                 ),
-                const Text(
-                  "Trải nghiệm của bạn thế nào?",
+                Text(
+                  Languages.of(context)!.feedbackText,
                   style: TextStyle(
                     color: kTextColor,
                     fontSize: 18,

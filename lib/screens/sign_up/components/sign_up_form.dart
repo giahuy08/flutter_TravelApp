@@ -8,6 +8,7 @@ import 'package:flutter_travelapp/repository/authen_repository.dart';
 import 'package:flutter_travelapp/screens/otp_signup/otp_signup_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
+import '../../../localization/language/languages.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -103,7 +104,7 @@ class _SignFormState extends State<SignUpForm> {
             FormError(errors: errors),
             SizedBox(height: getProportionateScreenHeight(10)),
             DefaultButton(
-                text: "Đăng ký",
+                text: Languages.of(context)!.registerText,
                 press: () {
                   // print(email);
 
@@ -143,9 +144,9 @@ class _SignFormState extends State<SignUpForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
-        labelText: "Xác nhận mật khẩu",
-        hintText: "Nhập lại mật khẩu",
+      decoration: InputDecoration(
+        labelText: Languages.of(context)!.confirmPassDesText,
+        hintText: Languages.of(context)!.confirmPassFormText,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -178,8 +179,8 @@ class _SignFormState extends State<SignUpForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Mật khẩu",
-        hintText: "Nhập mật khẩu",
+        labelText: Languages.of(context)!.passDesc,
+        hintText: Languages.of(context)!.passForm,
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -222,9 +223,9 @@ class _SignFormState extends State<SignUpForm> {
           }
           return null;
         },
-        decoration: const InputDecoration(
-          labelText: "Số điện thoại",
-          hintText: "Nhập số điện thoại",
+        decoration: InputDecoration(
+          labelText: Languages.of(context)!.phoneDescText,
+          hintText: Languages.of(context)!.phoneFormText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
         ));
   }
@@ -247,9 +248,9 @@ class _SignFormState extends State<SignUpForm> {
           }
           return null;
         },
-        decoration: const InputDecoration(
-          labelText: "Họ và tên",
-          hintText: "Nhập họ và tên người dùng",
+        decoration: InputDecoration(
+          labelText: Languages.of(context)!.fullnameDescText,
+          hintText: Languages.of(context)!.fullnameFormText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
         ));
   }
@@ -272,9 +273,9 @@ class _SignFormState extends State<SignUpForm> {
           }
           return null;
         },
-        decoration: const InputDecoration(
-          labelText: "Địa chỉ",
-          hintText: "Nhập địa chỉ",
+        decoration: InputDecoration(
+          labelText: Languages.of(context)!.addressDescText,
+          hintText: Languages.of(context)!.addressFormText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
         ));
   }
@@ -303,9 +304,9 @@ class _SignFormState extends State<SignUpForm> {
           }
           return null;
         },
-        decoration: const InputDecoration(
-          labelText: "Email",
-          hintText: "Nhập Email",
+        decoration: InputDecoration(
+          labelText: Languages.of(context)!.emailDesc,
+          hintText: Languages.of(context)!.emailForm,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           suffixIcon: CustomSurffix(
             svgIcon: "assets/icons/Mail.svg",

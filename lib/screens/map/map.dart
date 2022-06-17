@@ -7,6 +7,8 @@ import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../localization/language/languages.dart';
+
 class Map extends StatefulWidget {
   const Map({Key? key}) : super(key: key);
 
@@ -171,7 +173,7 @@ class _MapState extends State<Map> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Bản đồ tour'),
+          title: Text(Languages.of(context)!.maptext),
           automaticallyImplyLeading: false,
           centerTitle: true,
         ),

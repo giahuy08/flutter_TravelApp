@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/components/default_appbar.dart';
 import 'package:flutter_travelapp/components/default_backbutton.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/discount_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
@@ -49,8 +50,8 @@ class _DiscountListState extends State<DiscountList> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhiteColor,
-      appBar: const DefaultAppBar(
-        title: 'Ưu đãi',
+      appBar: DefaultAppBar(
+        title: Languages.of(context)!.saleText,
         child: DefaultBackButton(),
       ),
       body: _listDiscount.isEmpty
@@ -73,7 +74,9 @@ class _DiscountListState extends State<DiscountList> {
               itemCount: _listDiscount.length,
               itemBuilder: (context, index) {
                 return DiscountTiles(
-                  title: "Mã: " + _listDiscount[index]['code'].toString(),
+                  title: Languages.of(context)!.codeText +
+                      " " +
+                      _listDiscount[index]['code'].toString(),
                   discount:
                       "-" + _listDiscount[index]['discount'].toString() + "%",
                   tourname: _listDiscount[index]['nameTour'].toString(),

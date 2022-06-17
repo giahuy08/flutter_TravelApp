@@ -4,6 +4,8 @@ import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/sign_up/components/sign_up_form.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
+import '../../../localization/language/languages.dart';
+
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
@@ -18,10 +20,10 @@ class Body extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Đăng ký tài khoản",
+                Languages.of(context)!.registerAccountText,
                 style: headingStyle,
               ),
-              const Text("Đăng ký thông tin"),
+              Text(Languages.of(context)!.registerAccountText),
               const SizedBox(
                   // height: SizeConfig.screenHeight * 0.08,
                   ),

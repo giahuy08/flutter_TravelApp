@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_travelapp/components/listtours_argument.dart';
 import 'package:flutter_travelapp/components/tour_card.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/details_tour/details_screen.dart';
@@ -73,7 +74,7 @@ class _HistoryAccessesState extends State<HistoryAccesses> {
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
                 child: SectionTitle(
-                  title: "Vừa truy cập",
+                  title: Languages.of(context)!.visitedText,
                   press: () => Navigator.pushNamed(
                       context, ListToursScreen.routeName,
                       arguments: ListToursArguments(tours: _listTourMore)),
@@ -110,4 +111,3 @@ class _HistoryAccessesState extends State<HistoryAccesses> {
           );
   }
 }
-

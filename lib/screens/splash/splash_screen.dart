@@ -1,12 +1,17 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_travelapp/localization/locale_constant.dart';
+import 'package:flutter_travelapp/localization/localizations_delegate.dart';
 import 'package:flutter_travelapp/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter_travelapp/size_config.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   static String routeName = "/splash";
   const SplashScreen({Key? key}) : super(key: key);
+
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -20,11 +25,14 @@ class _SplashScreenState extends State<SplashScreen> {
         () => Navigator.pushNamed(context, SignInScreen.routeName));
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Column(
+      
+      body:  Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -36,6 +44,9 @@ class _SplashScreenState extends State<SplashScreen> {
           )
         ],
       ),
+  
+      
+      
     );
   }
 }

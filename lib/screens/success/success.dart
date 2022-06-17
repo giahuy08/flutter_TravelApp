@@ -5,6 +5,8 @@ import 'package:flutter_travelapp/components/sub_title.dart';
 import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/navigation_bar/bottom_nav_bar.dart';
 
+import '../../localization/language/languages.dart';
+
 class Success extends StatefulWidget {
   static String routeName = "/success";
   const Success({Key? key}) : super(key: key);
@@ -23,18 +25,18 @@ class _SuccessState extends State<Success> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const EmptySection(
+          EmptySection(
             emptyImg: success,
-            emptyMsg: 'Thành Công !!',
+            emptyMsg: Languages.of(context)!.successText + ' !!',
           ),
-          const SubTitle(
-            subTitleText: 'Bạn đã thành toán thành công',
+          SubTitle(
+            subTitleText: Languages.of(context)!.paymentSuccessText,
           ),
           SizedBox(
             height: 55,
             width: 170,
             child: DefaultButton(
-              text: 'Xác nhận',
+              text: Languages.of(context)!.confirmText,
               press: () => Navigator.pushNamed(context, BottomNavBar.routeName),
             ),
           ),

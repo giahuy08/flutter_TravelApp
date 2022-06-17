@@ -15,6 +15,8 @@ import 'package:flutter_travelapp/constants.dart';
 import 'package:flutter_travelapp/screens/details_tour/components/top_rounded_container.dart';
 import 'package:flutter_travelapp/screens/schedule_tour/widgets/tour_discount_bottom.dart';
 
+import '../../localization/language/languages.dart';
+
 class SeatsGridPage extends StatefulWidget {
   const SeatsGridPage({
     Key? key,
@@ -155,8 +157,8 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Text(
-                      'Chỗ trống',
+                    Text(
+                      Languages.of(context)!.freeSeatText,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -293,8 +295,8 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
                       width: 28,
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      'Trống',
+                    Text(
+                      Languages.of(context)!.freeText,
                       style: TextStyle(
                         color: kLightColor,
                       ),
@@ -305,8 +307,8 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
                       width: 28,
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      'Đã đặt',
+                    Text(
+                      Languages.of(context)!.bookedText,
                       style: TextStyle(
                         color: kLightColor,
                       ),
@@ -317,8 +319,8 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
                       width: 28,
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      'Chỗ đặt',
+                    Text(
+                      Languages.of(context)!.bookedSeatText,
                       style: TextStyle(
                         color: kLightColor,
                       ),
@@ -398,7 +400,8 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
                                           height: 55,
                                           width: 150,
                                           child: DefaultButton(
-                                            text: 'Đặt ngay',
+                                            text: Languages.of(context)!
+                                                .bookNowText,
                                             press: () => Navigator.of(context)
                                                 .push(MaterialPageRoute(
                                                     builder: (context) =>
@@ -416,10 +419,10 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
                             ),
                           ),
                         ),
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.fromLTRB(0, 16, 0, 16),
                           child: Text(
-                            'Đến trang thanh toán',
+                            Languages.of(context)!.goToPaymentText,
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -442,7 +445,7 @@ class _SeatsGridPageState extends State<SeatsGridPage> {
         keyboardType: TextInputType.text,
         controller: TextEditingController(text: discount),
         decoration: InputDecoration(
-            hintText: "Mã giảm giá",
+            hintText:Languages.of(context)!.discountText ,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             suffixIcon: IconButton(
               onPressed: () {

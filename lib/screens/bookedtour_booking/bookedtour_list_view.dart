@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_travelapp/components/tour_argument.dart';
 import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/models/booktour.dart';
 import 'package:flutter_travelapp/screens/bookedtour_booking/status_card.dart';
 import 'package:flutter_travelapp/screens/reviewtour/reviewtour_screen.dart';
@@ -178,7 +179,9 @@ class BookedTourListView extends StatelessWidget {
                                                   ),
                                                 ),
                                                 Text(
-                                                  ' ${bookedTourData!.star!.toStringAsFixed(1)} sao',
+                                                  ' ${bookedTourData!.star!.toStringAsFixed(1)} ' +
+                                                      Languages.of(context)!
+                                                          .starText,
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       color: Colors.grey
@@ -250,17 +253,28 @@ class BookedTourListView extends StatelessWidget {
                                         Row(
                                           children: <Widget>[
                                             bookedTourData!.status == 0
-                                                ? const StatusCard(
-                                                    status: " CHỜ",
+                                                ? StatusCard(
+                                                    status: " " +
+                                                        Languages.of(context)!
+                                                            .waitStatusText
+                                                            .toUpperCase(),
                                                     color: kPrimaryColor,
                                                     icon: Icons.access_alarm)
                                                 : bookedTourData!.status == 1
-                                                    ? const StatusCard(
-                                                        status: " ĐÃ ĐẶT",
+                                                    ? StatusCard(
+                                                        status: " " +
+                                                            Languages.of(
+                                                                    context)!
+                                                                .bookedStatusText
+                                                                .toUpperCase(),
                                                         color: kPrimaryColor,
                                                         icon: Icons.task_alt)
-                                                    : const StatusCard(
-                                                        status: " HỦY",
+                                                    : StatusCard(
+                                                        status: " " +
+                                                            Languages.of(
+                                                                    context)!
+                                                                .cancelStatusText
+                                                                .toUpperCase(),
                                                         color: kPrimaryColor,
                                                         icon: Icons
                                                             .cancel_outlined),
