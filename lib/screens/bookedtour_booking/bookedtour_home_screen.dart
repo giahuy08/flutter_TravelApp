@@ -470,14 +470,12 @@ class _BookedTourHomeScreenState extends State<BookedTourHomeScreen>
                 const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 4),
             child: Row(
               children: <Widget>[
-                Expanded(
+                const Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'Có ' +
-                          _listBookTour.length.toString() +
-                          ' chuyến đi đã đặt',
-                      style: const TextStyle(
+                      ' ',
+                      style: TextStyle(
                         fontWeight: FontWeight.normal,
                         fontSize: 16,
                         color: kPrimaryColor,
