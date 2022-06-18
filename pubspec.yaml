@@ -68,6 +68,7 @@ dependencies:
   lite_rolling_switch: ^0.1.1
   fswitch: ^1.1.2
   flutter_switch: ^0.3.2
+  alan_voice: ^3.0.0
 
 dev_dependencies:
   flutter_test:

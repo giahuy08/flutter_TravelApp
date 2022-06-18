@@ -7,6 +7,7 @@ import 'package:flutter_travelapp/screens/profile/profile_screen.dart';
 import 'package:flutter_travelapp/services/fcm.dart';
 import 'package:flutter_travelapp/services/socket.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:alan_voice/alan_voice.dart';
 
 class BottomNavBar extends StatefulWidget {
   static String routeName = "/navbar";
@@ -26,6 +27,53 @@ class _BottomNavBarState extends State<BottomNavBar> {
   }
 
   int _selectedIndex = 0;
+
+  _BottomNavBarState() {
+    _initAlanButton();
+  }
+
+  void _initAlanButton() {
+    AlanVoice.addButton(
+        "6a08424e07d808c550a84ac957d366da2e956eca572e1d8b807a3e2338fdd0dc/stage");
+
+    AlanVoice.onCommand.add((command) {
+      debugPrint("got new command ${command.toString()}");
+    });
+    AlanVoice.onCommand.add((command) {
+      debugPrint("meme ${command.data["command"].toString()}");
+
+      switch (command.data["command"].toString()) {
+        case "booking":
+          setState(() {
+            _selectedIndex = 2;
+          });
+          break;
+        case "map":
+          setState(() {
+            _selectedIndex = 1;
+          });
+          break;
+        case "profile":
+          setState(() {
+            _selectedIndex = 3;
+          });
+          break;
+        case "home":
+          setState(() {
+            _selectedIndex = 0;
+          });
+          break;
+        case "back":
+          setState(() {
+            _selectedIndex = 0;
+          });
+          break;
+        default:
+          debugPrint("Unknown");
+      }
+    });
+  }
+
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   final screen = [
