@@ -158,4 +158,5 @@ abstract class Languages {
   String get successChangePassText;
   String get successCreateAccountText;
   String get chooseDateText;
+  String get duplicateReviewText;
 }

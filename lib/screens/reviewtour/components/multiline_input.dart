@@ -44,6 +44,11 @@ class _MultilineInputState extends State<MultilineInput> {
   }
 
   void review(String idTour, String star, String comment, File? image) {
+    print(idTour);
+    print(star);
+    print(comment);
+    print(image);
+
     ReviewRepository()
         .createReviewTour(idTour, star, comment, image)
         .then((value) {
@@ -52,7 +57,7 @@ class _MultilineInputState extends State<MultilineInput> {
         if (value == 'Successfully create ReviewTour') {
           Get.snackbar(
             'Review',
-             Languages.of(context)!.successText,
+            Languages.of(context)!.successText,
             snackPosition: SnackPosition.TOP,
             colorText: Colors.white,
             backgroundColor: kPrimaryColor,
@@ -66,6 +71,19 @@ class _MultilineInputState extends State<MultilineInput> {
               Navigator.pushNamed(context, BookedTourHomeScreen.routeName);
             });
           });
+        }
+
+        if (value == 'Duplicate review tour') {
+          Get.snackbar(
+            'Review',
+            Languages.of(context)!.duplicateReviewText,
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.white,
+            backgroundColor: kPrimaryColor,
+            duration: const Duration(
+              milliseconds: 800,
+            ),
+          );
         }
       }
     });
@@ -97,7 +115,7 @@ class _MultilineInputState extends State<MultilineInput> {
                   textInputAction: TextInputAction.newline,
                   keyboardType: TextInputType.multiline,
                   maxLines: 2,
-                  decoration:  InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: Languages.of(context)!.commentText,
                     hintStyle: TextStyle(
@@ -155,8 +173,8 @@ class _MultilineInputState extends State<MultilineInput> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-               Text(
-                   Languages.of(context)!.commentText,
+              Text(
+                Languages.of(context)!.commentText,
                 style: TextStyle(
                     color: kPrimaryColor,
                     fontWeight: FontWeight.bold,

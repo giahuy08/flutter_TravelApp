@@ -176,151 +176,114 @@ class LanguageVi extends Languages {
   String get emailOtpText => "Mã OTP của bạn được đến email";
 
   @override
-  // TODO: implement listnotiText
   String get listnotiText => "Danh sách thông báo";
 
   @override
-  // TODO: implement donthaveNoti
   String get donthaveNoti => "Không có thông báo";
 
   @override
-  // TODO: implement notiText
   String get notiText => "Thông báo";
 
   @override
-  // TODO: implement Maptext
   String get maptext => "Bản đồ tour";
 
   @override
-  // TODO: implement LoginSuccess
   String get loginSuccess => "Đăng nhập thành công";
 
   @override
-  // TODO: implement gotoHome
   String get gotoHome => "Đến trang chủ";
 
   @override
-  // TODO: implement notFoundText
   String get notFoundText => "Không tìm thấy";
 
   @override
-  // TODO: implement listTours
   String get listToursText => "Danh sách chuyến đi";
 
   @override
-  // TODO: implement startText
   String get starText => "Sao";
 
   @override
-  // TODO: implement listVehicleText
   String get listVehicleText => "Danh sách phương tiện";
 
   @override
-  // TODO: implement vehicleText
   String get vehicleText => "Phương tiện";
 
   @override
-  // TODO: implement hotleText
   String get hotelText => "Khách sạn";
 
   @override
-  // TODO: implement partnerText
   String get partnerText => "Đối tượng";
 
   @override
-  // TODO: implement restaurantText
   String get restaurantText => "Nhà hàng";
 
   @override
-  // TODO: implement gotoPageText
   String get gotoPageText => "Đến trang";
 
   @override
-  // TODO: implement scheduleText
   String get scheduleText => "Lịch trình";
 
   @override
-  // TODO: implement codeText
   String get codeText => "Mã";
 
   @override
-  // TODO: implement saleText
   String get saleText => "Ưu đãi hấp dẫn";
 
   @override
-  // TODO: implement endText
   String get endText => "HSD";
 
   @override
-  // TODO: implement dontUpdateServiceText
   String get dontUpdateServiceText => "Chưa cập nhật dịch vụ";
 
   @override
-  // TODO: implement serviceText
   String get serviceText => "Dịch vụ";
 
   @override
-  // TODO: implement dontHaveDiscountText
   String get dontHaveDiscountText => "Không có mã giảm giá";
 
   @override
-  // TODO: implement ortherTourText
   String get otherTourText => "Chuyến du lịch khác";
 
   @override
-  // TODO: implement seeMoreText
   String get seeMoreText => "Xem thêm";
 
   @override
-  // TODO: implement donthaveCommentText
   String get donthaveCommentText => "Chưa có nhận xét";
 
   @override
-  // TODO: implement startingPointText
   String get startingPointText => "Điểm xuất phát";
 
   @override
-  // TODO: implement destinationText
   String get destinationText => "Điểm đến";
 
   @override
-  // TODO: implement watchScheduleText
   String get watchScheduleText => "Xem lịch trình";
 
   @override
-  // TODO: implement enterMessageText
   String get enterMessageText => "Nhập tin nhắn";
 
   @override
-  // TODO: implement messageText
   String get messageText => "Tin nhắn";
 
   @override
-  // TODO: implement enterFullInfoText
   String get enterFullInfoText => "Vui lòng điền đầy đủ thông tin";
 
   @override
-  // TODO: implement newPasswordDes
   String get newPasswordDes => "Nhập mật khẩu mới";
 
   @override
-  // TODO: implement newPasswordForm
   String get newPasswordForm => "Nhập lại mật khẩu mới";
 
   @override
-  // TODO: implement oldPasswordDes
   String get oldPasswordDes => "Mật khẩu cũ";
 
   @override
-  // TODO: implement oldPasswordForm
   String get oldPasswordForm => "Nhập mật khẩu cũ";
 
   @override
-  // TODO: implement bookedStatusText
   String get bookedStatusText => "Đã đặt";
 
   @override
-  // TODO: implement cancelStatusText
   String get cancelStatusText => "Hủy";
 
   @override
@@ -353,15 +316,15 @@ class LanguageVi extends Languages {
   String get reEnterNewPassTextForm => "Nhập lại mật khẩu mới";
 
   @override
-  // TODO: implement successChangePassText
   String get successChangePassText => "Cập nhật mật khẩu thành công";
 
   @override
-  // TODO: implement successCreateAccountText
   String get successCreateAccountText => "Tạo thành công tài khoản";
 
   @override
-  // TODO: implement chooseDateText
   String get chooseDateText => "Chọn ngày";
+  
+  @override
+  String get duplicateReviewText => "Tour đã được review";
   
 }

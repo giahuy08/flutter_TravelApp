@@ -41,13 +41,16 @@ class ReviewRepository {
         filename: image.path,
       ),
     );
-   
+
     var response = await http.Response.fromStream(await request.send());
-    print(response);
+    
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];
     }
     if (response.statusCode == 300) {
+      return jsonDecode(response.body)['message'];
+    }
+    if (response.statusCode == 404) {
       return jsonDecode(response.body)['message'];
     }
     return null;

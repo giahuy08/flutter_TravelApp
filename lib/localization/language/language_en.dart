@@ -184,138 +184,104 @@ class LanguageEn extends Languages {
   String get maptext => "Map";
 
   @override
-  // TODO: implement loginSuccess
   String get loginSuccess => "Login success";
 
   @override
-  // TODO: implement gotoHome
   String get gotoHome => "Go to home";
 
   @override
-  // TODO: implement notFoundText
   String get notFoundText => "Not Found";
 
   @override
-  // TODO: implement listTours
   String get listToursText => "List tour";
 
   @override
-  // TODO: implement starText
   String get starText => "Star";
 
   @override
-  // TODO: implement listVehicleText
   String get listVehicleText => "List vehicle";
 
   @override
-  // TODO: implement vehicleText
   String get vehicleText => "Vehicle";
 
   @override
-  // TODO: implement hotelText
   String get hotelText => "Hotel";
 
   @override
-  // TODO: implement partnerText
   String get partnerText => "Partner";
 
   @override
-  // TODO: implement restaurantText
   String get restaurantText => "Restaurant";
 
   @override
-  // TODO: implement gotoPageText
   String get gotoPageText => "Go to page";
 
   @override
-  // TODO: implement scheduleText
   String get scheduleText => "Shedule";
 
   @override
-  // TODO: implement codeText
   String get codeText => "Code";
 
   @override
-  // TODO: implement saleText
   String get saleText => "Sales";
 
   @override
-  // TODO: implement endText
   String get endText => "Exp";
   @override
-  // TODO: implement dontUpdateServiceText
   String get dontUpdateServiceText => "Don't have service";
 
   @override
-  // TODO: implement serviceText
   String get serviceText => "Service";
 
   @override
-  // TODO: implement dontHaveDiscountText
   String get dontHaveDiscountText => "Don't have discount";
 
   @override
-  // TODO: implement ortherTourText
   String get otherTourText => "Other tours";
 
   @override
-  // TODO: implement seeMoreText
   String get seeMoreText => "See more";
 
   @override
-  // TODO: implement donthaveCommentText
   String get donthaveCommentText => "Don't have comment";
 
   @override
-  // TODO: implement startingPointText
   String get startingPointText => "Starting point";
 
   @override
-  // TODO: implement destinationText
   String get destinationText => "Destination point";
 
   @override
-  // TODO: implement watchScheduleText
   String get watchScheduleText => "See schedule";
 
   @override
-  // TODO: implement enterMessageText
   String get enterMessageText => "Enter message";
 
   @override
-  // TODO: implement messageText
   String get messageText => "Message";
 
   @override
-  // TODO: implement enterFullInfoText
   String get enterFullInfoText => "Enter full information";
 
   @override
-  // TODO: implement newPasswordDes
   String get newPasswordDes => "New password";
 
   @override
-  // TODO: implement newPasswordForm
   String get newPasswordForm => "Enter new password";
 
   @override
-  // TODO: implement oldPasswordDes
   String get oldPasswordDes => "Old password";
 
   @override
-  // TODO: implement oldPasswordForm
   String get oldPasswordForm => "Enter old password";
 
   @override
-  // TODO: implement bookedStatusText
   String get bookedStatusText => "Booked";
 
   @override
-  // TODO: implement cancelStatusText
   String get cancelStatusText => "Cancel";
 
   @override
-  // TODO: implement searchText
   String get searchText => "Search";
 
   @override
@@ -344,14 +310,14 @@ class LanguageEn extends Languages {
 
   
   @override
-  // TODO: implement successChangePassText
   String get successChangePassText => "Change password success";
 
   @override
-  // TODO: implement successCreateAccountText
   String get successCreateAccountText => "Create account success";
 
   @override
-  // TODO: implement chooseDateText
   String get chooseDateText => "Choose date";
+
+  @override
+  String get duplicateReviewText => "You reviewed tour";
 }
