@@ -6,6 +6,7 @@ import 'package:flutter_travelapp/models/tour.dart';
 import 'package:flutter_travelapp/repository/tour_repository.dart';
 import 'package:flutter_travelapp/screens/error/error_screen.dart';
 import 'package:flutter_travelapp/screens/listtours/listtours_screen.dart';
+import 'package:alan_voice/alan_voice.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
@@ -58,6 +59,41 @@ class _SpecialOffersState extends State<SpecialOffers> {
     });
   }
 
+  _SpecialOffersState() {
+    _initAlanCategory();
+  }
+
+  void _initAlanCategory() {
+    //AlanVoice.addButton("6a08424e07d808c550a84ac957d366da2e956eca572e1d8b807a3e2338fdd0dc/stage");
+    AlanVoice.addButton(
+        "d7cb65f737884d94f6e100e6a8628e282e956eca572e1d8b807a3e2338fdd0dc/stage");
+
+    AlanVoice.onCommand.add((command) {
+      debugPrint("got new command ${command.toString()}");
+    });
+    AlanVoice.onCommand.add((command) {
+      debugPrint("meme ${command.data["command"].toString()}");
+
+      switch (command.data["command"].toString()) {
+        case "sea":
+          Navigator.pushNamed(context, ListToursScreen.routeName,
+              arguments: ListToursArguments(tours: _listSea));
+
+          break;
+        case "highland":
+          Navigator.pushNamed(context, ListToursScreen.routeName,
+              arguments: ListToursArguments(tours: _listHighLand));
+          break;
+        case "other":
+          Navigator.pushNamed(context, ListToursScreen.routeName,
+              arguments: ListToursArguments(tours: _listOthers));
+          break;
+        default:
+          debugPrint("Unknown");
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return _listTourMore.isEmpty
@@ -76,7 +112,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
                 child: SectionTitle(
-                  title:  Languages.of(context)!.youCanCareText,
+                  title: Languages.of(context)!.youCanCareText,
                   press: () => Navigator.pushNamed(
                       context, ListToursScreen.routeName,
                       arguments: ListToursArguments(tours: _listTourMore)),
