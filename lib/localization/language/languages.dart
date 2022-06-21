@@ -159,4 +159,23 @@ abstract class Languages {
   String get successCreateAccountText;
   String get chooseDateText;
   String get duplicateReviewText;
+
+  String get cashText;
+
+  String get kEmailNullError;
+  String get kInvalidEmailError;
+  String get kPassNullError;
+  String get kShortPassError;
+  String get kMatchPassError;
+  String get kNamelNullError;
+  String get kPhoneNumberNullError;
+  String get kAddressNullError;
+  String get kEmailExistError;
+  String get kEmailDontExistError;
+  String get kOtpValidError;
+  String get kOtpError;
+
+  String get kLoginFail;
+  String get kChangePasswordFail;
+  String get kEditProfileFail;
 }

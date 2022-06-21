@@ -320,4 +320,53 @@ class LanguageEn extends Languages {
 
   @override
   String get duplicateReviewText => "You reviewed tour";
+
+  @override
+  String get cashText => "Cash";
+
+    @override
+  String get kAddressNullError=> "Please enter address";
+  
+  @override
+  String get kChangePasswordFail => "Password don't match";
+  
+  @override
+  String get kEditProfileFail => "Edit profile error";
+  
+  @override
+  String get kEmailDontExistError =>"Email doesn't exist";
+  
+  @override
+  String get kEmailExistError => "Email is already exist";
+  
+  @override
+  String get kEmailNullError => "Please enter email";
+  
+  @override
+  String get kInvalidEmailError=> "Email is not valid";
+  
+  @override
+  String get kLoginFail => "Email or Password is not valid";
+  
+  @override
+  String get kMatchPassError => "Password doesn't match";
+  
+  @override
+  String get kNamelNullError => "Please enter name";
+  
+  @override
+  String get kOtpError => "Please enter OTP";
+  
+  @override
+  String get kOtpValidError => "OTP doesn't exist";
+  
+  @override
+  String get kPassNullError=> "Please enter password";
+  
+  @override
+  String get kPhoneNumberNullError => "Please enter phone number";
+  
+  @override
+  String get kShortPassError => "Password is too short";
+  
 }

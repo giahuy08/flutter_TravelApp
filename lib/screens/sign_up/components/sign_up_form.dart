@@ -38,9 +38,9 @@ class _SignFormState extends State<SignUpForm> {
       print(value);
       if (value != null) {
         if (value == 'Email already exists') {
-          addError(error: kEmailExistError);
+          addError(error: Languages.of(context)!.kEmailExistError);
         } else {
-          removeError(error: kEmailExistError);
+          removeError(error: Languages.of(context)!.kEmailExistError);
           Navigator.pushNamed(context, OtpSignUpScreen.routeName,
               arguments: TextArguments(text: email));
           // Get.snackbar(
@@ -125,10 +125,10 @@ class _SignFormState extends State<SignUpForm> {
       onSaved: (newValue) => confirmPassword = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: Languages.of(context)!.kPassNullError);
         }
         if (value.isNotEmpty && password.compareTo(value) == 0) {
-          removeError(error: kMatchPassError);
+          removeError(error: Languages.of(context)!.kMatchPassError);
         }
         confirmPassword = value;
 
@@ -136,10 +136,10 @@ class _SignFormState extends State<SignUpForm> {
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: Languages.of(context)!.kPassNullError);
           return "";
         } else if ((password != confirmPassword)) {
-          addError(error: kMatchPassError);
+          addError(error: Languages.of(context)!.kMatchPassError);
           return "";
         }
         return null;
@@ -161,19 +161,19 @@ class _SignFormState extends State<SignUpForm> {
       onSaved: (newValue) => password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: Languages.of(context)!.kPassNullError);
         }
         if (value.isNotEmpty && value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: Languages.of(context)!.kShortPassError);
         }
         password = value;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: Languages.of(context)!.kPassNullError);
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: Languages.of(context)!.kShortPassError);
           return "";
         }
         return null;
@@ -211,14 +211,14 @@ class _SignFormState extends State<SignUpForm> {
         onSaved: (newValue) => phone = newValue!,
         onChanged: (value) {
           if (value.isNotEmpty) {
-            removeError(error: kPhoneNumberNullError);
+            removeError(error: Languages.of(context)!.kPhoneNumberNullError);
           }
           phone = value;
           return;
         },
         validator: (value) {
           if (value!.isEmpty) {
-            addError(error: kPhoneNumberNullError);
+            addError(error: Languages.of(context)!.kPhoneNumberNullError);
             return "";
           }
           return null;
@@ -236,14 +236,14 @@ class _SignFormState extends State<SignUpForm> {
         onSaved: (newValue) => name = newValue!,
         onChanged: (value) {
           if (value.isNotEmpty) {
-            removeError(error: kNamelNullError);
+            removeError(error: Languages.of(context)!.kNamelNullError);
           }
           name = value;
           return;
         },
         validator: (value) {
           if (value!.isEmpty) {
-            addError(error: kNamelNullError);
+            addError(error: Languages.of(context)!.kNamelNullError);
             return "";
           }
           return null;
@@ -261,14 +261,14 @@ class _SignFormState extends State<SignUpForm> {
         onSaved: (newValue) => address = newValue!,
         onChanged: (value) {
           if (value.isNotEmpty) {
-            removeError(error: kAddressNullError);
+            removeError(error: Languages.of(context)!.kAddressNullError);
           }
           address = value;
           return;
         },
         validator: (value) {
           if (value!.isEmpty) {
-            addError(error: kAddressNullError);
+            addError(error: Languages.of(context)!.kAddressNullError);
             return "";
           }
           return null;
@@ -286,19 +286,19 @@ class _SignFormState extends State<SignUpForm> {
         onSaved: (newValue) => email = newValue!,
         onChanged: (value) {
           if (value.isNotEmpty) {
-            removeError(error: kEmailNullError);
+            removeError(error: Languages.of(context)!.kEmailNullError);
           } else if (emailValidatorRegExp.hasMatch(value)) {
-            removeError(error: kInvalidEmailError);
+            removeError(error: Languages.of(context)!.kInvalidEmailError);
           }
           email = value;
           return;
         },
         validator: (value) {
           if (value!.isEmpty) {
-            addError(error: kEmailNullError);
+            addError(error: Languages.of(context)!.kEmailNullError);
             return "";
           } else if (!emailValidatorRegExp.hasMatch(value)) {
-            addError(error: kInvalidEmailError);
+            addError(error: Languages.of(context)!.kInvalidEmailError);
 
             return "";
           }

@@ -83,10 +83,10 @@ class _OtpFormState extends State<OtpForm> {
     await AuthenRepository().resetpassword(otp, email, password).then((value) {
       if (value != null) {
         if (value == 'OTP invalid') {
-          addError(error: kOtpValidError);
+          addError(error: Languages.of(context)!.kOtpValidError);
         }
         if (value == 'Reset Password success') {
-          removeError(error: kOtpValidError);
+          removeError(error: Languages.of(context)!.kOtpValidError);
           Get.snackbar(
             'Otp',
             Languages.of(context)!.successChangePassText,
@@ -196,14 +196,14 @@ class _OtpFormState extends State<OtpForm> {
               press: () {
                 otp = code1 + code2 + code3 + code4;
                 if (otp.length == 4) {
-                  removeError(error: kOtpError);
+                  removeError(error: Languages.of(context)!.kOtpError);
                   if (_otpFormKey.currentState!.validate()) {
                     _otpFormKey.currentState!.save();
 
                     forgotPassword(otp, emailAddress, password);
                   }
                 } else {
-                  addError(error: kOtpError);
+                  addError(error: Languages.of(context)!.kOtpError);
                 }
               },
             )
@@ -217,10 +217,10 @@ class _OtpFormState extends State<OtpForm> {
       onSaved: (newValue) => confirmPassword = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: Languages.of(context)!.kPassNullError);
         }
         if (value.isNotEmpty && password.compareTo(value) == 0) {
-          removeError(error: kMatchPassError);
+          removeError(error: Languages.of(context)!.kMatchPassError);
         }
         confirmPassword = value;
 
@@ -228,10 +228,10 @@ class _OtpFormState extends State<OtpForm> {
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: Languages.of(context)!.kPassNullError);
           return "";
         } else if ((password != confirmPassword)) {
-          addError(error: kMatchPassError);
+          addError(error: Languages.of(context)!.kMatchPassError);
           return "";
         }
         return null;
@@ -253,19 +253,19 @@ class _OtpFormState extends State<OtpForm> {
       onSaved: (newValue) => password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: Languages.of(context)!.kPassNullError);
         }
         if (value.isNotEmpty && value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: Languages.of(context)!.kShortPassError);
         }
         password = value;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: Languages.of(context)!.kPassNullError);
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: Languages.of(context)!.kShortPassError);
           return "";
         }
         return null;

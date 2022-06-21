@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travelapp/localization/language/languages.dart';
 import 'package:flutter_travelapp/size_config.dart';
 
 const kWhiteColor = Color(0xFFFFFFFF);
@@ -58,21 +59,23 @@ final headingStyle = TextStyle(
 // Form Error
 final RegExp emailValidatorRegExp =
     RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-const String kEmailNullError = "Vui lòng nhập email";
-const String kInvalidEmailError = "Email không hợp lệ";
-const String kPassNullError = "Vui lòng nhập mật khẩu";
-const String kShortPassError = "Mật khẩu quá ngắn";
-const String kMatchPassError = "Mật khẩu không khớp";
-const String kNamelNullError = "Vui lòng nhập tên";
-const String kPhoneNumberNullError = "Vui lòng nhập số điện thoại";
-const String kAddressNullError = "Vui lòng nhập địa chỉ";
-const String kLoginFail = "Email hoặc mật khẩu không hợp lệ";
-const String kEmailExistError = "Email đã tồn tại";
-const String kChangePasswordFail = "Mật khẩu hiện tại không trùng khớp";
-const String kEditProfileFail = "Thông tin cập nhật không hợp lệ";
-const String kEmailDontExistError = "Email không tồn tại";
-const String kOtpValidError = "Mã OTP không tồn tại";
-const String kOtpError = "Điền đầy đủ OTP";
+// const String kEmailNullError = "Vui lòng nhập email";
+// const String kInvalidEmailError = "Email không hợp lệ";
+// const String kPassNullError = "Vui lòng nhập mật khẩu";
+// const String kShortPassError = "Mật khẩu quá ngắn";
+// const String kMatchPassError = "Mật khẩu không khớp";
+// const String kNamelNullError = "Vui lòng nhập tên";
+// const String kPhoneNumberNullError = "Vui lòng nhập số điện thoại";
+// const String kAddressNullError = "Vui lòng nhập địa chỉ";
+// const String kLoginFail = "Email hoặc mật khẩu không hợp lệ";
+// const String kEmailExistError = "Email đã tồn tại";
+// const String kChangePasswordFail = "Mật khẩu hiện tại không trùng khớp";
+// const String kEditProfileFail = "Thông tin cập nhật không hợp lệ";
+// const String kEmailDontExistError = "Email không tồn tại";
+// const String kOtpValidError = "Mã OTP không tồn tại";
+// const String kOtpError = "Điền đầy đủ OTP";
+
+
 
 final otpInputDecoration = InputDecoration(
     contentPadding:

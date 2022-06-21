@@ -388,14 +388,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
           onSaved: (newValue) => input == newValue!,
           onChanged: (value) {
             if (value.isNotEmpty) {
-              removeError(error: kPhoneNumberNullError);
+              removeError(error: Languages.of(context)!.kPhoneNumberNullError);
             }
             input == value;
             return;
           },
           validator: (value) {
             if (value!.isEmpty) {
-              addError(error: kAddressNullError);
+              addError(error: Languages.of(context)!.kAddressNullError);
               return "";
             }
             return null;

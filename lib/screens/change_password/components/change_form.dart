@@ -31,9 +31,9 @@ class _ChangeFormState extends State<ChangeForm> {
       print(value);
       if (value != null) {
         if (value == 'Wrong PassWord Old') {
-          addError(error: kChangePasswordFail);
+          addError(error: Languages.of(context)!.kChangePasswordFail);
         } else {
-          removeError(error: kChangePasswordFail);
+          removeError(error: Languages.of(context)!.kChangePasswordFail);
           Get.snackbar(
              Languages.of(context)!.changePasswordText,
             Languages.of(context)!.successText,
@@ -109,10 +109,10 @@ class _ChangeFormState extends State<ChangeForm> {
       onSaved: (newValue) => confirmNewPassword = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error:  Languages.of(context)!.kPassNullError);
         }
         if (value.isNotEmpty && newPassword.compareTo(value) == 0) {
-          removeError(error: kMatchPassError);
+          removeError(error: Languages.of(context)!.kMatchPassError);
         }
         confirmNewPassword = value;
 
@@ -120,10 +120,10 @@ class _ChangeFormState extends State<ChangeForm> {
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: Languages.of(context)!.kPassNullError);
           return "";
         } else if ((newPassword != confirmNewPassword)) {
-          addError(error: kMatchPassError);
+          addError(error: Languages.of(context)!.kMatchPassError);
           return "";
         }
         return null;
@@ -145,19 +145,19 @@ class _ChangeFormState extends State<ChangeForm> {
       onSaved: (newValue) => newPassword = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: Languages.of(context)!.kPassNullError);
         }
         if (value.isNotEmpty && value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: Languages.of(context)!.kShortPassError);
         }
         newPassword = value;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: Languages.of(context)!.kPassNullError);
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: Languages.of(context)!.kShortPassError);
           return "";
         }
         return null;
@@ -179,19 +179,19 @@ class _ChangeFormState extends State<ChangeForm> {
       onSaved: (newValue) => oldPassword = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: Languages.of(context)!.kPassNullError);
         }
         if (value.isNotEmpty && value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: Languages.of(context)!.kShortPassError);
         }
         oldPassword = value;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: Languages.of(context)!.kPassNullError);
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: Languages.of(context)!.kShortPassError);
           return "";
         }
         return null;

@@ -327,4 +327,52 @@ class LanguageVi extends Languages {
   @override
   String get duplicateReviewText => "Tour đã được review";
   
+  @override
+  String get cashText => "Tiền mặt";
+  
+  @override
+  String get kAddressNullError => "Vui lòng nhập địa chỉ";
+  
+  @override
+  String get kChangePasswordFail => "Mật khẩu hiện tại không trùng khớp";
+  
+  @override
+  String get kEditProfileFail => "Thông tin cập nhật không hợp lệ";
+  
+  @override
+  String get kEmailDontExistError =>"Email không tồn tại";
+  
+  @override
+  String get kEmailExistError => "Email đã tồn tại";
+  
+  @override
+  String get kEmailNullError => "Vui lòng nhập email";
+  
+  @override
+  String get kInvalidEmailError=> "Email không hợp lệ";
+  
+  @override
+  String get kLoginFail => "Email hoặc mật khẩu không hợp lệ";
+  
+  @override
+  String get kMatchPassError => "Mật khẩu không khớp";
+  
+  @override
+  String get kNamelNullError=> "Vui lòng nhập tên";
+  
+  @override
+  String get kOtpError=> "Điền đầy đủ OTP";
+  
+  @override
+  String get kOtpValidError => "Mã OTP không tồn tại";
+  
+  @override
+  String get kPassNullError => "Vui lòng nhập mật khẩu";
+  
+  @override
+  String get kPhoneNumberNullError=> "Vui lòng nhập số điện thoại";
+  
+  @override
+  String get kShortPassError=> "Mật khẩu quá ngắn";
+  
 }

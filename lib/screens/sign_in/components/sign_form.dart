@@ -46,7 +46,7 @@ class _SignFormState extends State<SignForm> {
 
     AuthenRepository().login(email, pass).then((value) {
       if (value != null) {
-        removeError(error: kLoginFail);
+        removeError(error: Languages.of(context)!.kLoginFail);
         Get.snackbar(
           'Login',
           Languages.of(context)!.successText,
@@ -68,7 +68,7 @@ class _SignFormState extends State<SignForm> {
 
         print(UserModel.fromLogin(value));
       } else {
-        addError(error: kLoginFail);
+        addError(error: Languages.of(context)!.kLoginFail);
       }
     });
   }
@@ -149,19 +149,19 @@ class _SignFormState extends State<SignForm> {
       onSaved: (newValue) => password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: Languages.of(context)!.kPassNullError);
         } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: Languages.of(context)!.kShortPassError);
         }
         return;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: Languages.of(context)!.kPassNullError);
           // print(kPassNullError);
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: Languages.of(context)!.kShortPassError);
           return "";
         }
         return null;
@@ -199,18 +199,18 @@ class _SignFormState extends State<SignForm> {
         onSaved: (newValue) => email = newValue!,
         onChanged: (value) {
           if (value.isNotEmpty) {
-            removeError(error: kEmailNullError);
+            removeError(error: Languages.of(context)!.kEmailNullError);
           } else if (emailValidatorRegExp.hasMatch(value)) {
-            removeError(error: kInvalidEmailError);
+            removeError(error: Languages.of(context)!.kInvalidEmailError);
           }
           return;
         },
         validator: (value) {
           if (value!.isEmpty) {
-            addError(error: kEmailNullError);
+            addError(error: Languages.of(context)!.kEmailNullError);
             return "";
           } else if (!emailValidatorRegExp.hasMatch(value)) {
-            addError(error: kInvalidEmailError);
+            addError(error: Languages.of(context)!.kInvalidEmailError);
 
             return "";
           }

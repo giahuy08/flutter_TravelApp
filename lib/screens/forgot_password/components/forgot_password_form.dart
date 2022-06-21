@@ -42,10 +42,10 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
     await AuthenRepository().forgotpassword(email).then((value) {
       if (value != null) {
         if (value == 'Do not email') {
-          addError(error: kEmailDontExistError);
+          addError(error: Languages.of(context)!.kEmailDontExistError);
         }
         if (value == 'Send Email Success') {
-          removeError(error: kEmailDontExistError);
+          removeError(error: Languages.of(context)!.kEmailDontExistError);
           // Get.snackbar(
           //   'Login',
           //   'Đăng ký thành công',
@@ -74,28 +74,28 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               keyboardType: TextInputType.emailAddress,
               onSaved: (newValue) => email = newValue!,
               onChanged: (value) {
-                if (value.isNotEmpty && errors.contains(kEmailNullError)) {
+                if (value.isNotEmpty && errors.contains(Languages.of(context)!.kEmailNullError)) {
                   setState(() {
-                    errors.remove(kEmailNullError);
+                    errors.remove(Languages.of(context)!.kEmailNullError);
                   });
                 } else if (emailValidatorRegExp.hasMatch(value) &&
-                    errors.contains(kInvalidEmailError)) {
+                    errors.contains(Languages.of(context)!.kInvalidEmailError)) {
                   setState(() {
-                    errors.remove(kInvalidEmailError);
+                    errors.remove(Languages.of(context)!.kInvalidEmailError);
                   });
                 }
                 return;
               },
               validator: (value) {
-                if (value!.isEmpty && !errors.contains(kEmailNullError)) {
+                if (value!.isEmpty && !errors.contains(Languages.of(context)!.kEmailNullError)) {
                   setState(() {
-                    errors.add(kEmailNullError);
+                    errors.add(Languages.of(context)!.kEmailNullError);
                   });
                 }
                 if (!emailValidatorRegExp.hasMatch(value) &&
-                    !errors.contains(kInvalidEmailError)) {
+                    !errors.contains(Languages.of(context)!.kInvalidEmailError)) {
                   setState(() {
-                    errors.add(kInvalidEmailError);
+                    errors.add(Languages.of(context)!.kInvalidEmailError);
                   });
                 }
                 return null;
