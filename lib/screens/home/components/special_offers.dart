@@ -65,8 +65,8 @@ class _SpecialOffersState extends State<SpecialOffers> {
 
   void _initAlanCategory() {
     //AlanVoice.addButton("6a08424e07d808c550a84ac957d366da2e956eca572e1d8b807a3e2338fdd0dc/stage");
-    AlanVoice.addButton(
-        "d7cb65f737884d94f6e100e6a8628e282e956eca572e1d8b807a3e2338fdd0dc/stage");
+    // AlanVoice.addButton(
+    //     "d7cb65f737884d94f6e100e6a8628e282e956eca572e1d8b807a3e2338fdd0dc/stage");
 
     AlanVoice.onCommand.add((command) {
       debugPrint("got new command ${command.toString()}");

@@ -178,4 +178,6 @@ abstract class Languages {
   String get kLoginFail;
   String get kChangePasswordFail;
   String get kEditProfileFail;
+
+  String get tourNotCompleted;
 }

@@ -272,7 +272,7 @@ class LanguageVi extends Languages {
   String get newPasswordDes => "Nhập mật khẩu mới";
 
   @override
-  String get newPasswordForm => "Nhập lại mật khẩu mới";
+  String get newPasswordForm => "Nhập mật khẩu mới";
 
   @override
   String get oldPasswordDes => "Mật khẩu cũ";
@@ -323,56 +323,58 @@ class LanguageVi extends Languages {
 
   @override
   String get chooseDateText => "Chọn ngày";
-  
+
   @override
   String get duplicateReviewText => "Tour đã được review";
-  
+
   @override
   String get cashText => "Tiền mặt";
-  
+
   @override
   String get kAddressNullError => "Vui lòng nhập địa chỉ";
-  
+
   @override
   String get kChangePasswordFail => "Mật khẩu hiện tại không trùng khớp";
-  
+
   @override
   String get kEditProfileFail => "Thông tin cập nhật không hợp lệ";
-  
+
   @override
-  String get kEmailDontExistError =>"Email không tồn tại";
-  
+  String get kEmailDontExistError => "Email không tồn tại";
+
   @override
   String get kEmailExistError => "Email đã tồn tại";
-  
+
   @override
   String get kEmailNullError => "Vui lòng nhập email";
-  
+
   @override
-  String get kInvalidEmailError=> "Email không hợp lệ";
-  
+  String get kInvalidEmailError => "Email không hợp lệ";
+
   @override
   String get kLoginFail => "Email hoặc mật khẩu không hợp lệ";
-  
+
   @override
   String get kMatchPassError => "Mật khẩu không khớp";
-  
+
   @override
-  String get kNamelNullError=> "Vui lòng nhập tên";
-  
+  String get kNamelNullError => "Vui lòng nhập tên";
+
   @override
-  String get kOtpError=> "Điền đầy đủ OTP";
-  
+  String get kOtpError => "Điền đầy đủ OTP";
+
   @override
   String get kOtpValidError => "Mã OTP không tồn tại";
-  
+
   @override
   String get kPassNullError => "Vui lòng nhập mật khẩu";
+
+  @override
+  String get kPhoneNumberNullError => "Vui lòng nhập số điện thoại";
+
+  @override
+  String get kShortPassError => "Mật khẩu quá ngắn";
   
   @override
-  String get kPhoneNumberNullError=> "Vui lòng nhập số điện thoại";
-  
-  @override
-  String get kShortPassError=> "Mật khẩu quá ngắn";
-  
+  String get tourNotCompleted => "Chưa đến thời gian review tour";
 }

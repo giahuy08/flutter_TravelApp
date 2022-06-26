@@ -150,7 +150,7 @@ class _BodyState extends State<Body> {
                   SizedBox(
                     height: getProportionateScreenHeight(10),
                   ),
-                  GoogleBtn(onPressed: googleSignIn)
+                  GoogleBtn(onPressed: () async => {await googleSignIn()})
                 ],
               ),
             ),

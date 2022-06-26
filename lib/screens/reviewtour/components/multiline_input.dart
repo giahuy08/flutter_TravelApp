@@ -3,25 +3,26 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_travelapp/constants.dart';
-import 'package:flutter_travelapp/repository/review_repository.dart';
-import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
-import 'package:flutter_travelapp/screens/reviewtour/components/rounded_button.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
 
+import 'package:flutter_travelapp/constants.dart';
+import 'package:flutter_travelapp/repository/review_repository.dart';
+import 'package:flutter_travelapp/screens/bookedtour_booking/bookedtour_home_screen.dart';
+import 'package:flutter_travelapp/screens/reviewtour/components/rounded_button.dart';
+
 import '../../../localization/language/languages.dart';
 
 class MultilineInput extends StatefulWidget {
-  final String idTour;
   final double star;
+  final String idBookTour;
   const MultilineInput({
     Key? key,
-    required this.idTour,
     required this.star,
+    required this.idBookTour,
   }) : super(key: key);
 
   @override
@@ -43,17 +44,28 @@ class _MultilineInputState extends State<MultilineInput> {
     }
   }
 
-  void review(String idTour, String star, String comment, File? image) {
-    print(idTour);
+  void review(String idBookTour, String star, String comment, File? image) {
+    print(idBookTour);
     print(star);
     print(comment);
     print(image);
-
     ReviewRepository()
-        .createReviewTour(idTour, star, comment, image)
+        .createReviewTour(idBookTour, star, comment, image)
         .then((value) {
       print(value);
       if (value != null) {
+        if (value == 'BookTour does not complete') {
+          Get.snackbar(
+            'Review',
+            Languages.of(context)!.tourNotCompleted,
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.white,
+            backgroundColor: kPrimaryColor,
+            duration: const Duration(
+              milliseconds: 900,
+            ),
+          );
+        }
         if (value == 'Successfully create ReviewTour') {
           Get.snackbar(
             'Review',
@@ -186,7 +198,8 @@ class _MultilineInputState extends State<MultilineInput> {
                 iconColor: Colors.white,
                 bgColor: kPrimaryColor,
                 tap: () {
-                  review(widget.idTour, widget.star.toString(), comment, image);
+                  review(widget.idBookTour, widget.star.toString(), comment,
+                      image);
                 },
               ),
             ],

@@ -25,13 +25,13 @@ class ReviewRepository {
   }
 
   Future<dynamic> createReviewTour(
-      String idTour, String star, String comment, File? image) async {
+      String idBookTour, String star, String comment, File? image) async {
     var request = http.MultipartRequest(
         'POST', Uri.http(root_url, ApiGateway.createReviewTour));
     request.headers["Content-Type"] = 'multipart/form-data';
     request.headers["Authorization"] = 'Bearer ' +
         (userProvider.user == null ? '' : userProvider.user!.token!);
-    request.fields['idTour'] = idTour;
+    request.fields['idBookTour'] = idBookTour;
     request.fields['star'] = star;
     request.fields['comment'] = comment;
     request.files.add(
@@ -43,7 +43,7 @@ class ReviewRepository {
     );
 
     var response = await http.Response.fromStream(await request.send());
-    
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['message'];
     }

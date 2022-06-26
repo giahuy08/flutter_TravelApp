@@ -135,7 +135,7 @@ class _BodyState extends State<Body> {
                   spacing: kDefaultPadding,
                 ),
                 const SizedBox(height: kDefaultPadding),
-                MultilineInput(idTour: widget.tour.idTour, star: star),
+                MultilineInput(idBookTour: widget.tour.id, star: star),
               ],
             ),
           ))
