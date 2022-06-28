@@ -43,7 +43,7 @@ class _PaymentState extends State<Payment> {
       await BookTourRepository()
           .bookTour(idTour, code, startDate)
           .then((value) {
-        print(value);
+        print('value' + value);
         if (value == "The tour is already booked") {
           Get.snackbar(
             'Warning',
@@ -55,26 +55,6 @@ class _PaymentState extends State<Payment> {
               milliseconds: 800,
             ),
           );
-        } else {
-          Get.snackbar(
-            'Success',
-            'Đặt tour thành công',
-            snackPosition: SnackPosition.TOP,
-            colorText: Colors.white,
-            backgroundColor: kPrimaryColor,
-            duration: const Duration(
-              milliseconds: 800,
-            ),
-          );
-          Future.delayed(const Duration(milliseconds: 800), () {
-            // Here you can write your code
-
-            setState(() {
-              Navigator.pushNamed(context, BookedTourHomeScreen.routeName
-                  //  Navigator.pushNamed(context, PaymentMethodScreen.routeName);
-                  );
-            });
-          });
         }
       });
     } else {
@@ -93,31 +73,56 @@ class _PaymentState extends State<Payment> {
             ),
           );
         } else {
-          if (value != null) {
+          print(value);
+          if (value == 'Code Discount doesn\'t exist') {
             Get.snackbar(
-              'Payment',
-              'Chuyển đến trang thanh toán',
+              'Warning',
+              'Mã giảm giá không hợp lệ',
               snackPosition: SnackPosition.TOP,
               colorText: Colors.white,
-              backgroundColor: kPrimaryColor,
+              backgroundColor: Colors.green,
               duration: const Duration(
                 milliseconds: 800,
               ),
             );
-            Future.delayed(const Duration(milliseconds: 800), () {
-              // Here you can write your code
+          } else {
+            if (value == 'Code Discount was used') {
+              Get.snackbar(
+                'Warning',
+                'Mã giảm giá đã được sử dụng',
+                snackPosition: SnackPosition.TOP,
+                colorText: Colors.white,
+                backgroundColor: Colors.deepOrange,
+                duration: const Duration(
+                  milliseconds: 800,
+                ),
+              );
+            } else {
+              Get.snackbar(
+                'Payment',
+                'Chuyển đến trang thanh toán',
+                snackPosition: SnackPosition.TOP,
+                colorText: Colors.white,
+                backgroundColor: kPrimaryColor,
+                duration: const Duration(
+                  milliseconds: 800,
+                ),
+              );
+              Future.delayed(const Duration(milliseconds: 800), () {
+                // Here you can write your code
 
-              setState(() {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => PaymentMethodScreen(
-                      url: value,
+                setState(() {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PaymentMethodScreen(
+                        url: value,
+                      ),
                     ),
-                  ),
-                );
-                //  Navigator.pushNamed(context, PaymentMethodScreen.routeName);
+                  );
+                  //  Navigator.pushNamed(context, PaymentMethodScreen.routeName);
+                });
               });
-            });
+            }
           }
         }
       });
