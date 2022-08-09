@@ -120,6 +120,21 @@ Link source code Admin: https://github.com/giahuy08/React-Admin-TravelApp-TLCN
 
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/login.png" width="400"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/home_page_1.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/home_page_2.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/user_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/add_user_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/tour_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/add_tour_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/edit_tour_page_1.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/edit_tour_page_2.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/schedule_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/add_schedule_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/discount_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/room_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/vehicle_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/table_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/enterprise_page.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/chat_page.png" width="400"  title="hover text"></a>
 
 
 
