@@ -100,8 +100,8 @@ Link source code Admin: https://github.com/giahuy08/React-Admin-TravelApp-TLCN
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/schedule_pdf.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/schedule_book_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/payment_method.png" width="200"  title="hover text"></a>
-<img src="https://github.com/giahuy08/ScreenShot/blob/main/App/paypal_load.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/paypal_screen.png" width="200"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/App/paypal_load.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/vnpay_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/payment_success_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/booked_tour.png" width="200"  title="hover text"></a>
@@ -115,6 +115,11 @@ Link source code Admin: https://github.com/giahuy08/React-Admin-TravelApp-TLCN
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/ticket_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/ticket_QR.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/review_tour_screen.png" width="200"  title="hover text"></a>
+
+#### Web Admin Screen
+
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/login.png" width="400"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/Admin/home_page_1.png" width="400"  title="hover text"></a>
 
 
 
