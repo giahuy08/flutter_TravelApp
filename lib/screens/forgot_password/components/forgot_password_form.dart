@@ -74,12 +74,14 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               keyboardType: TextInputType.emailAddress,
               onSaved: (newValue) => email = newValue!,
               onChanged: (value) {
-                if (value.isNotEmpty && errors.contains(Languages.of(context)!.kEmailNullError)) {
+                if (value.isNotEmpty &&
+                    errors.contains(Languages.of(context)!.kEmailNullError)) {
                   setState(() {
                     errors.remove(Languages.of(context)!.kEmailNullError);
                   });
                 } else if (emailValidatorRegExp.hasMatch(value) &&
-                    errors.contains(Languages.of(context)!.kInvalidEmailError)) {
+                    errors
+                        .contains(Languages.of(context)!.kInvalidEmailError)) {
                   setState(() {
                     errors.remove(Languages.of(context)!.kInvalidEmailError);
                   });
@@ -87,13 +89,15 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
                 return;
               },
               validator: (value) {
-                if (value!.isEmpty && !errors.contains(Languages.of(context)!.kEmailNullError)) {
+                if (value!.isEmpty &&
+                    !errors.contains(Languages.of(context)!.kEmailNullError)) {
                   setState(() {
                     errors.add(Languages.of(context)!.kEmailNullError);
                   });
                 }
                 if (!emailValidatorRegExp.hasMatch(value) &&
-                    !errors.contains(Languages.of(context)!.kInvalidEmailError)) {
+                    !errors
+                        .contains(Languages.of(context)!.kInvalidEmailError)) {
                   setState(() {
                     errors.add(Languages.of(context)!.kInvalidEmailError);
                   });
@@ -102,7 +106,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               },
               decoration: InputDecoration(
                 labelText: Languages.of(context)!.emailDesc,
-                hintText: Languages.of(context)!.addressFormText,
+                hintText: Languages.of(context)!.emailForm,
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 suffixIcon: const CustomSurffix(
                   svgIcon: "assets/icons/Mail.svg",
@@ -111,7 +115,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
           FormError(errors: errors),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
           DefaultButton(
-              text: Languages.of(context)!.sendText,
+              text: Languages.of(context)!.emailDesc,
               press: () {
                 if (_forgotFormKey.currentState!.validate()) {
                   // Navigator.pushNamed(context, OtpScreen.routeName);

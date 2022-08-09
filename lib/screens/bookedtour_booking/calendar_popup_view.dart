@@ -111,7 +111,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        Languages.of(context)!.starText,
+                                        Languages.of(context)!.fromText,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,

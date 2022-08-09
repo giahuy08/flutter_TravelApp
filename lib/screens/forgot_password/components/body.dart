@@ -24,8 +24,8 @@ class Body extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
-               Text(
-                Languages.of(context)!.emailDesc,
+              Text(
+                Languages.of(context)!.emailForm,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.1),
