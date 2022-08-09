@@ -74,18 +74,18 @@ Link source code Admin: https://github.com/giahuy08/React-Admin-TravelApp-TLCN
 #### ReactJS Admin
 <div style="display: flex; align-items: flex-start;">
 
-<div>
+
   <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-screen.png" width="20%"  title="hover text">
 </div>
-<div>
+
   <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-screen-eng.png" width="20%"  title="hover text">
-</div>
-<div>
+
+
   <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-google-screen.png" width="20%"  title="hover text">
-</div>
-<div>
+
+
   <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/forgot_password_screen.png" width="20%"  title="hover text">
-</div>
+
 </div>
 
 
