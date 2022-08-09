@@ -101,26 +101,22 @@ Link source code Admin: https://github.com/giahuy08/React-Admin-TravelApp-TLCN
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/schedule_book_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/payment_method.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/paypal_load.png" width="200"  title="hover text"></a>
+<img src="https://github.com/giahuy08/ScreenShot/blob/main/App/paypal_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/vnpay_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/payment_success_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/booked_tour.png" width="200"  title="hover text"></a>
-
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/profile_home_screen.png" width="200"  title="hover text"></a>
-
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/profile_screen.png" width="200"  title="hover text"></a>
-
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/change_pass_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/chat_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/profile_screen.png" width="200"  title="hover text"></a>
-
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/logout.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/map_screen.png" width="200"  title="hover text"></a>
-
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/ticket_screen.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/ticket_QR.png" width="200"  title="hover text"></a>
 <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/review_tour_screen.png" width="200"  title="hover text"></a>
 
-</div>
+
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
