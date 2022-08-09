@@ -71,20 +71,12 @@ Link source code Admin: https://github.com/giahuy08/React-Admin-TravelApp-TLCN
   <img src="https://github.com/giahuy08/ScreenShot/blob/main/Screen/img10.png" width="700"  title="hover text">
 </p>
 
-#### ReactJS Admin
-<div style="display: flex; align-items: flex-start;">
+#### App Screen
 
-
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-screen.png" width="20%"  title="hover text">
-</div>
-
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-screen-eng.png" width="20%"  title="hover text">
-
-
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-google-screen.png" width="20%"  title="hover text">
-
-
-  <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/forgot_password_screen.png" width="20%"  title="hover text">
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-screen.png" width="200"  title="hover text"></a>
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-screen-eng.png" width="200"  title="hover text"></a>
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/login-google-screen.png" width="200"  title="hover text"></a>
+  <img src="https://github.com/giahuy08/ScreenShot/blob/main/App/forgot_password_screen.png" width="200"  title="hover text"></a>
 
 </div>
 
