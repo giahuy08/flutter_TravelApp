@@ -1,6 +1,6 @@
-## Đề tài tiểu luận chuyên ngành
 
-### Tên đề tài: Ứng dụng du lịch sử dựng công nghệ Flutter & NodeJS
+
+### Tên đề tài: Ứng dụng du lịch sử dụng công nghệ Flutter & NodeJS
 
 #### Nhóm thực hiện: Nhóm 6
 
